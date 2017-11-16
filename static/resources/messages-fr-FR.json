@@ -218,6 +218,9 @@
     "expand": "Agrandir la page",
     "contract": "Réduire la page"
   },
+  "dropdown": {
+    "selectAll": "Sélectionner tout"
+  },
   "navigation": {
     "welcome": "Accueil",
     "accessibility": "Accessibilité",
