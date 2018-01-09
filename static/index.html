@@ -17,7 +17,6 @@
             };
             xobj.send(null);
         }
-
         // Ajoute dans le DOM la demande de chargement d'un fichier JS ou CSS
         function loadFileInDom(filename, filetype, mountingPoint) {
             if (filetype == "js") {
@@ -41,30 +40,24 @@
                 document.getElementsByTagName(mountingPoint)[0].appendChild(fileref);
             }
         }
-
     </script>
     <script type="text/javascript">
-
         (function (root) {
             var messages = undefined;
             var menuItems = undefined;
             var config = undefined;
-
             loadJsonAsynchronously(function (response) {
                 messages = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-spa/resources/messages-fr-FR.json');
-
+            }, '/applitutoriel-online/static/resources/messages-fr-FR.json');
             loadJsonAsynchronously(function (response) {
                 menuItems = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-spa/resources/navigation.json');
-
+            }, '/applitutoriel-online/static/resources/navigation.json');
             loadJsonAsynchronously(function (response) {
                 config = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-spa/config-spa.json');
-
+            }, '/applitutoriel-online/static/config-spa.json');
             function buildConfigurationAndLoadScript() {
                 if (!messages || !menuItems || !config) {
                     console.log('Chargement non terminé, attente de la prochaine exécution de cette fonction');
@@ -72,10 +65,8 @@
                 }
                 // Tout est correctement chargé, on peut y aller
                 console.log('Chargement de la configuration terminée, chargement de la page');
-
                 // On insère le contenu du tableau
 //                config.dispatcher.stores.NavigationBaseStore.menuItems = menuItems.menu;
-
                 // On insère la conf de l'application
                 root.App = {
                     "plugins": {
@@ -85,9 +76,7 @@
                         }
                     }
                 };
-
                 root.Config = config;
-
                 root.HornetCLS = {
                     "hornet.internationalization": {
                         "locale": config.locale,
@@ -96,16 +85,13 @@
                     },
                     "hornet.menuConfig": menuItems.menu
                 };
-
-
+                root.AppSharedProps = {"appName":"applitutoriel-online","appVersion":"5.1.0","appDescription":"Application tutoriel utilisant le Framework hornet","appAuthor":"MEAE - Ministère de l'Europe et des Affaires étrangères", "welcomePageUrl":"\u002Faccueil"};
                 var themeUrl = config.themeUrl;
-
-                loadFileInDom("/applitutoriel-spa/static/img/logo.png", "icon");
-                loadFileInDom("/applitutoriel-spa/static/css/theme.css", "css");
-                loadFileInDom("/applitutoriel-spa/static/hornet-themes/css/theme.css", "css");
-                loadFileInDom("/applitutoriel-spa/static/js/client.js", "js", "body");
+                loadFileInDom("/applitutoriel-online/static/img/logoHornet.png", "icon");
+                loadFileInDom("/applitutoriel-online/static/css/theme.css", "css");
+                loadFileInDom("/applitutoriel-online/static/hornet-themes/css/theme.css", "css");
+                loadFileInDom("/applitutoriel-online/static/js/client.js", "js", "body");
             }
-
         }(this));
     </script>
 </head>
