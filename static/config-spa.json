@@ -1,30 +1,29 @@
 {
-  "contextPath": "applitutoriel-online",
-  "welcomePage": "/accueil",
-  "fullSpa": {
-    "enabled": true,
-    "host": "http://localhost/",
-    "name": "applitutoriel-service",
-    "staticPath": "/static"
-  },
-  "mock": {
-    "enabled": true,
-    "servicePage": {
-        "enabled": true
+  "dispatcher": {
+    "stores": {
+      "PageInformationStore": {
+        "currentUser": {
+          "name": "admin",
+          "roles": [
+            {
+              "id": 1,
+              "name": "AppliTuto_ADMIN"
+            },
+            {
+              "id": 2,
+              "name": "AppliTuto_USER"
+            }
+          ]
+        }
+      },
+      "NavigationBaseStore": {
+        "menuItems": []
+      }
     }
-  },
-  "services": {
-    "host": "http://localhost/",
-    "name": "applitutoriel-service"
-  },
-  "themeName": "hornet-themes",
-  "localeI18n": {
-    "locale": "fr-FR",
-    "lang": "fr"
   },
   "logClient": {
     "remote": false,
-    "level": "DEBUG",
+    "level": "INFO",
     "appenders": [
       {
         "type": "BrowserConsole",
@@ -43,5 +42,30 @@
       }
     ]
   },
-  "themeUrl": "/applitutoriel-online/static/hornet-themes"
+  "mock": {
+    "enabled": true,
+    "servicePage" : {
+      "enabled": true
+    },
+    "serviceData" : {
+      "enabled": true
+    }
+  },
+  "contextPath": "applitutoriel-online",
+  "fullSpa": {
+    "enabled": true,
+    "host": "http://localhost/",
+    "name": "applitutoriel-service",
+    "staticPath": "/static"
+  },
+  "services": {
+    "host": "http://localhost/",
+    "name": "applitutoriel-service"
+  },
+  "themeName": "hornet-themes",
+  "localeI18n": {
+    "locale": "fr-FR",
+    "lang": "fr"
+  },
+  "themeUrl": "/applitutoriel-spa/static/hornet-themes"
 }
