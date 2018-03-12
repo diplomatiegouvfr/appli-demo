@@ -2499,6 +2499,9 @@ button.button-info-accessibilite-button img {
     /*padding: 0.5em 0 0.5em 1em;*/
     margin-right: 1em;
     margin-left: 0.5em;
+    width: 100%;
+    display:block;
+    margin-top:0;
 }
 
 
@@ -2783,7 +2786,7 @@ ul.fil-ariane {
 
 .fil-ariane-racine {
     margin-right: 0.2em;
-    color: #007eca;
+    color: #0579be;
 }
 
 .fil-ariane-courant {
@@ -2817,7 +2820,7 @@ ul.fil-ariane {
 }
 
 .fil-ariane a:hover {
-    outline: #007ecb solid 1px;
+    outline: #0579be solid 1px;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -3207,7 +3210,10 @@ table>tbody>tr>td {
 
 .agenda img {
     margin-bottom: 0.25em;
-    width: 32px;
+    height: 2.563em;
+    width: 2.563em;
+
+
 }
 
 .rc-calendar-panel {
@@ -3383,13 +3389,13 @@ table>tbody>tr>td {
 }
 
 .dropdown-language.isOpen .itemLang:focus {
-    outline: #007ecb solid 1px;
+    outline: #0579be solid 1px;
 }
 
 .dropdown-language.isOpen .itemLang:hover {
     color: #ffffff;
     /* font-weight: bold;*/
-    background-color: #007ecb;
+    background-color: #0579be;
 }
 
 .dropdown-language.isOpen .itemLang:hover a {
@@ -3567,12 +3573,29 @@ table>tbody>tr>td {
     cursor: pointer;
 }
 
-.dropdown-button {
-    padding: .4em;
+.dropdown-container>button {
+    border: none;
+    cursor: pointer;
+    right: auto;
+    position: relative;
+    background-color: #0579be;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0.2em;
+    min-width: 2.313em;
+    min-height: 2.313em;
 }
 
-.dropdown-button:focus {
-    outline: #4D90FE solid 1px;
+.more-actions {
+    background: transparent url(../img/picto/white/more_vert_white.svg) no-repeat scroll left top;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+
+.dropdown-button {
+    padding: .4em;
 }
 
 .dropdown-content {
@@ -3580,7 +3603,7 @@ table>tbody>tr>td {
     display: flex;
     flex-direction: column;
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     visibility: visible;
     -webkit-transition: max-height 500ms ease;
     -moz-transition: max-height 500ms ease;
@@ -3603,7 +3626,7 @@ table>tbody>tr>td {
 
 /* Arrow pour BL*/
 
-.dropdown-list .arrow.position-bottom-left {
+.arrow.position-bottom-left {
     content: '';
     position: absolute;
     top: -0.43em;
@@ -3627,7 +3650,7 @@ table>tbody>tr>td {
 
 /* Arrow pour BR*/
 
-.dropdown-list .arrow.position-bottom-right {
+.arrow.position-bottom-right {
     content: '';
     position: absolute;
     top: -0.43em;
@@ -3648,8 +3671,7 @@ table>tbody>tr>td {
 
 
 /* Arrow pour TR*/
-
-.dropdown-list .arrow.position-top-right {
+.arrow.position-top-right {
     content: '';
     position: absolute;
     bottom: -0.43em;
@@ -3672,7 +3694,7 @@ table>tbody>tr>td {
 
 /* Arrow pour TL*/
 
-.dropdown-list .arrow.position-top-left {
+.arrow.position-top-left {
     content: '';
     position: absolute;
     bottom: -0.43em;
@@ -3686,6 +3708,7 @@ table>tbody>tr>td {
 }
 
 .dropdown-list {
+    margin-top: 0em;
     list-style: none;
     opacity: 1;
     min-width: 136px;
@@ -3709,20 +3732,21 @@ table>tbody>tr>td {
 }
 
 .dropdown-list li>a.checked {
-    color: #007eca;
+    color: #0579be;
     background-color: #e2eff7;
-    border-left: 4px solid #007eca;
+    border-left: 4px solid #0579be;
     padding: 0px 26px 0px 12px !important;
 }
 
 .dropdown-list li>a.checked:hover {
-    color: #007eca;
+    color: #0579be;
 }
 
-.dropdown-list li>a:hover {
+.dropdown-list li>a:hover,
+.dropdown-list li>div:hover {
     color: #000;
     background-color: #e2eff7;
-    border-left: 4px solid #007eca;
+    border-left: 4px solid #0579be;
     padding: 0px 26px 0px 12px;
 }
 
@@ -3745,13 +3769,14 @@ table>tbody>tr>td {
     vertical-align: middle;
 }
 
-.more-actions {
-    height: 1.5em;
-    width: 1.5em;
-    background: transparent url("../img/dropdown/more_vert_white.svg");
+
+/*.more-actions {
     cursor: pointer;
     display: block;
-}
+    width: 1.5em;
+    height: 2.5em;
+    color: transparent;
+}*/
 
 .ico-table-settings-white {
     height: 1.5em;
@@ -3771,6 +3796,16 @@ table>tbody>tr>td {
     font-size: 1em;
     margin-right: 0.5em;
     width: 100%;
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    line-height: inherit;
+    position: relative;
+    background: #ffffff;
+    color: #000000;
+    padding: 0px 26px 0px 16px;
+    white-space: nowrap;
 }
 
 .toggle-column-item-checkbox {
@@ -3790,6 +3825,20 @@ table>tbody>tr>td {
 div#table-settingscontent ul.dropdown-list li a {
     width: 100%;
     margin-right: 0.5em;
+}
+
+.toggle-column-item-label.fl label {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.datatable-header-title:focus {
+    outline: none;
+}
+
+span.dropdown-hidden-label {
+    display: none;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -3903,8 +3952,14 @@ div#table-settingscontent ul.dropdown-list li a {
 
 .accordion-label:focus, .accordion-label:hover {
     background: #d2dde4;
-    outline: none;
     overflow: hidden;
+}
+
+.accordion-label:hover {
+    outline: -webkit-focus-ring-color solid 1px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: solid;
+    outline-width: 1px;
 }
 
 .accordion-label-open {
@@ -4397,7 +4452,7 @@ ul.footer-links li:last-child:after {
 }
 
 .form-soustitre {
-    color: #007eca;
+    color: #0579be;
     font-size: 17px;
     padding-top: 0.875em;
 }
@@ -4437,7 +4492,7 @@ checkbox
 ****/
 
 .checkbox-container {
-    padding: 10px 20px;
+    padding: 0px 20px;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
@@ -4503,13 +4558,13 @@ label.checkbox-content input:focus+.checkbox-material .check {
     width: 0;
     height: 0;
     box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
-    /*color:#007ecb;
+    /*color:#0579be;
     -webkit-animation: checkbox-off 0.3s forwards ease-out;
             animation: checkbox-off 0.3s forwards ease-out; */
 }
 
 .checkbox-content input[type=checkbox]:checked+.checkbox-material .check {
-    color: #007ecb;
+    color: #0579be;
 }
 
 .checkbox-content input[type=checkbox]:not(:checked)+.checkbox-material .check {
@@ -4827,7 +4882,7 @@ a.header-link:focus {
 }
 
 #banner {
-    background: #007ecb none repeat scroll 0 0;
+    background: #0579be none repeat scroll 0 0;
     height: 4em;
 }
 
@@ -5289,7 +5344,7 @@ button.button-action:focus {
     min-width: 15.469em;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="text"]:hover {
     outline: #4D90FE solid 1px;
 }
 
@@ -5330,7 +5385,8 @@ input.center {
     position: relative;
 }
 
-.input-reset {
+.input-reset,
+.calendar-container .input-reset {
     position: absolute;
     margin: 7px -40px;
     cursor: pointer;
@@ -5346,7 +5402,9 @@ input.center {
 
 .input-reset a:hover img {
     background-color: rgba(158, 158, 158, 0.2);
-    border-radius: 50%
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 1px #4D90FE;
 }
 
 .input-reset.input-reset-hidden {
@@ -5359,6 +5417,10 @@ input.center {
     transition: opacity 500ms linear, visibility 0s linear 500ms;
     border: none;
     outline: none;
+}
+
+.calendar-container .input-reset {
+    margin: 13px -40px;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -5463,6 +5525,46 @@ input.center {
         line-height: 3em;
     }
 }
+.top-menu-accessibilite.focused {
+    height: auto;
+    opacity: 1;
+    padding: 1rem;
+    z-index: 900;
+    top:0;
+}
+.top-menu-accessibilite {
+    background: #fff none repeat scroll 0 0;
+    height: 0;
+    list-style: outside none none;
+    margin: 0 auto;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    position: absolute;
+    top:-50px;
+}
+
+.top-menu-accessibilite a {
+    color:#0579be;
+    font-size: 1em;
+    font-family: NotoSansUI-Bold;
+}
+
+.header.sticky header #header .top-menu-accessibilite.focused {
+    height: auto;
+    opacity: 1;
+    padding: 1rem;
+    z-index: 9999;
+    position:absolute;
+    top:0;
+    background: #0579be none repeat scroll 0 0;
+    transition: all 0.3s ease 0s;
+
+}
+.header.sticky header #header .top-menu-accessibilite.focused a {
+    color:white;
+
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -5535,7 +5637,7 @@ input.center {
  */
 
 /**
- * hornet-themes- - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -5563,7 +5665,7 @@ input.center {
 #menu-main button.toggler {
     height: 4rem;
     width: 4.5rem;
-    background-color: #007ecb;
+    background-color: #0579be;
     cursor: pointer;
     display: block;
     overflow: hidden;
@@ -5713,7 +5815,7 @@ ul.nav li.nav-item {
     text-decoration: none;
     vertical-align: top;
     width: 25%;
-    padding: 2.5em;
+    padding: 1em;
 }
 
 li.nav-item.is-active a span.menulink-title {
@@ -5757,7 +5859,7 @@ li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.i
         text-decoration: none;
         vertical-align: top;
         width: 33%;
-        padding: 2.5em;
+        padding: 1em;
     }
 }
 
@@ -5876,7 +5978,7 @@ ul.nav li.sub-nav-item a:hover, ul.nav li.sub-nav-item a:focus {
 }
 
 li.nav-item.is-active {
-    background-color: #007ecb;
+    background-color: #0579be;
 }
 
 .nav-item.is-active a:focus, .nav-item.is-active a:hover {
@@ -5886,11 +5988,11 @@ li.nav-item.is-active {
 
 .nav-item:not(.is-active) a:focus, .nav-item:not(.is-active) a:hover {
     outline: none;
-    border-left: 4px solid #007ecb;
+    border-left: 4px solid #0579be;
 }
 
 li.nav-item.is-active a {
-    border-left: 4px solid #007ecb;
+    border-left: 4px solid #0579be;
 }
 
 li.nav-item:not(.is-active) a {
@@ -6050,7 +6152,7 @@ li.sub-nav-item ul {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -6104,8 +6206,9 @@ li.sub-nav-item ul {
 }
 
 .content-modal-body {
-    /*overflow: auto;*/
-    max-height: 700px;
+    overflow: auto;
+    /*max-height: 700px;*/
+    max-height: 28em;
 }
 
 .modal-overflow-y {
@@ -6157,8 +6260,11 @@ li.sub-nav-item ul {
 }
 
 div[role=alertdialog]{
-    position: fixed !important;
     z-index:5;
+}
+
+.dialog-content-alert {
+    position: absolute !important;
 }
 
 /**
@@ -6233,7 +6339,7 @@ div[role=alertdialog]{
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -6342,8 +6448,9 @@ a.hornet-button.nfe-button {
  *
  */
 
+
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -6351,21 +6458,20 @@ a.hornet-button.nfe-button {
  * @license CECILL-2.1
  */
 
-.error-message{
+.error-message {
     border: 0.063em solid #e6151d;
     padding: 0.5em 1em 0.5em 1em;
-    margin-top:1em;
-    margin-bottom:1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-.error-message-title{
+.error-message-title {
     font-style: italic;
     color: #e6151d;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     font-weight: lighter;
     text-transform: none;
-
     background-image: url('../img/notification/ic_warning_red_24px.svg');
     background-repeat: no-repeat;
     padding-left: 1.875em;
@@ -6373,41 +6479,40 @@ a.hornet-button.nfe-button {
     font-family: NotoSansUI-Bold;
 }
 
-.error-message-list{
+.error-message-list {
     font-style: italic;
     color: #e6151d;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     list-style: outside none none;
+    padding-left: 3em;
 }
 
-.error-message-text{
-    padding-left : 3em;
+.error-message-text {
     font-style: italic;
     color: #e6151d;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
 }
-.error-message-text:hover{
+
+.error-message-text:hover {
     color: #e6151d;
-    }
-
-
-.warning-message{
-    border: 0.063em solid darkorange;
-    padding: 0.5em 1em 0.5em 1em;
-    margin-top:1em;
-    margin-bottom:1em;
 }
 
-.warning-message-title{
+.warning-message {
+    border: 0.063em solid darkorange;
+    padding: 0.5em 1em 0.5em 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.warning-message-title {
     font-style: italic;
     color: darkorange;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     font-weight: lighter;
     text-transform: none;
-
     background-image: url('../img/notification/ic_warning_black_24px.svg');
     background-repeat: no-repeat;
     padding-left: 1.875em;
@@ -6415,39 +6520,36 @@ a.hornet-button.nfe-button {
     font-family: NotoSansUI-Bold;
 }
 
-.warning-message-list{
+.warning-message-list {
     font-style: italic;
     color: darkorange;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     list-style: outside none none;
     padding-left: 3em;
 }
 
-.warning-message-text{
+.warning-message-text {
     font-style: italic;
     color: darkorange;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
 }
 
-
-
-.info-message{
+.info-message {
     border: 0.063em solid green;
     padding: 0.5em 1em 0.5em 1em;
-    margin-top:1em;
-    margin-bottom:1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-.info-message-title{
+.info-message-title {
     font-style: italic;
     color: green;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     font-weight: lighter;
     text-transform: none;
-
     background-image: url('../img/notification/ic_check_circle_black_24px.svg');
     background-repeat: no-repeat;
     padding-left: 1.875em;
@@ -6455,65 +6557,148 @@ a.hornet-button.nfe-button {
     font-family: NotoSansUI-Bold;
 }
 
-.info-message-list{
+.info-message-list {
     font-style: italic;
     color: green;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     list-style: outside none none;
     padding-left: 3em;
 }
 
-.info-message-text{
+.info-message-text {
     font-style: italic;
     color: green;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
 }
 
-.personnal-message{
+.personnal-message {
     padding: 0.5em 1em 0.5em 1em;
-    margin-top:1em;
-    margin-bottom:1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-.personnal-message-title{
+.personnal-message-title {
     font-style: italic;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     font-weight: lighter;
     text-transform: none;
-
     background-repeat: no-repeat;
     padding-left: 1.875em;
     display: block;
     font-family: NotoSansUI-Bold;
 }
 
-.personnal-message-list{
+.personnal-message-list {
     font-style: italic;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
     list-style: outside none none;
     padding-left: 3em;
 }
 
-.personnal-message-text{
+.personnal-message-text {
     font-style: italic;
-    font-size:1em;
+    font-size: 1em;
     font-family: NotoSansUI-Regular;
 }
 
-.stack-dev{
+.stack-dev {
     margin: 1em 0 0 1em;
 }
 
-.stack-dev-title{
-    font-size:1.5em;
+.stack-dev-title {
+    font-size: 1.5em;
 }
 
-.stack-dev-line{
+.stack-dev-line {
     margin-left: 2em;
+}
+
+.error-button-open {
+    border: none;
+    background: url("../img/notification/icon_fleche_expand_open.svg") transparent;
+    background-repeat: no-repeat;
+    height: 26px;
+    width: 26px;
+    float: right;
+    font-size: 0px;
+    cursor: pointer;
+}
+
+.error-button-close {
+    border: none;
+    background: url("../img/notification/icon_fleche_expand_close.svg") transparent;
+    background-repeat: no-repeat;
+    height: 26px;
+    width: 26px;
+    float: right;
+    font-size: 0px;
+    cursor: pointer;
+}
+
+.error-message-list.close,
+.personnal-message-list.close,
+.warning-message-list.close {
+    display: none;
+}
+
+.info-button {
+    border: none;
+    background: url("../img/notification/ico_notification_close.svg") transparent;
+    background-repeat: no-repeat;
+    height: 26px;
+    width: 26px;
+    float: right;
+    font-size: 0px;
+    cursor: pointer;
+}
+
+.notification-timeout {
+    position: fixed;
+    right: 0;
+    bottom: 4.2em;
+    line-height: 2em;
+    background: white;
+    padding: 0.5em;
+    color: #2e586e;
+    font-family: "NotoSansUI-Bold";
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.45);
+}
+
+.notification-expanded {
+    -webkit-transition: width 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
+    opacity: 1;
+    padding-top: 0.5em;
+}
+
+.notification-reduced {
+    width: 0;
+    opacity: 0;
+    height: 0;
+    font-size: 0;
+}
+
+.notification-timeout .notification-session-message div {
+    line-height: 1.2em
+}
+
+.notification-timeout .notification-session-message div a {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 405px) {
+    .personnal-message-list,
+    .info-message-list,
+    .error-message-list,
+    .warning-message-list {
+        padding-left: 1.45em;
+        list-style: square;
+    }
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -6587,7 +6772,7 @@ a.hornet-button.nfe-button {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -6675,7 +6860,7 @@ ul.pap ul {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -6722,7 +6907,7 @@ ul.pap ul {
 }
 
 .radio-label input:checked~.outer {
-    border: 0.35em solid #007eca;
+    border: 0.35em solid #0579be;
 }
 
 .radio-label input:focus~.outer {
@@ -6812,7 +6997,7 @@ li.radio-inline label {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -7180,7 +7365,7 @@ li.radio-inline label {
 }
 .rc-calendar-header > a:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-header .rc-calendar-prev-month-btn {
     position: absolute;
@@ -7210,7 +7395,7 @@ li.radio-inline label {
 .rc-calendar-month-select:hover,
 .rc-calendar-day-select:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-prev-month-btn,
 .rc-calendar-next-month-btn,
@@ -7230,7 +7415,7 @@ li.radio-inline label {
 .rc-calendar-next-month-btn:hover,
 .rc-calendar-prev-year-btn:hover,
 .rc-calendar-next-year-btn:hover {
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-next-year-btn {
     right: 0;
@@ -7300,14 +7485,14 @@ li.radio-inline label {
     background: #d9f4fe;
 }
 .rc-calendar-selected-date .rc-calendar-date {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-selected-date .rc-calendar-date:hover {
-    background: #007ecb;
+    background: #0579be;
 }
 .rc-calendar-today .rc-calendar-date {
-    border: 1px solid #007ecb;
+    border: 1px solid #0579be;
 }
 .rc-calendar-disabled-cell .rc-calendar-date {
     cursor: not-allowed;
@@ -7381,7 +7566,7 @@ li.radio-inline label {
 .rc-calendar-ok-btn:hover,
 .rc-calendar-time-picker-btn:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-today-btn-disabled,
 .rc-calendar-ok-btn-disabled,
@@ -7412,11 +7597,11 @@ li.radio-inline label {
     width: 40px;
 }
 .rc-calendar-time-input:hover {
-    border-color: #007ecb;
+    border-color: #0579be;
 }
 .rc-calendar-time-input:focus {
-    border-color: #007ecb;
-    box-shadow: 0 0 3px #007ecb;
+    border-color: #0579be;
+    box-shadow: 0 0 3px #0579be;
 }
 .rc-calendar-time-panel {
     left: 0;
@@ -7476,11 +7661,11 @@ li.radio-inline label {
     cursor: pointer;
 }
 .rc-calendar-time-panel-selected-cell .rc-calendar-time-panel-time {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-time-panel-selected-cell .rc-calendar-time-panel-time:hover {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-month-panel {
@@ -7517,7 +7702,7 @@ li.radio-inline label {
 }
 .rc-calendar-month-panel-header > a:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-month-panel-prev-year-btn,
 .rc-calendar-month-panel-next-year-btn {
@@ -7586,11 +7771,11 @@ li.radio-inline label {
     cursor: not-allowed;
 }
 .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month:hover {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-year-panel {
@@ -7627,7 +7812,7 @@ li.radio-inline label {
 }
 .rc-calendar-year-panel-header > a:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-year-panel-prev-decade-btn,
 .rc-calendar-year-panel-next-decade-btn {
@@ -7689,11 +7874,11 @@ li.radio-inline label {
     cursor: pointer;
 }
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year:hover {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-year-panel-last-decade-cell .rc-calendar-year-panel-year,
@@ -7738,7 +7923,7 @@ li.radio-inline label {
 }
 .rc-calendar-decade-panel-header > a:hover {
     cursor: pointer;
-    color: #007ecb;
+    color: #0579be;
 }
 .rc-calendar-decade-panel-prev-century-btn,
 .rc-calendar-decade-panel-next-century-btn {
@@ -7793,11 +7978,11 @@ li.radio-inline label {
     cursor: pointer;
 }
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade:hover {
-    background: #007ecb;
+    background: #0579be;
     color: #fff;
 }
 .rc-calendar-decade-panel-last-century-cell .rc-calendar-decade-panel-decade,
@@ -7936,13 +8121,13 @@ li.radio-inline label {
     display: inline-block;
 }
 .rc-calendar-full-header-switcher-normal:hover {
-    border-color: #007ecb;
+    border-color: #0579be;
     box-shadow: 0 0 2px rgba(45, 183, 245, 0.8);
     cursor: pointer;
 }
 .rc-calendar-full-header-switcher-focus {
-    border-color: #007ecb;
-    background-color: #007ecb;
+    border-color: #0579be;
+    background-color: #0579be;
     color: #fff;
 }
 .rc-calendar-full-header-switcher > span {
@@ -7995,8 +8180,8 @@ li.radio-inline label {
 }
 .rc-calendar-fullscreen .rc-calendar-today .rc-calendar-date,
 .rc-calendar-fullscreen .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
-    border-top-color: #007ecb;
-    color: #007ecb;
+    border-top-color: #0579be;
+    color: #0579be;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -8071,7 +8256,7 @@ li.radio-inline label {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -8220,7 +8405,7 @@ select:focus {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -8371,7 +8556,7 @@ select:focus {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -8437,7 +8622,7 @@ select:focus {
 }
 
 .switch-input:checked ~ .switch-label {
-    background: #007ecb;
+    background: #0579be;
 }
 
 .switch-input:checked ~ .switch-label:before {
@@ -8558,7 +8743,7 @@ select:focus {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -8583,7 +8768,7 @@ select:focus {
 }
 
 .datatable-header-title {
-    background-color: #007ecb;
+    background-color: #0579be;
     box-sizing: border-box;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.40);
     display: flex;
@@ -8647,6 +8832,10 @@ table {
     background-color: #f4f4f4;
 }
 
+.datatale-columns-hidden {
+    display: none;
+}
+
 
 /*Surchage Knacss*/
 
@@ -8662,7 +8851,7 @@ th {
 }
 
 .table-header {
-    color: #007ecb;
+    color: #0579be;
     font-size: 12px;
     font-weight: normal;
     text-align: left;
@@ -8853,7 +9042,8 @@ th div {
     overflow: inherit;
 }
 
-th, td {
+th,
+td {
     padding: .3em .1em .3em .8em;
 }
 
@@ -8889,6 +9079,7 @@ th div:focus {
     -moz-hyphens: auto;
     hyphens: auto;
     margin: .1em;
+    text-decoration: underline;
 }
 
 .datatable-header-sortable-column img {
@@ -8920,6 +9111,7 @@ td.datatable-cell.default-body-cell {
 
 .menu-priority-container {
     float: left;
+    margin-right: 0.1em;
 }
 
 .menu-contextuel-container {
@@ -8992,7 +9184,7 @@ td.datatable-cell.default-body-cell {
     left: -200px;
     width: 200px;
     height: 4px;
-    background-color: #007ecb;
+    background-color: #0579be;
     animation: loading 2s linear infinite;
 }
 
@@ -9016,6 +9208,21 @@ td.datatable-cell.default-body-cell {
     background: none;
     padding: 0 .5em;
     cursor: pointer;
+}
+
+.edition-button-action-before {
+    cursor: pointer;
+    display: inline-block;
+    width: 90%;
+    height: 100%;
+}
+
+.hidden-label {
+    display: none;
+}
+
+a.edition-button-action-before:hover {
+    outline: #4D90FE solid 1px;
 }
 
 .edition-button-action:hover,
@@ -9094,10 +9301,10 @@ button:focus {
         height: auto;
         flex-direction: row;
     }
-    .datatable-cell .button-action img, .datatable-cell .edition-button-action img {
+    .datatable-cell .button-action img,
+    .datatable-cell .edition-button-action img {
         width: 24px;
     }
-
 }
 
 .datatable-masked {
@@ -9187,22 +9394,6 @@ is_disabled {
     width: 22px;
 }
 
-.datatable-content table {
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-                                     supported by Chrome and Opera */
-}
-
 .card-content-title {
     color: rgba(0, 0, 0, 0.87);
     cursor: default;
@@ -9233,6 +9424,10 @@ tr.datatable-line-selected td[disabled] {
 tr.datatable-line-selected td.datatable-cell-in-edition a img {
     opacity: .5;
     filter: grayscale(1);
+}
+
+a.arrow-sort-container:hover {
+    outline: #4D90FE solid 1px;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -9306,7 +9501,7 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -9333,6 +9528,7 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
     overflow: hidden;
     width: calc(100% - 1.9em);
     float: left;
+    display: inline-flex;
 }
 
 .tabviewContentList.touch {
@@ -9364,13 +9560,20 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
     margin: 0 0.05em;
 }
 
+.tab-label:hover, .tab-label:focus, .tabs-add-button:hover, .tabs-add-button:focus {
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 1px;
+}
+
 
 /*Empeche la selection de l'element qui porte la classe tab-selected */
 .tab-label:hover:not(.tab-selected){
     background: #f8f8ff;
-    boder:1px solid #007ecb;
+    boder: 1px solid #0579be;
     color: #03476e;
     border-radius: 0.4em 0.4em 0 0;
+
 }
 
 .tab-panel:not(.tab-panel-selected) {
@@ -9433,6 +9636,52 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
     display: table;
     clear: both;
 }
+
+.tabs-arrow-hidden-label{
+    display:none
+ }
+
+.tabs-button-label {
+    display: none
+}
+
+.tabs-add-button {
+    display: inline-block;
+    height: 2.5em;
+    min-width: 3em;
+    color: #03476e;
+    border-radius: 0.4em 0.4em 0 0;
+    margin: 0 0.05em;
+    border: none;
+    background: url(../img/tabs/ico_add.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f4f4f4;
+    cursor: pointer;
+
+}
+
+.delete-tab-button {
+    background: url(../img/tabs/ico_close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    position: absolute;
+    right: 1.5em;
+    height: 1em;
+    width: 1em;
+    top: 1rem;
+    cursor: pointer;
+    margin-right: -1em;
+}
+
+.delete-tab-button.delete-tab-button-selected {
+    background-image: url(../img/picto/white/ico_close.svg);
+}
+
+li.tab {
+    position: relative;
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -9506,7 +9755,7 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -9538,6 +9787,20 @@ textarea:focus {
 .textarea-reset {
     margin: 12px -25px;
 }
+
+.textarea-character-value {
+    position: relative;
+    height: 1em;
+    font-style: italic;
+    color: #666666;
+    min-width: 1em;
+    float: right;
+}
+
+.textarea-too-many-char {
+    color: #d60000;
+}
+
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -9611,7 +9874,7 @@ textarea:focus {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -9621,6 +9884,7 @@ textarea:focus {
 
 .tooltip {
     margin-left: 1.125em;
+    position: relative;
 }
 
 a:focus,
@@ -9642,32 +9906,12 @@ tooltip {
 
 /**TODO:mettre a jour ce qu'il ya  en dessous**/
 
-[data-tooltip] {
-    position: relative;
+.tooltip-label {
+    position: absolute;
     z-index: 3;
     cursor: pointer;
-    display: none;
-}
-
-
-/* Hide the tooltip content by default */
-
-[data-tooltip]:before,
-[data-tooltip]:after {
-    visibility: visible;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-    opacity: 1;
-    pointer-events: none;
-}
-
-
-/* Position tooltip above the element */
-
-[data-tooltip]:before {
-    position: absolute;
     bottom: 150%;
-    left: 50%;
+    left: 174%;
     margin-bottom: 5px;
     margin-left: -92px;
     padding: 7px;
@@ -9678,17 +9922,30 @@ tooltip {
     background-color: #000;
     background-color: hsla(0, 0%, 20%, 0.9);
     color: #fff;
-    content: attr(data-tooltip);
     text-align: center;
     line-height: 1.2;
 }
 
 
+/* Hide the tooltip content by default */
+
+
+/*.tooltip-label:before,*/
+
+.tooltip-label:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+    pointer-events: none;
+}
+
+
 /* Triangle hack to make tooltip look like a speech bubble */
 
-[data-tooltip]:after {
+.tooltip-label:after {
     position: absolute;
-    bottom: 150%;
+    top: 100%;
     left: 50%;
     margin-left: -12px;
     width: 0;
@@ -9776,7 +10033,7 @@ a:focus .tooltip-image {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -9899,7 +10156,7 @@ a:focus .tooltip-image {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -10049,7 +10306,7 @@ label.upload-content:not([readonly]):hover {
 
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -10221,7 +10478,7 @@ label.upload-content:not([readonly]):hover {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -10319,7 +10576,7 @@ label.upload-content:not([readonly]):hover {
  */
 
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -10420,7 +10677,7 @@ h2 {
 h3 {
     font-family: NotoSansUI-Regular;
     font-size: 20px;
-    color: #007eca;
+    color: #0579be;
     text-transform: uppercase;
     padding: 0.6em 0 0 0em;
 }
@@ -10428,7 +10685,7 @@ h3 {
 h4 {
     font-family: NotoSansUI-Regular;
     font-size: 17px;
-    color: #007eca;
+    color: #0579be;
     text-transform: uppercase;
     padding: 0.6em 0 0 0em;
 }
@@ -10438,7 +10695,7 @@ h5 {
 }
 
 a {
-    color: #007eca;
+    color: #0579be;
     text-decoration: none;
 }
 

@@ -1,58 +1,15779 @@
-webpackJsonp([4],Array(129).concat([function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(328),i=r(61),n=r(127),o=r(538),l=r(63),c=function(e){function t(){var t=e.call(this)||this;return t.addPageRoute("/",function(){return new i.PageRouteInfos(o.SecteursPage,null,l.Injector.getRegistered(n.AdministrationSecteurService))},s.Roles.ADMIN),t}return a.__extends(t,e),t}(i.AbstractRoutes);t.default=c},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,s=r(1),i=r(0),n=r(2),o=r(17),l=r(6),c=r(321),u=r(352),h=r(353),p=r(358),d=i.Utils.getLogger("hornet-js-react-components.widget.form.abstract-field");!function(e){e[e.NONE=0]="NONE",e[e.FIELD=1]="FIELD",e[e.ALL=2]="ALL"}(a=t.InlineStyle||(t.InlineStyle={}));var m=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.makeState(a.state),a}return s.__extends(t,e),t.prototype.componentDidMount=function(){if(this.mounted=!0,this.htmlElement)this.htmlElement.addEventListener("focus",this.handleSimulateScroll);else if(this.multipleElement)for(var e in this.multipleElement)this.multipleElement[e].addEventListener("focus",this.handleSimulateScroll)},t.prototype.componentWillUnmount=function(){if(this.mounted=!1,this.htmlElement)this.htmlElement.removeEventListener("focus",this.handleSimulateScroll);else if(this.multipleElement)for(var e in this.multipleElement)this.multipleElement[e].removeEventListener("focus",this.handleSimulateScroll)},t.prototype.makeState=function(e){this.processHtmlProps(e)},t.prototype.setAbbr=function(e,t){return this.setState({abbr:e},t),this},t.prototype.setGroupClass=function(e,t){return this.setState({groupClass:e},t),this},t.prototype.setLabelClass=function(e,t){return this.setState({labelClass:e},t),this},t.prototype.setFieldClass=function(e,t){return this.setState({fieldClass:e},t),this},t.prototype.setToolTip=function(e,t){return this.setState({toolTip:e},t),this},t.prototype.setIcoToolTip=function(e,t){return this.setState({icoToolTip:e},t),this},t.prototype.setPrefix=function(e,t){return this.setState({prefix:e},t),this},t.prototype.setSuffix=function(e,t){return this.setState({suffix:e},t),this},t.prototype.setMarkRequired=function(e,t){return this.setState({markRequired:e},t),this},t.prototype.setrequiredLabel=function(e,t){return this.setState({requiredLabel:e},t),this},t.prototype.setImgFilePath=function(e,t){return this.setState({imgFilePath:e},t),this},t.prototype.setErrorComponent=function(e,t){return this.setState({errorComponent:e},t),this},t.prototype.setErrors=function(e,t){return this.setState({errors:e},t),this},t.prototype.setAttribute=function(t,r){e.prototype.setAttribute.call(this,t,r);var a={};return a[t]=r,this.setState(a),this},t.prototype.setCurrentChecked=function(t){return e.prototype.setCurrentChecked.call(this,t),this.setState({currentChecked:t}),this},t.prototype.setCurrentValue=function(t){return e.prototype.setCurrentValue.call(this,t),this.setState({currentValue:t}),this},t.prototype.setReadOnly=function(e){return this.setState({readOnly:e}),this},t.prototype.setDisabled=function(e){return this.setState({disabled:e}),this},t.prototype.hasErrors=function(){var e=null;return this.state.errors&&(e=this.state.errors.filter(function(e){return e.field==this.state.name||e.additionalInfos.linkedFieldsName==this.state.name},this)),!!(e&&e.length>0)},t.prototype.render=function(){var e=this.state.type;e&&(e=e.toLowerCase());var t=o(this.state.groupClass,"abstractfield-container",{inline:this.state.inline==a.ALL,readonly:this.state.readOnly});return"hidden"==e?this.renderWidget():n.createElement("div",{className:t},this.state.label?this.renderLabel(this.state.id,this.state.name,this.state.label,this.state.required):null,this.renderField())},t.prototype.componentWillReceiveProps=function(e,t){for(var r in e)if(this.props[r]!=e[r])if(r in h.HTML_ATTRIBUTES)this.setAttribute(r,e[r]);else{var a=l.camelCase("set "+r);if(this[a])this[a](e[r]);else{var s=void 0;s[r]=e[r],this.setState(s)}}},t.prototype.renderErrors=function(){var e={errors:this.state.errors,fieldName:this.state.name,hideError:this.state.hideError},t=this.state.errorComponent;return n.createElement(t,s.__assign({},e))},t.prototype.renderLabel=function(e,r,a,i){var o=this.state.imgFilePath||t.genUrlTheme(),l=o+this.state.icoToolTip;this.state.abbr&&!this.state.lang&&d.warn("Field ",r," Must have lang with abbr configuration");var c={"aria-describedby":r+"Tooltip"};return n.createElement("div",{className:this.state.labelClass+" label-container"},n.createElement("label",s.__assign({htmlFor:e,id:r+"Label",className:"label-content"},this.state.toolTip?c:null),this.state.abbr?n.createElement("abbr",{lang:this.state.lang,title:this.state.abbr},n.createElement("span",{className:"label-abbr"},a)):n.createElement("span",{className:"label"},a),i&&this.state.markRequired?n.createElement("span",{className:"label-required"},n.createElement("abbr",{title:this.getRequiredLabel()},"*")):null,this.state.toolTip?n.createElement(p.ToolTip,{alt:this.state.toolTip,src:l,idSpan:r+"Tooltip"}):null))},t.prototype.getRequiredLabel=function(){var e=this.state.requiredLabel;if(!e){var t=this.i18n("form.requiredLabel");e=t||"Obligatoire"}return e},t.prototype.processHtmlProps=function(e){e&&(e.name&&!e.id&&(e.id=e.name),!0===e.required&&(e["aria-required"]=!0))},t.prototype.getHtmlProps=function(){var e={name:""};for(var t in this.state)t in h.HTML_ATTRIBUTES&&(e[t]=this.state[t]);return this.hasErrors()&&(e["aria-describedby"]=this.state.name+"-error"),this.processHtmlProps(e),delete e.label,e},t.prototype.renderField=function(){return n.createElement("div",{className:this.state.fieldClass+" abstractfield-field-content"},this.state.prefix?n.createElement("span",{className:"abstractfield-field-prefix"},this.state.prefix):null,this.renderWidget(),this.state.suffix?n.createElement("span",{className:"abstractfield-field-suffix"},this.state.suffix):null,this.renderErrors())},t.prototype.handleSimulateScroll=function(){(this.htmlElement?this.htmlElement.getBoundingClientRect().top:this.multipleElement[0].getBoundingClientRect().top)<=(document.getElementById("banner")?document.getElementById("banner").offsetHeight:null)&&window.scrollBy(0,-window.innerHeight/2)},t.defaultProps={labelClass:"",fieldClass:"",icoToolTip:"/img/tooltip/tooltip.svg",markRequired:!0,errorComponent:u.FieldError,lang:i.Utils.getCls("hornet.internationalization")&&i.Utils.getCls("hornet.internationalization").lang?i.Utils.getCls("hornet.internationalization").lang:"fr",inline:a},t.Inline=a,t}(c.DomAdapter);t.AbstractField=m},function(e,t,r){"use strict";function a(e,t){t=t||{};for(var r in e)t[r]=e[r];return t}function s(e,t,r){var a=r?" !== ":" === ",s=r?" || ":" && ",i=r?"!":"",n=r?"":"!";switch(e){case"null":return t+a+"null";case"array":return i+"Array.isArray("+t+")";case"object":return"("+i+t+s+"typeof "+t+a+'"object"'+s+n+"Array.isArray("+t+"))";case"integer":return"(typeof "+t+a+'"number"'+s+n+"("+t+" % 1)"+s+t+a+t+")";default:return"typeof "+t+a+'"'+e+'"'}}function i(e,t){switch(e.length){case 1:return s(e[0],t,!0);default:var r="",a=o(e);a.array&&a.object&&(r=a.null?"(":"(!"+t+" || ",r+="typeof "+t+' !== "object")',delete a.null,delete a.array,delete a.object),a.number&&delete a.integer;for(var i in a)r+=(r?" && ":"")+s(i,t,!0);return r}}function n(e,t){if(Array.isArray(t)){for(var r=[],a=0;a<t.length;a++){var s=t[a];P[s]?r[r.length]=s:"array"===e&&"array"===s&&(r[r.length]=s)}if(r.length)return r}else{if(P[t])return[t];if("array"===e&&"array"===t)return["array"]}}function o(e){for(var t={},r=0;r<e.length;r++)t[e[r]]=!0;return t}function l(e){return"number"==typeof e?"["+e+"]":A.test(e)?"."+e:"['"+c(e)+"']"}function c(e){return e.replace(I,"\\$&").replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/\f/g,"\\f").replace(/\t/g,"\\t")}function u(e,t){t+="[^0-9]";var r=e.match(new RegExp(t,"g"));return r?r.length:0}function h(e,t,r){return t+="([^0-9])",r=r.replace(/\$/g,"$$$$"),e.replace(new RegExp(t,"g"),r+"$1")}function p(e){return e.replace(w,"").replace(D,"").replace(x,"if (!($1))")}function d(e,t){var r=e.match(R);return r&&2==r.length&&(e=t?e.replace(F,"").replace(L,M):e.replace(O,"").replace(k,N)),r=e.match(U),r&&3===r.length?e.replace(B,""):e}function m(e,t){if("boolean"==typeof e)return!e;for(var r in e)if(t[r])return!0}function f(e,t,r){if("boolean"==typeof e)return!e&&"not"!=r;for(var a in e)if(a!=r&&t[a])return!0}function v(e){return"'"+c(e)+"'"}function g(e,t,r,a){return b(e,r?"'/' + "+t+(a?"":".replace(/~/g, '~0').replace(/\\//g, '~1')"):a?"'[' + "+t+" + ']'":"'[\\'' + "+t+" + '\\']'")}function y(e,t,r){return b(e,v(r?"/"+_(t):l(t)))}function E(e,t,r){var a,s,i,n;if(""===e)return"rootData";if("/"==e[0]){if(!H.test(e))throw new Error("Invalid JSON-pointer: "+e);s=e,i="rootData"}else{if(!(n=e.match(j)))throw new Error("Invalid JSON-pointer: "+e);if(a=+n[1],"#"==(s=n[2])){if(a>=t)throw new Error("Cannot access property/index "+a+" levels up, current level is "+t);return r[t-a]}if(a>t)throw new Error("Cannot access data "+a+" levels up, current level is "+t);if(i="data"+(t-a||""),!s)return i}for(var o=i,c=s.split("/"),u=0;u<c.length;u++){var h=c[u];h&&(i+=l(T(h)),o+=" && "+i)}return o}function b(e,t){return'""'==e?t:(e+" + "+t).replace(/' \+ '/g,"")}function S(e){return T(decodeURIComponent(e))}function C(e){return encodeURIComponent(_(e))}function _(e){return e.replace(/~/g,"~0").replace(/\//g,"~1")}function T(e){return e.replace(/~1/g,"/").replace(/~0/g,"~")}e.exports={copy:a,checkDataType:s,checkDataTypes:i,coerceToTypes:n,toHash:o,getProperty:l,escapeQuotes:c,equal:r(317),ucs2length:r(408),varOccurences:u,varReplace:h,cleanUpCode:p,finalCleanUpCode:d,schemaHasRules:m,schemaHasRulesExcept:f,toQuotedString:v,getPathExpr:g,getPath:y,getData:E,unescapeFragment:S,unescapeJsonPointer:T,escapeFragment:C,escapeJsonPointer:_};var P=o(["string","number","integer","boolean","null"]),A=/^[a-z$_][a-z$_0-9]*$/i,I=/'|\\/g,w=/else\s*{\s*}/g,D=/if\s*\([^)]+\)\s*\{\s*\}(?!\s*else)/g,x=/if\s*\(([^)]+)\)\s*\{\s*\}\s*else(?!\s*if)/g,R=/[^v.]errors/g,O=/var errors = 0;|var vErrors = null;|validate.errors = vErrors;/g,F=/var errors = 0;|var vErrors = null;/g,k="return errors === 0;",N="validate.errors = null; return true;",L=/if \(errors === 0\) return data;\s*else throw new ValidationError\(vErrors\);/,M="return data;",U=/[^A-Za-z_$]rootData[^A-Za-z0-9_$]/g,B=/if \(rootData === undefined\) rootData = data;/,H=/^\/(?:[^~]|~0|~1)*$/,j=/^([0-9]+)(#|\/(?:[^~]|~0|~1)*)?$/},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+webpackJsonp([4],{
+
+/***/ 306:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * applitutoriel-js - Application tutoriel utilisant le Framework hornet
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/applitutoriel-modules.git
  * @license CECILL-2.1
  */
-var a;!function(e){e[e.ASC=0]="ASC",e[e.DESC=1]="DESC"}(a=t.SortDirection||(t.SortDirection={}));var s=function(){function e(e,t){void 0===t&&(t=a.ASC),this.key=e,this.dir=t}return e}();t.SortData=s},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(4),i=r(2),n=r(17),o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.render=function(){return i.createElement("div",{className:"svg-container",style:{width:"32px",height:"35px"}},i.createElement("div",{className:"svg-content",style:{width:this.props.width,height:this.props.height}},this.renderSvg()))},t.prototype.renderSvg=function(){var e={"picto-svg":!0};this.props.className&&(e[this.props.className]=!0);var t={viewBox:"0 0 24 24",fill:this.props.color,xmlns:"http://www.w3.org/2000/svg",height:"24",width:"24",className:n(e)},r=null;switch(this.props.picto){case"editer":r=i.createElement("g",null,i.createElement("path",{d:"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"}),i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}));break;case"consulter":r=i.createElement("g",null,i.createElement("path",{d:"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"}),i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}));break;case"supprimer":r=i.createElement("g",null,i.createElement("path",{d:"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"}),i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}));break;case"addCircle":case"settings":case"close":break;case"add":r=i.createElement("g",null,i.createElement("path",{d:"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"}),i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}));break;case"user":r=i.createElement("g",null,i.createElement("circle",{id:"svg_1",r:"4",cy:"9",cx:"11.631579"}),i.createElement("path",{id:"svg_2",d:"m11.631579,15c-2.67,0 -8,1.34 -8,4l0,2l16,0l0,-2c0,-2.66 -5.329999,-4 -7.999999,-4zm7.759999,-9.64"}),i.createElement("path",{id:"svg_3",fill:"none",d:"m2.631579,-0.328947l24,0l0,24l-24,0l0,-24z"}));break;case"userCircle":r=i.createElement("g",null,i.createElement("path",{d:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"}),i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}));break;case"arrowDown":r=i.createElement("g",null,i.createElement("path",{d:"M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"}),i.createElement("path",{d:"M0-.75h24v24H0z",fill:"none"}));break;case"settings":r=i.createElement("g",null,i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),i.createElement("path",{d:"M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"}));break;case"moreActions":r=i.createElement("g",null,i.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),i.createElement("path",{d:"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"}));break;default:r=i.createElement("g",null,i.createElement("path",{fill:"#989898",d:"M23.1,0H0.9C0.4,0,0,0.4,0,0.9v18.2C0,19.6,0.4,20,0.9,20h22.2c0.5,0,0.9-0.4,0.9-0.9V0.9   C24,0.4,23.6,0,23.1,0z M22,11.6L18.5,8c0,0-1-1-1.9-1c-1,0-1.9,1-1.9,1s-2.6,3-3.6,4c1.6,0.7,4,4.6,2.2,3.5   C11.4,14.3,8.2,13,8.2,13l-6.1,4V2h20v9.6H22z M3.8,6c0-1.2,1-2.2,2.2-2.2s2.2,1,2.2,2.2S7.2,8.2,6,8.2S3.8,7.2,3.8,6z"}))}return i.createElement("svg",a.__assign({},t),r)},t.defaultProps={width:24,height:24,color:"#000000"},t.black={editer:s.HornetComponent.genUrlTheme("/img/tableau/black/ico_editer.svg"),consulter:s.HornetComponent.genUrlTheme("/img/tableau/black/ico_consulter.svg"),supprimer:s.HornetComponent.genUrlTheme("/img/tableau/black/ico_supprimer.svg"),addCircle:s.HornetComponent.genUrlTheme("/img/tableau/black/ico_ajouter.svg"),settings:s.HornetComponent.genUrlTheme("/img/picto/black/ico_settings.svg"),close:s.HornetComponent.genUrlTheme("/img/picto/black/ico_close.svg"),add:s.HornetComponent.genUrlTheme("/img/picto/black/ico_add.svg"),user:s.HornetComponent.genUrlTheme("/img/picto/black/ico_user.svg"),userCircle:s.HornetComponent.genUrlTheme("/img/picto/black/account_circle_white.svg")},t.blue={editer:s.HornetComponent.genUrlTheme("/img/tableau/blue/ico_editer.svg"),consulter:s.HornetComponent.genUrlTheme("/img/tableau/blue/ico_consulter.svg"),supprimer:s.HornetComponent.genUrlTheme("/img/tableau/blue/ico_supprimer.svg"),quickEdit:s.HornetComponent.genUrlTheme("/img/tableau/blue/ico_editer_line.svg"),addCircle:s.HornetComponent.genUrlTheme("/img/tableau/blue/ico_ajouter.svg"),settings:s.HornetComponent.genUrlTheme("/img/picto/blue/ico_settings.svg"),close:s.HornetComponent.genUrlTheme("/img/picto/blue/ico_close.svg"),add:s.HornetComponent.genUrlTheme("/img/picto/blue/ico_add.svg"),user:s.HornetComponent.genUrlTheme("/img/picto/blue/ico_user.svg"),userCircle:s.HornetComponent.genUrlTheme("/img/picto/blue/account_circle_white.svg")},t.white={editer:s.HornetComponent.genUrlTheme("/img/tableau/white/ico_editer.svg"),consulter:s.HornetComponent.genUrlTheme("/img/tableau/white/ico_consulter.svg"),supprimer:s.HornetComponent.genUrlTheme("/img/tableau/white/ic_delete_white_24px.svg"),ajouter:s.HornetComponent.genUrlTheme("/img/tableau/white/ico_ajouter.svg"),info:s.HornetComponent.genUrlTheme("/img/picto/white/ico_info.svg"),settings:s.HornetComponent.genUrlTheme("/img/picto/white/ico_settings.svg"),close:s.HornetComponent.genUrlTheme("/img/picto/white/ico_close.svg"),add:s.HornetComponent.genUrlTheme("/img/picto/white/ico_add.svg"),user:s.HornetComponent.genUrlTheme("/img/picto/white/ico_user.svg"),userCircle:s.HornetComponent.genUrlTheme("/img/picto/white/account_circle_white.svg")},t.grey={close:s.HornetComponent.genUrlTheme("/img/picto/grey/ico_close.svg"),add:s.HornetComponent.genUrlTheme("/img/picto/grey/ico_add.svg"),user:s.HornetComponent.genUrlTheme("/img/picto/grey/ico_user.svg"),userCircle:s.HornetComponent.genUrlTheme("/img/picto/grey/account_circle_white.svg")},t.editable={editer:s.HornetComponent.genUrlTheme("/img/tableau/ico_editer_line.svg"),valider:s.HornetComponent.genUrlTheme("/img/tableau/ico_enregistrer.svg"),annuler:s.HornetComponent.genUrlTheme("/img/tableau/ico_annuler.svg")},t.export={csv:s.HornetComponent.genUrlTheme("/img/tableau/ico_export_csv.svg"),ods:s.HornetComponent.genUrlTheme("/img/tableau/ico_export_ods.svg"),odt:s.HornetComponent.genUrlTheme("/img/tableau/ico_export_odt.svg"),pdf:s.HornetComponent.genUrlTheme("/img/tableau/ico_export_pdf.svg"),xls:s.HornetComponent.genUrlTheme("/img/tableau/ico_export_xls.svg")},t}(s.HornetComponent);t.Picto=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(4),n=r(481),o=r(476),l=r(482),c=s.Utils.getLogger("hornet-js-react-components.widget.table.column"),u=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(e,t){return!1},t.prototype.render=function(){c.trace("render Column");var e=this.getCellProps();return e.key="wc-"+e.key,this.props.isHeader?this.wrap(this.getHeaderCell(),e):this.wrap(this.getBodyCell(),e)},t.prototype.getHeaderCell=function(){return n.HeaderCell},t.prototype.getBodyCell=function(){return this.props.editable?t.getEditableCell():o.BodyCell},t.getEditableCell=function(){return l.InputTextInLineBodyCell},t.prototype.getCellProps=function(){var e={coordinates:this.props.cellCoordinate,isSelected:this.props.isSelected,id:this.props.id};return this.props.style&&(e.style=this.props.style),e.isEditing=this.state.isEditing,e.nbColumns=this.props.nbColumns,e.key=t.getCellKey(e),e},t.getCellKey=function(e){return"cell-"+e.id+"-"+e.coordinates.row+"-"+e.coordinates.column+"-wrapped"},t.defaultProps={sortable:!1,defaultStyle:{width:"10em"},hiddenable:!0},t}(i.HornetComponent);t.Column=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(439),o=r(359),l=r(17),c=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.abstract-body-cell"),u=function(e){function t(t,r){var a=e.call(this,t,r)||this,s="number"==typeof t.value[t.keyColumn]?"0":"";return a.state.value=new o.Template("${"+t.keyColumn+"}").process(t.value,a.props.replaceUndef||s),a.defaultClassName="default-body-cell",a.state.titleCell&&(a.state.titleCell=new o.Template(a.state.titleCell).process(a.props.value,a.props.replaceUndef||"?")),a}return a.__extends(t,e),t.prototype.render=function(){return c.trace("render BodyCell -> column:",this.props.coordinates.column," - line:",this.props.coordinates.row,"- isFocused:",this.state.isFocused,"- tabIndex:",this.state.tabIndex),i.createElement("td",a.__assign({},this.getDefaultTdProps()),this.renderCell())},t.prototype.renderCell=function(){return this.state.value},t.prototype.getCellTitle=function(){return""},t.prototype.setDisabled=function(){return void 0!==this.props.contentState.itemInEdition&&null!==this.props.contentState.itemInEdition&&!1===this.state.isEditing},t.prototype.getDefaultTdProps=function(){var e=this,t={"datatable-cell":!0};t["datatable-cell-custom-"+this.props.keyColumn]=!0,t["datatable-cell-in-edition"]=this.props.contentState.itemInEdition&&this.state.abstractisEditing;var r=this.props.id+"-colBody-"+this.props.cellCoordinate.row+"-"+this.props.coordinates.column;return t[this.props.id+"-"+this.props.keyColumn]=!0,t[this.defaultClassName]=!0,{ref:function(t){e.tableCellRef=t},className:l(t),onKeyDown:this.props.handleKeyDown||this.handleKeyDown.bind(this),tabIndex:this.getTabIndex(),"aria-selected":this.state.isFocused,onFocus:function(t){e.props.contentState.setFocusOn(e.props.cellCoordinate)},disabled:this.setDisabled(),style:this.props.style,key:r,id:r,role:"gridcell",title:this.state.titleCell instanceof Function?this.state.titleCell(this.state.value):this.state.titleCell?this.state.titleCell:this.getCellTitle()}},t}(n.AbstractCell);t.AbstractBodyCell=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-utils - Partie commune et utilitaire à tous les composants hornet-js
+var gen_cnt_actions_1 = __webpack_require__(62);
+var gen_cnt_page_1 = __webpack_require__(711);
+var abstract_routes_1 = __webpack_require__(125);
+var urls_1 = __webpack_require__(20);
+var contact_service_page_impl_1 = __webpack_require__(713);
+var contact_service_data_impl_1 = __webpack_require__(62);
+var ContactRoutes = /** @class */ (function (_super) {
+    tslib_1.__extends(ContactRoutes, _super);
+    function ContactRoutes() {
+        var _this = _super.call(this) || this;
+        /* Route des pages */
+        _this.addPageRoute("/", function () { return new abstract_routes_1.PageRouteInfos(gen_cnt_page_1.ContactPage, null, contact_service_page_impl_1.ContactServiceImpl); }, abstract_routes_1.PUBLIC_ROUTE);
+        /* Route des datas */
+        _this.addDataRoute(urls_1.URL_CONTACT_ENVOYER, function () { return new abstract_routes_1.DataRouteInfos(gen_cnt_actions_1.Send, null, contact_service_data_impl_1.ContactServiceDataImpl); }, abstract_routes_1.PUBLIC_ROUTE, "post");
+        return _this;
+    }
+    return ContactRoutes;
+}(abstract_routes_1.AbstractRoutes));
+exports.default = ContactRoutes;
+
+
+
+/***/ }),
+
+/***/ 311:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
  *
- * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
- * @license CECILL-2.1
  */
-var a=r(6),s=function(){function e(){}return e.getIndexById=function(e,t){var r=-1;return r=t&&e?a.findIndex(e,function(e){return e.id===t.id}):r},e.isInclude=function(e,t){var r=this;return(!e||0!==e.length||!t||0!==t.length)&&0===a.filter(e,function(e){return-1===r.getIndexById(t,e)}).length},e.unionWith=function(e,t){return a.unionWith(e,t,function(e,t){return e.id===t.id})},e.intersectionWith=function(e,t){return a.intersectionWith(e,t,function(e,t){return e.id===t.id})},e}();t.ArrayUtils=s},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(34),i=r(6),n=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.contentsState=[],t}return a.__extends(t,e),t.prototype.addContent=function(e){e.on(o.ITEMS_CHANGE_EVENT,this.setIndexAfterItemsChangeEvent.bind(this)),this.contentsState.push(e)},t.prototype.removeContent=function(e){e.removeListener(o.ITEMS_CHANGE_EVENT,this.setIndexAfterItemsChangeEvent.bind(this)),i.remove(this.contentsState,e)},t.prototype.removeContents=function(){var e=this;this.contentsState.map(function(t){return e.removeContent(t)})},t.prototype.setIndexAfterItemsChangeEvent=function(e){var r=this;this.contentsState.map(function(a,s){e===a.items&&(r.index=s,r.emit(t.INDEX_CHANGE_EVENT,null,r.contentsState[s].items))})},t.prototype.getIndex=function(){return this.index},t.INDEX_CHANGE_EVENT="onIndexChange",t.RESIZE_EVENT="onResizeChange",t}(s.EventEmitter);t.TableState=n;var o=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.items=[],t.hiddenColumns={},t}return a.__extends(t,e),t.prototype.setFocusOn=function(e){this.emit(t.BLUR_EVENT,this.focusedCell),this.emit(t.FOCUS_CHANGE_EVENT,this.focusedCell,e),this.focusedCell=e},t.prototype.setItemInEdition=function(e,r){this.itemInEdition=e,this.itemInEdition&&(this.itemInEdition.row=r),this.emit(t.EDITION_CLIC_EVENT,r)},t.prototype.setItems=function(e){this.items=e,this.emit(t.ITEMS_CHANGE_EVENT,this.items)},t.prototype.setHiddenColumns=function(e){this.hiddenColumns=e,this.emit(t.TOGGLE_COLUMNS_EVENT,this.hiddenColumns,this.firstVisibleColumnState,this.oldFirstVisibleColumnState)},t.prototype.setFirstVisibleColumnState=function(e){e!=this.firstVisibleColumnState&&(this.oldFirstVisibleColumnState=this.firstVisibleColumnState,this.firstVisibleColumnState=e)},t.FOCUS_CHANGE_EVENT="onFocusChange",t.ITEMS_CHANGE_EVENT="onItemsChange",t.RESIZE_EVENT="onResizeChange",t.EDITION_CLIC_EVENT="onEditionClic",t.BLUR_EVENT="onBlur",t.TOGGLE_COLUMNS_EVENT="toggleColumns",t}(s.EventEmitter);t.ContentState=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=r(17),o=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.effect=!1,a.state.css={dislay:"none"},a}return a.__extends(t,e),t.prototype.render=function(){return"link"===this.state.type?this.renderLink():this.renderButton()},t.prototype.renderButton=function(){var e={};return this.state.className&&(e[this.state.className]=!0),s.createElement("button",{type:this.state.type,id:this.state.id,name:this.state.name,value:this.state.value,onClick:this.handleClick,className:n(e),title:this.state.title,disabled:this.state.disabled,"aria-haspopup":this.props.hasPopUp},this.state.label,this.state.effect?s.createElement("div",{className:"ripple-effect",style:this.state.css}):null)},t.prototype.renderLink=function(){var e={};return this.state.className&&(e[this.state.className]=!0),s.createElement("a",{href:this.state.url,className:n(e),title:this.state.title,onClick:this.linkHandleClick,disabled:this.state.disabled},this.state.label,this.state.effect?s.createElement("div",{className:"ripple-effect",style:this.state.css}):null)},t.prototype.handleClick=function(e){null!=this.state.onClick&&this.state.onClick(e),this.rippleEffect(e)},t.prototype.linkHandleClick=function(e){this.rippleEffect(e)},t.prototype.rippleEffect=function(e){var t=this,r=e.pageX-e.target.offsetLeft,a=e.pageY-e.target.offsetTop,s=e.target.clientHeight,i={top:a-s/2,left:r-s/2,height:s+"px",width:s+"px"};this.setState({effect:!0,css:i}),setTimeout(function(){t.mounted&&t.setState({effect:!1})},1500)},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.mounted=!1},t.defaultProps={disabled:!1},t}(i.HornetComponent);t.Button=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(310),n=r(306),o=r(2),l=r(4),c=r(437),u=r(484),h=r(324),p=r(323),d=r(355),m=r(455),f=r(453),v=r(477),g=r(311),y=r(443),E=r(341),b=r(483),S=r(456),C=r(17),_=r(6),T=r(8),P=r(324);t.UNIT_SIZE="em",t.UPDATE_COLUMN_VISIBILITY=new T.HornetEvent("UPDATE_COLUMN_VISIBILITY");var A;!function(e){e[e.NAVIGATION=0]="NAVIGATION",e[e.ACTIONABLE=1]="ACTIONABLE"}(A=t.KeyboardInteractionMode||(t.KeyboardInteractionMode={}));var I=s.Utils.getLogger("hornet-js-react-components.widget.table.content"),w=function(e){function r(t,r){var a=e.call(this,t,r)||this;a.tableTrsRef=[],a.columnsWithVisibilityMap=new Array,a.props.contentState.setMaxListeners(1/0),a.props.dataSource&&a.props.dataSource.setMaxListeners(1/0),a.state.keyboardMode=A.NAVIGATION,a.state.items=[],a.state.inProgress=!1,a.state.isContentVisible=!0;var s=a.props.dataSource&&a.props.dataSource.results;return s&&(a.state.items=a.props.dataSource instanceof h.PaginateDataSource?a.props.dataSource.getItemsByPage(a.props.dataSource.pagination.pageIndex||P.Direction.FIRST):s,a.props.dataSource.select([])),a.state.spinner=!1,a.state.actionMassEnabled=a.hasChildrenOfComponentTypeOf(p.Columns,f.CheckColumn),a.hiddenColumns=t.hiddenColumns,a.totalColumns=a.getTotalColumnsVisible(),a.props.contentState.on(g.ContentState.TOGGLE_COLUMNS_EVENT,a.handleChangeHiddenColumns),a.props.dataSource&&a.props.dataSource.getDefaultSort()&&(a.sortData=a.props.dataSource.getDefaultSort().sort),a.handleEdition=a.handleEdition.bind(a),a.props.contentState.on(g.ContentState.EDITION_CLIC_EVENT,a.handleEdition),a.initializeColumnVisibilityWithCoord(),a}return a.__extends(r,e),r.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this);var r=this.props.dataSource.results;r&&(this.props.dataSource instanceof h.PaginateDataSource||this.props.contentState.setItems(r)),this.props.dataSource.on("init",this.setItem),this.props.dataSource.on("fetch",this.setItem),this.props.dataSource.on("pagination",this.setItemPaginate),this.props.dataSource.on("sort",this.sort),this.props.dataSource.on("delete",this.setItem),this.props.dataSource.on("add",this.setItem),this.props.dataSource.on("filter",this.setItem),this.props.dataSource.on("loadingData",this.displaySpinner),this.props.dataSource.on("select",this.handleChangeSelectedItems.bind(this)),this.listen(t.UPDATE_COLUMN_VISIBILITY,this.updateColumnVisibility)},r.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.props.dataSource.removeListener("fetch",this.setItem),this.props.dataSource.removeListener("init",this.setItem),this.props.dataSource.removeListener("pagination",this.setItemPaginate),this.props.dataSource.removeListener("sort",this.sort),this.props.dataSource.removeListener("add",this.setItem),this.props.dataSource.removeListener("filter",this.setItem),this.props.dataSource.removeListener("delete",this.setItem),this.props.dataSource.removeListener("loadingData",this.displaySpinner),this.props.dataSource.removeListener("select",this.handleChangeSelectedItems.bind(this)),this.remove(t.UPDATE_COLUMN_VISIBILITY,this.updateColumnVisibility)},r.prototype.render=function(){return I.trace("rendu du tableau ",this.state.onSubmit?"avec un formulaire":"sans formulaire"),this.tableTrsRef=[],this.state.onSubmit&&!this.props.withoutForm?o.createElement(E.Form,{ref:"lineForm",hideButtons:!0,className:"form-table",schema:this.state.schema,notifId:this.state.notifId,onSubmit:this.handleSubmit,isMandatoryFieldsHidden:!0},this.renderContent()):this.renderContent()},r.prototype.getTotalColumnsVisible=function(){var e=this.getChildrenOf(p.Columns).length;return this.hiddenColumns&&(e-=_.keys(_.pickBy(this.hiddenColumns,_.identity)).length),e},r.prototype.getTotalColumnsVisibleFromState=function(){return this.columnsWithVisibilityMap.filter(function(e){if(e.isVisible)return!0}).length},r.prototype.handleChangeHiddenColumns=function(e){this.hiddenColumns=e,this.totalColumns=this.getTotalColumnsVisible()},r.prototype.handleEdition=function(e){Array.isArray(this.tableTrsRef)&&this.tableTrsRef.map(function(t,r){if(t.instance&&t.instance.classList){var a=t.instance.classList;r===e?a.add("datatable-line-selected"):a.remove("datatable-line-selected")}})},r.prototype.displaySpinner=function(e){this.props.hideSpinner||(e?this.showSpinnerComponent():this.hideSpinnerComponent())},r.prototype.setItem=function(e){var t=this;this.props.contentState.setItems(e),this.setState({items:e},function(){t.tBodyRef&&t.tBodyRef.scrollHeight>t.tBodyRef.clientHeight&&t.state.items.length>0&&t.props.contentState.emit(g.ContentState.RESIZE_EVENT,t.props.width-1.2)})},r.prototype.setItemPaginate=function(e){var t=this;this.props.contentState.setItems(e.list),this.setState({items:e.list},function(){t.tBodyRef&&t.tBodyRef.scrollHeight>t.tBodyRef.clientHeight&&t.state.items.length>0&&t.props.contentState.emit(g.ContentState.RESIZE_EVENT,t.props.width-1.2)})},r.prototype.sort=function(e,t){this.props.contentState.setItems(e),this.sortData=t,this.setState({items:e})},r.prototype.setDataSource=function(e,t){return this.setState({dataSource:e},t),this},r.prototype.handleSubmit=function(e){var t=this;if(this.state.onSubmit){var r=this.props.contentState.itemInEdition;for(var a in e)r[a]&&(r[a]=e[a]);Promise.resolve().then(function(){t.state.onSubmit(r)}).then(function(){t.props.contentState.setItemInEdition(null,null)})}},r.prototype.renderContent=function(){I.trace("renderContent ");var e=this.initColumnsProps();this.props.dataSource.results.length>500&&console.log("TROP DE DATA POUR LE TABLEAU");var t={role:"grid","aria-readonly":"true",key:this.props.id,id:this.props.id},r=this.state.isContentVisible?this.renderTHeader(e):null;return o.createElement("div",{className:"datatable-content",tabIndex:this.state.tabIndex},o.createElement(u.SpinnerOverlay,{ref:"spinnerOverlay",isVisible:this.state.spinner,nbColumns:this.getTotalColumnsVisible(),width:this.props.width}),o.createElement("table",a.__assign({},t),this.renderCaption(e),r,this.renderTBody(e)),o.createElement(c.Alert,{ref:"alert",message:"",onClickCancel:this.closeAlert,onClickClose:this.closeAlert}))},r.prototype.renderCaption=function(e){var t=this,r=this.props.title;return this.sortData&&e.map(function(e){if(e.props){var a=_.find(t.sortData,{key:e.props.keyColumn});a&&(r+=":"+t.i18n("table.sortedByTitle",{columnTitle:e.props.title})+" ",r+=a.dir==n.SortDirection.ASC?t.i18n("table.ascending"):t.i18n("table.descending"))}}),o.createElement("caption",{className:"hidden"},r)},r.prototype.onSort=function(e){var t=e;this.sortData=[e],this.state.clientSideSorting&&(t.clientSideSorting=!0),this.props.dataSource.sort([e])},r.prototype.renderTHeader=function(e){var t=C({"datatable-columns":!this.state.headerFixed,"datatable-columns-fixed":this.state.headerFixed&&this.state.items.length>0,"datatable-columns-disabled":0==this.state.items.length}),r={className:t,id:this.props.id+"-thead"};return o.createElement("thead",a.__assign({},r),o.createElement("tr",{id:this.props.id+"-tr-header"},this.renderRowHeader(e)),o.createElement(u.SpinnerLoader,{ref:"spinnerLoader",isVisible:this.state.spinner,className:this.props.id,nbColumns:this.getTotalColumnsVisible()}))},r.prototype.renderRowHeader=function(e){var t=this,r=[];I.trace("renderRowHeader ");var a=this.props.dataSource?this.props.dataSource.selected:[];return e.map(function(s,n){var c=t.getColProps(e,n),u=_.find(t.sortData,{key:s.props.keyColumn});t.sortData&&u&&(c.sortData=u),s.type==f.CheckColumn&&(c.className=C({"datatable-header-no-text-overflow":!0})),c.isSelected=i.ArrayUtils.isInclude(t.props.contentState.items,a),c.onSort=t.onSort.bind(t),c.cellCoordinate=new v.CellCoordinates(n,-1),c.isHeader=!0,c.style=c.style||s.props.style,c.key=t.state.id+"-"+c.cellCoordinate.row+"-"+c.cellCoordinate.column+"-wrapped";var h=l.HornetComponent.wrap(s.type,s,c,s.props),p=o.createElement(h,{key:"wc-"+c.key});r.push(p)}),r},r.prototype.renderDatatableMessage=function(e){I.trace("renderDatatableMessage ");var r={};return r.colSpan=this.totalColumns,r.className=C({"datatable-message-content":!0,txtcenter:!0}),r.style={width:this.state.width+t.UNIT_SIZE},o.createElement("tr",{key:"emptyRow"},o.createElement("td",a.__assign({},r),e))},r.prototype.renderTBody=function(e){var t=this;I.trace("renderTBody ");var r=[];this.state.items&&this.state.items.length>0&&this.state.isContentVisible?this.state.items.map(function(a,s){var i=t.renderExpandableRow(a,e,s,!0);i&&r.push(i),r.push(t.renderRowBody(a,e,s));var n=t.renderExpandableRow(a,e,s);n&&r.push(n)}):r.push(this.renderDatatableMessage(this.state.emptyResult||this.i18n("table.emptyResult")));var s=C({"datatable-data":!this.props.headerFixed,"datatable-data-fixed":this.state.headerFixed&&this.state.items.length>0}),i={className:s,ref:function(e){return t.tBodyRef=e}};return o.createElement("tbody",a.__assign({},i),r)},r.prototype.renderExpandableRow=function(e,t,s,i){var n=this;I.trace("renderExpandableRow ");var l=i?b.LineBefore:S.LineAfter,c=i?"before":"after",u=[],h=null;return t.map(function(t,i){var p=r.getChildrenFrom(t,l);if(p&&Array.isArray(p)&&p.length>0){var d=r.getComponentFromParentBy(t,l);if(!d.props.visible||d.props.visible&&d.props.visible(e)){var m=n.totalColumns,f=[];p.map(function(t,a){var l=r.wrap(t.type,t,t.props,{value:e,rowType:c,key:n.props.id+"expandable-line-wrapped"+i+"-"+a+"-"+s});f.push(o.createElement(l,null))}),u.push(o.createElement("td",{colSpan:m,key:n.props.id+"-expandable-line-cell"+c+"-"+s},o.createElement("div",null,f)));var v=n.props.id+"-expandable-line-"+c+"-"+s,g={"datatable-expandable-line":!0,"datatable-expandable-line-hidden":!d.props.displayed,"datatable-expandable-line-displayed":d.props.displayed};g[n.props.id+"-tr-with-colspan"]=!0;var y={ref:function(e){e&&(e.classList.add("datatable-expandable-line-hidden"),e.classList.remove("datatable-expandable-line-displayed"))},style:{},id:v,key:v,className:C(g)};h=o.createElement("tr",a.__assign({},y),u)}}}),h},r.prototype.renderRowBody=function(e,t,s){var n=this;I.trace("renderRowBody ");var c=[],u={},h=-1!==i.ArrayUtils.getIndexById(this.props.dataSource.selected,e);this.state.customRowsClass&&(u=this.state.customRowsClass(e)),u["datatable-odd"]=s%2!=0,u["datatable-even"]=s%2==0,t.map(function(r,a){var i=n.getColProps(t,a);i.value=e,i.isSelected=h,i.cellCoordinate=new v.CellCoordinates(a,s),i.key=n.props.id+"-columns-colBody-"+i.cellCoordinate.row+"-"+i.cellCoordinate.column+"-wrapped",i.style=i.style||r.props.style,r.type!==d.ActionColumn&&r.type!==m.EditionActionColumn||(i.showAlert=n.showAlert);var u=l.HornetComponent.wrap(r.type,r,i,r.props),p=o.createElement(u,{key:"wc-"+i.key});c.push(p)});var p={ref:function(t){t&&(n.tableTrsRef.push({instance:t,value:e}),r.updateClasslistSelectedLine(t,h))},key:this.props.id+"-line-"+s,className:C(u),role:"row"};return o.createElement("tr",a.__assign({},p),c)},r.prototype.handleChangeSelectedItems=function(e){this.tableTrsRef.map(function(t){t&&t.instance.classList&&(-1!==_.findIndex(e,{id:t.value.id})?t.instance.classList.contains("datatable-line-selected")||t.instance.classList.add("datatable-line-selected"):t.instance.classList.contains("datatable-line-selected")&&t.instance.classList.remove("datatable-line-selected"))})},r.prototype.initColumnsProps=function(){I.trace("initColumnsProps ");var e=this.getChildrenOf(p.Columns);return this.props.headerFixed&&(e=this.fixColumnsWidth(e)),e},r.prototype.fixColumnsWidth=function(e){I.trace("fixColumnsWidth ");var t=this.state.width,r=0;e.map(function(e){e.props.width?t-=e.props.width:r++});var a=t/r;return e.map(function(t,r){t.props.width||(e[r].props.width=a)}),e},r.prototype.handleChangeKeyboardMode=function(e){e!=this.state.keyboardMode&&this.setState({keyboardMode:e})},r.prototype.showSpinnerComponent=function(){return this.refs.spinnerLoader.progress(!0),this.refs.spinnerOverlay.progress(!0),this},r.prototype.hideSpinnerComponent=function(){return this.refs.spinnerLoader.progress(!1),this.refs.spinnerOverlay.progress(!1),this},r.prototype.closeAlert=function(){this.refs.alert.close()},r.prototype.validateAlert=function(e){this.refs.alert.close(e)},r.prototype.showAlert=function(e,t,r){var a=this;this.refs.alert.setMessage(e),this.refs.alert.setTitle(t),this.refs.alert.setOnClickOk(function(){a.validateAlert(r)}).open()},r.prototype.toggleSelectLines=function(e,t){var r=this,a=i.ArrayUtils.intersectionWith(this.props.dataSource.selected,this.state.items);e?this.removeOrPush(a,e,!0):t?a=this.state.items:this.state.items.map(function(e){r.removeOrPush(a,e)}),this.props.dataSource.select(a)},r.prototype.navigateToCell=function(e,t){var r,a,s=null;switch(t){case y.NavigateDirection.BOTOM:s=new v.CellCoordinates(e.column,Math.min(this.state.items.length,e.row+1));break;case y.NavigateDirection.TOP:s=new v.CellCoordinates(e.column,Math.max(-1,e.row-1));break;case y.NavigateDirection.LEFT:for(r=e.column-1,a=this.columnsWithVisibilityMap[r];a&&!a.isVisible;)r-=1,a=this.columnsWithVisibilityMap[r];a&&(s=new v.CellCoordinates(r,e.row));break;case y.NavigateDirection.RIGHT:for(r=e.column+1,a=this.columnsWithVisibilityMap[r];a&&!a.isVisible;)r+=1,a=this.columnsWithVisibilityMap[r];a&&(s=new v.CellCoordinates(r,e.row));break;case y.NavigateDirection.HOME_COL:for(r=0,a=this.columnsWithVisibilityMap[r];a&&!a.isVisible;)r+=1,a=this.columnsWithVisibilityMap[r];s=new v.CellCoordinates(r,e.row);break;case y.NavigateDirection.END_COL:for(r=this.columnsWithVisibilityMap.length-1,a=this.columnsWithVisibilityMap[r];a&&!a.isVisible;)r-=1,a=this.columnsWithVisibilityMap[r];s=new v.CellCoordinates(r,e.row);break;case y.NavigateDirection.HOME_LINE:s=new v.CellCoordinates(e.column,0);break;case y.NavigateDirection.END_LINE:var i=this.state.items;s=new v.CellCoordinates(e.column,i.length-1)}this.props.contentState.itemInEdition?s.row===this.props.contentState.itemInEdition.row&&this.props.contentState.setFocusOn(s):this.props.contentState.setFocusOn(s)},r.prototype.getColProps=function(e,t){I.trace("getColProps ");var a={};a.coordinates={column:t},a.handleChangeKeyboardMode=this.handleChangeKeyboardMode,a.toggleSelectLines=this.toggleSelectLines.bind(this),a.nbColumns=e.length,a.actionMassEnabled=this.state.actionMassEnabled,a.navigateFct=this.navigateToCell.bind(this),a.keyboardMode=this.state.keyboardMode,a.headerFixed=this.props.headerFixed,a.contentState=this.props.contentState,a.dataSource=this.props.dataSource,a.id=this.props.id;var s=r.mergeObjects({},e[t].props.style);return e[t].props.width&&(s.width=e[t].props.width),this.hiddenColumns&&this.hiddenColumns[e[t].props.keyColumn]?(s.display="none",this.hiddenColumns["hidden_"+t]=a.keyColumn):s.display="table-cell",a.style=r.mergeObjects(e[t].props.defaultStyle,s),a},r.prototype.removeOrPush=function(e,t,r){var a=i.ArrayUtils.getIndexById(e,t);-1!==a?(e.splice(a,1),this.props.dataSource.removeUnSelectedItem(t)):r&&e.push(t)},r.updateClasslistSelectedLine=function(e,t){t&&!e.classList.contains("datatable-line-selected")?e.classList.add("datatable-line-selected"):t||e.classList.remove("datatable-line-selected")},r.prototype.updateColumnVisibility=function(e){this.columnsWithVisibilityMap.map(function(t){if("string"==typeof e.detail)t.column==e.detail&&(t.isVisible=!t.isVisible);else{var r=e.detail;t.column==r.column&&(t.isVisible=r.isVisible)}}),this.setFirstVisibleColumnState()},r.prototype.initializeColumnVisibilityWithCoord=function(){var e=this;this.getChildrenOf(p.Columns).forEach(function(t,r){t&&e.columnsWithVisibilityMap.push({column:t.props.keyColumn,coordinates:r,isVisible:!0})}),this.setFirstVisibleColumnState()},r.prototype.setFirstVisibleColumnState=function(){var e=this.columnsWithVisibilityMap.filter(function(e){if(e.isVisible)return!0});this.props.contentState.setFirstVisibleColumnState(e[0])},r}(l.HornetComponent);t.Content=w},function(e,t,r){"use strict";function a(e){var t=e._opts.defaultMeta;return"string"==typeof t?{$ref:t}:e.getSchema(s)?{$ref:s}:(console.warn("meta schema not defined"),{})}e.exports={metaSchemaRef:a};var s="http://json-schema.org/draft-06/schema"},function(e,t,r){"use strict";function a(e){this.message="validation failed",this.errors=e,this.ajv=this.validation=!0}function s(e,t,r){this.message=r||s.message(e,t),this.missingRef=n.url(e,t),this.missingSchema=n.normalizeId(n.fullPath(this.missingRef))}function i(e){return e.prototype=Object.create(Error.prototype),e.prototype.constructor=e,e}var n=r(316);e.exports={Validation:i(a),MissingRef:i(s)},s.message=function(e,t){return"can't resolve reference "+t+" from id "+e}},function(e,t,r){"use strict";function a(e,t,r){var i=this._refs[r];if("string"==typeof i){if(!this._refs[i])return a.call(this,e,t,i);i=this._refs[i]}if((i=i||this._schemas[r])instanceof y)return o(i.schema,this._opts.inlineRefs)?i.schema:i.validate||this._compile(i);var n,l,c,u=s.call(this,t,r);return u&&(n=u.schema,t=u.root,c=u.baseId),n instanceof y?l=n.validate||e.call(this,n.schema,t,void 0,c):void 0!==n&&(l=o(n,this._opts.inlineRefs)?n:e.call(this,n,t,void 0,c)),l}function s(e,t){var r=f.parse(t,!1,!0),a=h(r),s=u(this._getId(e.schema));if(a!==s){var o=p(a),l=this._refs[o];if("string"==typeof l)return i.call(this,e,l,r);if(l instanceof y)l.validate||this._compile(l),e=l;else{if(!((l=this._schemas[o])instanceof y))return;if(l.validate||this._compile(l),o==p(t))return{schema:l,root:e,baseId:s};e=l}if(!e.schema)return;s=u(this._getId(e.schema))}return n.call(this,r,s,e.schema,e)}function i(e,t,r){var a=s.call(this,e,t);if(a){var i=a.schema,o=a.baseId;e=a.root;var l=this._getId(i);return l&&(o=d(o,l)),n.call(this,r,o,i,e)}}function n(e,t,r,a){if(e.hash=e.hash||"","#/"==e.hash.slice(0,2)){for(var i=e.hash.split("/"),n=1;n<i.length;n++){var o=i[n];if(o){if(o=g.unescapeFragment(o),void 0===(r=r[o]))break;var l;if(!b[o]&&(l=this._getId(r),l&&(t=d(t,l)),r.$ref)){var c=d(t,r.$ref),u=s.call(this,a,c);u&&(r=u.schema,a=u.root,t=u.baseId)}}}return void 0!==r&&r!==a.schema?{schema:r,root:a,baseId:t}:void 0}}function o(e,t){return!1!==t&&(void 0===t||!0===t?l(e):t?c(e)<=t:void 0)}function l(e){var t;if(Array.isArray(e)){for(var r=0;r<e.length;r++)if("object"==typeof(t=e[r])&&!l(t))return!1}else for(var a in e){if("$ref"==a)return!1;if("object"==typeof(t=e[a])&&!l(t))return!1}return!0}function c(e){var t,r=0;if(Array.isArray(e)){for(var a=0;a<e.length;a++)if(t=e[a],"object"==typeof t&&(r+=c(t)),r==1/0)return 1/0}else for(var s in e){if("$ref"==s)return 1/0;if(S[s])r++;else if(t=e[s],"object"==typeof t&&(r+=c(t)+1),r==1/0)return 1/0}return r}function u(e,t){return!1!==t&&(e=p(e)),h(f.parse(e,!1,!0))}function h(e){var t=e.protocol||"//"==e.href.slice(0,2)?"//":"";return(e.protocol||"")+t+(e.host||"")+(e.path||"")+"#"}function p(e){return e?e.replace(C,""):""}function d(e,t){return t=p(t),f.resolve(e,t)}function m(e){var t=p(this._getId(e)),r={"":t},a={"":u(t,!1)},s={},i=this;return E(e,{allKeys:!0},function(e,t,n,o,l,c,u){if(""!==t){var h=i._getId(e),d=r[o],m=a[o]+"/"+l;if(void 0!==u&&(m+="/"+("number"==typeof u?u:g.escapeFragment(u))),"string"==typeof h){h=d=p(d?f.resolve(d,h):h);var y=i._refs[h];if("string"==typeof y&&(y=i._refs[y]),y&&y.schema){if(!v(e,y.schema))throw new Error('id "'+h+'" resolves to more than one schema')}else if(h!=p(m))if("#"==h[0]){if(s[h]&&!v(e,s[h]))throw new Error('id "'+h+'" resolves to more than one schema');s[h]=e}else i._refs[h]=m}r[t]=d,a[t]=m}}),s}var f=r(46),v=r(317),g=r(305),y=r(331),E=r(444);e.exports=a,a.normalizeId=p,a.fullPath=u,a.url=d,a.ids=m,a.inlineRef=o,a.schema=s;var b=g.toHash(["properties","patternProperties","enum","dependencies","definitions"]),S=g.toHash(["type","format","pattern","maxLength","minLength","maxProperties","minProperties","maxItems","minItems","maximum","minimum","uniqueItems","multipleOf","required","enum"]),C=/#\/?$/},function(e,t,r){"use strict";e.exports=function e(t,r){if(t===r)return!0;var a,s=Array.isArray(t),i=Array.isArray(r);if(s&&i){if(t.length!=r.length)return!1;for(a=0;a<t.length;a++)if(!e(t[a],r[a]))return!1;return!0}if(s!=i)return!1;if(t&&r&&"object"==typeof t&&"object"==typeof r){var n=Object.keys(t);if(n.length!==Object.keys(r).length)return!1;var o=t instanceof Date,l=r instanceof Date;if(o&&l)return t.getTime()==r.getTime();if(o!=l)return!1;var c=t instanceof RegExp,u=r instanceof RegExp;if(c&&u)return t.toString()==r.toString();if(c!=u)return!1;for(a=0;a<n.length;a++)if(!Object.prototype.hasOwnProperty.call(r,n[a]))return!1;for(a=0;a<n.length;a++)if(!e(t[n[a]],r[n[a]]))return!1;return!0}return!1}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,s=r(1),i=r(34),n=r(6),o=r(18),l=r(11),c=r(62),u=r(327),h=r(310),p=r(339),d=r(436),m=r(349);!function(e){e[e.Dummy=0]="Dummy",e[e.Initialized=1]="Initialized"}(a=t.DataSourceStatus||(t.DataSourceStatus={}));var f=function(e){function t(t,r,s){void 0===r&&(r={});var i=e.call(this)||this;i.config=t,i.keysMap=r,i.options=s,i._selected=[],i._results=[],i._results_backup=[],i._filtering_flag=!1,i.isDataSourceArray=!1,i.fetchArgsSaved=null,i.fetchAttrName="criteres",i._status=a.Dummy,i.config=t,i.config||(i.config=[]),i.config instanceof d.DataSourceConfig&&(i.scope=i.config.scope,i.method=i.config.scope[i.config.methodName],i.fetchAttrName=i.config.fetchAttrName||"criteres"),i.config instanceof m.DataSourceConfigPage&&(i.scope=i.config.page.getService(),i.method=i.config.method,i.fetchAttrName=i.config.fetchAttrName||"criteres"),i.config instanceof Array&&(i.isDataSourceArray=!0,i.init());var o=n.find(s,function(e){return e instanceof p.InitAsync}),l=n.find(s,function(e){return e instanceof p.DefaultSort});return i.defaultSort=l||null,i.initAsync=o||null,i}return s.__extends(t,e),t.prototype.init=function(e){this.initAsync&&this.initAsync.isAsync?this.initData(e):this.initDataSync(e)},t.prototype.initDataSync=function(e){var t=this;if(this.isDataSourceArray)return this.addDataSync(!1,this.config),this.config=[],this.emit("init",this.results),this._status=a.Initialized,this.results;this.fetchData(!1,e).then(function(){return t.emit("init",t.results),t._status=a.Initialized,t.results})},t.prototype.initData=function(e){var t=this;return this.isDataSourceArray?this.addData(!1,this.config).then(function(){return t.config=[],t.emit("init",t.results),t._status=a.Initialized,t.results}).catch(function(e){throw e}):this.fetchData(!1,e).then(function(){return t.emit("init",t.results),t._status=a.Initialized,t.results})},t.prototype.reload=function(){var e=this;o.Promise.resolve().then(function(){e.emit("fetch",e.results)})},Object.defineProperty(t.prototype,"selected",{get:function(){return this._selected},set:function(e){this._selected=e},enumerable:!0,configurable:!0}),t.prototype.removeUnSelectedItem=function(e){var t=h.ArrayUtils.getIndexById(this._selected,e);-1!==t&&this._selected.splice(t,1)},Object.defineProperty(t.prototype,"results",{get:function(){return this._results},set:function(e){this._results=e},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"status",{get:function(){return this._status},enumerable:!0,configurable:!0}),t.prototype.getDefaultSort=function(){return this.defaultSort},t.prototype.fetch=function(e,t,r){this.selectClean(!r),r||(this.fetchArgsSaved=t),this.fetchData(e,t)},t.prototype.emitEvent=function(e){for(var t=this,r=[],s=1;s<arguments.length;s++)r[s-1]=arguments[s];this._status===a.Dummy&&(this._status=a.Initialized),setTimeout(function(){t.emit.apply(t,[e].concat(r))},0)},t.prototype.fetchData=function(e,t){var r=this;this.emit("loadingData",!0);var a=n.filter(this.options,function(e){return e.sendToFetch()}),s=void 0!==t?[t].concat(a):a;return(this.isDataSourceArray?o.Promise.resolve().then(function(){if(!e)return!1;r.emit("fetch",r.results),!r.defaultSort||t&&t.sort||r.sortData(r.defaultSort.sort,r.defaultSort)}):this.method.apply(this.scope,s).then(function(t){return r.transformData([t]).then(function(t){r.results=t;var a=s[0];return!r.defaultSort||a&&a.sort||r.sortData(r.defaultSort.sort,r.defaultSort),e&&r.emit("fetch",r.results),r.results}).catch(function(e){var t=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_FETCH_ERROR,null,e);throw r.emit("error",t),t})})).finally(function(){r.emitEvent("loadingData",!1)})},t.prototype.add=function(e){for(var t=this,r=[],a=1;a<arguments.length;a++)r[a-1]=arguments[a];this.addData.apply(this,[e].concat(r)).then(function(e){return t.emit("add",e),t.results})},t.prototype.addData=function(e){for(var t=this,r=[],a=1;a<arguments.length;a++)r[a-1]=arguments[a];return this.emit("loadingData",!0),o.Promise.resolve().then(function(){return t.transformData(r).then(function(r){try{return t._results=t._results.concat(r),t.defaultSort&&t.sortData(t.defaultSort.sort,t.defaultSort),e&&t.emit("fetch",t.results),t._results}catch(e){var a=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_ADD_ERROR,null,e);throw t.emit("error",a),a}})}).finally(function(){t.emitEvent("loadingData",!1)})},t.prototype.addDataSync=function(e){for(var t=[],r=1;r<arguments.length;r++)t[r-1]=arguments[r];this.emit("loadingData",!0);var a=null;try{var s=this.transformDataSync(t);this._results=this._results.concat(s),this.defaultSort&&this.sortData(this.defaultSort.sort,this.defaultSort),e&&this.emit("fetch",this.results),a=this._results}catch(e){var i=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_ADD_ERROR,null,e);throw this.emit("error",i),i}return this.emit("loadingData",!1),a},t.prototype.delete=function(e){for(var t=this,r=[],a=1;a<arguments.length;a++)r[a-1]=arguments[a];this.deleteData.apply(this,[e].concat(r)).then(function(e){return t.emit("delete",e),t.results})},t.prototype.deleteAll=function(){this.selectClean(!0),this.results=[],this.emit("delete",this.results)},t.prototype.deleteData=function(e){var t=this;void 0===e&&(e=!1);for(var r=[],a=1;a<arguments.length;a++)r[a-1]=arguments[a];return this.emit("loadingData",!0),o.Promise.resolve().then(function(){return t.transformData(r).then(function(r){return n.map(r,function(e){n.remove(t._results,e)}),e&&t.emit("fetch",t.results),t.results}).catch(function(e){var r=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_DELETE_ERROR,null,e);throw t.emit("error",r),r})}).finally(function(){t.emitEvent("loadingData",!1)})},t.prototype.getSpreadValues=function(e){var t=e;return 0==t.length?[]:(t[0]instanceof Array&&(t=t[0]),t)},t.prototype.transformData=function(e){var t=this;return o.Promise.resolve().then(function(){return t.transformDataSync(e)})},t.prototype.transformDataSync=function(e){var t=this;if(e.errors){var r=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_RESPONSE_ERROR,e.errors);throw this.emit("error",r),r}var a=this.getSpreadValues(e);return this.keysMap&&0!=Object.keys(this.keysMap)?a.map(function(e){if(e){var r={};return Object.keys(t.keysMap).map(function(a){r[a]=u.ObjectUtils.getSubObject(e,t.keysMap[a])}),r}}):a},t.prototype.sortData=function(e,t){if(t)t.sortDatas=e,this.results.sort(t.compare);else{for(var r=[],a=[],s=0;s<e.length;s++)r.push(e[s].key),a.push(e[s].dir?"desc":"asc");this.results=n.orderBy(this.results,r,a)}},t.prototype.sort=function(e,t){var r=this;this.emit("loadingData",!0),o.Promise.resolve().then(function(){try{return r.isDataSourceArray?(r.defaultSort&&(r.defaultSort.sort=e),r.sortData(e,t||r.defaultSort),r.emitEvent("sort",r.results,e),r.results):r.fetchData(!1,r.getFetchArgs("sort",e)).then(function(t){return r.emitEvent("sort",r.results,e),t})}catch(e){var a=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_SORT_ERROR,null,e);throw r.emit("error",a),a}}).finally(function(){r.emitEvent("loadingData",!1)})},t.prototype.filter=function(e,t){var r=this;void 0===t&&(t=!1),this.emit("loadingData",!0),this.isDataSourceArray&&t&&(this._filtering_flag?this._results=this._results_backup:(this._results_backup=this._results,this._filtering_flag=!0)),o.Promise.resolve().then(function(){try{r.isDataSourceArray?(r._results=n.filter(r.results,e),r.emitEvent("filter",r.results)):r.fetchData(!1,r.getFetchArgs("filter",e)).then(function(){r.emitEvent("filter",r.results)})}catch(e){var t=new l.TechnicalError("ERR_TECH_"+c.CodesError.DATASOURCE_FILTER_ERROR,null,e);throw r.emit("error",t),t}}).finally(function(){r.emitEvent("loadingData",!1)})},t.prototype.cancelFilter=function(){this._filtering_flag&&(this._results=this._results_backup)},t.prototype.select=function(e){this._selected=e,this.emit("select",this.selected)},t.prototype.selectClean=function(e){e&&this.select([]),this._selected=[]},t.prototype.getFetchArgs=function(e,t,r){var a=t;return(r||this.fetchArgsSaved)&&(t?(a=r||{},r||(a[this.fetchAttrName]=this.fetchArgsSaved),a[e]=t):a=r||this.fetchArgsSaved),a},t}(i.EventEmitter);t.DataSource=f},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=r(304),o=r(17),l=r(6),c=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.getDefaultButtons=function(){return[{type:"submit",id:"form_btnValider",name:"action:valid",value:this.i18n("form").valid,className:"hornet-button",label:this.i18n("form").valid,title:this.i18n("form").validTitle},{type:"reset",id:"form_btnCancel",name:"action:cancel",value:this.i18n("form").cancel,className:"hornet-button",onClick:null,label:this.i18n("form").cancel,title:this.i18n("form").cancelTitle}]},t.prototype.render=function(){this.state.children||this.getDefaultButtons();var e={"button-area":!0,grid:!0,"has-gutter":!!(this.state.children&&this.state.children.length>1),"flex-container":!0};this.props.className&&(e[this.props.className]=!0);var t=this.props.width+"%";return s.createElement("div",{className:o(e),style:{width:t}},this.state.children)},t.defaultProps=l.assign(l.cloneDeep(n.AbstractField.defaultProps),{width:100}),t}(i.HornetComponent);t.ButtonsArea=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.render=function(){return s.createElement("label",{className:"checkbox-content",disabled:this.props.disabled,title:this.props.title},s.createElement("input",a.__assign({type:"checkbox",value:"true"},this.props)),s.createElement("span",{className:"checkbox-material"},s.createElement("span",{className:"check"})),this.state.label?this.state.label:"")},t}(i.HornetComponent);t.CheckBox=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(4),i=r(322),n=r(0),o=n.Utils.getLogger("hornet-js-react-components.widget.form.dom-adapter"),l=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.getElementType=function(e){var t=this.htmlElement.tagName.toLowerCase(),r=null;return"input"==t?r=this.htmlElement.type:"textarea"==t?r="textarea":"select"==t&&(r="select"),r},t.prototype.getHornetForm=function(){return this.htmlElement?this.htmlElement.form.__component:this.multipleElement[0].form.__component},t.prototype.registerHtmlElement=function(e){null==e?(this.htmlElement&&(this.htmlElement.__component=null),this.name=null,this.type=null,this.htmlElement=null):this.htmlElement?this.addHtmlElement(e):(this.htmlElement=e,this.name=this.htmlElement.name,this.type=this.getElementType(e),this.htmlElement.__component=this)},t.prototype.addHtmlElement=function(e){if(this.htmlElement){var t=this.getElementType(e);this.type==t&&"radio"==t?(this.multipleElement=[],this.multipleElement.push(this.htmlElement),e.__component=this,this.multipleElement.push(e),this.htmlElement=null):o.error("DomAdapter.addHtmlElement > different or unallowed types : "+this.type+" and "+t)}else e.__component=this,this.multipleElement.push(e)},t.prototype.getAttribute=function(e){return this.htmlElement.getAttribute(e)},t.prototype.setAttribute=function(e,t){if(this.htmlElement)this.htmlElement.setAttribute(e,t);else if(this.multipleElement)for(var r=0;r<this.multipleElement.length;r++)this.multipleElement[r].setAttribute(e,t);return this},t.prototype.setCurrentChecked=function(e){return this.htmlElement&&"checkbox"==this.type&&(this.htmlElement.checked=e),this},t.prototype.setCurrentValue=function(e){var t=this,r=null!=e&&e.toString?e.toString():"",a=this.type;if(a&&(a=a.toLowerCase()),this.htmlElement)"text"==a||"textarea"==a||"hidden"==a||"checkbox"==a||"select"==a&&!1===this.htmlElement.multiple?this.htmlElement.value=this.htmlElement.dataset&&"true"===this.htmlElement.dataset.multiple?e?JSON.stringify(e):"":r:"select"==a&&(e instanceof Array?(this.htmlElement.value=null,e.forEach(function(e){for(var r=0;r<t.htmlElement.options.length;r++)if(t.htmlElement.options[r].value==e)return void(t.htmlElement.options[r].selected=!0)})):this.htmlElement.value=e);else if(this.multipleElement)for(var s=0;s<this.multipleElement.length;s++)this.multipleElement[s].value==r?this.multipleElement[s].checked=!0:this.multipleElement[s].checked=!1;return this},t.prototype.getCurrentValue=function(){var e=null;if(this.htmlElement){var t=this.type;if(t&&(t=t.toLowerCase()),"text"==t||"textarea"==t||"hidden"==t||"select"==t&&!1===this.htmlElement.multiple)try{e=Array.isArray(JSON.parse(this.htmlElement.value))?JSON.parse(this.htmlElement.value):this.htmlElement.value}catch(t){e=this.htmlElement.value}else if("select"==t){e=[];for(var r=0;r<this.htmlElement.options.length;r++){var a=this.htmlElement.options[r];a.selected&&e.push(a.value)}}else if("checkbox"==t)e=this.htmlElement.checked;else if("file"==t){var s=this.htmlElement.files;e=s&&s.length>=1?s[0]:i.FormUtils.extractFileData(this.htmlElement)}}else if(this.multipleElement)for(var r=0;r<this.multipleElement.length;r++)if(this.multipleElement[r].checked){e=this.multipleElement[r].value;break}return e},t.prototype.setReadOnly=function(e){return this.htmlElement&&(this.htmlElement.readOnly=e,e?this.htmlElement.classList.add("readonly"):this.htmlElement.classList.remove("readonly")),this},t.prototype.setDisabled=function(e){return this.htmlElement&&(this.htmlElement.disabled=e),this},t}(s.HornetComponent);t.DomAdapter=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(119),s=r(6),i=r(123),n=function(){function e(){}return e.extractFieldName=function(e){var t="";if(e){if(e.dataPath&&e.dataPath.length>1){var r=0;"."==e.dataPath.charAt(0)&&(r=1),t=e.dataPath.substring(r)}"required"==e.keyword&&e.params&&e.params.missingProperty&&(t&&(t+="."),t+=e.params.missingProperty)}return t},e.extractMessage=function(e,t,r,a,n){var o,l=s.get(r,t+"."+e);if(s.isString(l)){if(o=l,n){n.field=t;var c=new i(l);o=c.format(n)}}else if(a){var u=a[e]||a.generic;if(s.isString(u)){var c=new i(u);o=c.format({field:t})}}return o},e.getErrors=function(t,r,s,i){for(var n=new a.Notifications,o=0;o<t.length;o++){var l=t[o],c=new a.NotificationType;c.id="ACTION_ERREUR_"+o,c.text=l.message;var u=e.extractFieldName(l);if(u){c.anchor=u+"_anchor",c.field=u,c.additionalInfos=l.params;var h={};if(r[u]&&r[u].props&&r[u].props.title){var p=u.split(".");isNaN(p[p.length-2])||(u=p[p.length-1],h={complement:(parseInt(p[p.length-2])+1).toString()})}var d=e.extractMessage(l.keyword,u,s,i,h);d&&(c.text=d)}n.addNotification(c)}return n},e.extractFileData=function(e){var t;return e.dataset&&e.dataset.fileId&&(t={id:parseInt(e.dataset.fileId),originalname:e.dataset.fileOriginalname,name:e.dataset.fileName,mimeType:e.dataset.fileMimeType,encoding:e.dataset.fileEncoding,size:parseInt(e.dataset.fileSize),buffer:null}),t},e}();t.FormUtils=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.render=function(){return s.createElement("div",null)},t}(i.HornetComponent);t.Columns=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(6),i=r(18),n=r(318),o=r(11),l=r(62),c=r(0),u=r(310);c.Utils.getLogger("hornet-js-core.component.datasource.paginate-datasource");t.ITEMS_PER_PAGE_ALL=2147483647;var h;!function(e){e[e.PREVIOUS=-1]="PREVIOUS",e[e.NEXT=-2]="NEXT",e[e.FIRST=-3]="FIRST",e[e.LAST=-4]="LAST"}(h=t.Direction||(t.Direction={}));var p=function(){function e(e){this._pagination=e,this.items=[]}return Object.defineProperty(e.prototype,"pagination",{get:function(){return this._pagination},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"sort",{get:function(){return this._sort},set:function(e){this._sort=e},enumerable:!0,configurable:!0}),e.prototype.calculateNbPages=function(e){var t=e||this._pagination.totalItems;return s.round(t/this._pagination.itemsPerPage)+(t%this._pagination.itemsPerPage>0?1:0)},e.prototype.paginate=function(e){if(e>0)this._pagination.pageIndex=e;else if(e>=h.LAST&&e<0)switch(e){case h.FIRST:this._pagination.pageIndex=1;break;case h.LAST:this._pagination.pageIndex=this.items.length;break;case h.PREVIOUS:this._pagination.pageIndex=this._pagination.pageIndex-1;break;case h.NEXT:this._pagination.pageIndex=this._pagination.pageIndex+1}else h.LAST;return this.extractPage(null,!1)},e.prototype.extractPage=function(e,t){void 0===t&&(t=!1);var r=[];return!t&&this.items.length>=this._pagination.pageIndex?r=this.items[this._pagination.pageIndex]:e&&this._pagination.itemsPerPage&&(r=e,this._pagination.pageIndex&&(r=r.slice((this._pagination.pageIndex-1)*this._pagination.itemsPerPage),r=r.slice(0,this._pagination.itemsPerPage)),this.items[this._pagination.pageIndex]=r),r},e.prototype.setItemsPerPage=function(e){this._pagination.itemsPerPage=e,this._pagination.pageIndex=1,this.items=[]},e.prototype.reset=function(){this._pagination.pageIndex=1,this.items=[],this._pagination.totalItems=0,this._pagination.nbPages=0},e.prototype.preparePagination=function(e,t){for(this.paginate(h.FIRST);this.extractPage(e,!0).length==this._pagination.itemsPerPage;)this.paginate(h.NEXT);this.paginate(h.FIRST),this._pagination.totalItems=t||e.length,this._pagination.nbPages=this.calculateNbPages()},e.prototype.setCurrentPage=function(e,t){this.extractPage(e,!0),this._pagination.totalItems=t||e.length,this._pagination.nbPages=this.calculateNbPages()},e}();t.Paginator=p;var d=function(e){function t(t,r,a,i){var n=e.call(this,t,a,i)||this;return n.config=t,n.keysMap=a,n.options=i,n._paginator=new p(r),n.initPaginateDataSource(),n.initSort(),s.map(["sort","pagination","select","add","filter","delete"],function(e){n.on(e,n.saveSelected)}),n}return a.__extends(t,e),t.prototype.initPaginateDataSource=function(){this.isDataSourceArray&&(this.initAsync&&this.initAsync.isAsync?this.initData():this.initDataSync()&&this.updatePaginator(this._results))},t.prototype.init=function(e){},Object.defineProperty(t.prototype,"pagination",{get:function(){return this._paginator.pagination},set:function(e){this._paginator=new p(e)},enumerable:!0,configurable:!0}),t.prototype.updatePaginator=function(e,t){this.isDataSourceArray?this._paginator.preparePagination(e,t):this._paginator.setCurrentPage(e,t)},t.prototype.initPaginator=function(){this.emit("pagination",{list:this.results,pagination:{pageIndex:0,itemsPerPage:this._paginator.pagination.itemsPerPage,totalItems:0}})},t.prototype.initSort=function(){this._paginator.sort=this.defaultSort?this.defaultSort.sort:null},t.prototype.deleteAll=function(){e.prototype.deleteAll.call(this),this.initSort(),this.initPaginator()},t.prototype.reload=function(e,t){void 0===e&&(e=!1),void 0===t&&(t=!1),this.initSort(),this.updatePaginator(this.results,this._paginator.pagination.totalItems),e?this.reloadPage(t):this.goToPage(h.FIRST)},t.prototype.fetch=function(t,r,a){return a||(this.fetchArgsSaved=r,r=this.getFetchArgs("pagination",this.pagination)),e.prototype.fetch.call(this,t,r,!0)},t.prototype.fetchData=function(t,r){var a=this;return e.prototype.fetchData.call(this,t,this._paginator.sort?s.extend(this.getFetchArgs("sort",this._paginator.sort),r):r).then(function(e){return a.pagination.pageIndex=a.pagination.pageIndex||1,a.updatePaginator(a._results,a._paginator.pagination.totalItems),e})},t.prototype.transformData=function(t){var r=t[0];if(r.errors){var a=new o.TechnicalError("ERR_TECH_"+l.CodesError.DATASOURCE_RESPONSE_ERROR,r.errors);throw this.emit("error",a),a}return this.isDataSourceArray?e.prototype.transformData.call(this,r):r?(this._paginator.pagination.totalItems=r.nbTotal,this._paginator.pagination.pageIndex=r.pagination.pageIndex,e.prototype.transformData.call(this,r.liste)):(this._paginator.pagination.totalItems=0,this._paginator.pagination.pageIndex=1,e.prototype.transformData.call(this,[]))},t.prototype.sort=function(t,r){var a=this;this.emit("loadingData",!0),this._paginator.sort=t,i.Promise.resolve().then(function(){try{if(a.isDataSourceArray){e.prototype.sortData.call(a,t,r||a.defaultSort),a.updatePaginator(a._results);var s=a._paginator.paginate(1);return a.emit("sort",s,t),s}return a.fetchData(!1,a.getFetchArgs("pagination",a.pagination)).then(function(e){return a.emit("sort",e,t),e})}catch(e){var i=new o.TechnicalError("ERR_TECH_"+l.CodesError.DATASOURCE_SORT_ERROR,null,e);throw a.emit("error",i),i}}).finally(function(){a.emitEvent("loadingData",!1)})},t.prototype.filter=function(e,t){var r=this;void 0===t&&(t=!1),this.emit("loadingData",!0),this.isDataSourceArray&&t&&(this._filtering_flag?this._results=this._results_backup:(this._results_backup=this._results,this._filtering_flag=!0)),i.Promise.resolve().then(function(){try{r.isDataSourceArray?(r._results=s.filter(r.results,e),r.updatePaginator(r._results),r.goToPage(h.FIRST)):r.fetchData(!1,r.getFetchArgs("filter",e)).then(function(){r.emitEvent("filter",r.results)})}catch(e){var t=new o.TechnicalError("ERR_TECH_"+l.CodesError.DATASOURCE_FILTER_ERROR,null,e);throw r.emit("error",t),t}}).finally(function(){r.emitEvent("loadingData",!1)})},t.prototype.add=function(e){for(var t=[],r=1;r<arguments.length;r++)t[r-1]=arguments[r];this.addData.apply(this,[!1].concat(t))},t.prototype.addData=function(t){var r=this;void 0===t&&(t=!1);for(var a=[],s=1;s<arguments.length;s++)a[s-1]=arguments[s];return e.prototype.addData.apply(this,[!1].concat(a)).then(function(e){return 0!=e.length&&(r.updatePaginator(r._results),r.goToPage(h.FIRST)),e})},t.prototype.deleteData=function(t){var r=this;void 0===t&&(t=!1);for(var a=[],s=1;s<arguments.length;s++)a[s-1]=arguments[s];return e.prototype.deleteData.apply(this,[!1].concat(a)).then(function(e){return r.updatePaginator(r._results),r.goToPage(h.FIRST),e})},t.prototype.delete=function(e){for(var t=[],r=1;r<arguments.length;r++)t[r-1]=arguments[r];this.deleteData.apply(this,[!1].concat(t))},t.prototype.goToPage=function(e){var t=this;this.isDataSourceArray?(this.emit("loadingData",!0),this.emit("pagination",{list:this._paginator.paginate(e),pagination:this._paginator.pagination}),this.emit("loadingData",!1)):(this._paginator.paginate(e),this.fetchData(!1,this.getFetchArgs("pagination",this.pagination)).then(function(e){t.emit("pagination",{list:e,pagination:t._paginator.pagination})}))},t.prototype.getItemsByPage=function(e){return this._paginator.paginate(e)},t.prototype.reloadPage=function(e){void 0===e&&(e=!1),e?this.goToPage(this.pagination.pageIndex||h.FIRST):this.emit("pagination",{list:this._results,pagination:this._paginator.pagination})},t.prototype.updatePerPage=function(e){var t=this;this.isDataSourceArray?(this.pagination.itemsPerPage=e,this.updatePaginator(this._results),this.emit("pagination",{list:this._paginator.paginate(h.FIRST),pagination:this._paginator.pagination})):(this.pagination.itemsPerPage=e,this._paginator.paginate(h.FIRST),this.fetchData(!0,{criteres:this.fetchArgsSaved,pagination:this.pagination}).then(function(e){t.emit("pagination",{list:e,pagination:t._paginator.pagination})}))},t.prototype.getFetchArgs=function(e,t,r){var a=r||{};return!r&&this.fetchArgsSaved&&(a[this.fetchAttrName]=this.fetchArgsSaved),t&&(a[e]=t),a},t.prototype.selectClean=function(t){e.prototype.selectClean.call(this,t),this._paginator.reset()},t.prototype.select=function(e){var t=[];e&&s.forEach(e,function(e){e.id&&t.push(e)}),this._currentItemSelected=t,this.emit("select",this._currentItemSelected)},t.prototype.saveSelected=function(){this._selected=this.getAllSelected(),this._currentItemSelected=null},t.prototype.getAllSelected=function(){return this._selected&&this._selected instanceof Array?u.ArrayUtils.unionWith(this._selected,this._currentItemSelected):this._currentItemSelected},Object.defineProperty(t.prototype,"selected",{get:function(){return this.getAllSelected()},enumerable:!0,configurable:!0}),t}(n.DataSource);t.PaginateDataSource=d},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(304),o=r(375),l=(s.Utils.getLogger("hornet-js-react-components.widget.form.abstract-field-datasource"),function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.displaySpinner=function(e){this.state.inProgress=e,this.props.hideSpinner||(this.refs.spinnerLoader&&this.refs.spinnerLoader.progress(e),e?this.showSpinnerComponent():this.hideSpinnerComponent())},t.prototype.componentWillMount=function(){e.prototype.componentWillMount.call(this),this.props.dataSource&&this.setItem()},t.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this),this.props.dataSource&&(this.props.dataSource.on("fetch",this.setItem),this.props.dataSource.on("init",this.setItem),this.props.dataSource.on("add",this.setItem),this.props.dataSource.on("delete",this.setItem),this.props.dataSource.on("sort",this.setItem),this.props.dataSource.on("filter",this.setItem),this.props.dataSource.on("loadingData",this.displaySpinner))},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.props.dataSource&&(this.props.dataSource.removeListener("fetch",this.setItem),this.props.dataSource.removeListener("init",this.setItem),this.props.dataSource.removeListener("add",this.setItem),this.props.dataSource.removeListener("delete",this.setItem),this.props.dataSource.removeListener("sort",this.setItem),this.props.dataSource.removeListener("filter",this.setItem),this.props.dataSource.removeListener("loadingData",this.displaySpinner))},t.prototype.setItem=function(){this.setState({items:this.props.dataSource.results}),this.setCurrentValue(this.state.currentValue)},t.prototype.showSpinnerComponent=function(){return this.setState({spinner:!0}),this},t.prototype.hideSpinnerComponent=function(){return this.setState({spinner:!1}),this},t.prototype.setDataSource=function(e,t){return this.setState({dataSource:e},t),this},t.prototype.updateDataSource=function(e){this.setDataSource(e)},t.prototype.renderField=function(){return i.createElement("div",{className:this.state.fieldClass+" abstractfield-field-content"},i.createElement(o.SpinnerComponentInput,{ref:"spinnerLoader",isVisible:this.state.spinner}),this.state.prefix?i.createElement("span",{className:"abstractfield-field-prefix"},this.state.prefix):null,this.renderWidget(),this.state.suffix?i.createElement("span",{className:"abstractfield-field-suffix"},this.state.suffix):null,this.renderErrors())},t}(n.AbstractField));t.AbstractFieldDatasource=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(304),n=r(307),o=r(6),l=r(17),c=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.renderWidget=function(){var e=this,t=o.cloneDeep(this.getHtmlProps());null!=this.state.currentValue&&o.assign(t,{defaultValue:this.props.currentValue});var r={"has-error":this.hasErrors(),input:!0};return t.className&&(r[t.className]=!0),this.state.alignment&&(r[this.state.alignment]=!0),t.onChange=this.state.resettable?this.handleChangeInput:t.onChange,t.className=l(r),s.createElement("div",null,s.createElement("input",a.__assign({ref:function(t){return e.registerHtmlElement(t)}},t)),this.state.resettable&&this.state.valued&&!this.state.readOnly&&!this.state.disabled?this.renderResetButton():s.createElement("div",null))},t.prototype.setCurrentValue=function(t){return e.prototype.setCurrentValue.call(this,t),this.setState({valued:""!==t&&t}),this},t.prototype.isValued=function(){return this.state.valued||this.props.value},t.prototype.renderResetButton=function(){var e=o.cloneDeep(this.getHtmlProps()),t="hidden"===e.type,r={"input-reset":!0,"input-reset-hidden":!this.isValued()||t},i={};this.isValued()&&(i.onClick=this.resetValue);var c=this.props.id||this.props.name;return s.createElement("span",{className:l(r),role:"button","aria-hidden":!this.state.valued,id:c+"ResetButton"},s.createElement("a",a.__assign({},i),s.createElement("img",{src:n.Picto.grey.close})))},t.prototype.resetValue=function(){this.htmlElement.value=null,this.htmlElement&&this.htmlElement.onchange&&this.htmlElement.onchange(),this.setState({valued:!1})},t.prototype.handleChangeInput=function(e){this.htmlElement&&this.htmlElement.value?this.state.valued||this.setState({valued:!0}):this.state.valued&&this.setState({valued:!1});var t=this.getHtmlProps();o.isFunction(t.onChange)&&t.onChange(e)},t.defaultProps=o.assign({type:"text",resettable:!0},i.AbstractField.defaultProps),t}(i.AbstractField);t.InputField=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-utils - Partie commune et utilitaire à tous les composants hornet-js
- *
- * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
- * @license CECILL-2.1
- */
-var a=function(){function e(){}return e.getSubObject=function(e,t){var r;if(e&&t){var a=t.split("."),s=e;for(var i in a){var n=a[i];if(n&&!(s=s[n]))break}r=s}return r},e}();t.ObjectUtils=a},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(){}return e.USER_STR="APPLI_TUTO_USER",e.ADMIN_STR="APPLI_TUTO_ADMIN",e.USER=[e.USER_STR],e.ADMIN=[e.ADMIN_STR],e.EVERYONE=[e.USER_STR,e.ADMIN_STR],e}();t.Roles=a},function(e,t,r){"use strict";function a(e){var t=e._formats;for(var r in c){var a=t[r];("object"!=typeof a||a instanceof RegExp||!a.validate)&&(a=t[r]={validate:a}),a.compare||(a.compare=c[r])}}function s(e,t){if(e&&t)return e>t?1:e<t?-1:e===t?0:void 0}function i(e,t){if(e&&t&&(e=e.match(o),t=t.match(o),e&&t))return e=e[1]+e[2]+e[3]+(e[4]||""),t=t[1]+t[2]+t[3]+(t[4]||""),e>t?1:e<t?-1:e===t?0:void 0}function n(e,t){if(e&&t){e=e.split(l),t=t.split(l);var r=s(e[0],t[0]);if(void 0!==r)return r||i(e[1],t[1])}}var o=/^(\d\d):(\d\d):(\d\d)(\.\d+)?(z|[+-]\d\d:\d\d)?$/i,l=/t|\s/i,c={date:s,time:i,"date-time":n};e.exports=function(e){var t="format"+e;return function s(i){return s.definition={type:"string",inline:r(384),statements:!0,errors:"full",metaSchema:{anyOf:[{type:"string"},{type:"object",required:["$data"],properties:{$data:{type:"string",anyOf:[{format:"relative-json-pointer"},{format:"json-pointer"}]}},additionalProperties:!1}]}},i.addKeyword(t,s.definition),i.addKeyword("formatExclusive"+e),a(i),i}}},function(e,t,r){"use strict";var a=r(314);e.exports=function e(t){if(!t.RULES.keywords.switch||!t.RULES.keywords.if){var s=a.metaSchemaRef(t);return e.definition={inline:r(386),statements:!0,errors:"full",metaSchema:{type:"array",items:{required:["then"],properties:{if:s,then:{anyOf:[{type:"boolean"},s]},continue:{type:"boolean"}},additionalProperties:!1,dependencies:{continue:["if"]}}}},t.addKeyword("switch",e.definition),t}}},function(e,t,r){"use strict";function a(e){s.copy(e,this)}var s=r(305);e.exports=a},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.schemaPath+e.util.getProperty(t),u=e.errSchemaPath+"/"+t,h=!e.opts.allErrors,p="data"+(o||""),d=e.opts.$data&&l&&l.$data;d?(i+=" var schema"+n+" = "+e.util.getData(l.$data,o,e.dataPathArr)+"; ",s="schema"+n):s=l;var m="maximum"==t,f=m?"exclusiveMaximum":"exclusiveMinimum",v=e.schema[f],g=e.opts.$data&&v&&v.$data,y=m?"<":">",E=m?">":"<",a=void 0;if(g){var b=e.util.getData(v.$data,o,e.dataPathArr),S="exclusive"+n,C="exclType"+n,_="exclIsNumber"+n,T="op"+n,P="' + "+T+" + '";i+=" var schemaExcl"+n+" = "+b+"; ",b="schemaExcl"+n,i+=" var "+S+"; var "+C+" = typeof "+b+"; if ("+C+" != 'boolean' && "+C+" != 'undefined' && "+C+" != 'number') { ";var a=f,A=A||[];A.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"_exclusiveLimit")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: {} ",!1!==e.opts.messages&&(i+=" , message: '"+f+" should be boolean' "),e.opts.verbose&&(i+=" , schema: validate.schema"+c+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var I=i;i=A.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+I+"]); ":i+=" validate.errors = ["+I+"]; return false; ":i+=" var err = "+I+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",i+=" } else if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),i+=" "+C+" == 'number' ? ( ("+S+" = "+s+" === undefined || "+b+" "+y+"= "+s+") ? "+p+" "+E+"= "+b+" : "+p+" "+E+" "+s+" ) : ( ("+S+" = "+b+" === true) ? "+p+" "+E+"= "+s+" : "+p+" "+E+" "+s+" ) || "+p+" !== "+p+") { var op"+n+" = "+S+" ? '"+y+"' : '"+y+"=';"}else{var _="number"==typeof v,P=y;if(_&&d){var T="'"+P+"'";i+=" if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),i+=" ( "+s+" === undefined || "+v+" "+y+"= "+s+" ? "+p+" "+E+"= "+v+" : "+p+" "+E+" "+s+" ) || "+p+" !== "+p+") { "}else{_&&void 0===l?(S=!0,a=f,u=e.errSchemaPath+"/"+f,s=v,E+="="):(_&&(s=Math[m?"min":"max"](v,l)),v===(!_||s)?(S=!0,a=f,u=e.errSchemaPath+"/"+f,E+="="):(S=!1,P+="="));var T="'"+P+"'";i+=" if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),i+=" "+p+" "+E+" "+s+" || "+p+" !== "+p+") { "}}a=a||t;var A=A||[];A.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"_limit")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { comparison: "+T+", limit: "+s+", exclusive: "+S+" } ",!1!==e.opts.messages&&(i+=" , message: 'should be "+P+" ",i+=d?"' + "+s:s+"'"),e.opts.verbose&&(i+=" , schema:  ",i+=d?"validate.schema"+c:""+l,i+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var I=i;return i=A.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+I+"]); ":i+=" validate.errors = ["+I+"]; return false; ":i+=" var err = "+I+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",i+=" } ",h&&(i+=" else { "),i}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.schemaPath+e.util.getProperty(t),u=e.errSchemaPath+"/"+t,h=!e.opts.allErrors,p="data"+(o||""),d=e.opts.$data&&l&&l.$data;d?(i+=" var schema"+n+" = "+e.util.getData(l.$data,o,e.dataPathArr)+"; ",s="schema"+n):s=l;var m="maxItems"==t?">":"<";i+="if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),i+=" "+p+".length "+m+" "+s+") { ";var a=t,f=f||[];f.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"_limitItems")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { limit: "+s+" } ",!1!==e.opts.messages&&(i+=" , message: 'should NOT have ",i+="maxItems"==t?"more":"less",i+=" than ",i+=d?"' + "+s+" + '":""+l,i+=" items' "),e.opts.verbose&&(i+=" , schema:  ",i+=d?"validate.schema"+c:""+l,i+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var v=i;return i=f.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+v+"]); ":i+=" validate.errors = ["+v+"]; return false; ":i+=" var err = "+v+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",i+="} ",h&&(i+=" else { "),i}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.schemaPath+e.util.getProperty(t),u=e.errSchemaPath+"/"+t,h=!e.opts.allErrors,p="data"+(o||""),d=e.opts.$data&&l&&l.$data;d?(i+=" var schema"+n+" = "+e.util.getData(l.$data,o,e.dataPathArr)+"; ",s="schema"+n):s=l;var m="maxLength"==t?">":"<";i+="if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),!1===e.opts.unicode?i+=" "+p+".length ":i+=" ucs2length("+p+") ",i+=" "+m+" "+s+") { ";var a=t,f=f||[];f.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"_limitLength")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { limit: "+s+" } ",!1!==e.opts.messages&&(i+=" , message: 'should NOT be ",i+="maxLength"==t?"longer":"shorter",i+=" than ",i+=d?"' + "+s+" + '":""+l,i+=" characters' "),e.opts.verbose&&(i+=" , schema:  ",i+=d?"validate.schema"+c:""+l,i+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var v=i;return i=f.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+v+"]); ":i+=" validate.errors = ["+v+"]; return false; ":i+=" var err = "+v+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",i+="} ",h&&(i+=" else { "),i}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.schemaPath+e.util.getProperty(t),u=e.errSchemaPath+"/"+t,h=!e.opts.allErrors,p="data"+(o||""),d=e.opts.$data&&l&&l.$data;d?(i+=" var schema"+n+" = "+e.util.getData(l.$data,o,e.dataPathArr)+"; ",s="schema"+n):s=l;var m="maxProperties"==t?">":"<";i+="if ( ",d&&(i+=" ("+s+" !== undefined && typeof "+s+" != 'number') || "),i+=" Object.keys("+p+").length "+m+" "+s+") { ";var a=t,f=f||[];f.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"_limitProperties")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { limit: "+s+" } ",!1!==e.opts.messages&&(i+=" , message: 'should NOT have ",i+="maxProperties"==t?"more":"less",i+=" than ",i+=d?"' + "+s+" + '":""+l,i+=" properties' "),e.opts.verbose&&(i+=" , schema:  ",i+=d?"validate.schema"+c:""+l,i+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var v=i;return i=f.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+v+"]); ":i+=" validate.errors = ["+v+"]; return false; ":i+=" var err = "+v+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",i+="} ",h&&(i+=" else { "),i}},function(e,t,r){"use strict";e.exports=function(e,t,r){function a(e){for(var t=e.rules,r=0;r<t.length;r++)if(s(t[r]))return!0}function s(t){return void 0!==e.schema[t.keyword]||t.implements&&i(t)}function i(t){for(var r=t.implements,a=0;a<r.length;a++)if(void 0!==e.schema[r[a]])return!0}var n="",o=!0===e.schema.$async,l=e.util.schemaHasRulesExcept(e.schema,e.RULES.all,"$ref"),c=e.self._getId(e.schema);if(e.isTop){if(o){e.async=!0;var u="es7"==e.opts.async;e.yieldAwait=u?"await":"yield"}n+=" var validate = ",o?u?n+=" (async function ":("*"!=e.opts.async&&(n+="co.wrap"),n+="(function* "):n+=" (function ",n+=" (data, dataPath, parentData, parentDataProperty, rootData) { 'use strict'; ",c&&(e.opts.sourceCode||e.opts.processCode)&&(n+=" /*# sourceURL="+c+" */ ")}if("boolean"==typeof e.schema||!l&&!e.schema.$ref){var h,p=e.level,d=e.dataLevel,m=e.schema["false schema"],f=e.schemaPath+e.util.getProperty("false schema"),v=e.errSchemaPath+"/false schema",g=!e.opts.allErrors,y="data"+(d||""),E="valid"+p;if(!1===e.schema){e.isTop?g=!0:n+=" var "+E+" = false; ";var b=b||[];b.push(n),n="",!1!==e.createErrors?(n+=" { keyword: '"+(h||"false schema")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(v)+" , params: {} ",!1!==e.opts.messages&&(n+=" , message: 'boolean schema is false' "),e.opts.verbose&&(n+=" , schema: false , parentSchema: validate.schema"+e.schemaPath+" , data: "+y+" "),n+=" } "):n+=" {} ";var S=n;n=b.pop(),!e.compositeRule&&g?e.async?n+=" throw new ValidationError(["+S+"]); ":n+=" validate.errors = ["+S+"]; return false; ":n+=" var err = "+S+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; "}else e.isTop?n+=o?" return data; ":" validate.errors = null; return true; ":n+=" var "+E+" = true; ";return e.isTop&&(n+=" }); return validate; "),n}if(e.isTop){var C=e.isTop,p=e.level=0,d=e.dataLevel=0,y="data";e.rootId=e.resolve.fullPath(e.self._getId(e.root.schema)),e.baseId=e.baseId||e.rootId,delete e.isTop,e.dataPathArr=[void 0],n+=" var vErrors = null; ",n+=" var errors = 0;     ",n+=" if (rootData === undefined) rootData = data; "}else{var p=e.level,d=e.dataLevel,y="data"+(d||"");if(c&&(e.baseId=e.resolve.url(e.baseId,c)),o&&!e.async)throw new Error("async schema in sync schema");n+=" var errs_"+p+" = errors;"}var h,E="valid"+p,g=!e.opts.allErrors,_="",T="",P=e.schema.type,A=Array.isArray(P);if(A&&1==P.length&&(P=P[0],A=!1),e.schema.$ref&&l){if("fail"==e.opts.extendRefs)throw new Error('$ref: validation keywords used in schema at path "'+e.errSchemaPath+'" (see option extendRefs)');!0!==e.opts.extendRefs&&(l=!1,console.warn('$ref: keywords ignored in schema at path "'+e.errSchemaPath+'"'))}if(P){if(e.opts.coerceTypes)var I=e.util.coerceToTypes(e.opts.coerceTypes,P);var w=e.RULES.types[P];if(I||A||!0===w||w&&!a(w)){var f=e.schemaPath+".type",v=e.errSchemaPath+"/type",f=e.schemaPath+".type",v=e.errSchemaPath+"/type",D=A?"checkDataTypes":"checkDataType";if(n+=" if ("+e.util[D](P,y,!0)+") { ",I){var x="dataType"+p,R="coerced"+p;n+=" var "+x+" = typeof "+y+"; ","array"==e.opts.coerceTypes&&(n+=" if ("+x+" == 'object' && Array.isArray("+y+")) "+x+" = 'array'; "),n+=" var "+R+" = undefined; ";var O="",F=I;if(F)for(var k,N=-1,L=F.length-1;N<L;)k=F[N+=1],N&&(n+=" if ("+R+" === undefined) { ",O+="}"),"array"==e.opts.coerceTypes&&"array"!=k&&(n+=" if ("+x+" == 'array' && "+y+".length == 1) { "+R+" = "+y+" = "+y+"[0]; "+x+" = typeof "+y+";  } "),"string"==k?n+=" if ("+x+" == 'number' || "+x+" == 'boolean') "+R+" = '' + "+y+"; else if ("+y+" === null) "+R+" = ''; ":"number"==k||"integer"==k?(n+=" if ("+x+" == 'boolean' || "+y+" === null || ("+x+" == 'string' && "+y+" && "+y+" == +"+y+" ","integer"==k&&(n+=" && !("+y+" % 1)"),n+=")) "+R+" = +"+y+"; "):"boolean"==k?n+=" if ("+y+" === 'false' || "+y+" === 0 || "+y+" === null) "+R+" = false; else if ("+y+" === 'true' || "+y+" === 1) "+R+" = true; ":"null"==k?n+=" if ("+y+" === '' || "+y+" === 0 || "+y+" === false) "+R+" = null; ":"array"==e.opts.coerceTypes&&"array"==k&&(n+=" if ("+x+" == 'string' || "+x+" == 'number' || "+x+" == 'boolean' || "+y+" == null) "+R+" = ["+y+"]; ");n+=" "+O+" if ("+R+" === undefined) {   ";var b=b||[];b.push(n),n="",!1!==e.createErrors?(n+=" { keyword: '"+(h||"type")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(v)+" , params: { type: '",n+=A?""+P.join(","):""+P,n+="' } ",!1!==e.opts.messages&&(n+=" , message: 'should be ",n+=A?""+P.join(","):""+P,n+="' "),e.opts.verbose&&(n+=" , schema: validate.schema"+f+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+y+" "),n+=" } "):n+=" {} ";var S=n;n=b.pop(),!e.compositeRule&&g?e.async?n+=" throw new ValidationError(["+S+"]); ":n+=" validate.errors = ["+S+"]; return false; ":n+=" var err = "+S+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",n+=" } else {  ";var M=d?"data"+(d-1||""):"parentData",U=d?e.dataPathArr[d]:"parentDataProperty";n+=" "+y+" = "+R+"; ",d||(n+="if ("+M+" !== undefined)"),n+=" "+M+"["+U+"] = "+R+"; } "}else{var b=b||[];b.push(n),n="",!1!==e.createErrors?(n+=" { keyword: '"+(h||"type")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(v)+" , params: { type: '",n+=A?""+P.join(","):""+P,n+="' } ",!1!==e.opts.messages&&(n+=" , message: 'should be ",n+=A?""+P.join(","):""+P,n+="' "),e.opts.verbose&&(n+=" , schema: validate.schema"+f+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+y+" "),n+=" } "):n+=" {} ";var S=n;n=b.pop(),!e.compositeRule&&g?e.async?n+=" throw new ValidationError(["+S+"]); ":n+=" validate.errors = ["+S+"]; return false; ":n+=" var err = "+S+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; "}n+=" } "}}if(e.schema.$ref&&!l)n+=" "+e.RULES.all.$ref.code(e,"$ref")+" ",g&&(n+=" } if (errors === ",n+=C?"0":"errs_"+p,n+=") { ",T+="}");else{e.opts.v5&&e.schema.patternGroups&&console.warn('keyword "patternGroups" is deprecated and disabled. Use option patternGroups: true to enable.');var B=e.RULES;if(B)for(var w,H=-1,j=B.length-1;H<j;)if(w=B[H+=1],a(w)){if(w.type&&(n+=" if ("+e.util.checkDataType(w.type,y)+") { "),e.opts.useDefaults&&!e.compositeRule)if("object"==w.type&&e.schema.properties){var m=e.schema.properties,V=Object.keys(m),$=V;if($)for(var K,z=-1,W=$.length-1;z<W;){K=$[z+=1];var q=m[K];if(void 0!==q.default){var Q=y+e.util.getProperty(K);n+="  if ("+Q+" === undefined) "+Q+" = ","shared"==e.opts.useDefaults?n+=" "+e.useDefault(q.default)+" ":n+=" "+JSON.stringify(q.default)+" ",n+="; "}}}else if("array"==w.type&&Array.isArray(e.schema.items)){var G=e.schema.items;if(G)for(var q,N=-1,J=G.length-1;N<J;)if(q=G[N+=1],void 0!==q.default){var Q=y+"["+N+"]";n+="  if ("+Q+" === undefined) "+Q+" = ","shared"==e.opts.useDefaults?n+=" "+e.useDefault(q.default)+" ":n+=" "+JSON.stringify(q.default)+" ",n+="; "}}var Z=w.rules;if(Z)for(var Y,X=-1,ee=Z.length-1;X<ee;)if(Y=Z[X+=1],s(Y)){var te=Y.code(e,Y.keyword,w.type);te&&(n+=" "+te+" ",g&&(_+="}"))}if(g&&(n+=" "+_+" ",_=""),w.type&&(n+=" } ",P&&P===w.type&&!I)){n+=" else { ";var f=e.schemaPath+".type",v=e.errSchemaPath+"/type",b=b||[];b.push(n),n="",!1!==e.createErrors?(n+=" { keyword: '"+(h||"type")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(v)+" , params: { type: '",n+=A?""+P.join(","):""+P,n+="' } ",!1!==e.opts.messages&&(n+=" , message: 'should be ",n+=A?""+P.join(","):""+P,n+="' "),e.opts.verbose&&(n+=" , schema: validate.schema"+f+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+y+" "),n+=" } "):n+=" {} ";var S=n;n=b.pop(),!e.compositeRule&&g?e.async?n+=" throw new ValidationError(["+S+"]); ":n+=" validate.errors = ["+S+"]; return false; ":n+=" var err = "+S+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",n+=" } "}g&&(n+=" if (errors === ",n+=C?"0":"errs_"+p,n+=") { ",T+="}")}}return g&&(n+=" "+T+" "),C?(o?(n+=" if (errors === 0) return data;           ",n+=" else throw new ValidationError(vErrors); "):(n+=" validate.errors = vErrors; ",n+=" return errors === 0;       "),n+=" }); return validate;"):n+=" var "+E+" = errors === errs_"+p+";",n=e.util.cleanUpCode(n),C&&(n=e.util.finalCleanUpCode(n,o)),n}},function(e,t){function r(e){var t=this,r=h.call(arguments,1);return new Promise(function(s,i){function n(t){var r;try{r=e.next(t)}catch(e){return i(e)}c(r)}function l(t){var r;try{r=e.throw(t)}catch(e){return i(e)}c(r)}function c(e){if(e.done)return s(e.value);var r=a.call(t,e.value);return r&&o(r)?r.then(n,l):l(new TypeError('You may only yield a function, promise, generator, array, or object, but the following object was passed: "'+String(e.value)+'"'))}if("function"==typeof e&&(e=e.apply(t,r)),!e||"function"!=typeof e.next)return s(e);n()})}function a(e){return e?o(e)?e:c(e)||l(e)?r.call(this,e):"function"==typeof e?s.call(this,e):Array.isArray(e)?i.call(this,e):u(e)?n.call(this,e):e:e}function s(e){var t=this;return new Promise(function(r,a){e.call(t,function(e,t){if(e)return a(e);arguments.length>2&&(t=h.call(arguments,1)),r(t)})})}function i(e){return Promise.all(e.map(a,this))}function n(e){for(var t=new e.constructor,r=Object.keys(e),s=[],i=0;i<r.length;i++){var n=r[i],l=a.call(this,e[n]);l&&o(l)?function(e,r){t[r]=void 0,s.push(e.then(function(e){t[r]=e}))}(l,n):t[n]=e[n]}return Promise.all(s).then(function(){return t})}function o(e){return"function"==typeof e.then}function l(e){return"function"==typeof e.next&&"function"==typeof e.throw}function c(e){var t=e.constructor;return!!t&&("GeneratorFunction"===t.name||"GeneratorFunction"===t.displayName||l(t.prototype))}function u(e){return Object==e.constructor}var h=Array.prototype.slice;e.exports=r.default=r.co=r,r.wrap=function(e){function t(){return r.call(this,e.apply(this,arguments))}return t.__generatorFunction__=e,t}},,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
- *
- * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
- * @license CECILL-2.1
- */
-var a,s=r(306);!function(e){e[e.COMPARE_DEFAULT=1]="COMPARE_DEFAULT",e[e.COMPARE_WITH_LOWERCASE=2]="COMPARE_WITH_LOWERCASE",e[e.COMPARE_WITH_UPPERCASE=3]="COMPARE_WITH_UPPERCASE"}(a=t.CompareMethod||(t.CompareMethod={}));var i=function(){function e(e,t,r){void 0===t&&(t=a.COMPARE_DEFAULT),void 0===r&&(r=!1);var i=this;this.sort=e,this.initCompare=t,this.sendFetch=r,this.compare=function(e,t){if(i.initCompare&&"function"==typeof i.initCompare)return i.initCompare(e,t);var r,n=i.sort&&i.sort.length>0?i.sort:i.sortDatas;return n.every(function(n){var o=e[n.key],l=t[n.key];return i.initCompare==a.COMPARE_WITH_LOWERCASE?(o="string"==typeof e[n.key]?e[n.key].toLowerCase():void 0===e[n.key]?"":e[n.key],l="string"==typeof t[n.key]?t[n.key].toLowerCase():void 0===t[n.key]?"":t[n.key]):i.initCompare==a.COMPARE_WITH_UPPERCASE&&(o="string"==typeof e[n.key]?e[n.key].toUpperCase():void 0===e[n.key]?"":e[n.key],l="string"==typeof t[n.key]?t[n.key].toUpperCase():void 0===t[n.key]?"":t[n.key]),o<l?(r=n.dir==s.SortDirection.ASC?-1:1,!1):o==l||(o>l?(r=n.dir==s.SortDirection.ASC?1:-1,!1):void 0)}),r}}return e.prototype.sendToFetch=function(){return this.sendFetch},e}();t.DefaultSort=i;var n=function(){function e(e,t){this.type=e,this.sendFetch=t}return e.prototype.sendToFetch=function(){return!1},e}();t.SpinnerOption=n;var o=function(){function e(e,t){this.isAsync=e,this.sendFetch=t}return e.prototype.sendToFetch=function(){return!1},e}();t.InitAsync=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(34),i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.setFocusOn=function(e,r,a){var s=this;setTimeout(function(){s.emit(t.FOCUS_CHANGE_EVENT,s.choiceFocused,e,r,a)}),this.choiceFocused=e},t.FOCUS_CHANGE_EVENT="onFocusChange",t}(s.EventEmitter);t.AutoCompleteState=i},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(44),o=r(304),l=r(370),c=r(374),u=r(322),h=r(321),p=r(350),d=r(119),m=r(351),f=r(369),v=r(17),g=r(6),y=r(373),E=r(319),b=s.Utils.getLogger("hornet-js-react-components.widget.form.form"),S=function(e){function t(r,a){var s=e.call(this,r,a)||this,i=s.i18n("calendar");return null==i&&(i={}),s.state.calendarLocale=i,s.state.customNotif=null!=r.notifId,s.state.notifId=null!=r.notifId?r.notifId:"Form-"+t.idx++,s}return a.__extends(t,e),t.prototype.setName=function(e,t){return this.setState({name:e},t),this},t.prototype.setOnSubmit=function(e,t){return this.setState({onSubmit:e},t),this},t.prototype.setOnFormChange=function(e,t){return this.setState({onFormChange:e},t),this},t.prototype.setIsMandatoryFieldsHidden=function(e,t){return this.setState({isMandatoryFieldsHidden:e},t),this},t.prototype.setSubTitle=function(e,t){return this.setState({subTitle:e},t),this},t.prototype.setText=function(e,t){return this.setState({text:e},t),this},t.prototype.setClassName=function(e,t){return this.setState({className:e},t),this},t.prototype.setMarkRequired=function(e,t){return this.setState({markRequired:e},t),this.updateMarkRequiredFields(e),this},t.prototype.setImgFilePath=function(e,t){return this.setState({imgFilePath:e},t),this.updateImagFilePathFields(e),this},t.prototype.setSchema=function(e,t){return this.setState({schema:e},t),this},t.prototype.setValidationOptions=function(e,t){return this.setState({validationOptions:e},t),this},t.prototype.setFormMessages=function(e,t){return this.setState({formMessages:e},t),this},t.prototype.setCustomValidators=function(e,t){return this.setState({customValidators:e},t),this},t.prototype.setNotifId=function(e,r){return null!=e?this.setState({notifId:e,customNotif:!0},r):this.setState({notifId:"Form-"+t.idx++,customNotif:!1},r),this},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),d.NotificationManager.clean(this.state.notifId),this.formElement&&(this.formElement.__component=null)},t.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this),this.debouncedValidateAndSubmit=g.debounce(this.validateAndSubmit,500),this.state.defaultValues&&this.updateFields(this.state.defaultValues),this.isOneRequired(this.state.children)||this.setMarkRequired(!1)},t.prototype.updateMarkRequiredFields=function(e){var t=this.extractFields();return Object.keys(t).every(function(r){var a=t[r];return a instanceof o.AbstractField&&a.setMarkRequired(e),!0}),this},t.prototype.updateImagFilePathFields=function(e){var t=this.extractFields();return Object.keys(t).every(function(r){var a=t[r];return a instanceof o.AbstractField&&a.setImgFilePath(e),!0}),this},t.prototype.updateFields=function(e){var t=this.extractFields();this.propagateParentState();for(var r in t){var a=g.get(e,r);if(null!=a)if(t[r]instanceof m.CheckBoxField)t[r].setCurrentChecked(a);else if(t[r]instanceof y.SelectField||t[r]instanceof p.AutoCompleteField)if(a instanceof Array){var s=[];if(t[r].state.multiple){for(var i=0;i<t[r].state.allChoices.length;i++)for(var n=t[r].state.allChoices[i],o=0;o<a.length;o++)if(a[o].toString()==n.value){s.push(n.value);break}}else for(var i=0;i<t[r].state.dataSource.length;i++)for(var n=t[r].state.dataSource[i],o=0;o<a.length;o++)if(a[o].toString()==n[t[r].state.valueKey]){s.push(n[t[r].state.valueKey]);break}t[r].setCurrentValue(s)}else t[r].setCurrentValue(a);else if(t[r].state.choices&&(this.state.readOnly||t[r].state.readOnly))for(var i=0;i<t[r].state.dataSource.length;i++){var n=t[r].state.dataSource[i];if(a.toString()==n[t[r].state.valueKey]){t[r].setCurrentValue(n[t[r].state.valueKey]);break}}else t[r].setCurrentValue(a);else t[r]instanceof m.CheckBoxField?t[r].setCurrentChecked(!1):t[r].setCurrentValue(null)}},t.prototype.processAutocompleteErrors=function(e,t){var r=t.getNotifications().map(function(t){return Object.keys(e).every(function(r){var a=e[r];if(a instanceof p.AutoCompleteField){var s=a;if(t.field==s.state.name||t.field==s.getValueFieldName())return t.field=s.getFreeTypingFieldName(),!1}return!0},this),t},this);t.setNotifications(r)},t.prototype.notifyErrors=function(e){if(e){var t=this.state.formMessages&&this.state.formMessages.fields,r=this.i18n("form.validation"),a=this.extractFields(),s=u.FormUtils.getErrors(e,a,t,r);this.processAutocompleteErrors(a,s),Object.keys(a).every(function(e){var t=a[e];return t instanceof o.AbstractField&&t.setErrors(s.getNotifications()),!0}),d.NotificationManager.notify(null,s)}},t.prototype.transformDatesToISO=function(e,t){if(e&&e.properties&&t)for(var r=Object.keys(e.properties),a=void 0,i=void 0,n=0;n<r.length;n++)if(i=r[n],a=e.properties[i],"object"==a.type)this.transformDatesToISO(a,t[i]);else if("date-time"==a.format&&t[i]){var o=s.Utils.dateUtils.parseInTZ(t[i],this.state.calendarLocale.dateFormat);o&&(t[i]=o.toISOString())}},t.prototype.validateAndSubmit=function(){if(this.formElement){b.trace("Validation et envoi du formulaire");var e=this.extractData(),t=this.state.validationOptions,r=f.DataValidator.transformRequiredStrings(this.state.schema);this.transformDatesToISO(this.state.schema,e);var a=new f.DataValidator(r,this.state.customValidators,t).validate(e);a.valid?(this.cleanFormErrors(),this.state.onSubmit&&this.state.onSubmit(e)):this.notifyErrors(a.errors)}},t.prototype.cleanFormErrors=function(){var e=this.extractFields();for(var t in e){var r=e[t];r instanceof o.AbstractField&&r.setErrors(null)}d.NotificationManager.clean(this.state.notifId)},t.prototype.updateFieldsAndClean=function(e){this.updateFields(e),this.cleanFormErrors()},t.prototype._submitHornetForm=function(e){e.preventDefault(),this.debouncedValidateAndSubmit()},t.prototype.propagateParentState=function(){e.prototype.propagateParentState.call(this);var t=this.extractFields();Object.keys(t).every(function(e){var r=t[e];return r instanceof o.AbstractField&&(r.setMarkRequired(this.state.markRequired),r.setImgFilePath(this.state.imgFilePath)),!0},this)},t.prototype.extractFields=function(){var e={};if(this.formElement)for(var t=0;t<this.formElement.elements.length;t++){var r=this.formElement.elements[t];r.name&&(r.__component?e[r.name]=r.__component:e[r.name]?e[r.name].addHtmlElement(r):(e[r.name]=new h.DomAdapter,e[r.name].registerHtmlElement(r)))}return e},t.prototype.isMultiPartForm=function(e){var t=this,r=!1;return i.Children.map(e,function(e){r||null!=e&&(e.props&&e.props.children&&(r=t.isMultiPartForm(e.props.children)),r||e.type!==c.UploadFileField||(r=!0))}),r},t.prototype.isOneRequired=function(e){var t=this,r=!1;return i.Children.map(e,function(e){r||null!=e&&(e.props&&e.props.children&&(r=t.isOneRequired(e.props.children)),!r&&e.props&&1==e.props.required&&(r=!0))}),r},t.prototype.render=function(){var e={form:!0,clear:!0,readonly:this.state.readOnly};b.trace("render(), HornetForm ");var t=null;this.state.customNotif||(t=i.createElement(n.Notification,{id:this.state.notifId}));var r={name:this.state.name,className:this.state.className,method:"post",onSubmit:this._submitHornetForm,noValidate:!0,onChange:this.state.onFormChange?this.state.onFormChange:void 0,ref:this.registerForm};return this.isMultiPartForm(this.state.children)&&(r.encType="multipart/form-data"),i.createElement("section",{className:"form-container"},t,i.createElement("div",{className:v(e)},i.createElement("form",a.__assign({},r),this.state.subTitle||this.state.text||this.state.markRequired&&!this.state.isMandatoryFieldsHidden?i.createElement("div",{className:"form-titles"},this.state.subTitle?i.createElement("h1",{className:"form-soustitre"},this.state.subTitle):null,this.state.text?i.createElement("p",{className:"form-texte"},this.state.text):null,this.state.markRequired&&!this.state.isMandatoryFieldsHidden?i.createElement("p",{className:"discret"},this.i18n("form.fillField")):null):null,this.state.children?i.createElement("div",{className:"form-content"},i.createElement("div",null,this.state.children)):null)))},t.prototype.getButtonsArea=function(e){var t=[];return i.Children.map(e,function(e){e.type===E.ButtonsArea&&t.push(e)}),t},t.idx=0,t.defaultProps=g.assign(g.cloneDeep(l.AbstractForm.defaultProps),{markRequired:!0,isMandatoryFieldsHidden:!1,subTitle:null,className:"formRecherche",customValidators:[],validationOptions:f.DataValidator.DEFAULT_VALIDATION_OPTIONS}),t}(l.AbstractForm);t.Form=S},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(310),n=r(2),o=r(17),l=r(4),c=r(377),u=r(357),h=r(311),p=r(437),d=r(324),m=s.Utils.getLogger("hornet-js-components.widget.table.header"),f=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.props.id||(a.state.id=a.state.parentId),a.state.libelleNombreTotalItem=a.state.libelleNombreTotalItem?a.state.libelleNombreTotalItem:"table.numberElementTitle",a.state.items=[],a.state.selectedItems=[],a.handleChangeDataTable=a.handleChangeDataTable.bind(a),a.props.tableState.on(h.TableState.INDEX_CHANGE_EVENT,a.handleChangeDataTable),a.props.contentState.setMaxListeners(1/0),a.handleEdition=a.handleEdition.bind(a),a.props.contentState.on(h.ContentState.EDITION_CLIC_EVENT,a.handleEdition),a.hiddenColumns=t.hiddenColumns,t.contentState.on(h.ContentState.TOGGLE_COLUMNS_EVENT,a.handleChangeHiddenColumns),a}return a.__extends(t,e),t.prototype.componentWillUnmount=function(){var e=this;this.props.tableState.removeListener(h.TableState.INDEX_CHANGE_EVENT,this.handleChangeDataTable),this.props.contentState.removeListener(h.ContentState.EDITION_CLIC_EVENT,this.handleEdition),this.props.dataSourcesList&&this.props.dataSourcesList.map(function(t,r){e.props.dataSourcesList[r].removeListener("select",e.handleChangeDataTable)})},t.prototype.componentDidMount=function(){var e=this;this.props.dataSourcesList&&Array.isArray(this.props.dataSourcesList)&&this.props.dataSourcesList.length>0&&this.props.dataSourcesList.map(function(t,r){e.props.dataSourcesList[r].setMaxListeners(1/0),e.props.dataSourcesList[r].on("select",e.handleChangeDataTable)}),this.props.tableState.emit(h.TableState.RESIZE_EVENT,this.headerRef.clientWidth)},t.prototype.render=function(){var e=this;m.trace("render");var t={id:this.state.id,className:o({"datatable-header-title":!0,"flex-container":!0,"badge-selected-items-before":0!=this.getTotalSelectedItemsForAllDataSource()}),"data-badge":this.getTotalSelectedItemsForAllDataSource(),tabIndex:this.state.tabIndex};return n.createElement("div",a.__assign({},t,{ref:function(t){e.headerRef=t}}),n.createElement("div",{className:"datatable-title"},n.createElement("span",{className:"datatable-title-span"},this.state.title+" "+this.i18n(this.state.libelleNombreTotalItem,{count:this.getTotalItemsForAllDataSource()}))),this.state.hideMenuActions?null:this.renderMenuActions(),n.createElement(p.Alert,{ref:"alert",message:"",onClickCancel:this.closeAlert,onClickClose:this.closeAlert}))},t.prototype.handleChangeHiddenColumns=function(e){this.hiddenColumns=e},t.prototype.renderMenuActions=function(){m.trace("renderMenuActions");var e=this.getChildrenOf(c.MenuActions),r=[];e.props&&!e.length?r.push(e):r=e;var s=this.getComponentBy(u.ToggleColumnsButton),i=null;if(s){var o=this.state.id+"toggleColumnsButton";i=t.wrap(u.ToggleColumnsButton,s,s.props,{id:this.state.id,key:o,tabIndex:-1,columns:this.props.columns,contentState:this.props.contentState,hiddenColumns:this.hiddenColumns})}var l={actions:r,items:this.state.items,showAlert:this.showAlert,showIconInfo:this.props.showIconInfo,selectedItems:this.getSelectedItemsForAllContent(),id:this.state.id+"-menu-action",columns:this.props.columns,toggleColumnsButton:i,contentState:this.props.contentState};return n.createElement(c.MenuActions,a.__assign({},l))},t.prototype.handleEdition=function(e){this.setState({hideMenuActions:void 0!==e&&null!==e})},t.prototype.handleChangeDataTable=function(e,t){this.setState({selectedItems:e,items:t||this.state.items})},t.prototype.closeAlert=function(){this.refs.alert.close()},t.prototype.validateAlert=function(e){this.refs.alert.close(e)},t.prototype.showAlert=function(e,t,r){var a=this;this.refs.alert.setMessage(e),this.refs.alert.setTitle(t),this.refs.alert.setOnClickOk(function(){a.validateAlert(r)}).open()},t.prototype.getSelectedItemsForAllContent=function(){var e=this;m.trace("getSelectedItemsForAllContent");var t=[];return this.props.dataSourcesList.map(function(r,a){t=i.ArrayUtils.unionWith(e.props.dataSourcesList[a].selected,t)}),t=i.ArrayUtils.intersectionWith(t,this.state.items)},t.prototype.getTotalItemsForAllDataSource=function(){m.trace("getTotalItemsForAllDataSource");var e=0;return this.props.dataSourcesList.map(function(t){var r=0;if(t){if(t instanceof d.PaginateDataSource){var a=t;r=a&&a.pagination&&a.pagination.totalItems?a.pagination.totalItems:0}else r=t.results?t.results.length:0;e+=r}}),e},t.prototype.getTotalSelectedItemsForAllDataSource=function(){m.trace("getTotalSelectedItemsForAllDataSource");var e=0;return this.props.dataSourcesList.map(function(t){t&&(e+=t.selected?t.selected.length:0)}),e},t}(l.HornetComponent);t.Header=f},function(e,t,r){var a="undefined"!=typeof JSON?JSON:r(445);e.exports=function(e,t){t||(t={}),"function"==typeof t&&(t={cmp:t});var r=t.space||"";"number"==typeof r&&(r=Array(r+1).join(" "));var n="boolean"==typeof t.cycles&&t.cycles,o=t.replacer||function(e,t){return t},l=t.cmp&&function(e){return function(t){return function(r,a){var s={key:r,value:t[r]},i={key:a,value:t[a]};return e(s,i)}}}(t.cmp),c=[];return function e(t,u,h,p){var d=r?"\n"+new Array(p+1).join(r):"",m=r?": ":":";if(h&&h.toJSON&&"function"==typeof h.toJSON&&(h=h.toJSON()),void 0!==(h=o.call(t,u,h))){if("object"!=typeof h||null===h)return a.stringify(h);if(s(h)){for(var f=[],v=0;v<h.length;v++){var g=e(h,v,h[v],p+1)||a.stringify(null);f.push(d+r+g)}return"["+f.join(",")+d+"]"}if(-1!==c.indexOf(h)){if(n)return a.stringify("__cycle__");throw new TypeError("Converting circular structure to JSON")}c.push(h);for(var y=i(h).sort(l&&l(h)),f=[],v=0;v<y.length;v++){var u=y[v],E=e(h,u,h[u],p+1);if(E){var b=a.stringify(u)+m+E;f.push(d+r+b)}}return c.splice(c.indexOf(h),1),"{"+f.join(",")+d+"}"}}({"":e},"",e,0)};var s=Array.isArray||function(e){return"[object Array]"==={}.toString.call(e)},i=Object.keys||function(e){var t=Object.prototype.hasOwnProperty||function(){return!0},r=[];for(var a in e)t.call(e,a)&&r.push(a);return r}},,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t,r){this.page=e,this.method=t,this.fetchAttrName=r}return e}();t.DataSourceConfigPage=a},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a,s=r(1),i=r(0),n=r(2),o=r(304),l=r(371),c=r(6),u=r(9),h=r(340),p=r(368),d=r(325),m=i.Utils.getLogger("hornet-js-react-components.widget.form.auto-complete-field");!function(e){e[e.beginWith=1]="beginWith",e[e.indexOf=2]="indexOf"}(a=t.FilterTextType||(t.FilterTextType={}));var f=function(e){function t(t,r){var a=e.call(this,t,r)||this,s=t.name+"_select";return a.state.choices=[],a.state.selectedIndex=null,a.state.shouldShowChoices=!1,a.state.ariaSelectorId=s,a.state.isApiLoading=!1,a.props.dataSource.results&&(a.state.allChoices=a.props.dataSource.results),a.autoCompleteState=new h.AutoCompleteState,a}return s.__extends(t,e),t.prototype.setIsApiLoading=function(e,t){return this.setState({isApiLoading:e},t),this},t.prototype.setChoices=function(e,t){return this.setState({choices:e},t),this},t.prototype.componentDidMount=function(){i.Utils.isServer||c.isUndefined(this.props.var)||m.warn("The var props is only available in DEV"),this.mounted=!0,m.trace("auto-complete componentDidMount"),this._throttledTriggerAction=c.throttle(this.triggerAction,this.state.delay),this.props.dataSource.on("fetch",this.fetchEventCallback),this.props.dataSource.on("add",this.addEventCallback),this.props.dataSource.on("delete",this.setResultCallback),this.props.dataSource.on("sort",this.setResultCallback),this.props.dataSource.on("filter",this.filterEventCallback),this.props.dataSource.on("init",this.initEventCallback),this.props.dataSource.on("loadingData",this.displaySpinner)},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.mounted=!1,this.props.dataSource.removeListener("fetch",this.fetchEventCallback),this.props.dataSource.removeListener("add",this.addEventCallback),this.props.dataSource.removeListener("filter",this.filterEventCallback),this.props.dataSource.removeListener("init",this.initEventCallback),this.props.dataSource.removeListener("delete",this.setResultCallback),this.props.dataSource.removeListener("sort",this.setResultCallback),this.props.dataSource.removeListener("loadingData",this.displaySpinner)},t.prototype.componentWillUpdate=function(t,r,a){e.prototype.componentWillUpdate.call(this,t,r,a),this.state.delay!=r.delay&&(this._throttledTriggerAction=c.throttle(this.triggerAction,r.delay))},t.prototype.shouldComponentUpdate=function(t,r,a){return e.prototype.componentWillUpdate.call(this,t,r,a),!(!(this.state.shouldShowChoices!=r.shouldShowChoices||this.state.listDefaultValue!==r.listDefaultValue||r.choices&&!this.state.choices||!r.choices&&this.state.choices||r.choices&&this.state.choices.length!=r.choices.length)&&c.isEqual(r.choices,this.state.choices)&&this.state.errors==r.errors&&this.state.readOnly==r.readOnly&&this.state.disabled==r.disabled)},t.prototype.renderWidget=function(){m.trace("auto-complete  render");var e=this.shouldShowChoices(),t=this.hasErrors()?" has-error":"",r=" autocomplete-content"+t;this.state.className&&(r+=" "+this.state.className);var a=this.getHtmlProps();return a=c.assign(a,{onKeyDown:this.handleOnKeyDown,onFocus:this.handleOnFocus,onBlur:this.handleOnBlur,onDoubleClick:this.handleOnFocus,onClick:this.handleOnFocus,onChange:this.handleChangeTextInput,autoComplete:"off","aria-autocomplete":"list","aria-expanded":e,"aria-owns":this.state.ariaSelectorId,"aria-activedescendant":e?this.state.ariaSelectorId+"_"+this.state.selectedIndex:void 0,id:this.state.id?this.state.id:this.getFreeTypingFieldName(),type:"text",name:this.getFreeTypingFieldName(),className:r}),n.createElement("div",{className:"autocomplete-container"},n.createElement("input",{type:"hidden",name:this.getValueFieldName(),ref:this.registerHiddenInput}),n.createElement("input",s.__assign({},a,{ref:this.registerTextInput,readOnly:!this.props.writable,"data-writable":this.props.writable})),n.createElement(l.AutoCompleteSelector,{ref:"selector",choices:this.state.choices,onOptionSelected:this.onListWidgetSelected,selectorId:this.state.ariaSelectorId,maxHeight:this.props.maxHeight,showComponent:e,choicesSelected:this.state.listDefaultValue,autoCompleteState:this.autoCompleteState,disabled:this.state.disabled||this.state.readOnly,noResultLabel:this.state.noResultLabel}))},t.prototype.fetchEventCallback=function(e){this.choicesLoaderCallback(e),this.props.writable&&(this.state.onListWidgetSelected?this.prepareChoices(!1):this.prepareChoices(!0)),this.state.onListWidgetSelected=!1},t.prototype.addEventCallback=function(e){this.setResultCallback(e)},t.prototype.setResultCallback=function(e){this.state.allChoices=this.props.dataSource.results},t.prototype.filterEventCallback=function(e){this.state.allChoices=e,this.choicesLoaderCallback(e)},t.prototype.initEventCallback=function(e){this.state.allChoices=e},t.prototype.getCurrentText=function(){var e="";return this.textInput&&(e=this.textInput.value),e},t.prototype.setCurrentText=function(e){this.textInput.value=e},t.prototype.resetField=function(){return this.resetSelectedValue(),this.resetSelectedText(),this.state.selectedIndex=-1,this},t.prototype.resetSelectedValue=function(){this.hiddenInput&&(this.hiddenInput.value=""),this.autoCompleteState.choiceFocused=null,this.state.selectedIndex=-1},t.prototype.resetSelectedText=function(){this.textInput&&(this.textInput.value=""),this.refs.selector&&this.refs.selector.setCurrentTypedText("")},t.prototype.handleOnKeyDown=function(e){this.state.onKeyDown&&this.state.onKeyDown(event);var t=e.keyCode,r=!0===this.state.shouldShowChoices;t==u.KeyCodes.DOWN_ARROW?(e.altKey?(this.autoCompleteState.setFocusOn(this.state.selectedIndex,this.hiddenInput.value,null),this.showChoices()):(this.navigateInChoices(1),this.isUpdated=!0),e.preventDefault()):t==u.KeyCodes.UP_ARROW?(e.altKey?this.hideChoices():(this.navigateInChoices(-1),this.isUpdated=!0),e.preventDefault()):t==u.KeyCodes.ESCAPE?(this.hiddenInput.value&&(this.selectedChoice(this.hiddenInput.value),this.selectCurrentIndex()),this.hideChoices(),e.preventDefault()):t==u.KeyCodes.ENTER?this.state.shouldShowChoices&&this.state.writable&&(e.preventDefault(),this.validateSelectedValue(r)):t!=u.KeyCodes.SPACEBAR||this.state.writable?t==u.KeyCodes.TAB&&!e.shiftKey&&this.state.shouldShowChoices?this.tabHandlerForValueChange(e,r):t==u.KeyCodes.TAB&&e.shiftKey?this.tabHandlerForValueChange(e,r):t==u.KeyCodes.HOME?(r?(this.state.selectedIndex=null,this.navigateInChoices(1)):(this.state.selectedIndex=0,this.selectCurrentIndex(),this.hideChoices()),this.isUpdated=!0,e.preventDefault()):t==u.KeyCodes.END&&(r?(this.state.selectedIndex=null,this.navigateInChoices(-1)):(this.state.selectedIndex=this.state.choices.length-1,this.selectCurrentIndex(),this.hideChoices()),this.isUpdated=!0,e.preventDefault()):this.state.shouldShowChoices&&(e.preventDefault(),this.validateSelectedValue(r))},t.prototype.tabHandlerForValueChange=function(e,t){this.isUpdated?(this.validateSelectedValue(t),this.isUpdated=!1):(this.selectCurrentIndex(),this.hideChoices())},t.prototype.validateSelectedValue=function(e){var t=this;if(e){this.state.selectedIndex||this.state.choices.map(function(e,r){e.text==t.getCurrentText()&&(t.state.selectedIndex=r)});var r=this.state.choices[this.state.selectedIndex]||this.state.allChoices[this.state.selectedIndex];null!=r?(this.setCurrentValue(r.value),this.props.dataSource.select(r.value)):(this.setCurrentValue(null),this.props.dataSource.select(null)),this.selectCurrentIndex(),this.hideChoices()}else this.showChoices()},t.prototype.handleOnFocus=function(e){var t=this;this.typedValueOnFocus=this.getCurrentText(),this.state.focused=!0,this.showChoices(),this.state.onFocus&&this.state.onFocus(e),this.state.allChoices?this.isValidText(this.typedValueOnFocus)||!this.props.writable?(m.trace("auto-complete : prise en compte du texte présent au focus : ",this.typedValueOnFocus),this.props.dataSource.status?(!this.props.writable||0==this.state.choices.length&&this.hiddenInput.value)&&this.setChoices(this.state.allChoices,function(){if(t.state.allChoices.length>0){var e=c.findIndex(t.state.allChoices,{text:t.typedValueOnFocus});t.state.selectedIndex=void 0===e?-1:e,t.showChoices(),t.changeSelectedChoiceWhenOneChoice(t.typedValueOnFocus)}}):this.props.dataSource.init(),this.changeSelectedChoiceWhenOneChoice(this.typedValueOnFocus)):this.setChoices(this.state.allChoices,function(){t.state.allChoices.length>0&&(t.showChoices(),t.state.selectedIndex=-1,t.autoCompleteState.setFocusOn(t.state.selectedIndex,"",null))}):this.showChoices(),this.hiddenInput&&0!=this.hiddenInput.value.length&&this.textInput&&0!=this.textInput.value.length?(this.state.selectedIndex=c.findIndex(this.state.allChoices,{text:this.typedValueOnFocus}),this.autoCompleteState.setFocusOn(this.state.selectedIndex,this.hiddenInput.value,null)):(this.clearFilterData(),this.state.selectedIndex=-1,this.autoCompleteState.setFocusOn(this.state.selectedIndex,"",null))},t.prototype.handleOnBlur=function(e){this.state.focused=!1,this.state.onBlur&&this.state.onBlur(e);var t=this.getCurrentText();this.state.allChoices&&this.state.allChoices.filter(function(e){var r=!1;return e.text||(r=e.text.toLowerCase()===t.toLowerCase()),r}),this.hiddenInput&&this.hiddenInput.value&&0!=this.hiddenInput.value.length?this.props.dataSource.select(this.hiddenInput.value):(this.clearFilterData(),this.state.isShiftTab||this.props.dataSource.select(null)),this.hideChoices(),this.isUpdated=!1},t.prototype.clearFilterData=function(){this.props.dataSource instanceof p.DataSourceMaster&&this.props.dataSource.getSlaves().forEach(function(e){e.emit("filter",[])})},t.prototype.handleChangeTextInput=function(e){var t=this;m.trace("auto-complete handleChangeTextInput"),this.resetSelectedValue(),this.state.selectedIndex=null,this.state.onChange&&this.state.onChange(e);var r=this.getCurrentText();this.clearFilterData(),this.isUpdated=!0,this.refs.selector&&this.refs.selector.setCurrentTypedText(r),this.isValidText(r)?(m.trace("auto-complete : prise en compte du texte saisi : ",r),this._throttledTriggerAction(r)):this.hideChoices(),0==r.length&&this.setChoices(this.state.allChoices,function(){t.state.allChoices.length>0?t.showChoices():t.props.dataSource.select(null)})},t.prototype.changeSelectedChoiceWhenOneChoice=function(e){this.state.choices&&this.state.choices[0]&&1===this.state.choices.length&&c.deburr(e).toLowerCase()==c.deburr(this.state.choices[0].text).toLowerCase()&&(this.changeSelectedChoice(this.state.choices[0]),this.props.dataSource.select(this.state.choices[0].value),this.autoCompleteState.setFocusOn(0,this.state.choices[0].value,0))},t.prototype.setCurrentValue=function(t){return e.prototype.setCurrentValue.call(this,t),this.setState({listDefaultValue:t}),this},t.prototype.triggerAction=function(e){this.setIsApiLoading(!0),this.props.dataSource.fetch(!0,e,!0)},t.prototype.isMaxElementNumberReached=function(e){return this.state.maxElements&&e>=this.state.maxElements},t.prototype.prepareChoices=function(e){var t=this;void 0===e&&(e=!0);var r=[],a=0;this.state.choices&&this.state.choices.map(function(e){t.findText(e,t.getCurrentText().toLowerCase())&&!t.isMaxElementNumberReached(a)&&(r.push(e),a++)}),this.setChoices(r,function(){r.length>0&&e?(t.changeSelectedChoiceWhenOneChoice(t.getCurrentText()),t.showChoices()):(t.hiddenInput.value="",t.props.dataSource.select(null),t.showChoices())})},t.prototype.choicesLoaderCallback=function(e){this.setIsApiLoading(!1),this.setChoices(e)},t.prototype.startsWithText=function(e,t){var r=e&&e.text?e.text.toLowerCase():null;return c.startsWith(r,t)},t.prototype.indexOfText=function(e,t){var r=e&&e.text?e.text.toLowerCase():null;return!!(r&&r.indexOf(t)>=0)},t.prototype.findText=function(e,t){return"function"==typeof this.props.filterText?this.props.filterText(e,t):this.props.filterText==a.beginWith?this.startsWithText(e,t):this.props.filterText==a.indexOf&&this.indexOfText(e,t)},t.prototype.changeSelectedChoice=function(e){this.refs.selector&&this.refs.selector.setCurrentTypedText(""),this.textInput.value=e?e.text:"",this.hiddenInput.value=e?e.value:""},t.prototype.selectedChoice=function(e){var t=null;this.state.choices&&(this.state.choices.map(function(r,a){r.value==e&&(t=a)}),this.setCurrentValue(e))},t.prototype.onListWidgetSelected=function(e){var t=e.currentTarget.getAttribute("data-real-text"),r=e.currentTarget.getAttribute("data-real-value");if(r){m.trace("Selection click [",r,"]:",t);var a=c.findIndex(this.state.choices,{text:t});this.state.selectedIndex=a,this.autoCompleteState.choiceFocused=a,this.changeSelectedChoice({text:t,value:r}),this.hiddenInput.value=r,this.selectedChoice(r),this.props.dataSource.select(r)}this.state.onListWidgetSelected=!0,this.hideChoices()},t.prototype.isValidText=function(e){return null!=e&&e.length>=this.state.minValueLength},t.prototype.navigateInChoices=function(e){var t=this,r=null===this.state.selectedIndex?1===e?0:e:this.state.selectedIndex+e,a=this.state.choices?this.state.choices.length:0;r<0?r=a-1:r>=a&&(r=0),this.setState({selectedIndex:r},function(){if(t.selectCurrentIndex(),!t.state.shouldShowChoices){var e=t.state.choices[t.state.selectedIndex];null!=e&&(t.changeSelectedChoice(e),t.setCurrentValue(e.value))}t.autoCompleteState.setFocusOn(t.state.selectedIndex,t.hiddenInput.value,r)}),this.state.shouldShowChoices&&this.showChoices()},t.prototype.selectCurrentIndex=function(){var e=(this.state.choices||[])[this.state.selectedIndex];return null!=e&&(this.changeSelectedChoice(e),!0)},t.prototype.showChoices=function(){!0!==this.state.shouldShowChoices&&this.state.focused&&(!this.isValidText(this.textInput.value)&&0!=this.textInput.value.length&&this.props.writable||this.setState({shouldShowChoices:!0}))},t.prototype.hideChoices=function(){!1!==this.state.shouldShowChoices&&this.setState({shouldShowChoices:!1})},t.prototype.shouldShowChoices=function(){return!0===this.state.shouldShowChoices},t.prototype.getValueFieldName=function(){return this.state.name+"."+this.state.valueKey},t.prototype.getFreeTypingFieldName=function(){return this.state.name+"."+this.state.labelKey},t.prototype.renderErrors=function(){var e={errors:this.state.errors,fieldName:this.getFreeTypingFieldName()},t={errors:this.state.errors,fieldName:this.state.name},r=this.state.errorComponent;return n.createElement("div",null,n.createElement(r,s.__assign({},e)),n.createElement(r,s.__assign({},t)))},t.prototype.registerHiddenInput=function(e){this.hiddenInput=e,this.registerHtmlElement(e)},t.prototype.registerTextInput=function(e){this.textInput=e},t.prototype.setFocus=function(){return this.state.focused=!0,this.textInput.focus(),this},t.prototype.hasErrors=function(){var e=null;return this.state.errors&&(e=this.state.errors.filter(function(e){var t=this.state.name+"."+this.state.labelKey;return e.field==t||e.field==this.state.name},this)),!!(e&&e.length>0)},t.defaultProps=c.assign({minValueLength:1,readOnly:!1,disabled:!1,delay:1e3,valueKey:"value",labelKey:"text",maxHeight:null,writable:!0,filterText:a.indexOf},o.AbstractField.defaultProps),t}(d.AbstractFieldDatasource);t.AutoCompleteField=f},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(304),n=r(6),o=r(17),l=r(9),c=function(e){function t(t,r){var a=e.call(this,t,r)||this;return t.readOnly&&a.copyInitialPropsToState({readOnly:!0,disabled:!0},a.state),a.props.labelOnOff||(a.state.labelOnOff={on:a.i18n("form.checkbox.booleanOui"),off:a.i18n("form.checkbox.booleanNon")}),a}return a.__extends(t,e),t.prototype.renderWidget=function(){var e=o(this.state.groupClass,"checkbox-container",{inline:this.state.inline==i.InlineStyle.ALL||this.state.inline==i.InlineStyle.FIELD,readonly:this.state.readOnly}),t=this.getHtmlProps();null!=this.state.currentChecked&&n.assign(t,{defaultChecked:this.state.currentChecked}),this.state.readOnly&&!this.state.disabled&&(t.disabled=!0);var r;return this.state.readOnly&&delete t.onChange,r=this.state.switch?this.renderSwitch(t):this.renderCheckbox(t),s.createElement("section",{className:e},r)},t.prototype.renderSwitch=function(e){var t=this,r=this.state.labelOnOff.on,i=this.state.labelOnOff.off;return s.createElement("div",{className:"switch-content"},s.createElement("label",{className:"switch",onKeyDown:this.handleKeyDown},s.createElement("input",a.__assign({ref:function(e){return t.registerHtmlElement(e)},type:"checkbox",className:"switch-input"},e,{value:"true"})),s.createElement("span",{"data-off":i,"data-on":r,className:"switch-label"}),s.createElement("span",{className:"switch-handle"})))},t.prototype.renderCheckbox=function(e){var t=this,r={check:!0,readonly:this.state.readOnly};return s.createElement("div",{className:"checkbox-container"},s.createElement("label",{className:"checkbox-content",onKeyDown:this.handleKeyDown},s.createElement("input",a.__assign({ref:function(e){return t.registerHtmlElement(e)},type:"checkbox"},e,{value:"true"})),s.createElement("span",{className:"checkbox-material"},s.createElement("span",{className:o(r)}))))},t.prototype.handleKeyDown=function(e){e.keyCode==l.KeyCodes.ENTER&&(this.setCurrentChecked(!this.getCurrentValue()),e.preventDefault(),e.stopPropagation())},t.defaultProps=n.assign(i.AbstractField.defaultProps,{switch:!1}),t}(i.AbstractField);t.CheckBoxField=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.render=function(){var e,t=this;return e=this.state.errors?this.state.errors.filter(function(e){return e.field==this.state.fieldName&&!this.state.hideError},this):new Array(0),e.length>0?s.createElement("div",{className:"fielderror-container"},e.map(function(e){return s.createElement("div",{key:e.id,className:"fielderror-content formmgr-message-text",id:t.props.fieldName+"-error"},e.text)})):null},t.defaultProps={errors:new Array(0)},t}(i.HornetComponent);t.FieldError=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(354),s=r(6);t.HTML_ATTRIBUTES=s.assign(a.HtmlAttributes.HTML_NON_STANDARD_ATTRIBUTES,a.HtmlAttributes.HTML_RDFA_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_CONFIG_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_PRESENTATION_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_FORM_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_GLOBAL_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_MEDIA_ATTRIBUTES,a.HtmlAttributes.HTML_STANDARD_META_ATTRIBUTES,a.HtmlAttributes.REACT_CLIPBOARD_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_COMPOSE_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_FOCUS_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_FORM_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_IMAGE_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_KEYBOARD_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_MEDIA_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_BASIC_MOUSE_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_DRAG_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_SELECT_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_TOUCH_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_SCROLL_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_WHEEL_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_ANIMATION_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_TRANSITION_DOM_ATTRIBUTES,a.HtmlAttributes.REACT_BASIC_DOM_ATTRIBUTES)},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.HTML_STANDARD_CONFIG_ATTRIBUTES={accept:"",acceptCharset:"",action:"",autoComplete:"",charSet:"",challenge:"",checked:!0,classID:"",dateTime:"",default:!0,defer:!0,disabled:!0,download:null,encType:"",high:1,href:"",hrefLang:"",htmlFor:"",inputMode:"",integrity:"",is:"",keyParams:"",keyType:"",list:"",low:1,manifest:"",method:"",multiple:!0,name:"",open:!0,optimum:1,pattern:"",placeholder:"",radioGroup:"",readOnly:!0,rel:"",role:"",sandbox:"",scrolling:"",seamless:!0,sizes:"",summary:"",target:"",type:"",useMap:""},t.HTML_STANDARD_FORM_ATTRIBUTES={form:"",formAction:"",formEncType:"",formMethod:"",formNoValidate:!0,formTarget:"",noValidate:!0,required:!0,wrap:""},t.HTML_STANDARD_GLOBAL_ATTRIBUTES={accessKey:"",className:"",contentEditable:!0,contextMenu:"",data:"",dir:"",draggable:!0,hidden:!0,id:"",lang:"",spellCheck:!0,style:null,tabIndex:1,title:""},t.HTML_STANDARD_MEDIA_ATTRIBUTES={allowFullScreen:!0,allowTransparency:!0,async:!0,autoPlay:!0,capture:!0,controls:!0,coords:"",crossOrigin:"",kind:"",label:"",loop:!0,media:"",mediaGroup:"",muted:!0,poster:"",preload:"",src:"",srcLang:"",srcSet:"",wmode:""},t.HTML_STANDARD_META_ATTRIBUTES={content:"",httpEquiv:""},t.HTML_STANDARD_PRESENTATION_ATTRIBUTES={alt:"",autoFocus:!0,cellPadding:"",cellSpacing:"",cols:1,colSpan:1,frameBorder:"",headers:"",height:"",icon:"",marginHeight:1,marginWidth:1,max:"",maxLength:1,min:"",minLength:1,rows:1,rowSpan:1,scope:"",scoped:!0,selected:!0,shape:"",size:1,span:1,srcDoc:"",start:1,step:"",width:""},t.HTML_RDFA_ATTRIBUTES={about:"",datatype:"",inlist:null,prefix:"",property:"",resource:"",typeof:"",vocab:""},t.HTML_NON_STANDARD_ATTRIBUTES={autoCapitalize:"",autoCorrect:"",autoSave:"",color:"",itemProp:"",itemScope:!0,itemType:"",itemID:"",itemRef:"",results:1,security:"",unselectable:!0},t.REACT_CLIPBOARD_DOM_ATTRIBUTES={onCopy:null,onCut:null,onPaste:null},t.REACT_COMPOSE_DOM_ATTRIBUTES={onCompositionEnd:null,onCompositionStart:null,onCompositionUpdate:null},t.REACT_FOCUS_DOM_ATTRIBUTES={onFocus:null,onBlur:null},t.REACT_FORM_DOM_ATTRIBUTES={onChange:null,onInput:null,onSubmit:null},t.REACT_IMAGE_DOM_ATTRIBUTES={onLoad:null,onError:null},t.REACT_KEYBOARD_DOM_ATTRIBUTES={onKeyDown:null,onKeyPress:null,onKeyUp:null},t.REACT_MEDIA_DOM_ATTRIBUTES={onAbort:null,onCanPlay:null,onCanPlayThrough:null,onDurationChange:null,onEmptied:null,onEncrypted:null,onEnded:null,onLoadedData:null,onLoadedMetadata:null,onLoadStart:null,onPause:null,onPlay:null,onPlaying:null,onProgress:null,onRateChange:null,onSeeked:null,onSeeking:null,onStalled:null,onSuspend:null,onTimeUpdate:null,onVolumeChange:null,onWaiting:null},t.REACT_BASIC_MOUSE_DOM_ATTRIBUTES={onClick:null,onContextMenu:null,onDoubleClick:null,onMouseDown:null,onMouseEnter:null,onMouseLeave:null,onMouseMove:null,onMouseOut:null,onMouseOver:null,onMouseUp:null},t.REACT_DRAG_DOM_ATTRIBUTES={onDrag:null,onDragEnd:null,onDragEnter:null,onDragExit:null,onDragLeave:null,onDragOver:null,onDragStart:null,onDrop:null},t.REACT_SELECT_DOM_ATTRIBUTES={onSelect:null},t.REACT_TOUCH_DOM_ATTRIBUTES={onTouchCancel:null,onTouchEnd:null,onTouchMove:null,onTouchStart:null},t.REACT_SCROLL_DOM_ATTRIBUTES={onScroll:null},t.REACT_WHEEL_DOM_ATTRIBUTES={onWheel:null},t.REACT_ANIMATION_DOM_ATTRIBUTES={onAnimationStart:null,onAnimationEnd:null,onAnimationIteration:null},t.REACT_TRANSITION_DOM_ATTRIBUTES={onTransitionEnd:null},t.REACT_BASIC_DOM_ATTRIBUTES={};var a=function(){function e(){}return e.HTML_STANDARD_CONFIG_ATTRIBUTES=t.HTML_STANDARD_CONFIG_ATTRIBUTES,e.HTML_STANDARD_FORM_ATTRIBUTES=t.HTML_STANDARD_FORM_ATTRIBUTES,e.HTML_STANDARD_GLOBAL_ATTRIBUTES=t.HTML_STANDARD_GLOBAL_ATTRIBUTES,e.HTML_STANDARD_MEDIA_ATTRIBUTES=t.HTML_STANDARD_MEDIA_ATTRIBUTES,e.HTML_STANDARD_META_ATTRIBUTES=t.HTML_STANDARD_META_ATTRIBUTES,e.HTML_STANDARD_PRESENTATION_ATTRIBUTES=t.HTML_STANDARD_PRESENTATION_ATTRIBUTES,e.HTML_RDFA_ATTRIBUTES=t.HTML_RDFA_ATTRIBUTES,e.HTML_NON_STANDARD_ATTRIBUTES=t.HTML_NON_STANDARD_ATTRIBUTES,e.REACT_CLIPBOARD_DOM_ATTRIBUTES=t.REACT_CLIPBOARD_DOM_ATTRIBUTES,e.REACT_COMPOSE_DOM_ATTRIBUTES=t.REACT_COMPOSE_DOM_ATTRIBUTES,e.REACT_FOCUS_DOM_ATTRIBUTES=t.REACT_FOCUS_DOM_ATTRIBUTES,e.REACT_FORM_DOM_ATTRIBUTES=t.REACT_FORM_DOM_ATTRIBUTES,e.REACT_IMAGE_DOM_ATTRIBUTES=t.REACT_IMAGE_DOM_ATTRIBUTES,e.REACT_KEYBOARD_DOM_ATTRIBUTES=t.REACT_KEYBOARD_DOM_ATTRIBUTES,e.REACT_MEDIA_DOM_ATTRIBUTES=t.REACT_MEDIA_DOM_ATTRIBUTES,e.REACT_BASIC_MOUSE_DOM_ATTRIBUTES=t.REACT_BASIC_MOUSE_DOM_ATTRIBUTES,e.REACT_DRAG_DOM_ATTRIBUTES=t.REACT_DRAG_DOM_ATTRIBUTES,e.REACT_SELECT_DOM_ATTRIBUTES=t.REACT_SELECT_DOM_ATTRIBUTES,e.REACT_TOUCH_DOM_ATTRIBUTES=t.REACT_TOUCH_DOM_ATTRIBUTES,e.REACT_SCROLL_DOM_ATTRIBUTES=t.REACT_SCROLL_DOM_ATTRIBUTES,e.REACT_WHEEL_DOM_ATTRIBUTES=t.REACT_WHEEL_DOM_ATTRIBUTES,e.REACT_ANIMATION_DOM_ATTRIBUTES=t.REACT_ANIMATION_DOM_ATTRIBUTES,e.REACT_TRANSITION_DOM_ATTRIBUTES=t.REACT_TRANSITION_DOM_ATTRIBUTES,e.REACT_BASIC_DOM_ATTRIBUTES=t.REACT_BASIC_DOM_ATTRIBUTES,e}();t.HtmlAttributes=a},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(308),i=r(452),n=r(440),o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.getHeaderCell=function(){return n.ActionHeaderCell},t.prototype.getBodyCell=function(){return i.ActionBodyCell},t.defaultProps=s.Column.mergeObjects(s.Column.defaultProps,{defaultStyle:{textAlign:"center",paddingLeft:0,width:"1.7em"},sortable:!1,hiddenable:!1}),t}(s.Column);t.ActionColumn=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(306),o=r(439),l=r(17),c=r(311),u=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.abstract-header-cell"),h=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.props.contentState.on(c.ContentState.TOGGLE_COLUMNS_EVENT,a.handleChangeHiddenColumns),a.props.contentState.on(c.ContentState.EDITION_CLIC_EVENT,a.handleEditionQuit),a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(e,t){return!0},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.props.contentState.removeListener(c.ContentState.EDITION_CLIC_EVENT,this.handleEditionQuit)},t.prototype.render=function(){return u.trace("render AbstractHeaderCell -> column:",this.props.coordinates.column," - line:",this.props.coordinates.row,"- isFocused:",this.state.isFocused,"- tabIndex:",this.state.tabIndex),i.createElement("th",a.__assign({},this.getDefaultThProps(-1)),this.renderCell())},t.prototype.renderCell=function(){return this.state.value},t.prototype.getDefaultThProps=function(e){var t=this;u.trace("Rendu Header column Tableau");var r={"datatable-header":!0,fixed:this.props.headerFixed};this.props.className&&(r[this.props.className]=!0);var a,s="none";if(this.props.sortable&&!this.props.contentState.itemInEdition){var i=this.isSortedColumn(this.props.sortData);r["datatable-header-sortable-column"]=!0,i&&(r["datatable-header-sorted"]=!0,this.props.sortData.dir==n.SortDirection.DESC?r["datatable-header-sorted-desc"]=!0:r["datatable-header-sorted-asc"]=!0),r["datatable-cell-custom"]=!0,r["datatable-cell-custom-"+this.props.keyColumn]=!0;var o=this.handleSortTitle(i,s);s=o.ariasort,a=o.title}r[this.props.id+"-"+this.props.keyColumn]=!0,r.is_disabled=void 0!==this.props.contentState.itemInEdition&&null!==this.props.contentState.itemInEdition;var c=this.props.id+"-colHeader-0-"+this.props.coordinates.column,h=this.getTabIndexFullKind();return{ref:function(e){e&&(t.tableCellRef=e)},className:l(r),onFocus:this.handleFocus.bind(this),onBlur:this.handleBlur.bind(this),onKeyDown:this.handleKeyDown.bind(this),style:this.props.style,key:c,title:a||this.state.title,"aria-sort":s,id:c,tabIndex:h}},t.prototype.handleSortTitle=function(e,t){var r;return e?this.props.sortData.dir==n.SortDirection.DESC?(r=this.i18n("table.ascending"),t="descending"):(r=this.i18n("table.descending"),t="ascending"):r=this.i18n("table.ascending"),{ariasort:t,title:this.getSortByTitle(this.props.title,r)}},t.prototype.getSortByTitle=function(e,t){return this.i18n(this.props.sortByTitle||this.i18n("table.sortByTitle"),{columnTitle:e.render?e.render():e,sortTitle:t})},t.prototype.isSortedColumn=function(e){var t=!1;return e&&e.key&&(t=!(!this.props.keyColumn||e.key!==this.props.keyColumn)),t},t.prototype.getTabIndexFullKind=function(){var e=this.props.contentState.firstVisibleColumnState.coordinates;return this.props.coordinates.column==e?0:-1},t.prototype.handleChangeHiddenColumns=function(e,t,r){t.coordinates==this.props.coordinates.column&&(this.tableCellRef.tabIndex=0),r&&r.coordinates==this.props.coordinates.column&&(this.tableCellRef.tabIndex=-1)},t.prototype.handleEditionQuit=function(e){e?this.setState({edition:!0}):this.setState({edition:!1})},t}(o.AbstractCell);t.AbstractHeaderCell=h},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=r(45),o=r(320),l=r(8),c=r(0),u=(c.Utils.getLogger("hornet-js-react-components.widget.table.toggle-columns-button"),function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.title=a.i18n("toggleColumnsButton.title"),a}return a.__extends(t,e),t.prototype.render=function(){return s.createElement(n.Dropdown,{id:"table-settings",icon:"ico-table-settings-white",items:this.configureDropDownItems(),position:n.Position.BOTTOMRIGHT,closeClick:!1,title:this.state.title})},t.prototype.renderDropDownItem=function(e){var t=!(this.props.hiddenColumns&&this.props.hiddenColumns[e.keyColumn]);"selectAll"===e.keyColumn&&(t=this.isAllChecked());var r={checked:t,onChange:e.action,title:e.label,name:this.props.columns.id+"-checkbox-"+e.keyColumn,id:this.props.columns.id+"-checkbox-"+e.keyColumn};return s.createElement("div",{className:"toggle-column-item-content"},s.createElement("div",{className:"toggle-column-item-checkbox fl"},s.createElement(o.CheckBox,a.__assign({},r))),s.createElement("div",{className:"toggle-column-item-label fl"},e.title))},t.prototype.componentDidMount=function(){var t=this;e.prototype.componentDidMount.call(this),this.state.columns.columns.map(function(e){var r=!t.state.hiddenColumns[e.keyColumn];l.fireHornetEvent(new l.HornetEvent("UPDATE_COLUMN_VISIBILITY").withData({column:e.keyColumn,isVisible:r}))})},t.prototype.configureDropDownItems=function(){var e=this,t=[];return this.props.selectAllItem&&t.push(this.configureSelectAllItem()),this.props.columns.columns.map(function(r,a){r.action=e.handleToggleColumn.bind(e,r.keyColumn,e.props.columns.id),t.push({label:e.renderDropDownItem(r),action:r.action,className:"material-dropdown-menu__link",key:r.id||a+"-table-settings-"+a})}),t},t.prototype.handleToggleAllColumns=function(){var e=this,t=document.getElementById(this.props.columns.id+"-checkbox-selectAll"),r=t.checked;Promise.resolve(this.props.columns.columns.map(function(t){e.toggleColumn(t.keyColumn,!r),e.toggleCheckBox(t.keyColumn,!r),l.fireHornetEvent(new l.HornetEvent("UPDATE_COLUMN_VISIBILITY").withData({column:t.keyColumn,isVisible:!r}))})).then(function(){e.toggleCheckBox("selectAll",!r)}),this.props.onChange&&this.props.onChange(this.getColumnsState()),this.state.contentState.setHiddenColumns(this.getColumnsState())},t.prototype.handleToggleColumn=function(e){var t=document.getElementsByName(this.props.columns.id+"-checkbox-"+e)[0];this.toggleColumn(e,!t.checked),this.toggleCheckBox(e,!t.checked),this.props.selectAllItem&&this.controlSelectAllChecked(),this.props.onChange&&this.props.onChange(this.getColumnsState()),l.fireHornetEvent(new l.HornetEvent("UPDATE_COLUMN_VISIBILITY").withData(e)),this.state.contentState.setHiddenColumns(this.getColumnsState())},t.prototype.controlSelectAllChecked=function(){var e=this,t=!0;this.props.columns.columns.map(function(r){if(t){var a=document.getElementsByName(e.props.columns.id+"-checkbox-"+r.keyColumn)[0];t=a.checked}}),this.toggleCheckBox("selectAll",t)},t.prototype.getColumnsState=function(){var e=this,t={};return this.props.columns.columns.map(function(r,a){var s=document.getElementsByName(e.props.columns.id+"-checkbox-"+r.keyColumn)[0];"selectAll"!==r.keyColumn&&(t[r.keyColumn]=!s.checked,s.checked||(t["hidden-"+a]=a))}),t},t.prototype.toggleColumn=function(e,t){for(var r=document.getElementsByClassName(this.props.columns.id+"-"+e),a=0;a<r.length;a++)r[a].style.display=t?"table-cell":"none";for(var s=document.getElementsByClassName(this.props.columns.id+"-tr-with-colspan"),i=this.getNbColumnsAlreadyDisplayed(),a=0;a<s.length;a++)s[a].childNodes[0].colSpan=i},t.prototype.toggleCheckBox=function(e,t){document.getElementsByName(this.props.columns.id+"-checkbox-"+e)[0].checked=t},t.prototype.getNbColumnsAlreadyDisplayed=function(){for(var e=document.getElementById(this.props.columns.id+"-tr-header").childNodes,t=e.length,r=0;r<e.length;r++)"none"==e[r].style.display&&t--;return t},t.prototype.configureSelectAllItem=function(){var e={keyColumn:"selectAll",label:this.i18n("dropdown.selectAll"),title:this.i18n("dropdown.selectAll"),action:this.handleToggleAllColumns};return{label:this.renderDropDownItem(e),action:e.action,className:"material-dropdown-menu__link",key:this.props.columns.id+"-table-settings-select-all"}},t.prototype.isAllChecked=function(){var e=this,t=!0;return this.props.hiddenColumns&&this.props.columns.columns.map(function(r){e.props.hiddenColumns[r.keyColumn]&&(t=!1)}),t},t.defaultProps={selectAllItem:!0},t}(i.HornetComponent));t.ToggleColumnsButton=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(4),o=r(9),l=(s.Utils.getLogger("hornet-js-component.widget.tool-tip.tool-tip"),function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.render=function(){var e=this.state.src||t.genUrlTheme(this.state.icoToolTip);return i.createElement("span",{onFocus:this.showTip,onMouseOver:this.showTip,onBlur:this.hideTip,onMouseLeave:this.hideTip,className:this.state.classSpan,"aria-haspopup":!0,role:"tooltip"},i.createElement("img",{id:this.state.idImg,alt:this.state.alt,src:e,className:this.state.classImg,tabIndex:0}),i.createElement("span",{id:this.state.idSpan,"data-tooltip":this.state.alt,role:"tooltip","aria-hidden":"true"}))},t.prototype.componentDidMount=function(){document.addEventListener("keydown",this.handleKeyDown,!1)},t.prototype.componentWillUnmount=function(){document.removeEventListener("keydown",this.handleKeyDown,!1)},t.prototype.handleKeyDown=function(e){e.keyCode==o.KeyCodes.ESCAPE&&this.hideTip(e)},t.prototype.hideTip=function(e){this.state.idSpan&&(document.getElementById(this.state.idSpan).setAttribute("aria-hidden","true"),document.getElementById(this.state.idSpan).style.display="none")},t.prototype.showTip=function(e){this.state.idSpan&&(document.getElementById(this.state.idSpan).setAttribute("aria-hidden","false"),document.getElementById(this.state.idSpan).style.display="inline")},t.defaultProps={classImg:"tooltip-image",classSpan:"tooltip",icoToolTip:"/img/tooltip/tooltip.svg"},t}(n.HornetComponent));t.ToolTip=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-utils - Partie commune et utilitaire à tous les composants hornet-js
- *
- * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
- * @license CECILL-2.1
- */
-var a=r(20),s=a.Register.getLogger("hornet-js-utils.template"),i=function(){function e(e){this.template=e,this.stringKey=[];for(var t=/(\$\{[^\{\}\s;]+\})/g,r=t.exec(this.template);r;)this.stringKey.push({key:r[0],index:r.index,keys:r[0].substring(2,r[0].length-1).split(/[\.\[\]]/)}),r=t.exec(this.template);s.trace("Template : ",this.template,"extract : ",this.stringKey)}return e.prototype.process=function(e,t){var r=this.template;for(var a in this.stringKey){var i=this.stringKey[a],n=e;for(var o in i.keys)if((o=i.keys[o])&&!(n=n[o])){n=t;break}r=r.replace(i.key,n)}return s.trace("Template generate : ",r),r},e}();t.Template=i},,,,,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(318),i=r(6),n=function(e){function t(t,r,a){var s=e.call(this,t,r,a)||this;return s.keysMap=r,s.options=a,s._datasources=[],s}return a.__extends(t,e),t.prototype.addSlave=function(e){this._datasources.push(e)},t.prototype.removeDatasource=function(e){i.remove(this._datasources,e)},t.prototype.getSlaves=function(){return this._datasources},t.prototype.select=function(t){if(e.prototype.select.call(this,t),this._datasources.length>0){var r=this.isDataSourceArray;i.map(this._datasources,function(e){e.fetch(!r,t)})}},t}(s.DataSource);t.DataSourceMaster=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
- * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
- *
- * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
- * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
- * @license CECILL-2.1
- */
-var a=r(401),s=function(){function e(t,r,a){void 0===a&&(a=e.DEFAULT_VALIDATION_OPTIONS),this.schema=t,this.customValidators=r,this.options=a}return e.prototype.validate=function(e){var t={valid:!0,errors:[]};if(this.schema){var s=a(this.options);r(381)(s),t.valid=s.validate(this.schema,e),t.errors=s.errors||[]}if(this.customValidators)for(var i in this.customValidators)if(this.customValidators[i]&&"function"!=typeof this.customValidators[i]){var n=this.customValidators[i].validate(e);!n.valid&&n.errors&&(t.errors=t.errors.concat(n.errors)),t.valid=t.valid&&n.valid}if(t.errors&&Array.isArray(t.errors))for(var i in t.errors)t.errors[i].dataPath=t.errors[i].dataPath.replace("'][",".").replace("['","").replace("]","");return t},e.transformRequiredStrings=function(e){var t;if(e){t=_.cloneDeep(e),t.required=t.required||[];for(var r in t.properties){var a=t.properties[r];!0===a.required&&"string"==a.type&&(a.minLength=1,-1==t.required.indexOf(r)&&t.required.push(r),delete a.required)}0==t.required.length&&delete t.required}return t},e.DEFAULT_VALIDATION_OPTIONS={v5:!0,allErrors:!0,coerceTypes:!0,useDefaults:!0,format:"full"},e}();t.DataValidator=s},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(4),n=r(6),o=(s.Utils.getLogger("hornet-js-react-components.widget.form.form"),function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.setReadOnly=function(e,t){return this.setState({readOnly:e},t),this.updateReadOnlyFields(e),this},t.prototype.setDisabled=function(e,t){return this.setState({disabled:e},t),this.updateDisabledFields(e),this},t.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this),this.propagateParentState()},t.prototype.registerForm=function(e){this.formElement=e,this.formElement&&(this.formElement.__component=this)},t.prototype.registerFieldSet=function(e){this.fieldSetElement=e,this.fieldSetElement&&(this.fieldSetElement.__component=this)},t.prototype.updateReadOnlyFields=function(e){var t=this.extractFields();return Object.keys(t).every(function(r){var a=t[r];return a.props&&a.props.writable&&!e?a.setState&&a&&a.mounted?a.setState({readOnly:e}):a.setReadOnly(e):"false"!==a.getAttribute("data-writable")?a.setReadOnly(e):a.setReadOnly(!0),!0}),this},t.prototype.updateDisabledFields=function(e){var t=this.extractFields();return Object.keys(t).every(function(r){var a=t[r];return a.setState&&a&&a.mounted?a.setState({disabled:e}):a.setDisabled(e),!0}),this},t.prototype.propagateParentState=function(){var e=this.extractFields();Object.keys(e).every(function(t){var r=e[t];return 1==this.state.readOnly&&r.setReadOnly(this.state.readOnly),1==this.state.disabled&&r.setDisabled(this.state.disabled),!0},this)},t.prototype.extractData=function(e){void 0===e&&(e=!0);var t={},r=this.extractFields();for(var a in r){var s=r[a].getCurrentValue();if(""==s&&e){var i=a.lastIndexOf(".");if(i>0){var o=a.substring(0,i);null==n.get(t,o)&&n.set(t,o,{})}}else n.set(t,a,s)}return t},t.defaultProps={readOnly:!1,disabled:!1},t}(i.HornetComponent));t.AbstractForm=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(17),n=r(6),o=r(4),l=r(320),c=r(340),u=r(2),h=s.Utils.getLogger("hornet-js-react-components.widget.form.auto-complete-selector"),p=function(e){function t(r,a){var s=e.call(this,r,a)||this;return s.noResultLabelDefault=t.getI18n("form.autoCompleteField.noResultLabel"),s.state.maxLengthItem=0,s.props.autoCompleteState.on(c.AutoCompleteState.FOCUS_CHANGE_EVENT,s.handleFocus),s.liElts=[],s.liReact=[],s.choicesSelected=[],s}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(t,r,a){return e.prototype.componentWillUpdate.call(this,t,r,a),!0},t.prototype.setChoices=function(e,t){return this.setState({choices:e},t),this},t.prototype.setOnOptionSelected=function(e,t){return this.setState({onOptionSelected:e},t),this},t.prototype.setCurrentTypedText=function(e,t){return this.setState({currentTypedText:e},t),this},t.prototype.setCurrentIndex=function(e,t){return this.setState({currentIndex:e},t),this},t.prototype.setSelectorId=function(e,t){return this.setState({selectorId:e},t),this},t.prototype.setShowComponent=function(e,t){return this.setState({showComponent:e},t),this},t.prototype.onListClick=function(e){return e.preventDefault(),this.state.onListClick=!0,this.state.onOptionSelected(e)},t.prototype.scrollDown=function(e,t){e.scrollTop+=t.offsetTop+t.offsetHeight-((e.scrollTop?e.scrollTop:5)+e.offsetHeight)+5},t.prototype.scrollUp=function(e,t){e.scrollTop-=(e.scrollTop?e.scrollTop:5)-t.offsetTop+5},t.prototype.scrollToBegin=function(e){e.scrollTop=0},t.prototype.scrollToEnd=function(e,t){e.scrollTop=e.offsetHeight-t.offsetHeight},t.prototype.isBefore=function(e,t){return t.offsetTop<(e.scrollTop?e.scrollTop:5)},t.prototype.isAfter=function(e,t){return t.offsetTop+t.offsetHeight>=(e.scrollTop?e.scrollTop:5)+e.offsetHeight},t.prototype.hasBigGap=function(e,t){return Math.abs(t.offsetTop-(e.scrollTop?e.scrollTop:5))>e.offsetHeight},t.prototype.goToElement=function(e,t){e.scrollTop=t.offsetTop-5},t.prototype.scrollToElement=function(e){var t=document.getElementById(this.state.selectorId);this.isBefore(t,e)?this.hasBigGap(t,e)?this.goToElement(t,e):this.scrollUp(t,e):this.isAfter(t,e)&&(this.hasBigGap(t,e)?this.goToElement(t,e):this.scrollDown(t,e)),this.setActive(e)},t.prototype.cleanActived=function(){var e=document.querySelectorAll("#"+n.replace(this.state.selectorId,".","\\.")+" .autocomplete-item-active");e&&n.forEach(e,function(e){e.className="autocomplete-item"})},t.prototype.setActive=function(e){this.cleanActived(),e&&(e.focus(),e.className="autocomplete-item autocomplete-item-active")},t.prototype.scrollToElementById=function(e){var t=document.getElementById(e);this.scrollToElement(t)},t.prototype.componentDidUpdate=function(){this.cleanActived();var e=document.getElementById(this.state.selectorId);if(!this.state.onListClick)if(void 0!==this.state.autoCompleteState.choiceFocused){var t=this.state.selectorId+"_"+this.state.autoCompleteState.choiceFocused,r=document.getElementById(t);this.setActive(r),r&&(r.className="autocomplete-item autocomplete-item-active",this.scrollToElement(r))}else e.scrollTop=5;this.state.onListClick=!1},t.prototype.renderOptionList=function(){var e=this;h.trace("render AutoCompleteSelector option list");var t=[];return this.state.choices&&this.state.choices.forEach(function(r,a){if(r){var s=n.deburr(r.text).toLowerCase(),o=n.deburr(e.state.currentTypedText).toLowerCase(),l=s.indexOf(o);if(-1===l){if(""!=o)return null;l=0}var c={"autocomplete-item":!0},h=i(c);t.push(u.createElement("li",{onMouseDown:e.props.readOnly||e.props.disabled?null:e.onListClick,id:e.state.selectorId+"_"+a,className:h,"data-real-text":r.text,"data-real-value":r.value,role:"option",key:"autocomplete-"+r.text+"-"+r.value,ref:function(t){null!=t&&e.liElts.push(t)}},r.text?r.text.substring(0,l):"",u.createElement("b",null,e.state.currentTypedText),r.text?r.text.substring(l+e.state.currentTypedText.length):""))}}),t},t.prototype.multiClick=function(){this.state.onListClick=!0},t.prototype.renderOptionMultipleList=function(){var e=this;h.trace("render AutoCompleteSelector option multiple");var t=[];return this.state.choices&&this.state.choices.forEach(function(r,a){if(r){var s=n.deburr(r.text).toLowerCase(),o=n.deburr(e.state.currentTypedText).toLowerCase();if(-1===s.indexOf(o))return null;var c={"autocomplete-item":!0,"autocomplete-item-active":e.props.autoCompleteState.choiceFocused===a},h=!1;n.indexOf(e.props.choicesSelected,r.value)>-1&&(h=!0);var p=i(c);t.push(u.createElement("li",{onMouseDown:e.props.readOnly||e.props.disabled?null:e.onListClick,id:e.state.selectorId+"_"+a,className:p,"data-real-text":r.text,"data-real-value":r.value,role:"option",key:"autocomplete-"+r.text+"-"+r.value,ref:function(t){null!=t&&e.liElts.push(t)}},u.createElement(l.CheckBox,{onMouseUp:e.multiClick,label:r.text,onChange:function(){},checked:h,readOnly:e.props.readOnly,disabled:e.props.disabled})))}}),t},t.prototype.render=function(){h.trace("render AutoCompleteSelector"),this.liElts=[],this.liReact=this.props.isMultiple?this.renderOptionMultipleList():this.renderOptionList();var e={"autocomplete-selector":!0,"widget-positioned":!0,"autocomplete-selector-hidden":!1===this.state.showComponent},t=i(e),r={minWidth:"100%",maxHeight:this.props.maxHeight?this.props.maxHeight+"px":"none"};this.props.maxHeight&&(r.overflow="auto");var a={"autocomplete-content-selector":!0},s=u.createElement("div",{style:{fontStyle:"italic"}},this.state.noResultLabel?this.state.noResultLabel:this.noResultLabelDefault),n=i(a);return u.createElement("div",{className:t},u.createElement("div",{className:n},u.createElement("ul",{className:"autocomplete-selector-list",role:"listbox",id:this.state.selectorId,style:r},this.liReact.length>0?this.liReact:s)))},t.prototype.handleFocus=function(e,t,r,a){if(r&&r.length>0){var s=document.querySelector("#"+n.replace(this.state.selectorId,".","\\.")+" [data-real-value='"+r+"']");if(s){this.scrollToElement(s);var i=n.findIndex(this.liElts,s);this.state.autoCompleteState.choiceFocused=i,this.setFocusElement(s)}}else if(void 0!==t&&null!=t&&t>=0&&this.liElts.length>0){var s=this.liElts[t];s&&this.props.isMultiple?this.setFocusElement(s):s&&s.getAttribute("data-real-value")===r&&this.setFocusElement(s)}else this.scrollToBegin(document.getElementById(this.state.selectorId))},t.prototype.setFocusElement=function(e){this.scrollToElement(e)},t.defaultProps={onOptionSelected:function(e){e.preventDefault()},currentTypedText:"",showComponent:!0,choices:[],readOnly:!1,disabled:!1},t}(o.HornetComponent);t.AutoCompleteSelector=p},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.setClassName=function(e,t){return this.setState({className:e},t),this},t.prototype.getPureChildFraction=function(){var e=0;return s.Children.forEach(this.state.children,function(t){var r=1;if(t&&t.props){if(t.props.groupClass){var a=t.props.groupClass.split("-");a.length&&a.length-1&&!isNaN(a[a.length-1])&&(r=a[a.length-1])}e+=Number(r)}}),e},t.prototype.render=function(){var e=this.getPureChildFraction(),t="has-gutter "+this.state.className;return 1!=e&&(t+="-"+e),s.createElement("div",{className:t},s.Children.map(this.state.children,function(e,t){if(e&&e.props&&e.props.name){var r={groupClass:e.props.groupClass||""};return s.cloneElement(e,r)}return e}))},t.defaultProps={className:"grid"},t}(i.HornetComponent);t.Row=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(325),n=r(6),o=r(327),l=function(e){function t(t,r){var a=e.call(this,t,r)||this;if(a.state.dataSource&&a.state.data)throw new Error("Le SelectField "+a.state.name+" possède une props dataSource et une props data");return a}return a.__extends(t,e),t.prototype.setData=function(e,t){return this.setState({data:e},t),this},t.prototype.setValueKey=function(e,t){return this.setState({valueKey:e},t),this},t.prototype.setLabelKey=function(e,t){return this.setState({labelKey:e},t),this},t.prototype.processHtmlProps=function(t){e.prototype.processHtmlProps.call(this,t),!0===t.readOnly&&(t.disabled=!0)},t.prototype.renderOptionsDataSource=function(){if(this.state.items&&this.state.items.length>0)return this.state.items.map(this.renderOption)},t.prototype.renderOption=function(e){var t=o.ObjectUtils.getSubObject(e,this.state.valueKey),r=o.ObjectUtils.getSubObject(e,this.state.labelKey),i=null!=t&&t.toString?t.toString():"",n=null!=r&&r.toString?r.toString():i,l={key:this.state.name+"-"+n+"-"+i,value:i};return s.createElement("option",a.__assign({},l),n)},t.prototype.renderWidget=function(){var e=this,t=this.hasErrors()?" has-error":"",r=this.getHtmlProps();n.assign(r,{className:r.className?r.className+" selectfield"+t:" selectfield"+t});var i=this.state.data&&this.state.data.length>0,o=this.state.dataSource&&this.state.dataSource.results&&this.state.dataSource.results.length>0;return s.createElement("select",a.__assign({ref:function(t){return e.registerHtmlElement(t)}},r),o?this.renderOptionsDataSource():null,i?this.state.data.map(this.renderOption):null)},t.defaultProps=n.assign(n.cloneDeep(i.AbstractFieldDatasource.defaultProps),{labelClass:"blocLabelUp",valueKey:"value",labelKey:"label"}),t}(i.AbstractFieldDatasource);t.SelectField=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(6),o=r(304),l=r(9),c=(s.Utils.getLogger("hornet-js-react-components.widget.form.upload-file-field"),function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.readOnlyFile=a.state.defaultFile,a.state.buttonLabel||(a.state.buttonLabel=a.state.name),a.state.activeButtonLabel=a.state.buttonLabel,a}return a.__extends(t,e),t.prototype.setReadOnlyFile=function(e,t){return this.setState({readOnlyFile:e},t),this},t.prototype.handleChange=function(e){var t=e.target;t.files&&t.files.length>0?(!0,this.setState({activeButtonLabel:this.i18n("uploadFile.selectedFile",{count:t.files.length})})):this.setState({activeButtonLabel:this.i18n("uploadFile.selectedFile",{count:0})}),this.state.onChange&&this.state.onChange(e)},t.prototype.getDataFileProps=function(){var e={};return this.state.defaultFile&&(e["data-file-id"]=this.state.defaultFile.id,e["data-file-originalname"]=this.state.defaultFile.originalname,e["data-file-name"]=this.state.defaultFile.name,e["data-file-mime-type"]=this.state.defaultFile.mimeType,e["data-file-encoding"]=this.state.defaultFile.encoding,e["data-file-size"]=this.state.defaultFile.size),e},t.prototype.setCurrentValue=function(e){return e||this.handleDelete(),this.setState({readOnlyFile:e,defaultFile:e}),this},t.prototype.renderWidget=function(){var e=this,t="";this.props.renderPreviewFile&&(t=this.props.renderPreviewFile(this.state.readOnlyFile));var r=n.omit(this.getHtmlProps(),["defaultFile","type","onChange"]);n.assign(r,{className:r.className?r.className+" uploadfile":" uploadfile"}),n.assign(r,{"data-multiple-caption":this.state.fileSelectedLabel});var s=this.props.classNameDelete?"hornet-button hornet-button-right upload-delete-button "+this.props.classNameDelete:"hornet-button hornet-button-right upload-delete-button",o=this.getDataFileProps(),l=i.createElement("input",a.__assign({ref:function(t){e.registerHtmlElement(t),e.inputFileElement=t},type:"file",onChange:this.handleChange},o,r)),c={htmlFor:r.id,readOnly:r.readOnly,className:"upload-content"};return i.createElement("div",{className:"upload-container"},l,i.createElement("label",a.__assign({},c),i.createElement("a",{href:"#","aria-haspopup":!0,onClick:this.downloadButtonActionHandler,onKeyDown:this.downloadButtonKeyDownHandler,disabled:r.readOnly},i.createElement("span",{className:"upload-text"},this.state.activeButtonLabel))),this.htmlElement&&this.htmlElement.files.length?i.createElement("button",{type:"button",className:s,onClick:this.handleDelete,"aria-label":this.i18n("uploadFile.labelSupprimer"),disabled:this.state.readOnly},"X"):"",t)},t.prototype.handleDelete=function(){this.htmlElement.value="",this.setState({defaultFile:null,activeButtonLabel:this.i18n("uploadFile.selectedFile",{count:0})})},t.prototype.downloadButtonActionHandler=function(){this.inputFileElement.click()},t.prototype.downloadButtonKeyDownHandler=function(e){if(!(e.ctrlKey||e.shiftKey||e.altKey||e.metaKey)){var t=e.keyCode;t!=l.KeyCodes.ENTER&&t!=l.KeyCodes.SPACEBAR||this.downloadButtonActionHandler()}},t.defaultProps=n.assign(o.AbstractField.defaultProps,{fileSelectedLabel:t.getI18n("uploadFile.selectedFile",{count:0})}),t}(o.AbstractField));t.UploadFileField=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(121),o=(s.Utils.getLogger("hornet-js-react-components.widget.spinner.spinner-component-input"),function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.render=function(){return i.createElement("div",{style:{visibility:this.state.isVisible?"visible":"hidden"},className:"component-spinner spinner-input spinner-loading"})},t}(n.SpinnerComponent));t.SpinnerComponentInput=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(312),o=r(17),l=r(6),c=s.Utils.getLogger("hornet-js-react-components.widget.table.action-button");!function(e){e[e.ACTION_MASSE=1]="ACTION_MASSE",e[e.ACTION_UNITAIRE=2]="ACTION_UNITAIRE"}(t.TypeAction||(t.TypeAction={}));var u=function(e){function t(t,r){var a=e.call(this,t,r)||this;return t.url&&(a.state.url=a.genUrlWithParams(t.url,t.value)),a.state.visible=!0,t.visible&&(a.state.visible=t.visible(a.props.value)),a}return a.__extends(t,e),t.prototype.render=function(){var e=this;c.trace("render actionButtons");var t={};this.props.className&&(t[this.props.className]=!0),t["picto-svg"]=!0,t["button-action"]=!0;var r=null;r="string"==typeof this.props.srcImg?i.createElement("img",{src:this.props.srcImg,className:this.props.classNameImg,alt:this.props.title}):this.props.srcImg;var a=null;return this.props.onKeyDown&&(a=function(t){e.props.onKeyDown(t,e.props.onClick||e.onClick)}),this.state.visible?i.createElement("a",{href:this.props.url||"#",className:o(t),title:this.props.title,"aria-label":this.props.title,onClick:this.props.onClick||this.onClick,onKeyDown:a,"aria-haspopup":this.props.hasPopUp},r,i.createElement("span",{className:"label-button-action"},this.props.label)):null},t.prototype.onClick=function(e){this.props.messageAlert?(e.stopPropagation(),this.props.showAlert(this.props.messageAlert,this.props.titleAlert,this.onAction)):this.onAction()},t.prototype.onAction=function(){this.state.url?window.location.href=this.state.url:this.props.action&&this.props.action(this.props.value,this.props.selectedItems)},t.defaultProps=l.assign(n.Button.defaultProps,{displayedWithoutResult:!1}),t}(n.Button);t.ActionButton=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(4),o=r(45),l=r(307),c=r(376),u=r(485),h=r(6),p=s.Utils.getLogger("hornet-js-react-components.widget.table.menu-actions"),d=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.title=a.i18n("table.menuActions.title"),a}return a.__extends(t,e),t.prototype.render=function(){p.trace("render MenuActions");var e=this.getMenuActions();return i.createElement("div",{className:"datatable-header-menu flex-container fr"},e.priorityActions.length>0?t.renderPriorityActions(e.priorityActions):i.createElement("div",{className:"menu-priority-container"}),e.dropdownItems.length>0?this.renderDropDownActions(e.dropdownItems):i.createElement("div",null))},t.prototype.getMenuActions=function(){var e=this,t=[],r=[],s=this.props.selectedItems?this.props.selectedItems[0]:{},n=this;if(this.props.showIconInfo&&t.push(i.createElement(u.TableButtonInfoAccessibilite,{srcImg:l.Picto.white.info,key:this.props.id+"-icon-info"})),this.props.toggleColumnsButton){var o=this.props.toggleColumnsButton;t.push(i.createElement(o,null))}return this.props.actions&&this.props.actions.length>0&&this.props.actions.map(function(o,l){if(o.props.typeAction===c.TypeAction.ACTION_MASSE&&n.props.selectedItems&&n.props.selectedItems.length>0||o.props.typeAction===c.TypeAction.ACTION_UNITAIRE&&n.props.selectedItems&&1==n.props.selectedItems.length||!o.props.typeAction){var u=h.cloneDeep(o.props);u.showAlert=e.props.showAlert,u.selectedItems=e.props.selectedItems,u.items=e.props.items,u.key=n.props.id+"-menuAction-"+l,u.value=s;if((u.items.length>0||u.displayedWithoutResult)&&(!u.visible||u.visible&&u.visible()))if(u.priority){var p=h.cloneDeep(u);p.label=null;var d=i.createElement(c.ActionButton,a.__assign({},p));t.push(d)}else r.push({label:u.label,action:u.action,url:u.url?e.genUrlWithParams(u.url,s||{}):null,srcImg:u.srcImg,className:"material-dropdown-menu__link",key:u.id||l+"-menuAction-"+l,valueCurrent:s})}}),{priorityActions:t,dropdownItems:r}},t.prototype.renderDropDownActions=function(e){return i.createElement("div",{className:"fr menu-contextuel-container"},i.createElement(o.Dropdown,{id:this.props.id,icon:"more-actions",className:"menu-contextuel",items:e,title:this.state.title,position:o.Position.BOTTOMRIGHT}))},t.renderPriorityActions=function(e){return i.createElement("div",{className:"menu-priority-container"},i.createElement("div",{className:"menu-priority-content"},i.createElement("ul",null,e.map(function(e){return i.createElement("li",{key:"li-"+e.key},i.createElement("div",{className:"menu-priority-content-action"},e))}))))},t}(n.HornetComponent);t.MenuActions=d},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(4),o=r(342),l=r(313),c=r(323),u=r(441),h=r(311),p=r(44),d=r(357),m=r(313),f=s.Utils.getLogger("hornet-js-components.widget.table.table"),v=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.tableState=new h.TableState,a.contentState=new h.ContentState,t.width||a.tableState.once(h.TableState.RESIZE_EVENT,a.handleResize.bind(a)),a.state.isMounted=!1,a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(e,t){return this.state.isVisible!=t.isVisible},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.tableState.removeContents()},t.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this),this.setState({isMounted:!0})},t.prototype.render=function(){f.trace("render Table");var e,t=this.getComponentsBy(l.Content),r="notif-"+this.props.id;return t&&t.length>0&&t.map(function(t){!t.props.notifId&&t.props.onSubmit&&(e=t)}),this.state.isVisible?e?i.createElement("div",null,i.createElement(p.Notification,{id:r})," ",this.renderTable(t)):i.createElement("div",null," ",this.renderTable(t)," "):i.createElement("div",null)},t.prototype.handleResize=function(e){this.setState({width:e})},t.prototype.renderTable=function(e){var t=this.getComponentBy(o.Header);return i.createElement("div",{className:"datatable-container"},this.renderHeader(t,e),this.renderContent(t,e),i.createElement("div",{className:"hornet-datatable-bottom"},this.renderFooter()))},t.prototype.getColumnsInformation=function(e){var t={},r=this.props.id;return e&&e.length>0&&e.map(function(e,a){var s=n.HornetComponent.getChildrenFrom(e,c.Columns),i=[];r+="-"+a,s.length>0&&s.map(function(e){e&&e.props&&e.props.hiddenable&&i.push({keyColumn:e.props.keyColumn,title:e.props.title,width:(e.props.defaultWidth||e.props.width)+m.UNIT_SIZE})}),t={columns:i,id:r}}),t},t.prototype.getContentsDataSources=function(e){var t=[];return e.map(function(e){t.push(e.props.dataSource)}),t},t.prototype.renderHeader=function(e,r){if(e){var a="header-"+this.props.id+"-wrapped",s=t.wrap(o.Header,this,e.props,{parentId:this.props.id,key:a,tableState:this.tableState,contentState:this.contentState,dataSourcesList:this.getContentsDataSources(r),tabIndex:-1,columns:this.getColumnsInformation(r),hiddenColumns:this.getHiddenColumns(e)});return i.createElement(s,{key:"wc-"+a})}return i.createElement("div",{tabIndex:-1})},t.prototype.renderFooter=function(){var e=this.getComponentBy(u.Footer);return e?i.createElement(u.Footer,a.__assign({},e.props,{contentState:this.contentState})):i.createElement("div",null)},t.prototype.renderContent=function(e,r){var a=this,s=[];return r&&r.length>0?(r.map(function(r,n){if(a.state.isMounted||a.state.isVisible){a.tableState.addContent(a.contentState);var o=r.props.id||a.props.id+"-"+n,c=(a.props.width||a.state.width)/13-.3,u="content-"+a.props.id+"-"+n+"-wrapped",h=r.props.notifId||"notif-"+a.props.id,p=t.wrap(l.Content,r,r.props,{id:o,key:u,contentState:a.contentState,width:c,notifId:h,tabIndex:-1,hiddenColumns:a.getHiddenColumns(e),title:e&&e.props&&e.props.title?e.props.title:null});s.push(i.createElement(p,{key:"wc-"+u}))}}),s):i.createElement("div",{tabIndex:-1})},t.prototype.getHiddenColumns=function(e){var t=null;return i.Children.map(e.props.children,function(e){e.type===d.ToggleColumnsButton&&(t=e)}),t&&t.props&&t.props.hiddenColumns?t.props.hiddenColumns:{}},t.defaultProps={className:"hornet-datatable-header",isVisible:!0},t}(n.HornetComponent);t.Table=v},function(e,t){e.exports={$schema:"http://json-schema.org/draft-06/schema#",$id:"https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/$data.json#",description:"Meta-schema for $data reference (JSON-schema extension proposal)",type:"object",required:["$data"],properties:{$data:{type:"string",anyOf:[{format:"relative-json-pointer"},{format:"json-pointer"}]}},additionalProperties:!1}},function(e,t){e.exports={$schema:"http://json-schema.org/draft-06/schema#",$id:"http://json-schema.org/draft-06/schema#",title:"Core schema meta-schema",definitions:{schemaArray:{type:"array",minItems:1,items:{$ref:"#"}},nonNegativeInteger:{type:"integer",minimum:0},nonNegativeIntegerDefault0:{allOf:[{$ref:"#/definitions/nonNegativeInteger"},{default:0}]},simpleTypes:{enum:["array","boolean","integer","null","number","object","string"]},stringArray:{type:"array",items:{type:"string"},uniqueItems:!0,default:[]}},type:["object","boolean"],properties:{$id:{type:"string",format:"uri-reference"},$schema:{type:"string",format:"uri"},$ref:{type:"string",format:"uri-reference"},title:{type:"string"},description:{type:"string"},default:{},multipleOf:{type:"number",exclusiveMinimum:0},maximum:{type:"number"},exclusiveMaximum:{type:"number"},minimum:{type:"number"},exclusiveMinimum:{type:"number"},maxLength:{$ref:"#/definitions/nonNegativeInteger"},minLength:{$ref:"#/definitions/nonNegativeIntegerDefault0"},pattern:{type:"string",format:"regex"},additionalItems:{$ref:"#"},items:{anyOf:[{$ref:"#"},{$ref:"#/definitions/schemaArray"}],default:{}},maxItems:{$ref:"#/definitions/nonNegativeInteger"},minItems:{$ref:"#/definitions/nonNegativeIntegerDefault0"},uniqueItems:{type:"boolean",default:!1},contains:{$ref:"#"},maxProperties:{$ref:"#/definitions/nonNegativeInteger"},minProperties:{$ref:"#/definitions/nonNegativeIntegerDefault0"},required:{$ref:"#/definitions/stringArray"},additionalProperties:{$ref:"#"},definitions:{type:"object",additionalProperties:{$ref:"#"},default:{}},properties:{type:"object",additionalProperties:{$ref:"#"},default:{}},patternProperties:{type:"object",additionalProperties:{$ref:"#"},default:{}},dependencies:{type:"object",additionalProperties:{anyOf:[{$ref:"#"},{$ref:"#/definitions/stringArray"}]}},propertyNames:{$ref:"#"},const:{},enum:{type:"array",minItems:1,uniqueItems:!0},type:{anyOf:[{$ref:"#/definitions/simpleTypes"},{type:"array",items:{$ref:"#/definitions/simpleTypes"},minItems:1,uniqueItems:!0}]},format:{type:"string"},allOf:{$ref:"#/definitions/schemaArray"},anyOf:{$ref:"#/definitions/schemaArray"},oneOf:{$ref:"#/definitions/schemaArray"},not:{$ref:"#"}},default:{}}},function(e,t,r){"use strict";function a(e,t){if(Array.isArray(t)){for(var r=0;r<t.length;r++)s(t[r])(e);return e}if(t)return s(t)(e),e;for(t in i)s(t)(e);return e}function s(e){var t=i[e];if(!t)throw new Error("Unknown keyword "+e);return t}var i=r(391);e.exports=a,a.get=s},function(e,t,r){"use strict";function a(e,t){for(var r=e.split("/"),a={},i=a,n=1;n<r.length;n++){var o=r[n],l=n==r.length-1;o=s(o);var c=i.properties={},u=void 0;if(/[0-9]+/.test(o)){var h=+o;for(u=i.items=[];h--;)u.push({})}i=l?t:{},c[o]=i,u&&u.push(i)}return a}function s(e){return e.replace(/~1/g,"/").replace(/~0/g,"~")}var i=r(314);e.exports=function e(t){return e.definition={type:"object",macro:function(e){var t=[];for(var r in e)t.push(a(r,e[r]));return{allOf:t}},metaSchema:{type:"object",propertyNames:{type:"string",format:"json-pointer"},additionalProperties:i.metaSchemaRef(t)}},t.addKeyword("deepProperties",e.definition),t}},function(e,t,r){"use strict";function a(e,t){var r="data"+(t||"");if(!e)return r;for(var a=r,n=e.split("/"),o=1;o<n.length;o++){r+=s(i(n[o])),a+=" && "+r}return a}function s(e){return o.test(e)?"["+e+"]":n.test(e)?"."+e:"['"+e.replace(l,"\\$&")+"']"}function i(e){return e.replace(/~1/g,"/").replace(/~0/g,"~")}e.exports=function e(t){return e.definition={type:"object",inline:function(e,t,r){for(var s="",i=0;i<r.length;i++)i&&(s+=" && "),s+="("+a(r[i],e.dataLevel)+" !== undefined)";return s},metaSchema:{type:"array",items:{type:"string",format:"json-pointer"}}},t.addKeyword("deepRequired",e.definition),t};var n=/^[a-z$_][a-z$_0-9]*$/i,o=/^[0-9]+$/,l=/'|\\/g},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s=" ",i=e.level,n=e.dataLevel,o=e.schema[t],l=e.schemaPath+e.util.getProperty(t),c=e.errSchemaPath+"/"+t,u=!e.opts.allErrors,h="data"+(n||""),p="valid"+i;if(s+="var "+p+" = undefined;",!1===e.opts.format)return s+=" "+p+" = true; ";var d=e.schema.format,m=e.opts.$data&&d.$data,f="";if(m){var v=e.util.getData(d.$data,n,e.dataPathArr),g="format"+i,y="compare"+i;s+=" var "+g+" = formats["+v+"] , "+y+" = "+g+" && "+g+".compare;"}else{var g=e.formats[d];if(!g||!g.compare)return s+="  "+p+" = true; ";var y="formats"+e.util.getProperty(d)+".compare"}var E,b="formatMaximum"==t,S="formatExclusive"+(b?"Maximum":"Minimum"),C=e.schema[S],_=e.opts.$data&&C&&C.$data,T=b?"<":">",P="result"+i,A=e.opts.$data&&o&&o.$data;if(A?(s+=" var schema"+i+" = "+e.util.getData(o.$data,n,e.dataPathArr)+"; ",E="schema"+i):E=o,_){var I=e.util.getData(C.$data,n,e.dataPathArr),w="exclusive"+i,D="op"+i,x="' + "+D+" + '";s+=" var schemaExcl"+i+" = "+I+"; ",I="schemaExcl"+i,s+=" if (typeof "+I+" != 'boolean' && "+I+" !== undefined) { "+p+" = false; ";var a=S,R=R||[];R.push(s),s="",!1!==e.createErrors?(s+=" { keyword: '"+(a||"_formatExclusiveLimit")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: {} ",!1!==e.opts.messages&&(s+=" , message: '"+S+" should be boolean' "),e.opts.verbose&&(s+=" , schema: validate.schema"+l+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),s+=" } "):s+=" {} ";var O=s;s=R.pop(),!e.compositeRule&&u?e.async?s+=" throw new ValidationError(["+O+"]); ":s+=" validate.errors = ["+O+"]; return false; ":s+=" var err = "+O+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",s+=" }  ",u&&(f+="}",s+=" else { "),A&&(s+=" if ("+E+" === undefined) "+p+" = true; else if (typeof "+E+" != 'string') "+p+" = false; else { ",f+="}"),m&&(s+=" if (!"+y+") "+p+" = true; else { ",f+="}"),s+=" var "+P+" = "+y+"("+h+",  ",s+=A?""+E:""+e.util.toQuotedString(o),s+=" ); if ("+P+" === undefined) "+p+" = false; var "+w+" = "+I+" === true; if ("+p+" === undefined) { "+p+" = "+w+" ? "+P+" "+T+" 0 : "+P+" "+T+"= 0; } if (!"+p+") var op"+i+" = "+w+" ? '"+T+"' : '"+T+"=';"}else{var w=!0===C,x=T;w||(x+="=");var D="'"+x+"'";A&&(s+=" if ("+E+" === undefined) "+p+" = true; else if (typeof "+E+" != 'string') "+p+" = false; else { ",f+="}"),m&&(s+=" if (!"+y+") "+p+" = true; else { ",f+="}"),s+=" var "+P+" = "+y+"("+h+",  ",s+=A?""+E:""+e.util.toQuotedString(o),s+=" ); if ("+P+" === undefined) "+p+" = false; if ("+p+" === undefined) "+p+" = "+P+" "+T,w||(s+="="),s+=" 0;"}s+=f+"if (!"+p+") { ";var a=t,R=R||[];R.push(s),s="",!1!==e.createErrors?(s+=" { keyword: '"+(a||"_formatLimit")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: { comparison: "+D+", limit:  ",s+=A?""+E:""+e.util.toQuotedString(o),s+=" , exclusive: "+w+" } ",!1!==e.opts.messages&&(s+=" , message: 'should be "+x+' "',s+=A?"' + "+E+" + '":""+e.util.escapeQuotes(o),s+="\"' "),e.opts.verbose&&(s+=" , schema:  ",s+=A?"validate.schema"+l:""+e.util.toQuotedString(o),s+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),s+=" } "):s+=" {} ";var O=s;return s=R.pop(),!e.compositeRule&&u?e.async?s+=" throw new ValidationError(["+O+"]); ":s+=" validate.errors = ["+O+"]; return false; ":s+=" var err = "+O+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",s+="}"}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="key"+s,d="idx"+s,m="patternMatched"+s,f="dataProperties"+s,v="",g=e.opts.ownProperties;a+="var "+h+" = true;",g&&(a+=" var "+f+" = undefined;");var y=n;if(y)for(var E,b=-1,S=y.length-1;b<S;){E=y[b+=1],a+=" var "+m+" = false;  ",a+=g?" "+f+" = "+f+" || Object.keys("+u+"); for (var "+d+"=0; "+d+"<"+f+".length; "+d+"++) { var "+p+" = "+f+"["+d+"]; ":" for (var "+p+" in "+u+") { ",a+=" "+m+" = "+e.usePattern(E)+".test("+p+"); if ("+m+") break; } ";var C=e.util.escapeQuotes(E);a+=" if (!"+m+") { "+h+" = false;  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'patternRequired' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingPattern: '"+C+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should have property matching pattern \\'"+C+"\\'' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; }   ",c&&(v+="}",a+=" else { ")}return a+=""+v}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e),m="";d.level++;var f,v="valid"+d.level,g="ifPassed"+e.level,y=d.baseId;a+="var "+g+";";var E=n;if(E)for(var b,S=-1,C=E.length-1;S<C;){if(b=E[S+=1],S&&!f&&(a+=" if (!"+g+") { ",m+="}"),b.if&&e.util.schemaHasRules(b.if,e.RULES.all)){a+=" var "+p+" = errors;   ";var _=e.compositeRule;if(e.compositeRule=d.compositeRule=!0,d.createErrors=!1,d.schema=b.if,d.schemaPath=o+"["+S+"].if",d.errSchemaPath=l+"/"+S+"/if",a+="  "+e.validate(d)+" ",d.baseId=y,d.createErrors=!0,e.compositeRule=d.compositeRule=_,a+=" "+g+" = "+v+"; if ("+g+") {  ","boolean"==typeof b.then){if(!1===b.then){var T=T||[];T.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'switch' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { caseIndex: "+S+" } ",!1!==e.opts.messages&&(a+=" , message: 'should pass \"switch\" keyword validation' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var P=a;a=T.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+P+"]); ":a+=" validate.errors = ["+P+"]; return false; ":a+=" var err = "+P+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; "}a+=" var "+v+" = "+b.then+"; "}else d.schema=b.then,d.schemaPath=o+"["+S+"].then",d.errSchemaPath=l+"/"+S+"/then",a+="  "+e.validate(d)+" ",d.baseId=y;a+="  } else {  errors = "+p+"; if (vErrors !== null) { if ("+p+") vErrors.length = "+p+"; else vErrors = null; } } "}else if(a+=" "+g+" = true;  ","boolean"==typeof b.then){if(!1===b.then){var T=T||[];T.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'switch' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { caseIndex: "+S+" } ",!1!==e.opts.messages&&(a+=" , message: 'should pass \"switch\" keyword validation' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var P=a;a=T.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+P+"]); ":a+=" validate.errors = ["+P+"]; return false; ":a+=" var err = "+P+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; "}a+=" var "+v+" = "+b.then+"; "}else d.schema=b.then,d.schemaPath=o+"["+S+"].then",d.errSchemaPath=l+"/"+S+"/then",a+="  "+e.validate(d)+" ",d.baseId=y;f=b.continue}return a+=m+"var "+h+" = "+v+"; ",a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";var a={},s={timestamp:function(){return Date.now()},datetime:function(){return(new Date).toISOString()},date:function(){return(new Date).toISOString().slice(0,10)},time:function(){return(new Date).toISOString().slice(11)},random:function(){return Math.random()},randomint:function(e){var t=e&&e.max||2;return function(){return Math.floor(Math.random()*t)}},seq:function(e){var t=e&&e.name||"";return a[t]=a[t]||0,function(){return a[t]++}}};e.exports=function e(t){function r(e){var t=s[e];if(t)return t;throw new Error('invalid "dynamicDefaults" keyword property value: '+e)}return e.definition={compile:function(e,t,a){function s(t){for(var r in e)void 0===t[r]&&(t[r]=n[r]());return!0}function i(){return!0}var n={};for(var o in e){var l=e[o],c=r("string"==typeof l?l:l.func);n[o]=c.length?c(l.args):c}return a.opts.useDefaults&&!a.compositeRule?s:i},DEFAULTS:s,metaSchema:{type:"object",additionalProperties:{type:["string","object"],additionalProperties:!1,required:["func","args"],properties:{func:{type:"string"},args:{type:"object"}}}}},t.addKeyword("dynamicDefaults",e.definition),t}},function(e,t,r){"use strict";e.exports=r(329)("Maximum")},function(e,t,r){"use strict";e.exports=r(329)("Minimum")},function(e,t,r){"use strict";e.exports=function e(t){return t.RULES.keywords.switch||r(330)(t),e.definition={macro:function(e,t){if(void 0===t.then)throw new Error('keyword "then" is absent');var r=[{if:e,then:t.then}];return void 0!==t.else&&(r[1]={then:t.else}),{switch:r}}},t.addKeyword("if",e.definition),t.addKeyword("then"),t.addKeyword("else"),t}},function(e,t,r){"use strict";e.exports={instanceof:r(392),range:r(395),regexp:r(396),typeof:r(398),dynamicDefaults:r(387),if:r(390),prohibited:r(394),uniqueItemProperties:r(399),deepProperties:r(382),deepRequired:r(383),formatMinimum:r(389),formatMaximum:r(388),patternRequired:r(393),switch:r(330),select:r(397)}},function(e,t,r){"use strict";(function(t){var r={Object:Object,Array:Array,Function:Function,Number:Number,String:String,Date:Date,RegExp:RegExp};e.exports=function e(a){function s(e){var t=r[e];if(t)return t;throw new Error('invalid "instanceof" keyword value '+e)}return void 0!==t&&(r.Buffer=t),e.definition={compile:function(e){if("string"==typeof e){var t=s(e);return function(e){return e instanceof t}}var r=e.map(s);return function(e){for(var t=0;t<r.length;t++)if(e instanceof r[t])return!0;return!1}},CONSTRUCTORS:r,metaSchema:{anyOf:[{type:"string"},{type:"array",items:{type:"string"}}]}},a.addKeyword("instanceof",e.definition),a}}).call(t,r(19).Buffer)},function(e,t,r){"use strict";e.exports=function e(t){return e.definition={type:"object",inline:r(385),statements:!0,errors:"full",metaSchema:{type:"array",items:{type:"string",format:"regex"},uniqueItems:!0}},t.addKeyword("patternRequired",e.definition),t}},function(e,t,r){"use strict";e.exports=function e(t){return e.definition={type:"object",macro:function(e){return 0==e.length?{}:1==e.length?{not:{required:e}}:{not:{anyOf:e.map(function(e){return{required:[e]}})}}},metaSchema:{type:"array",items:{type:"string"}}},t.addKeyword("prohibited",e.definition),t}},function(e,t,r){"use strict";e.exports=function e(t){function r(e,t,r){if(void 0!==r&&"boolean"!=typeof r)throw new Error("Invalid schema for exclusiveRange keyword, should be boolean");if(e>t||r&&e==t)throw new Error("There are no numbers in range")}return e.definition={type:"number",macro:function(e,t){var a=e[0],s=e[1],i=t.exclusiveRange;return r(a,s,i),!0===i?{exclusiveMinimum:a,exclusiveMaximum:s}:{minimum:a,maximum:s}},metaSchema:{type:"array",minItems:2,maxItems:2,items:{type:"number"}}},t.addKeyword("range",e.definition),t.addKeyword("exclusiveRange"),t}},function(e,t,r){"use strict";e.exports=function e(t){return e.definition={type:"string",inline:function(e,t,r){return function(){try{if("object"==typeof r)return new RegExp(r.pattern,r.flags);var e=r.match(/^\/(.*)\/([gimy]*)$/);if(e)return new RegExp(e[1],e[2]);throw new Error("cannot parse string into RegExp")}catch(e){throw console.error("regular expression",r,"is invalid"),e}}()+".test(data"+(e.dataLevel||"")+")"},metaSchema:{type:["string","object"],properties:{pattern:{type:"string"},flags:{type:"string"}},required:["pattern"],additionalProperties:!1}},t.addKeyword("regexp",e.definition),t}},function(e,t,r){"use strict";var a=r(314);e.exports=function e(t){function r(e,t){var r;return n.some(function(t){if(t.parentSchema===e)return r=t,!0}),r||!1===t||(r={parentSchema:e,cases:{},default:!0},n.push(r)),r}function s(e){return"boolean"==typeof e?e:t.compile(e)}if(!t._opts.$data)return console.warn("keyword select requires $data option"),t;var i=a.metaSchemaRef(t),n=[];return e.definition={validate:function e(t,a,s){if(void 0===s.selectCases)throw new Error('keyword "selectCases" is absent');var i=r(s,!1),n=i.cases[t];if(void 0===n&&(n=i.default),"boolean"==typeof n)return n;var o=n(a);return o||(e.errors=n.errors),o},$data:!0,metaSchema:{type:["string","number","boolean","null"]}},t.addKeyword("select",e.definition),t.addKeyword("selectCases",{compile:function(e,t){var a=r(t);for(var i in e)a.cases[i]=s(e[i]);return function(){return!0}},valid:!0,metaSchema:{type:"object",additionalProperties:i}}),t.addKeyword("selectDefault",{compile:function(e,t){return r(t).default=s(e),function(){return!0}},valid:!0,metaSchema:i}),t}},function(e,t,r){"use strict";var a=["undefined","string","number","object","function","boolean","symbol"];e.exports=function e(t){return e.definition={inline:function(e,t,r){var a="data"+(e.dataLevel||"");return"string"==typeof r?"typeof "+a+' == "'+r+'"':(r="validate.schema"+e.schemaPath+"."+t)+".indexOf(typeof "+a+") >= 0"},metaSchema:{anyOf:[{type:"string",enum:a},{type:"array",items:{type:"string",enum:a}}]}},t.addKeyword("typeof",e.definition),t}},function(e,t,r){"use strict";e.exports=function e(t){return e.definition={type:"array",compile:function(e,t,r){var a=r.util.equal;return function(t){if(t.length>1)for(var r=0;r<e.length;r++)for(var s=e[r],i=t.length;i--;)if("object"==typeof t[i])for(var n=i;n--;)if("object"==typeof t[n]&&a(t[i][s],t[n][s]))return!1;return!0}},metaSchema:{type:"array",items:{type:"string"}}},t.addKeyword("uniqueItemProperties",e.definition),t}},function(e,t,r){"use strict";var a=["multipleOf","maximum","exclusiveMaximum","minimum","exclusiveMinimum","maxLength","minLength","pattern","additionalItems","maxItems","minItems","uniqueItems","maxProperties","minProperties","required","additionalProperties","enum","format","const"];e.exports=function(e,t){for(var r=0;r<t.length;r++){e=JSON.parse(JSON.stringify(e));var s,i=t[r].split("/"),n=e;for(s=1;s<i.length;s++)n=n[i[s]];for(s=0;s<a.length;s++){var o=a[s],l=n[o];l&&(n[o]={anyOf:[l,{$ref:"https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/$data.json#"}]})}}return e}},function(e,t,r){"use strict";function a(e){if(!(this instanceof a))return new a(e);e=this._opts=M.copy(e)||{},this._schemas={},this._refs={},this._fragments={},this._formats=F(e.format);var t=this._schemaUriFormat=this._formats["uri-reference"];this._schemaUriFormatFunc=function(e){return t.test(e)},this._cache=e.cache||new x,this._loadingSchemas={},this._compilations=[],this.RULES=k(),this._getId=g(e),e.loopRequired=e.loopRequired||1/0,"property"==e.errorDataPath&&(e._errorDataPathProperty=!0),void 0===e.serialize&&(e.serialize=O),this._metaOpts=I(this),e.formats&&P(this),_(this),"object"==typeof e.meta&&this.addMetaSchema(e.meta),T(this),e.patternGroups&&L(this)}function s(e,t){var r;if("string"==typeof e){if(!(r=this.getSchema(e)))throw new Error('no schema with key or ref "'+e+'"')}else{var a=this._addSchema(e);r=a.validate||this._compile(a)}var s=r(t);return!0===r.$async?"*"==this._opts.async?U(s):s:(this.errors=r.errors,s)}function i(e,t){var r=this._addSchema(e,void 0,t);return r.validate||this._compile(r)}function n(e,t,r,a){if(Array.isArray(e))for(var s=0;s<e.length;s++)this.addSchema(e[s],void 0,r,a);else{var i=this._getId(e);if(void 0!==i&&"string"!=typeof i)throw new Error("schema id must be string");t=D.normalizeId(t||i),A(this,t),this._schemas[t]=this._addSchema(e,r,a,!0)}}function o(e,t,r){this.addSchema(e,t,r,!0)}function l(e,t){var r=e.$schema;if(void 0!==r&&"string"!=typeof r)throw new Error("$schema must be a string");if(!(r=r||this._opts.defaultMeta||c(this)))return console.warn("meta-schema not available"),this.errors=null,!0;var a=this._formats.uri;this._formats.uri="function"==typeof a?this._schemaUriFormatFunc:this._schemaUriFormat;var s;try{s=this.validate(r,e)}finally{this._formats.uri=a}if(!s&&t){var i="schema is invalid: "+this.errorsText();if("log"!=this._opts.validateSchema)throw new Error(i);console.error(i)}return s}function c(e){var t=e._opts.meta;return e._opts.defaultMeta="object"==typeof t?e._getId(t)||t:e.getSchema(j)?j:void 0,e._opts.defaultMeta}function u(e){var t=p(this,e);switch(typeof t){case"object":return t.validate||this._compile(t);case"string":return this.getSchema(t);case"undefined":return h(this,e)}}function h(e,t){var r=D.schema.call(e,{schema:{}},t);if(r){var a=r.schema,s=r.root,i=r.baseId,n=w.call(e,a,s,void 0,i);return e._fragments[t]=new R({ref:t,fragment:!0,schema:a,root:s,baseId:i,validate:n}),n}}function p(e,t){return t=D.normalizeId(t),e._schemas[t]||e._refs[t]||e._fragments[t]}function d(e){if(e instanceof RegExp)return m(this,this._schemas,e),void m(this,this._refs,e);switch(typeof e){case"undefined":return m(this,this._schemas),m(this,this._refs),void this._cache.clear();case"string":var t=p(this,e);return t&&this._cache.del(t.cacheKey),delete this._schemas[e],void delete this._refs[e];case"object":var r=this._opts.serialize,a=r?r(e):e;this._cache.del(a);var s=this._getId(e);s&&(s=D.normalizeId(s),delete this._schemas[s],delete this._refs[s])}}function m(e,t,r){for(var a in t){var s=t[a];s.meta||r&&!r.test(a)||(e._cache.del(s.cacheKey),delete t[a])}}function f(e,t,r,a){if("object"!=typeof e&&"boolean"!=typeof e)throw new Error("schema should be object or boolean");var s=this._opts.serialize,i=s?s(e):e,n=this._cache.get(i);if(n)return n;a=a||!1!==this._opts.addUsedSchema;var o=D.normalizeId(this._getId(e));o&&a&&A(this,o);var l,c=!1!==this._opts.validateSchema&&!t;c&&!(l=o&&o==D.normalizeId(e.$schema))&&this.validateSchema(e,!0);var u=D.ids.call(this,e),h=new R({id:o,schema:e,localRefs:u,cacheKey:i,meta:r});return"#"!=o[0]&&a&&(this._refs[o]=h),this._cache.put(i,h),c&&l&&this.validateSchema(e,!0),h}function v(e,t){function r(){var t=e.validate,a=t.apply(null,arguments);return r.errors=t.errors,a}if(e.compiling)return e.validate=r,r.schema=e.schema,r.errors=null,r.root=t||r,!0===e.schema.$async&&(r.$async=!0),r;e.compiling=!0;var a;e.meta&&(a=this._opts,this._opts=this._metaOpts);var s;try{s=w.call(this,e.schema,t,e.localRefs)}finally{e.compiling=!1,e.meta&&(this._opts=a)}return e.validate=s,e.refs=s.refs,e.refVal=s.refVal,e.root=s.root,s}function g(e){switch(e.schemaId){case"$id":return E;case"id":return y;default:return b}}function y(e){return e.$id&&console.warn("schema $id ignored",e.$id),e.id}function E(e){return e.id&&console.warn("schema id ignored",e.id),e.$id}function b(e){if(e.$id&&e.id&&e.$id!=e.id)throw new Error("schema $id is different from id");return e.$id||e.id}function S(e,t){if(!(e=e||this.errors))return"No errors";t=t||{};for(var r=void 0===t.separator?", ":t.separator,a=void 0===t.dataVar?"data":t.dataVar,s="",i=0;i<e.length;i++){var n=e[i];n&&(s+=a+n.dataPath+" "+n.message+r)}return s.slice(0,-r.length)}function C(e,t){"string"==typeof t&&(t=new RegExp(t)),this._formats[e]=t}function _(e){var t;if(e._opts.$data&&(t=r(379),e.addMetaSchema(t,t.$id,!0)),!1!==e._opts.meta){var a=r(380);e._opts.$data&&(a=N(a,$)),e.addMetaSchema(a,j,!0),e._refs["http://json-schema.org/schema"]=j}}function T(e){var t=e._opts.schemas;if(t)if(Array.isArray(t))e.addSchema(t);else for(var r in t)e.addSchema(t[r],r)}function P(e){for(var t in e._opts.formats){var r=e._opts.formats[t];e.addFormat(t,r)}}function A(e,t){if(e._schemas[t]||e._refs[t])throw new Error('schema with key or id "'+t+'" already exists')}function I(e){for(var t=M.copy(e._opts),r=0;r<V.length;r++)delete t[V[r]];return t}var w=r(406),D=r(316),x=r(402),R=r(331),O=r(343),F=r(405),k=r(407),N=r(400),L=r(428),M=r(305),U=r(337);e.exports=a,a.prototype.validate=s,a.prototype.compile=i,a.prototype.addSchema=n,a.prototype.addMetaSchema=o,a.prototype.validateSchema=l,a.prototype.getSchema=u,a.prototype.removeSchema=d,a.prototype.addFormat=C,a.prototype.errorsText=S,a.prototype._addSchema=f,a.prototype._compile=v,a.prototype.compileAsync=r(404);var B=r(427);a.prototype.addKeyword=B.add,a.prototype.getKeyword=B.get,a.prototype.removeKeyword=B.remove;var H=r(315);a.ValidationError=H.Validation,a.MissingRefError=H.MissingRef,a.$dataMetaSchema=N;var j="http://json-schema.org/draft-06/schema",V=["removeAdditional","useDefaults","coerceTypes"],$=["/properties"]},function(e,t,r){"use strict";var a=e.exports=function(){this._cache={}};a.prototype.put=function(e,t){this._cache[e]=t},a.prototype.get=function(e){return this._cache[e]},a.prototype.del=function(e){delete this._cache[e]},a.prototype.clear=function(){this._cache={}}},function(e,t,r){"use strict";e.exports={$ref:r(424),allOf:r(409),anyOf:r(410),const:r(411),contains:r(412),dependencies:r(414),enum:r(415),format:r(416),items:r(417),maximum:r(332),minimum:r(332),maxItems:r(333),minItems:r(333),maxLength:r(334),minLength:r(334),maxProperties:r(335),minProperties:r(335),multipleOf:r(418),not:r(419),oneOf:r(420),pattern:r(421),properties:r(422),propertyNames:r(423),required:r(425),uniqueItems:r(426),validate:r(336)}},function(e,t,r){"use strict";function a(e,t,r){function i(e){var t=e.$schema;return t&&!o.getSchema(t)?a.call(o,{$ref:t},!0):Promise.resolve()}function n(e){try{return o._compile(e)}catch(r){if(r instanceof s)return function(r){function a(){delete o._loadingSchemas[l]}function s(e){return o._refs[e]||o._schemas[e]}var l=r.missingSchema;if(s(l))throw new Error("Schema "+l+" is loaded but "+r.missingRef+" cannot be resolved");var c=o._loadingSchemas[l];return c||(c=o._loadingSchemas[l]=o._opts.loadSchema(l),c.then(a,a)),c.then(function(e){if(!s(l))return i(e).then(function(){s(l)||o.addSchema(e,l,void 0,t)})}).then(function(){return n(e)})}(r);throw r}}var o=this;if("function"!=typeof this._opts.loadSchema)throw new Error("options.loadSchema should be a function");"function"==typeof t&&(r=t,t=void 0);var l=i(e).then(function(){var r=o._addSchema(e,void 0,t);return r.validate||n(r)});return r&&l.then(function(e){r(null,e)},r),l}var s=r(315).MissingRef;e.exports=a},function(e,t,r){"use strict";function a(e){return e="full"==e?"full":"fast",u.copy(a[e])}function s(e){var t=e.match(h);if(!t)return!1;var r=+t[1],a=+t[2];return r>=1&&r<=12&&a>=1&&a<=p[r]}function i(e,t){var r=e.match(d);if(!r)return!1;var a=r[1],s=r[2],i=r[3],n=r[5];return a<=23&&s<=59&&i<=59&&(!t||n)}function n(e){var t=e.split(C);return 2==t.length&&s(t[0])&&i(t[1],!0)}function o(e){return e.length<=255&&m.test(e)}function l(e){return _.test(e)&&f.test(e)}function c(e){if(T.test(e))return!1;try{return new RegExp(e),!0}catch(e){return!1}}var u=r(305),h=/^\d\d\d\d-(\d\d)-(\d\d)$/,p=[0,31,29,31,30,31,30,31,31,30,31,30,31],d=/^(\d\d):(\d\d):(\d\d)(\.\d+)?(z|[+-]\d\d:\d\d)?$/i,m=/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[-0-9a-z]{0,61}[0-9a-z])?)*$/i,f=/^(?:[a-z][a-z0-9+\-.]*:)(?:\/?\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:]|%[0-9a-f]{2})*@)?(?:\[(?:(?:(?:(?:[0-9a-f]{1,4}:){6}|::(?:[0-9a-f]{1,4}:){5}|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::)(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?))|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|[Vv][0-9a-f]+\.[a-z0-9\-._~!$&'()*+,;=:]+)\]|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)|(?:[a-z0-9\-._~!$&'()*+,;=]|%[0-9a-f]{2})*)(?::\d*)?(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*|\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*)?|(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*)(?:\?(?:[a-z0-9\-._~!$&'()*+,;=:@\/?]|%[0-9a-f]{2})*)?(?:#(?:[a-z0-9\-._~!$&'()*+,;=:@\/?]|%[0-9a-f]{2})*)?$/i,v=/^(?:[a-z][a-z0-9+\-.]*:)?(?:\/?\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:]|%[0-9a-f]{2})*@)?(?:\[(?:(?:(?:(?:[0-9a-f]{1,4}:){6}|::(?:[0-9a-f]{1,4}:){5}|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::)(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?))|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|[Vv][0-9a-f]+\.[a-z0-9\-._~!$&'()*+,;=:]+)\]|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)|(?:[a-z0-9\-._~!$&'"()*+,;=]|%[0-9a-f]{2})*)(?::\d*)?(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*|\/(?:(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*)?|(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*)?(?:\?(?:[a-z0-9\-._~!$&'"()*+,;=:@\/?]|%[0-9a-f]{2})*)?(?:#(?:[a-z0-9\-._~!$&'"()*+,;=:@\/?]|%[0-9a-f]{2})*)?$/i,g=/^(?:(?:[^\x00-\x20"'<>%\\^`{|}]|%[0-9a-f]{2})|\{[+#.\/;?&=,!@|]?(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?(?:,(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?)*\})*$/i,y=/^(?:(?:http[s\u017F]?|ftp):\/\/)(?:(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+(?::(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?@)?(?:(?!10(?:\.[0-9]{1,3}){3})(?!127(?:\.[0-9]{1,3}){3})(?!169\.254(?:\.[0-9]{1,3}){2})(?!192\.168(?:\.[0-9]{1,3}){2})(?!172\.(?:1[6-9]|2[0-9]|3[01])(?:\.[0-9]{1,3}){2})(?:[1-9][0-9]?|1[0-9][0-9]|2[01][0-9]|22[0-3])(?:\.(?:1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])){2}(?:\.(?:[1-9][0-9]?|1[0-9][0-9]|2[0-4][0-9]|25[0-4]))|(?:(?:(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+-?)*(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)(?:\.(?:(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+-?)*(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)*(?:\.(?:(?:[KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]){2,})))(?::[0-9]{2,5})?(?:\/(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?$/i,E=/^(?:urn:uuid:)?[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i,b=/^(?:\/(?:[^~\/]|~0|~1)*)*$|^#(?:\/(?:[a-z0-9_\-.!$&'()*+,;:=@]|%[0-9a-f]{2}|~0|~1)*)*$/i,S=/^(?:0|[1-9][0-9]*)(?:#|(?:\/(?:[^~\/]|~0|~1)*)*)$/;e.exports=a,a.fast={date:/^\d\d\d\d-[0-1]\d-[0-3]\d$/,time:/^[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:z|[+-]\d\d:\d\d)?$/i,"date-time":/^\d\d\d\d-[0-1]\d-[0-3]\d[t\s][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?(?:z|[+-]\d\d:\d\d)$/i,uri:/^(?:[a-z][a-z0-9+-.]*)(?::|\/)\/?[^\s]*$/i,"uri-reference":/^(?:(?:[a-z][a-z0-9+-.]*:)?\/\/)?[^\s]*$/i,"uri-template":g,url:y,email:/^[a-z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/i,hostname:m,ipv4:/^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/,ipv6:/^\s*(?:(?:(?:[0-9a-f]{1,4}:){7}(?:[0-9a-f]{1,4}|:))|(?:(?:[0-9a-f]{1,4}:){6}(?::[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){5}(?:(?:(?::[0-9a-f]{1,4}){1,2})|:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){4}(?:(?:(?::[0-9a-f]{1,4}){1,3})|(?:(?::[0-9a-f]{1,4})?:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){3}(?:(?:(?::[0-9a-f]{1,4}){1,4})|(?:(?::[0-9a-f]{1,4}){0,2}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){2}(?:(?:(?::[0-9a-f]{1,4}){1,5})|(?:(?::[0-9a-f]{1,4}){0,3}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){1}(?:(?:(?::[0-9a-f]{1,4}){1,6})|(?:(?::[0-9a-f]{1,4}){0,4}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?::(?:(?:(?::[0-9a-f]{1,4}){1,7})|(?:(?::[0-9a-f]{1,4}){0,5}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(?:%.+)?\s*$/i,regex:c,uuid:E,"json-pointer":b,"relative-json-pointer":S},a.full={date:s,time:i,"date-time":n,uri:l,"uri-reference":v,"uri-template":g,url:y,email:/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&''*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i,hostname:o,ipv4:/^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/,ipv6:/^\s*(?:(?:(?:[0-9a-f]{1,4}:){7}(?:[0-9a-f]{1,4}|:))|(?:(?:[0-9a-f]{1,4}:){6}(?::[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){5}(?:(?:(?::[0-9a-f]{1,4}){1,2})|:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){4}(?:(?:(?::[0-9a-f]{1,4}){1,3})|(?:(?::[0-9a-f]{1,4})?:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){3}(?:(?:(?::[0-9a-f]{1,4}){1,4})|(?:(?::[0-9a-f]{1,4}){0,2}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){2}(?:(?:(?::[0-9a-f]{1,4}){1,5})|(?:(?::[0-9a-f]{1,4}){0,3}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){1}(?:(?:(?::[0-9a-f]{1,4}){1,6})|(?:(?::[0-9a-f]{1,4}){0,4}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?::(?:(?:(?::[0-9a-f]{1,4}){1,7})|(?:(?::[0-9a-f]{1,4}){0,5}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(?:%.+)?\s*$/i,regex:c,uuid:E,"json-pointer":b,"relative-json-pointer":S};var C=/t|\s/i,_=/\/|:/,T=/[^\\]\\Z/},function(e,t,r){"use strict";function a(e,t,r,n){function S(){var e=j.validate,t=e.apply(null,arguments);return S.errors=e.errors,t}function C(e,r,s,i){var n=!r||r&&r.schema==e;if(r.schema!=t.schema)return a.call(R,e,r,s,i);var f=!0===e.$async,S=v({isTop:!0,schema:e,isRoot:n,baseId:i,root:r,schemaPath:"",errSchemaPath:"#",errorPath:'""',MissingRefError:m.MissingRef,RULES:$,validate:v,util:d,resolve:p,resolveRef:_,usePattern:w,useDefault:D,useCustomRule:x,opts:O,formats:V,self:R});S=h(F,c)+h(N,o)+h(M,l)+h(B,u)+S,O.processCode&&(S=O.processCode(S));var C;try{C=new Function("self","RULES","formats","root","refVal","defaults","customRules","co","equal","ucs2length","ValidationError",S)(R,$,V,t,F,M,B,g,E,y,b),F[0]=C}catch(e){throw console.error("Error compiling schema, function code:",S),e}return C.schema=e,C.errors=null,C.refs=k,C.refVal=F,C.root=n?C:r,f&&(C.$async=!0),!0===O.sourceCode&&(C.source={code:S,patterns:N,defaults:M}),C}function _(e,s,i){s=p.url(e,s);var n,o,l=k[s];if(void 0!==l)return n=F[l],o="refVal["+l+"]",I(n,o);if(!i&&t.refs){var c=t.refs[s];if(void 0!==c)return n=t.refVal[c],o=T(s,n),I(n,o)}o=T(s);var u=p.call(R,C,t,s);if(void 0===u){var h=r&&r[s];h&&(u=p.inlineRef(h,O.inlineRefs)?h:a.call(R,h,t,r,e))}if(void 0!==u)return A(s,u),I(u,o);P(s)}function T(e,t){var r=F.length;return F[r]=t,k[e]=r,"refVal"+r}function P(e){delete k[e]}function A(e,t){var r=k[e];F[r]=t}function I(e,t){return"object"==typeof e||"boolean"==typeof e?{code:t,schema:e,inline:!0}:{code:t,$async:e&&e.$async}}function w(e){var t=L[e];return void 0===t&&(t=L[e]=N.length,N[t]=e),"pattern"+t}function D(e){switch(typeof e){case"boolean":case"number":return""+e;case"string":return d.toQuotedString(e);case"object":if(null===e)return"null";var t=f(e),r=U[t];return void 0===r&&(r=U[t]=M.length,M[r]=e),"default"+r}}function x(e,t,r,a){var s=e.definition.validateSchema;if(s&&!1!==R._opts.validateSchema){if(!s(t)){var i="keyword schema is invalid: "+R.errorsText(s.errors);if("log"!=R._opts.validateSchema)throw new Error(i);console.error(i)}}var n,o=e.definition.compile,l=e.definition.inline,c=e.definition.macro;if(o)n=o.call(R,t,r,a);else if(c)n=c.call(R,t,r,a),!1!==O.validateSchema&&R.validateSchema(n,!0);else if(l)n=l.call(R,a,e.keyword,t,r);else if(!(n=e.definition.validate))return;if(void 0===n)throw new Error('custom keyword "'+e.keyword+'"failed to compile');var u=B.length;return B[u]=n,{code:"customRule"+u,validate:n}}var R=this,O=this._opts,F=[void 0],k={},N=[],L={},M=[],U={},B=[];t=t||{schema:e,refVal:F,refs:k};var H=s.call(this,e,t,n),j=this._compilations[H.index];if(H.compiling)return j.callValidate=S;var V=this._formats,$=this.RULES;try{var K=C(e,t,r,n);j.validate=K;var z=j.callValidate;return z&&(z.schema=K.schema,z.errors=null,z.refs=K.refs,z.refVal=K.refVal,z.root=K.root,z.$async=K.$async,O.sourceCode&&(z.source=K.source)),K}finally{i.call(this,e,t,n)}}function s(e,t,r){var a=n.call(this,e,t,r);return a>=0?{index:a,compiling:!0}:(a=this._compilations.length,this._compilations[a]={schema:e,root:t,baseId:r},{index:a,compiling:!1})}function i(e,t,r){var a=n.call(this,e,t,r);a>=0&&this._compilations.splice(a,1)}function n(e,t,r){for(var a=0;a<this._compilations.length;a++){var s=this._compilations[a];if(s.schema==e&&s.root==t&&s.baseId==r)return a}return-1}function o(e,t){return"var pattern"+e+" = new RegExp("+d.toQuotedString(t[e])+");"}function l(e){return"var default"+e+" = defaults["+e+"];"}function c(e,t){return void 0===t[e]?"":"var refVal"+e+" = refVal["+e+"];"}function u(e){return"var customRule"+e+" = customRules["+e+"];"}function h(e,t){if(!e.length)return"";for(var r="",a=0;a<e.length;a++)r+=t(a,e);return r}var p=r(316),d=r(305),m=r(315),f=r(343),v=r(336),g=r(337),y=d.ucs2length,E=r(317),b=m.Validation;e.exports=a},function(e,t,r){"use strict";var a=r(403),s=r(305).toHash;e.exports=function(){var e=[{type:"number",rules:[{maximum:["exclusiveMaximum"]},{minimum:["exclusiveMinimum"]},"multipleOf","format"]},{type:"string",rules:["maxLength","minLength","pattern","format"]},{type:"array",rules:["maxItems","minItems","uniqueItems","contains","items"]},{type:"object",rules:["maxProperties","minProperties","required","dependencies","propertyNames",{properties:["additionalProperties","patternProperties"]}]},{rules:["$ref","const","enum","not","anyOf","oneOf","allOf"]}],t=["type"],r=["additionalItems","$schema","id","title","description","default","definitions"],i=["number","integer","string","array","object","boolean","null"];return e.all=s(t),e.types=s(i),e.forEach(function(r){r.rules=r.rules.map(function(r){var s;if("object"==typeof r){var i=Object.keys(r)[0];s=r[i],r=i,s.forEach(function(r){t.push(r),e.all[r]=!0})}return t.push(r),e.all[r]={keyword:r,code:a[r],implements:s}}),r.type&&(e.types[r.type]=r)}),e.keywords=s(t.concat(r)),e.custom={},e}},function(e,t,r){"use strict";e.exports=function(e){for(var t,r=0,a=e.length,s=0;s<a;)r++,(t=e.charCodeAt(s++))>=55296&&t<=56319&&s<a&&56320==(64512&(t=e.charCodeAt(s)))&&s++;return r}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.schema[t],i=e.schemaPath+e.util.getProperty(t),n=e.errSchemaPath+"/"+t,o=!e.opts.allErrors,l=e.util.copy(e),c="";l.level++;var u="valid"+l.level,h=l.baseId,p=!0,d=s;if(d)for(var m,f=-1,v=d.length-1;f<v;)m=d[f+=1],e.util.schemaHasRules(m,e.RULES.all)&&(p=!1,l.schema=m,l.schemaPath=i+"["+f+"]",l.errSchemaPath=n+"/"+f,a+="  "+e.validate(l)+" ",l.baseId=h,o&&(a+=" if ("+u+") { ",c+="}"));return o&&(a+=p?" if (true) { ":" "+c.slice(0,-1)+" "),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e),m="";d.level++;var f="valid"+d.level;if(n.every(function(t){return e.util.schemaHasRules(t,e.RULES.all)})){var v=d.baseId;a+=" var "+p+" = errors; var "+h+" = false;  ";var g=e.compositeRule;e.compositeRule=d.compositeRule=!0;var y=n;if(y)for(var E,b=-1,S=y.length-1;b<S;)E=y[b+=1],d.schema=E,d.schemaPath=o+"["+b+"]",d.errSchemaPath=l+"/"+b,a+="  "+e.validate(d)+" ",d.baseId=v,a+=" "+h+" = "+h+" || "+f+"; if (!"+h+") { ",m+="}";e.compositeRule=d.compositeRule=g,a+=" "+m+" if (!"+h+") {   var err =   ",!1!==e.createErrors?(a+=" { keyword: 'anyOf' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should match some schema in anyOf' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",!e.compositeRule&&c&&(e.async?a+=" throw new ValidationError(vErrors); ":a+=" validate.errors = vErrors; return false; "),a+=" } else {  errors = "+p+"; if (vErrors !== null) { if ("+p+") vErrors.length = "+p+"; else vErrors = null; } ",e.opts.allErrors&&(a+=" } "),a=e.util.cleanUpCode(a)}else c&&(a+=" if (true) { ");return a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p=e.opts.$data&&n&&n.$data;p&&(a+=" var schema"+s+" = "+e.util.getData(n.$data,i,e.dataPathArr)+"; "),p||(a+=" var schema"+s+" = validate.schema"+o+";"),a+="var "+h+" = equal("+u+", schema"+s+"); if (!"+h+") {   ";var d=d||[];d.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'const' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should be equal to constant' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var m=a;return a=d.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+m+"]); ":a+=" validate.errors = ["+m+"]; return false; ":a+=" var err = "+m+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" }",c&&(a+=" else { "),a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e);d.level++;var m="valid"+d.level,f="i"+s,v=d.dataLevel=e.dataLevel+1,g="data"+v,y=e.baseId,E=e.util.schemaHasRules(n,e.RULES.all);if(a+="var "+p+" = errors;var "+h+";",E){var b=e.compositeRule;e.compositeRule=d.compositeRule=!0,d.schema=n,d.schemaPath=o,d.errSchemaPath=l,a+=" var "+m+" = false; for (var "+f+" = 0; "+f+" < "+u+".length; "+f+"++) { ",d.errorPath=e.util.getPathExpr(e.errorPath,f,e.opts.jsonPointers,!0);var S=u+"["+f+"]";d.dataPathArr[v]=f;var C=e.validate(d);d.baseId=y,e.util.varOccurences(C,g)<2?a+=" "+e.util.varReplace(C,g,S)+" ":a+=" var "+g+" = "+S+"; "+C+" ",a+=" if ("+m+") break; }  ",e.compositeRule=d.compositeRule=b,a+="  if (!"+m+") {"}else a+=" if ("+u+".length == 0) {";var _=_||[];_.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'contains' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should contain a valid item' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var T=a;return a=_.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+T+"]); ":a+=" validate.errors = ["+T+"]; return false; ":a+=" var err = "+T+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } else { ",E&&(a+="  errors = "+p+"; if (vErrors !== null) { if ("+p+") vErrors.length = "+p+"; else vErrors = null; } "),e.opts.allErrors&&(a+=" } "),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.schemaPath+e.util.getProperty(t),u=e.errSchemaPath+"/"+t,h=!e.opts.allErrors,p="data"+(o||""),d="valid"+n,m="errs__"+n,f=e.opts.$data&&l&&l.$data;f?(i+=" var schema"+n+" = "+e.util.getData(l.$data,o,e.dataPathArr)+"; ",s="schema"+n):s=l;var v,g,y,E,b,S=this,C="definition"+n,_=S.definition,T="";if(f&&_.$data){b="keywordValidate"+n;var P=_.validateSchema;i+=" var "+C+" = RULES.custom['"+t+"'].definition; var "+b+" = "+C+".validate;"}else{if(!(E=e.useCustomRule(S,l,e.schema,e)))return;s="validate.schema"+c,b=E.code,v=_.compile,g=_.inline,y=_.macro}var A=b+".errors",I="i"+n,w="ruleErr"+n,D=_.async;if(D&&!e.async)throw new Error("async keyword in sync schema");if(g||y||(i+=A+" = null;"),i+="var "+m+" = errors;var "+d+";",f&&_.$data&&(T+="}",i+=" if ("+s+" === undefined) { "+d+" = true; } else { ",P&&(T+="}",i+=" "+d+" = "+C+".validateSchema("+s+"); if ("+d+") { ")),g)_.statements?i+=" "+E.validate+" ":i+=" "+d+" = "+E.validate+"; ";else if(y){var x=e.util.copy(e),T="";x.level++;var R="valid"+x.level;x.schema=E.validate,x.schemaPath="";var O=e.compositeRule;e.compositeRule=x.compositeRule=!0;var F=e.validate(x).replace(/validate\.schema/g,b);e.compositeRule=x.compositeRule=O,i+=" "+F}else{var k=k||[];k.push(i),i="",i+="  "+b+".call( ",e.opts.passContext?i+="this":i+="self",v||!1===_.schema?i+=" , "+p+" ":i+=" , "+s+" , "+p+" , validate.schema"+e.schemaPath+" ",i+=" , (dataPath || '')",'""'!=e.errorPath&&(i+=" + "+e.errorPath);var N=o?"data"+(o-1||""):"parentData",L=o?e.dataPathArr[o]:"parentDataProperty";i+=" , "+N+" , "+L+" , rootData )  ";var M=i;i=k.pop(),!1===_.errors?(i+=" "+d+" = ",D&&(i+=""+e.yieldAwait),i+=M+"; "):D?(A="customErrors"+n,i+=" var "+A+" = null; try { "+d+" = "+e.yieldAwait+M+"; } catch (e) { "+d+" = false; if (e instanceof ValidationError) "+A+" = e.errors; else throw e; } "):i+=" "+A+" = null; "+d+" = "+M+"; "}if(_.modifying&&(i+=" if ("+N+") "+p+" = "+N+"["+L+"];"),i+=""+T,_.valid)h&&(i+=" if (true) { ");else{i+=" if ( ",void 0===_.valid?(i+=" !",i+=y?""+R:""+d):i+=" "+!_.valid+" ",i+=") { ",a=S.keyword;var k=k||[];k.push(i),i="";var k=k||[];k.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '"+(a||"custom")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { keyword: '"+S.keyword+"' } ",!1!==e.opts.messages&&(i+=" , message: 'should pass \""+S.keyword+"\" keyword validation' "),e.opts.verbose&&(i+=" , schema: validate.schema"+c+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ";var U=i;i=k.pop(),!e.compositeRule&&h?e.async?i+=" throw new ValidationError(["+U+"]); ":i+=" validate.errors = ["+U+"]; return false; ":i+=" var err = "+U+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ";var B=i;i=k.pop(),g?_.errors?"full"!=_.errors&&(i+="  for (var "+I+"="+m+"; "+I+"<errors; "+I+"++) { var "+w+" = vErrors["+I+"]; if ("+w+".dataPath === undefined) "+w+".dataPath = (dataPath || '') + "+e.errorPath+"; if ("+w+".schemaPath === undefined) { "+w+'.schemaPath = "'+u+'"; } ',e.opts.verbose&&(i+=" "+w+".schema = "+s+"; "+w+".data = "+p+"; "),i+=" } "):!1===_.errors?i+=" "+B+" ":(i+=" if ("+m+" == errors) { "+B+" } else {  for (var "+I+"="+m+"; "+I+"<errors; "+I+"++) { var "+w+" = vErrors["+I+"]; if ("+w+".dataPath === undefined) "+w+".dataPath = (dataPath || '') + "+e.errorPath+"; if ("+w+".schemaPath === undefined) { "+w+'.schemaPath = "'+u+'"; } ',e.opts.verbose&&(i+=" "+w+".schema = "+s+"; "+w+".data = "+p+"; "),i+=" } } "):y?(i+="   var err =   ",!1!==e.createErrors?(i+=" { keyword: '"+(a||"custom")+"' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(u)+" , params: { keyword: '"+S.keyword+"' } ",!1!==e.opts.messages&&(i+=" , message: 'should pass \""+S.keyword+"\" keyword validation' "),e.opts.verbose&&(i+=" , schema: validate.schema"+c+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+p+" "),i+=" } "):i+=" {} ",i+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",!e.compositeRule&&h&&(e.async?i+=" throw new ValidationError(vErrors); ":i+=" validate.errors = vErrors; return false; ")):!1===_.errors?i+=" "+B+" ":(i+=" if (Array.isArray("+A+")) { if (vErrors === null) vErrors = "+A+"; else vErrors = vErrors.concat("+A+"); errors = vErrors.length;  for (var "+I+"="+m+"; "+I+"<errors; "+I+"++) { var "+w+" = vErrors["+I+"]; if ("+w+".dataPath === undefined) "+w+".dataPath = (dataPath || '') + "+e.errorPath+";  "+w+'.schemaPath = "'+u+'";  ',e.opts.verbose&&(i+=" "+w+".schema = "+s+"; "+w+".data = "+p+"; "),i+=" } } else { "+B+" } "),i+=" } ",h&&(i+=" else { ")}return i}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="errs__"+s,p=e.util.copy(e),d="";p.level++;var m="valid"+p.level,f={},v={},g=e.opts.ownProperties;for(S in n){var y=n[S],E=Array.isArray(y)?v:f;E[S]=y}a+="var "+h+" = errors;";var b=e.errorPath;a+="var missing"+s+";";for(var S in v)if(E=v[S],E.length){if(a+=" if ( "+u+e.util.getProperty(S)+" !== undefined ",g&&(a+=" && Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(S)+"') "),c){a+=" && ( ";var C=E;if(C)for(var _,T=-1,P=C.length-1;T<P;){_=C[T+=1],T&&(a+=" || ");var A=e.util.getProperty(_),I=u+A;a+=" ( ( "+I+" === undefined ",g&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(_)+"') "),a+=") && (missing"+s+" = "+e.util.toQuotedString(e.opts.jsonPointers?_:A)+") ) "}a+=")) {  ";var w="missing"+s,D="' + "+w+" + '";e.opts._errorDataPathProperty&&(e.errorPath=e.opts.jsonPointers?e.util.getPathExpr(b,w,!0):b+" + "+w);var x=x||[];x.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'dependencies' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { property: '"+e.util.escapeQuotes(S)+"', missingProperty: '"+D+"', depsCount: "+E.length+", deps: '"+e.util.escapeQuotes(1==E.length?E[0]:E.join(", "))+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should have ",1==E.length?a+="property "+e.util.escapeQuotes(E[0]):a+="properties "+e.util.escapeQuotes(E.join(", ")),a+=" when property "+e.util.escapeQuotes(S)+" is present' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var R=a;a=x.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+R+"]); ":a+=" validate.errors = ["+R+"]; return false; ":a+=" var err = "+R+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; "}else{a+=" ) { ";var O=E;if(O)for(var _,F=-1,k=O.length-1;F<k;){_=O[F+=1];var A=e.util.getProperty(_),D=e.util.escapeQuotes(_),I=u+A;e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPath(b,_,e.opts.jsonPointers)),a+=" if ( "+I+" === undefined ",g&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(_)+"') "),a+=") {  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'dependencies' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { property: '"+e.util.escapeQuotes(S)+"', missingProperty: '"+D+"', depsCount: "+E.length+", deps: '"+e.util.escapeQuotes(1==E.length?E[0]:E.join(", "))+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should have ",1==E.length?a+="property "+e.util.escapeQuotes(E[0]):a+="properties "+e.util.escapeQuotes(E.join(", ")),a+=" when property "+e.util.escapeQuotes(S)+" is present' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } "}}a+=" }   ",c&&(d+="}",a+=" else { ")}e.errorPath=b;var N=p.baseId;for(var S in f){var y=f[S];e.util.schemaHasRules(y,e.RULES.all)&&(a+=" "+m+" = true; if ( "+u+e.util.getProperty(S)+" !== undefined ",g&&(a+=" && Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(S)+"') "),a+=") { ",p.schema=y,p.schemaPath=o+e.util.getProperty(S),p.errSchemaPath=l+"/"+e.util.escapeFragment(S),a+="  "+e.validate(p)+" ",p.baseId=N,a+=" }  ",c&&(a+=" if ("+m+") { ",d+="}"))}return c&&(a+="   "+d+" if ("+h+" == errors) {"),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p=e.opts.$data&&n&&n.$data;p&&(a+=" var schema"+s+" = "+e.util.getData(n.$data,i,e.dataPathArr)+"; ");var d="i"+s,m="schema"+s;p||(a+=" var "+m+" = validate.schema"+o+";"),a+="var "+h+";",p&&(a+=" if (schema"+s+" === undefined) "+h+" = true; else if (!Array.isArray(schema"+s+")) "+h+" = false; else {"),a+=h+" = false;for (var "+d+"=0; "+d+"<"+m+".length; "+d+"++) if (equal("+u+", "+m+"["+d+"])) { "+h+" = true; break; }",p&&(a+="  }  "),a+=" if (!"+h+") {   ";var f=f||[];f.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'enum' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { allowedValues: schema"+s+" } ",!1!==e.opts.messages&&(a+=" , message: 'should be equal to one of the allowed values' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var v=a;return a=f.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+v+"]); ":a+=" validate.errors = ["+v+"]; return false; ":a+=" var err = "+v+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" }",c&&(a+=" else { "),a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||"");if(!1===e.opts.format)return c&&(a+=" if (true) { "),a;var h,p=e.opts.$data&&n&&n.$data;p?(a+=" var schema"+s+" = "+e.util.getData(n.$data,i,e.dataPathArr)+"; ",h="schema"+s):h=n;var d=e.opts.unknownFormats,m=Array.isArray(d);if(p){var f="format"+s,v="isObject"+s,g="formatType"+s;a+=" var "+f+" = formats["+h+"]; var "+v+" = typeof "+f+" == 'object' && !("+f+" instanceof RegExp) && "+f+".validate; var "+g+" = "+v+" && "+f+".type || 'string'; if ("+v+") { ",e.async&&(a+=" var async"+s+" = "+f+".async; "),a+=" "+f+" = "+f+".validate; } if (  ",p&&(a+=" ("+h+" !== undefined && typeof "+h+" != 'string') || "),a+=" (","ignore"!=d&&(a+=" ("+h+" && !"+f+" ",m&&(a+=" && self._opts.unknownFormats.indexOf("+h+") == -1 "),a+=") || "),a+=" ("+f+" && "+g+" == '"+r+"' && !(typeof "+f+" == 'function' ? ",e.async?a+=" (async"+s+" ? "+e.yieldAwait+" "+f+"("+u+") : "+f+"("+u+")) ":a+=" "+f+"("+u+") ",a+=" : "+f+".test("+u+"))))) {"}else{var f=e.formats[n];if(!f){if("ignore"==d)return console.warn('unknown format "'+n+'" ignored in schema at path "'+e.errSchemaPath+'"'),c&&(a+=" if (true) { "),a;if(m&&d.indexOf(n)>=0)return c&&(a+=" if (true) { "),a;throw new Error('unknown format "'+n+'" is used in schema at path "'+e.errSchemaPath+'"')}var v="object"==typeof f&&!(f instanceof RegExp)&&f.validate,g=v&&f.type||"string";if(v){var y=!0===f.async;f=f.validate}if(g!=r)return c&&(a+=" if (true) { "),a;if(y){if(!e.async)throw new Error("async format in sync schema");var E="formats"+e.util.getProperty(n)+".validate";a+=" if (!("+e.yieldAwait+" "+E+"("+u+"))) { "}else{a+=" if (! ";var E="formats"+e.util.getProperty(n);v&&(E+=".validate"),a+="function"==typeof f?" "+E+"("+u+") ":" "+E+".test("+u+") ",a+=") { "}}var b=b||[];b.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'format' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { format:  ",a+=p?""+h:""+e.util.toQuotedString(n),a+="  } ",!1!==e.opts.messages&&(a+=" , message: 'should match format \"",a+=p?"' + "+h+" + '":""+e.util.escapeQuotes(n),a+="\"' "),e.opts.verbose&&(a+=" , schema:  ",a+=p?"validate.schema"+o:""+e.util.toQuotedString(n),a+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var S=a;return a=b.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+S+"]); ":a+=" validate.errors = ["+S+"]; return false; ":a+=" var err = "+S+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } ",c&&(a+=" else { "),a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e),m="";d.level++;var f="valid"+d.level,v="i"+s,g=d.dataLevel=e.dataLevel+1,y="data"+g,E=e.baseId;if(a+="var "+p+" = errors;var "+h+";",Array.isArray(n)){var b=e.schema.additionalItems;if(!1===b){a+=" "+h+" = "+u+".length <= "+n.length+"; ";var S=l;l=e.errSchemaPath+"/additionalItems",a+="  if (!"+h+") {   ";var C=C||[];C.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'additionalItems' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { limit: "+n.length+" } ",!1!==e.opts.messages&&(a+=" , message: 'should NOT have more than "+n.length+" items' "),e.opts.verbose&&(a+=" , schema: false , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var _=a;a=C.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+_+"]); ":a+=" validate.errors = ["+_+"]; return false; ":a+=" var err = "+_+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } ",l=S,c&&(m+="}",a+=" else { ")}var T=n;if(T)for(var P,A=-1,I=T.length-1;A<I;)if(P=T[A+=1],e.util.schemaHasRules(P,e.RULES.all)){a+=" "+f+" = true; if ("+u+".length > "+A+") { ";var w=u+"["+A+"]";d.schema=P,d.schemaPath=o+"["+A+"]",d.errSchemaPath=l+"/"+A,d.errorPath=e.util.getPathExpr(e.errorPath,A,e.opts.jsonPointers,!0),d.dataPathArr[g]=A;var D=e.validate(d);d.baseId=E,e.util.varOccurences(D,y)<2?a+=" "+e.util.varReplace(D,y,w)+" ":a+=" var "+y+" = "+w+"; "+D+" ",a+=" }  ",c&&(a+=" if ("+f+") { ",m+="}")}if("object"==typeof b&&e.util.schemaHasRules(b,e.RULES.all)){d.schema=b,d.schemaPath=e.schemaPath+".additionalItems",d.errSchemaPath=e.errSchemaPath+"/additionalItems",a+=" "+f+" = true; if ("+u+".length > "+n.length+") {  for (var "+v+" = "+n.length+"; "+v+" < "+u+".length; "+v+"++) { ",d.errorPath=e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers,!0);var w=u+"["+v+"]";d.dataPathArr[g]=v;var D=e.validate(d);d.baseId=E,e.util.varOccurences(D,y)<2?a+=" "+e.util.varReplace(D,y,w)+" ":a+=" var "+y+" = "+w+"; "+D+" ",c&&(a+=" if (!"+f+") break; "),a+=" } }  ",c&&(a+=" if ("+f+") { ",m+="}")}}else if(e.util.schemaHasRules(n,e.RULES.all)){d.schema=n,d.schemaPath=o,d.errSchemaPath=l,a+="  for (var "+v+" = 0; "+v+" < "+u+".length; "+v+"++) { ",d.errorPath=e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers,!0);var w=u+"["+v+"]";d.dataPathArr[g]=v;var D=e.validate(d);d.baseId=E,e.util.varOccurences(D,y)<2?a+=" "+e.util.varReplace(D,y,w)+" ":a+=" var "+y+" = "+w+"; "+D+" ",c&&(a+=" if (!"+f+") break; "),a+=" }"}return c&&(a+=" "+m+" if ("+p+" == errors) {"),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s=" ",i=e.level,n=e.dataLevel,o=e.schema[t],l=e.schemaPath+e.util.getProperty(t),c=e.errSchemaPath+"/"+t,u=!e.opts.allErrors,h="data"+(n||""),p=e.opts.$data&&o&&o.$data;p?(s+=" var schema"+i+" = "+e.util.getData(o.$data,n,e.dataPathArr)+"; ",a="schema"+i):a=o,s+="var division"+i+";if (",p&&(s+=" "+a+" !== undefined && ( typeof "+a+" != 'number' || "),s+=" (division"+i+" = "+h+" / "+a+", ",e.opts.multipleOfPrecision?s+=" Math.abs(Math.round(division"+i+") - division"+i+") > 1e-"+e.opts.multipleOfPrecision+" ":s+=" division"+i+" !== parseInt(division"+i+") ",s+=" ) ",p&&(s+="  )  "),s+=" ) {   ";var d=d||[];d.push(s),s="",!1!==e.createErrors?(s+=" { keyword: 'multipleOf' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: { multipleOf: "+a+" } ",!1!==e.opts.messages&&(s+=" , message: 'should be multiple of ",s+=p?"' + "+a:a+"'"),e.opts.verbose&&(s+=" , schema:  ",s+=p?"validate.schema"+l:""+o,s+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),s+=" } "):s+=" {} ";var m=s;return s=d.pop(),!e.compositeRule&&u?e.async?s+=" throw new ValidationError(["+m+"]); ":s+=" validate.errors = ["+m+"]; return false; ":s+=" var err = "+m+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",s+="} ",u&&(s+=" else { "),s}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="errs__"+s,p=e.util.copy(e);p.level++;var d="valid"+p.level;if(e.util.schemaHasRules(n,e.RULES.all)){p.schema=n,p.schemaPath=o,p.errSchemaPath=l,a+=" var "+h+" = errors;  ";var m=e.compositeRule;e.compositeRule=p.compositeRule=!0,p.createErrors=!1;var f;p.opts.allErrors&&(f=p.opts.allErrors,p.opts.allErrors=!1),a+=" "+e.validate(p)+" ",p.createErrors=!0,f&&(p.opts.allErrors=f),e.compositeRule=p.compositeRule=m,a+=" if ("+d+") {   ";var v=v||[];v.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'not' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should NOT be valid' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var g=a;a=v.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+g+"]); ":a+=" validate.errors = ["+g+"]; return false; ":a+=" var err = "+g+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } else {  errors = "+h+"; if (vErrors !== null) { if ("+h+") vErrors.length = "+h+"; else vErrors = null; } ",e.opts.allErrors&&(a+=" } ")}else a+="  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'not' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should NOT be valid' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",c&&(a+=" if (false) { ");return a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e),m="";d.level++;var f="valid"+d.level;a+="var "+p+" = errors;var prevValid"+s+" = false;var "+h+" = false;";var v=d.baseId,g=e.compositeRule;e.compositeRule=d.compositeRule=!0;var y=n;if(y)for(var E,b=-1,S=y.length-1;b<S;)E=y[b+=1],e.util.schemaHasRules(E,e.RULES.all)?(d.schema=E,d.schemaPath=o+"["+b+"]",d.errSchemaPath=l+"/"+b,a+="  "+e.validate(d)+" ",d.baseId=v):a+=" var "+f+" = true; ",b&&(a+=" if ("+f+" && prevValid"+s+") "+h+" = false; else { ",m+="}"),a+=" if ("+f+") "+h+" = prevValid"+s+" = true;";return e.compositeRule=d.compositeRule=g,a+=m+"if (!"+h+") {   var err =   ",!1!==e.createErrors?(a+=" { keyword: 'oneOf' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: {} ",!1!==e.opts.messages&&(a+=" , message: 'should match exactly one schema in oneOf' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",!e.compositeRule&&c&&(e.async?a+=" throw new ValidationError(vErrors); ":a+=" validate.errors = vErrors; return false; "),a+="} else {  errors = "+p+"; if (vErrors !== null) { if ("+p+") vErrors.length = "+p+"; else vErrors = null; }",e.opts.allErrors&&(a+=" } "),a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s=" ",i=e.level,n=e.dataLevel,o=e.schema[t],l=e.schemaPath+e.util.getProperty(t),c=e.errSchemaPath+"/"+t,u=!e.opts.allErrors,h="data"+(n||""),p=e.opts.$data&&o&&o.$data;p?(s+=" var schema"+i+" = "+e.util.getData(o.$data,n,e.dataPathArr)+"; ",a="schema"+i):a=o;var d=p?"(new RegExp("+a+"))":e.usePattern(o);s+="if ( ",p&&(s+=" ("+a+" !== undefined && typeof "+a+" != 'string') || "),s+=" !"+d+".test("+h+") ) {   ";var m=m||[];m.push(s),s="",!1!==e.createErrors?(s+=" { keyword: 'pattern' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: { pattern:  ",s+=p?""+a:""+e.util.toQuotedString(o),s+="  } ",!1!==e.opts.messages&&(s+=" , message: 'should match pattern \"",s+=p?"' + "+a+" + '":""+e.util.escapeQuotes(o),s+="\"' "),e.opts.verbose&&(s+=" , schema:  ",s+=p?"validate.schema"+l:""+e.util.toQuotedString(o),s+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),s+=" } "):s+=" {} ";var f=s;return s=m.pop(),!e.compositeRule&&u?e.async?s+=" throw new ValidationError(["+f+"]); ":s+=" validate.errors = ["+f+"]; return false; ":s+=" var err = "+f+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",s+="} ",u&&(s+=" else { "),s}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p="errs__"+s,d=e.util.copy(e),m="";d.level++;var f="valid"+d.level,v="key"+s,g="idx"+s,y=d.dataLevel=e.dataLevel+1,E="data"+y,b="dataProperties"+s,S=Object.keys(n||{}),C=e.schema.patternProperties||{},_=Object.keys(C),T=e.schema.additionalProperties,P=S.length||_.length,A=!1===T,I="object"==typeof T&&Object.keys(T).length,w=e.opts.removeAdditional,D=A||I||w,x=e.opts.ownProperties,R=e.baseId,O=e.schema.required;if(O&&(!e.opts.v5||!O.$data)&&O.length<e.opts.loopRequired)var F=e.util.toHash(O);if(e.opts.patternGroups)var k=e.schema.patternGroups||{},N=Object.keys(k);if(a+="var "+p+" = errors;var "+f+" = true;",x&&(a+=" var "+b+" = undefined;"),D){if(a+=x?" "+b+" = "+b+" || Object.keys("+u+"); for (var "+g+"=0; "+g+"<"+b+".length; "+g+"++) { var "+v+" = "+b+"["+g+"]; ":" for (var "+v+" in "+u+") { ",P){if(a+=" var isAdditional"+s+" = !(false ",S.length)if(S.length>5)a+=" || validate.schema"+o+"["+v+"] ";else{var L=S;if(L)for(var M,U=-1,B=L.length-1;U<B;)M=L[U+=1],a+=" || "+v+" == "+e.util.toQuotedString(M)+" "}if(_.length){var H=_;if(H)for(var j,V=-1,$=H.length-1;V<$;)j=H[V+=1],a+=" || "+e.usePattern(j)+".test("+v+") "}if(e.opts.patternGroups&&N.length){var K=N;if(K)for(var z,V=-1,W=K.length-1;V<W;)z=K[V+=1],a+=" || "+e.usePattern(z)+".test("+v+") "}a+=" ); if (isAdditional"+s+") { "}if("all"==w)a+=" delete "+u+"["+v+"]; ";else{var q=e.errorPath,Q="' + "+v+" + '";if(e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers)),A)if(w)a+=" delete "+u+"["+v+"]; ";else{a+=" "+f+" = false; ";var G=l;l=e.errSchemaPath+"/additionalProperties";var J=J||[];J.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'additionalProperties' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { additionalProperty: '"+Q+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should NOT have additional properties' "),e.opts.verbose&&(a+=" , schema: false , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var Z=a;a=J.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+Z+"]); ":a+=" validate.errors = ["+Z+"]; return false; ":a+=" var err = "+Z+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",l=G,c&&(a+=" break; ")}else if(I)if("failing"==w){a+=" var "+p+" = errors;  ";var Y=e.compositeRule;e.compositeRule=d.compositeRule=!0,d.schema=T,d.schemaPath=e.schemaPath+".additionalProperties",d.errSchemaPath=e.errSchemaPath+"/additionalProperties",d.errorPath=e.opts._errorDataPathProperty?e.errorPath:e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers);var X=u+"["+v+"]";d.dataPathArr[y]=v;var ee=e.validate(d);d.baseId=R,e.util.varOccurences(ee,E)<2?a+=" "+e.util.varReplace(ee,E,X)+" ":a+=" var "+E+" = "+X+"; "+ee+" ",a+=" if (!"+f+") { errors = "+p+"; if (validate.errors !== null) { if (errors) validate.errors.length = errors; else validate.errors = null; } delete "+u+"["+v+"]; }  ",e.compositeRule=d.compositeRule=Y}else{d.schema=T,d.schemaPath=e.schemaPath+".additionalProperties",d.errSchemaPath=e.errSchemaPath+"/additionalProperties",d.errorPath=e.opts._errorDataPathProperty?e.errorPath:e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers);var X=u+"["+v+"]";d.dataPathArr[y]=v;var ee=e.validate(d);d.baseId=R,e.util.varOccurences(ee,E)<2?a+=" "+e.util.varReplace(ee,E,X)+" ":a+=" var "+E+" = "+X+"; "+ee+" ",c&&(a+=" if (!"+f+") break; ")}e.errorPath=q}P&&(a+=" } "),a+=" }  ",c&&(a+=" if ("+f+") { ",m+="}")}var te=e.opts.useDefaults&&!e.compositeRule;if(S.length){var re=S;if(re)for(var M,ae=-1,se=re.length-1;ae<se;){M=re[ae+=1];var ie=n[M];if(e.util.schemaHasRules(ie,e.RULES.all)){var ne=e.util.getProperty(M),X=u+ne,oe=te&&void 0!==ie.default;d.schema=ie,d.schemaPath=o+ne,d.errSchemaPath=l+"/"+e.util.escapeFragment(M),d.errorPath=e.util.getPath(e.errorPath,M,e.opts.jsonPointers),d.dataPathArr[y]=e.util.toQuotedString(M);var ee=e.validate(d);if(d.baseId=R,e.util.varOccurences(ee,E)<2){ee=e.util.varReplace(ee,E,X);var le=X}else{var le=E;a+=" var "+E+" = "+X+"; "}if(oe)a+=" "+ee+" ";else{if(F&&F[M]){a+=" if ( "+le+" === undefined ",x&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(M)+"') "),a+=") { "+f+" = false; ";var q=e.errorPath,G=l,ce=e.util.escapeQuotes(M);e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPath(q,M,e.opts.jsonPointers)),l=e.errSchemaPath+"/required";var J=J||[];J.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+ce+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+ce+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var Z=a;a=J.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+Z+"]); ":a+=" validate.errors = ["+Z+"]; return false; ":a+=" var err = "+Z+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",l=G,e.errorPath=q,a+=" } else { "}else c?(a+=" if ( "+le+" === undefined ",x&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(M)+"') "),a+=") { "+f+" = true; } else { "):(a+=" if ("+le+" !== undefined ",x&&(a+=" &&   Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(M)+"') "),a+=" ) { ");a+=" "+ee+" } "}}c&&(a+=" if ("+f+") { ",m+="}")}}if(_.length){var ue=_;if(ue)for(var j,he=-1,pe=ue.length-1;he<pe;){j=ue[he+=1];var ie=C[j];if(e.util.schemaHasRules(ie,e.RULES.all)){d.schema=ie,d.schemaPath=e.schemaPath+".patternProperties"+e.util.getProperty(j),d.errSchemaPath=e.errSchemaPath+"/patternProperties/"+e.util.escapeFragment(j),a+=x?" "+b+" = "+b+" || Object.keys("+u+"); for (var "+g+"=0; "+g+"<"+b+".length; "+g+"++) { var "+v+" = "+b+"["+g+"]; ":" for (var "+v+" in "+u+") { ",a+=" if ("+e.usePattern(j)+".test("+v+")) { ",d.errorPath=e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers);var X=u+"["+v+"]";d.dataPathArr[y]=v;var ee=e.validate(d);d.baseId=R,e.util.varOccurences(ee,E)<2?a+=" "+e.util.varReplace(ee,E,X)+" ":a+=" var "+E+" = "+X+"; "+ee+" ",c&&(a+=" if (!"+f+") break; "),a+=" } ",c&&(a+=" else "+f+" = true; "),a+=" }  ",c&&(a+=" if ("+f+") { ",m+="}")}}}if(e.opts.patternGroups&&N.length){var de=N;if(de)for(var z,me=-1,fe=de.length-1;me<fe;){z=de[me+=1];var ve=k[z],ie=ve.schema;if(e.util.schemaHasRules(ie,e.RULES.all)){d.schema=ie,d.schemaPath=e.schemaPath+".patternGroups"+e.util.getProperty(z)+".schema",d.errSchemaPath=e.errSchemaPath+"/patternGroups/"+e.util.escapeFragment(z)+"/schema",a+=" var pgPropCount"+s+" = 0;  ",a+=x?" "+b+" = "+b+" || Object.keys("+u+"); for (var "+g+"=0; "+g+"<"+b+".length; "+g+"++) { var "+v+" = "+b+"["+g+"]; ":" for (var "+v+" in "+u+") { ",a+=" if ("+e.usePattern(z)+".test("+v+")) { pgPropCount"+s+"++; ",d.errorPath=e.util.getPathExpr(e.errorPath,v,e.opts.jsonPointers);var X=u+"["+v+"]";d.dataPathArr[y]=v;var ee=e.validate(d);d.baseId=R,e.util.varOccurences(ee,E)<2?a+=" "+e.util.varReplace(ee,E,X)+" ":a+=" var "+E+" = "+X+"; "+ee+" ",c&&(a+=" if (!"+f+") break; "),a+=" } ",c&&(a+=" else "+f+" = true; "),a+=" }  ",c&&(a+=" if ("+f+") { ",m+="}");var ge=ve.minimum,ye=ve.maximum;if(void 0!==ge||void 0!==ye){a+=" var "+h+" = true; ";var G=l;if(void 0!==ge){var Ee=ge,be="minimum",Se="less";a+=" "+h+" = pgPropCount"+s+" >= "+ge+"; ",l=e.errSchemaPath+"/patternGroups/minimum",a+="  if (!"+h+") {   ";var J=J||[];J.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'patternGroups' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { reason: '"+be+"', limit: "+Ee+", pattern: '"+e.util.escapeQuotes(z)+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should NOT have "+Se+" than "+Ee+' properties matching pattern "'+e.util.escapeQuotes(z)+"\"' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var Z=a;a=J.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+Z+"]); ":a+=" validate.errors = ["+Z+"]; return false; ":a+=" var err = "+Z+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } ",void 0!==ye&&(a+=" else ")}if(void 0!==ye){var Ee=ye,be="maximum",Se="more";a+=" "+h+" = pgPropCount"+s+" <= "+ye+"; ",l=e.errSchemaPath+"/patternGroups/maximum",a+="  if (!"+h+") {   ";var J=J||[];J.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'patternGroups' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { reason: '"+be+"', limit: "+Ee+", pattern: '"+e.util.escapeQuotes(z)+"' } ",!1!==e.opts.messages&&(a+=" , message: 'should NOT have "+Se+" than "+Ee+' properties matching pattern "'+e.util.escapeQuotes(z)+"\"' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var Z=a;a=J.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+Z+"]); ":a+=" validate.errors = ["+Z+"]; return false; ":a+=" var err = "+Z+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } "}l=G,c&&(a+=" if ("+h+") { ",m+="}")}}}}return c&&(a+=" "+m+" if ("+p+" == errors) {"),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="errs__"+s,p=e.util.copy(e);p.level++;var d="valid"+p.level;if(e.util.schemaHasRules(n,e.RULES.all)){p.schema=n,p.schemaPath=o,p.errSchemaPath=l;var m="key"+s,f="idx"+s,v="i"+s,g="' + "+m+" + '",y=p.dataLevel=e.dataLevel+1,E="data"+y,b="dataProperties"+s,S=e.opts.ownProperties,C=e.baseId;a+=" var "+h+" = errors; ",S&&(a+=" var "+b+" = undefined; "),a+=S?" "+b+" = "+b+" || Object.keys("+u+"); for (var "+f+"=0; "+f+"<"+b+".length; "+f+"++) { var "+m+" = "+b+"["+f+"]; ":" for (var "+m+" in "+u+") { ",a+=" var startErrs"+s+" = errors; ";var _=m,T=e.compositeRule;e.compositeRule=p.compositeRule=!0;var P=e.validate(p);p.baseId=C,e.util.varOccurences(P,E)<2?a+=" "+e.util.varReplace(P,E,_)+" ":a+=" var "+E+" = "+_+"; "+P+" ",e.compositeRule=p.compositeRule=T,a+=" if (!"+d+") { for (var "+v+"=startErrs"+s+"; "+v+"<errors; "+v+"++) { vErrors["+v+"].propertyName = "+m+"; }   var err =   ",!1!==e.createErrors?(a+=" { keyword: 'propertyNames' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { propertyName: '"+g+"' } ",!1!==e.opts.messages&&(a+=" , message: 'property name \\'"+g+"\\' is invalid' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",!e.compositeRule&&c&&(e.async?a+=" throw new ValidationError(vErrors); ":a+=" validate.errors = vErrors; return false; "),c&&(a+=" break; "),a+=" } }"}return c&&(a+="  if ("+h+" == errors) {"),a=e.util.cleanUpCode(a)}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s,i=" ",n=e.level,o=e.dataLevel,l=e.schema[t],c=e.errSchemaPath+"/"+t,u=!e.opts.allErrors,h="data"+(o||""),p="valid"+n;if("#"==l||"#/"==l)e.isRoot?(a=e.async,s="validate"):(a=!0===e.root.schema.$async,s="root.refVal[0]");else{var d=e.resolveRef(e.baseId,l,e.isRoot);if(void 0===d){var m=e.MissingRefError.message(e.baseId,l);if("fail"==e.opts.missingRefs){console.error(m);var f=f||[];f.push(i),i="",!1!==e.createErrors?(i+=" { keyword: '$ref' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: { ref: '"+e.util.escapeQuotes(l)+"' } ",!1!==e.opts.messages&&(i+=" , message: 'can\\'t resolve reference "+e.util.escapeQuotes(l)+"' "),e.opts.verbose&&(i+=" , schema: "+e.util.toQuotedString(l)+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),i+=" } "):i+=" {} ";var v=i;i=f.pop(),!e.compositeRule&&u?e.async?i+=" throw new ValidationError(["+v+"]); ":i+=" validate.errors = ["+v+"]; return false; ":i+=" var err = "+v+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",u&&(i+=" if (false) { ")}else{if("ignore"!=e.opts.missingRefs)throw new e.MissingRefError(e.baseId,l,m);console.warn(m),u&&(i+=" if (true) { ")}}else if(d.inline){var g=e.util.copy(e);g.level++;var y="valid"+g.level;g.schema=d.schema,g.schemaPath="",g.errSchemaPath=l;var E=e.validate(g).replace(/validate\.schema/g,d.code);i+=" "+E+" ",u&&(i+=" if ("+y+") { ")}else a=!0===d.$async,s=d.code}if(s){var f=f||[];f.push(i),i="",e.opts.passContext?i+=" "+s+".call(this, ":i+=" "+s+"( ",i+=" "+h+", (dataPath || '')",'""'!=e.errorPath&&(i+=" + "+e.errorPath);i+=" , "+(o?"data"+(o-1||""):"parentData")+" , "+(o?e.dataPathArr[o]:"parentDataProperty")+", rootData)  ";var b=i;if(i=f.pop(),a){if(!e.async)throw new Error("async schema referenced by sync schema");u&&(i+=" var "+p+"; "),i+=" try { "+e.yieldAwait+" "+b+"; ",u&&(i+=" "+p+" = true; "),i+=" } catch (e) { if (!(e instanceof ValidationError)) throw e; if (vErrors === null) vErrors = e.errors; else vErrors = vErrors.concat(e.errors); errors = vErrors.length; ",u&&(i+=" "+p+" = false; "),i+=" } ",u&&(i+=" if ("+p+") { ")}else i+=" if (!"+b+") { if (vErrors === null) vErrors = "+s+".errors; else vErrors = vErrors.concat("+s+".errors); errors = vErrors.length; } ",u&&(i+=" else { ")}return i}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a=" ",s=e.level,i=e.dataLevel,n=e.schema[t],o=e.schemaPath+e.util.getProperty(t),l=e.errSchemaPath+"/"+t,c=!e.opts.allErrors,u="data"+(i||""),h="valid"+s,p=e.opts.$data&&n&&n.$data;p&&(a+=" var schema"+s+" = "+e.util.getData(n.$data,i,e.dataPathArr)+"; ");var d="schema"+s;if(!p)if(n.length<e.opts.loopRequired&&e.schema.properties&&Object.keys(e.schema.properties).length){var m=[],f=n;if(f)for(var v,g=-1,y=f.length-1;g<y;){v=f[g+=1];var E=e.schema.properties[v];E&&e.util.schemaHasRules(E,e.RULES.all)||(m[m.length]=v)}}else var m=n;if(p||m.length){var b=e.errorPath,S=p||m.length>=e.opts.loopRequired,C=e.opts.ownProperties;if(c)if(a+=" var missing"+s+"; ",S){p||(a+=" var "+d+" = validate.schema"+o+"; ");var _="i"+s,T="schema"+s+"["+_+"]",P="' + "+T+" + '";e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPathExpr(b,T,e.opts.jsonPointers)),a+=" var "+h+" = true; ",p&&(a+=" if (schema"+s+" === undefined) "+h+" = true; else if (!Array.isArray(schema"+s+")) "+h+" = false; else {"),a+=" for (var "+_+" = 0; "+_+" < "+d+".length; "+_+"++) { "+h+" = "+u+"["+d+"["+_+"]] !== undefined ",C&&(a+=" &&   Object.prototype.hasOwnProperty.call("+u+", "+d+"["+_+"]) "),a+="; if (!"+h+") break; } ",p&&(a+="  }  "),a+="  if (!"+h+") {   ";var A=A||[];A.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+P+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+P+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var I=a;a=A.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+I+"]); ":a+=" validate.errors = ["+I+"]; return false; ":a+=" var err = "+I+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } else { "}else{a+=" if ( ";var w=m;if(w)for(var D,_=-1,x=w.length-1;_<x;){D=w[_+=1],_&&(a+=" || ");var R=e.util.getProperty(D),O=u+R;a+=" ( ( "+O+" === undefined ",C&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(D)+"') "),a+=") && (missing"+s+" = "+e.util.toQuotedString(e.opts.jsonPointers?D:R)+") ) "}a+=") {  ";var T="missing"+s,P="' + "+T+" + '";e.opts._errorDataPathProperty&&(e.errorPath=e.opts.jsonPointers?e.util.getPathExpr(b,T,!0):b+" + "+T);var A=A||[];A.push(a),a="",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+P+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+P+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ";var I=a;a=A.pop(),!e.compositeRule&&c?e.async?a+=" throw new ValidationError(["+I+"]); ":a+=" validate.errors = ["+I+"]; return false; ":a+=" var err = "+I+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",a+=" } else { "}else if(S){p||(a+=" var "+d+" = validate.schema"+o+"; ");var _="i"+s,T="schema"+s+"["+_+"]",P="' + "+T+" + '";e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPathExpr(b,T,e.opts.jsonPointers)),p&&(a+=" if ("+d+" && !Array.isArray("+d+")) {  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+P+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+P+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } else if ("+d+" !== undefined) { "),a+=" for (var "+_+" = 0; "+_+" < "+d+".length; "+_+"++) { if ("+u+"["+d+"["+_+"]] === undefined ",C&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", "+d+"["+_+"]) "),a+=") {  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+P+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+P+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } } ",p&&(a+="  }  ")}else{var F=m;if(F)for(var D,k=-1,N=F.length-1;k<N;){D=F[k+=1];var R=e.util.getProperty(D),P=e.util.escapeQuotes(D),O=u+R;e.opts._errorDataPathProperty&&(e.errorPath=e.util.getPath(b,D,e.opts.jsonPointers)),a+=" if ( "+O+" === undefined ",C&&(a+=" || ! Object.prototype.hasOwnProperty.call("+u+", '"+e.util.escapeQuotes(D)+"') "),a+=") {  var err =   ",!1!==e.createErrors?(a+=" { keyword: 'required' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(l)+" , params: { missingProperty: '"+P+"' } ",!1!==e.opts.messages&&(a+=" , message: '",e.opts._errorDataPathProperty?a+="is a required property":a+="should have required property \\'"+P+"\\'",a+="' "),e.opts.verbose&&(a+=" , schema: validate.schema"+o+" , parentSchema: validate.schema"+e.schemaPath+" , data: "+u+" "),a+=" } "):a+=" {} ",a+=";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } "}}e.errorPath=b}else c&&(a+=" if (true) {");return a}},function(e,t,r){"use strict";e.exports=function(e,t,r){var a,s=" ",i=e.level,n=e.dataLevel,o=e.schema[t],l=e.schemaPath+e.util.getProperty(t),c=e.errSchemaPath+"/"+t,u=!e.opts.allErrors,h="data"+(n||""),p="valid"+i,d=e.opts.$data&&o&&o.$data;if(d?(s+=" var schema"+i+" = "+e.util.getData(o.$data,n,e.dataPathArr)+"; ",a="schema"+i):a=o,(o||d)&&!1!==e.opts.uniqueItems){d&&(s+=" var "+p+"; if ("+a+" === false || "+a+" === undefined) "+p+" = true; else if (typeof "+a+" != 'boolean') "+p+" = false; else { "),s+=" var "+p+" = true; if ("+h+".length > 1) { var i = "+h+".length, j; outer: for (;i--;) { for (j = i; j--;) { if (equal("+h+"[i], "+h+"[j])) { "+p+" = false; break outer; } } } } ",d&&(s+="  }  "),s+=" if (!"+p+") {   ";var m=m||[];m.push(s),s="",!1!==e.createErrors?(s+=" { keyword: 'uniqueItems' , dataPath: (dataPath || '') + "+e.errorPath+" , schemaPath: "+e.util.toQuotedString(c)+" , params: { i: i, j: j } ",!1!==e.opts.messages&&(s+=" , message: 'should NOT have duplicate items (items ## ' + j + ' and ' + i + ' are identical)' "),e.opts.verbose&&(s+=" , schema:  ",s+=d?"validate.schema"+l:""+o,s+="         , parentSchema: validate.schema"+e.schemaPath+" , data: "+h+" "),s+=" } "):s+=" {} ";var f=s;s=m.pop(),!e.compositeRule&&u?e.async?s+=" throw new ValidationError(["+f+"]); ":s+=" validate.errors = ["+f+"]; return false; ":s+=" var err = "+f+";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ",s+=" } ",u&&(s+=" else { ")}else u&&(s+=" if (true) { ");return s}},function(e,t,r){"use strict";function a(e,t){function r(e,t,r){for(var a,i=0;i<s.length;i++){var n=s[i];if(n.type==t){a=n;break}}a||(a={type:t,rules:[]},s.push(a));var l={keyword:e,definition:r,custom:!0,code:o,implements:r.implements};a.rules.push(l),s.custom[e]=l}function a(e){if(!s.types[e])throw new Error("Unknown type "+e)}var s=this.RULES;if(s.keywords[e])throw new Error("Keyword "+e+" is already defined");if(!n.test(e))throw new Error("Keyword "+e+" is not a valid identifier");if(t){if(t.macro&&void 0!==t.valid)throw new Error('"valid" option cannot be used with macro keywords');var i=t.type;if(Array.isArray(i)){var l,c=i.length;for(l=0;l<c;l++)a(i[l]);for(l=0;l<c;l++)r(e,i[l],t)}else i&&a(i),r(e,i,t);var u=!0===t.$data&&this._opts.$data;if(u&&!t.validate)throw new Error('$data support: "validate" function is not defined');var h=t.metaSchema;h&&(u&&(h={anyOf:[h,{$ref:"https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/$data.json#"}]}),t.validateSchema=this.compile(h,!0))}s.keywords[e]=s.all[e]=!0}function s(e){var t=this.RULES.custom[e];return t?t.definition:this.RULES.keywords[e]||!1}function i(e){var t=this.RULES;delete t.keywords[e],delete t.all[e],delete t.custom[e];for(var r=0;r<t.length;r++)for(var a=t[r].rules,s=0;s<a.length;s++)if(a[s].keyword==e){a.splice(s,1);break}}var n=/^[a-z_$][a-z0-9_$-]*$/i,o=r(413);e.exports={add:a,get:s,remove:i}},function(e,t,r){"use strict";e.exports=function(e){var t=e._opts.defaultMeta,r="string"==typeof t?{$ref:t}:e.getSchema("http://json-schema.org/draft-06/schema")?{$ref:"http://json-schema.org/draft-06/schema"}:{};e.addKeyword("patternGroups",{metaSchema:{type:"object",additionalProperties:{type:"object",required:["schema"],properties:{maximum:{type:"integer",minimum:0},minimum:{type:"integer",minimum:0},schema:r},additionalProperties:!1}}}),e.RULES.all.properties.implements.push("patternGroups")}},,,,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t,r){this.scope=e,this.methodName=t,this.fetchAttrName=r}return e}();t.DataSourceConfig=a},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=r(312),o=r(122),l=r(44),c=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.setTitle=function(e,t){return this.setState({title:e},t),this},t.prototype.setMessage=function(e,t){return this.setState({message:e},t),this},t.prototype.setOnClickOk=function(e,t){return this.setState({onClickOk:e},t),this},t.prototype.setOnClickCancel=function(e,t){return this.setState({onClickCancel:e},t),this},t.prototype.setOnClickClose=function(e,t){return this.setState({onClickClose:e},t),this},t.prototype.open=function(e){return this.setState({isVisible:!0},e),this},t.prototype.close=function(e){return this.setState({isVisible:!1},e),this},t.prototype.render=function(){if(!this.state.isVisible)return null;var e=this.state.notificationId||"nAlert";return s.createElement(o.Modal,{alert:!0,isVisible:!0,onClickClose:this.state.onClickClose,underlayClickExits:this.state.underlayClickExits,escapeKeyExits:this.state.escapeKeyExits,title:this.state.title,dialogId:this.state.dialogId},s.createElement(l.Notification,{id:e}),s.createElement("div",{className:"widget-alert-body"},this.state.message),s.createElement("div",{className:"widget-dialogue-footer"},s.createElement("div",{className:"grid has-gutter hornet-alert-buttons button-group"},s.createElement(n.Button,a.__assign({},this.configOKButton())),s.createElement(n.Button,a.__assign({},this.configCancelButton())))))},t.prototype.configOKButton=function(){return{type:"button",id:"alertOK",name:"action:validMessage",value:"Valider",className:"hornet-button hornet-alert-button-ok",label:this.getValid(),title:this.getValidTitle(),onClick:this.state.onClickOk}},t.prototype.configCancelButton=function(){return{type:"button",id:"alertCancel",name:"action:annulerMessage",value:"Annuler",className:"hornet-button hornet-alert-button-cancel",label:this.getCancel(),title:this.getCancelTitle(),onClick:this.state.onClickCancel}},t.prototype.getValid=function(){return this.state.valid||this.i18n("form.valid")},t.prototype.getCancel=function(){return this.state.cancel||this.i18n("form.cancel")},t.prototype.getValidTitle=function(){return this.state.validTitle||this.i18n("form.validTitle")},t.prototype.getCancelTitle=function(){return this.state.cancelTitle||this.i18n("form.cancelTitle")},t.defaultProps={isVisible:!1,underlayClickExits:!1,escapeKeyExits:!0},t}(i.HornetComponent);t.Alert=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(6),i=r(0),n=r(2),o=r(4),l=r(45),c=r(9),u=i.Utils.getLogger("hornet-js-components.widget.pager.pager");t.ITEMS_PER_PAGE_ALL=2147483647;var h=function(e){function r(r,a){var i=e.call(this,r,a)||this;return i.defaultPageSizeSelect=[{value:10,textKey:i.i18n("table.10")},{value:20,textKey:i.i18n("table.20")},{value:50,textKey:i.i18n("table.50")},{value:100,textKey:i.i18n("table.100")},{value:t.ITEMS_PER_PAGE_ALL,textKey:i.i18n("table.displayAll")}],i.state.i18n=i.i18n("table"),i.state.pagination=s.cloneDeep(i.props.dataSource.pagination),i.state.dropDownTitle=i.i18n("table.pager.dropdownTitle"),i}return a.__extends(r,e),r.prototype.componentDidMount=function(){var t=this;e.prototype.componentDidMount.call(this),this.props.dataSource.on("fetch",this.updateOnFetch),this.props.dataSource.on("pagination",function(e){t.setState({pagination:s.cloneDeep(e.pagination)})})},r.prototype.componentWillUnmount=function(){var t=this;e.prototype.componentWillUnmount.call(this),this.props.dataSource&&(this.props.dataSource.removeListener("fetch",this.updateOnFetch),this.props.dataSource.removeListener("pagination",function(e){t.setState({pagination:s.cloneDeep(e.pagination)})}))},r.prototype.shouldComponentUpdate=function(e,t){var r=this.state.pagination.pageIndex!==t.pagination.pageIndex||this.state.pagination.itemsPerPage!==t.pagination.itemsPerPage||this.state.pagination.totalItems!==t.pagination.totalItems||this.state.disabled!==t.disabled;return u.trace("shouldComponentUpdate",r),r},r.prototype.updateOnFetch=function(e){this.setState({pagination:e&&0!=e.length?s.cloneDeep(this.props.dataSource.pagination):{}}),this.tableInputPager&&(this.tableInputPager.value=this.state.pagination.pageIndex)},r.prototype.render=function(){u.trace("render");var e="datatable-pagination";return this.state.className&&(e+=" "+this.state.className),this.state.pagination.pageIndex?n.createElement("div",{className:e,id:this.props.id,disabled:this.state.disabled},this.renderSelectItemsPerPage(),this.getButtons()):n.createElement("div",null)},r.prototype.renderSelectItemsPerPage=function(){var e=this;u.trace("renderSelectItemsPerPage");var t=this.state.pageSizeSelect||this.defaultPageSizeSelect,r=[];t.map(function(t){var a=!1;e.state.pagination.itemsPerPage==t.value&&(a=!0),r.push({label:t.textKey,action:e.onFormChange.bind(e,t.value,!1),className:"material-dropdown-menu__link",disabled:a})});var a={value:0,textKey:""};if(this.state.pagination.itemsPerPage)for(var s=0;s<t.length;s++){var i=t[s];i.value==this.state.pagination.itemsPerPage&&(a=i)}return n.createElement("div",null,n.createElement("label",{className:"labelPager",htmlFor:this.props.id+"-drop"},this.state.i18n.pageFooter),n.createElement("div",{className:"datatable-pagination-content"},n.createElement(l.Dropdown,{items:r,icon:"caret-down",id:this.props.id+"-drop",valueCurrent:this.state.pagination.itemsPerPage,label:a.textKey,ariaLabel:this.state.i18n.pageFooter+" "+this.state.pagination.itemsPerPage,disabled:this.state.disabled,position:l.Position.TOPLEFT,title:this.state.dropDownTitle})))},r.getTotalPages=function(e,t){return Math.max(1,Math.ceil(e/t))||0},r.prototype.getButtons=function(){u.trace("getButtons");var e,t,a,s;e=t=a=s=1;var i=this.state.pagination.totalItems,n=this.state.pagination.itemsPerPage,o=this.state.pagination.pageIndex,l=r.getTotalPages(i,n);s=l,o>l&&(o=1);var c=!1,h=!1;return i>n&&l>1&&(o>1&&(t=o-1,c=!0),o<l&&(a=o+1,h=!0)),[this.renderButton(this.i18n("table.firstPage")+" [page "+e+"/"+l+"]",e,c,"firstPage"),this.renderButton(this.i18n("table.prevPage")+" [page "+t+"/"+l+"]",t,c,"prevPage"),this.renderPageInput(e,s),this.renderButton("[page "+a+"/"+l+"] "+this.i18n("table.nextPage"),a,h,"nextPage"),this.renderButton("[page "+l+"/"+l+"] "+this.i18n("table.lastPage"),s,h,"lastPage")]},r.prototype.renderButton=function(e,t,r,a){var s=this;u.trace("renderButton");var i="datatable-pagination-button datatable-pagination-button-"+a.toLowerCase();return i+=r?" datatable-pagination-control-enabled":" datatable-pagination-control-disabled",n.createElement("button",{className:i,onClick:function(){s.props.dataSource.goToPage(t),s.tableInputPager.value=t},disabled:!r||this.state.disabled,key:a,title:e,"aria-label":this.i18n("table."+a)})},r.prototype.renderPageInput=function(e,t){var r=this,a=this.state.pagination.pageIndex,s=!a||a<1?1:a;return n.createElement("input",{defaultValue:s,value:a,type:this.isMobile()?"tel":"number",min:this.isMobile()?void 0:e,max:this.isMobile()?void 0:t,className:"datatable-pagination-input",ref:function(e){r.tableInputPager=e},name:"tableInputPager",onKeyDown:this.handleInputKeyDown,key:this.props.id})},r.prototype.handleInputKeyDown=function(e){if(!(e.ctrlKey||e.shiftKey||e.altKey||e.metaKey)){var t=e.keyCode;(this.isMobile()&&c.KeyCodes.TAB==t||c.KeyCodes.SPACEBAR==t||c.KeyCodes.ENTER==t)&&(this.tableInputPager.value>=1&&this.tableInputPager.value<=r.getTotalPages(this.state.pagination.totalItems,this.state.pagination.itemsPerPage)?(this.props.dataSource.goToPage(this.tableInputPager.value),this.tableInputPager.value=this.tableInputPager.value):this.tableInputPager.value=this.state.pagination.pageIndex)}},r.prototype.onFormChange=function(e,t){u.trace("onFormChange"),t?(this.props.dataSource.goToPage(e),this.tableInputPager.value=e):(this.props.dataSource.updatePerPage(e),this.tableInputPager.value=1)},r.prototype.setClassName=function(e,t){return this.setState({className:e},t),this},r.prototype.setMessage=function(e,t){return this.setState({message:e},t),this},r.prototype.setPageSizeSelect=function(e,t){return this.setState({pageSizeSelect:e},t),this},r.defaultProps={message:o.HornetComponent.getI18n("table"),className:""},r}(o.HornetComponent);t.Pager=h},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(4),n=r(443),o=r(311),l=r(9),c=r(6),u=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.abstract-cell"),h=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.handleBlur=function(e){a.props.cellCoordinate.isSame(e)&&a.tableCellRef&&a.blurActions(a.tableCellRef)},a.handleFocus=function(e,t){a.props.cellCoordinate&&(a.props.cellCoordinate.isSame(e)&&(a.tableCellRef&&(a.tableCellRef.tabIndex=-1),a.setState({isFocused:!1})),a.props.cellCoordinate.isSame(t)&&a.setState({isFocused:!0},a.handleCellFocus(a.tableCellRef)))},a.state.isFocused=!1,a.state.isEditing=!1,a.props.contentState.on(o.ContentState.FOCUS_CHANGE_EVENT,a.handleFocus),a.props.contentState.on(o.ContentState.BLUR_EVENT,a.handleBlur),a.handleEdition=a.handleEdition.bind(a),a.props.contentState.on(o.ContentState.EDITION_CLIC_EVENT,a.handleEdition),a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(e,t){return void 0!==this.state.editable&&this.state.isEditing!==t.isEditing},t.prototype.componentWillUnmount=function(){this.props.contentState.removeListener(o.ContentState.FOCUS_CHANGE_EVENT,this.handleFocus),this.props.contentState.removeListener(o.ContentState.BLUR_EVENT,this.handleBlur),this.props.contentState.removeListener(o.ContentState.EDITION_CLIC_EVENT,this.handleEdition)},t.prototype.handleKeyDown=function(e){if(this.props.toggleSelectLines&&(e.ctrlKey||e.shiftKey||e.altKey||e.metaKey))this.handleKeyDownWithModifier(e);else if(this.props.navigateFct){var t=e.keyCode,r=!0;switch(t){case l.KeyCodes.RIGHT_ARROW:u.trace("Focus sur la cellule suivante de la même ligne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.RIGHT);break;case l.KeyCodes.LEFT_ARROW:u.trace("Focus sur la cellule précédente de la même ligne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.LEFT);break;case l.KeyCodes.DOWN_ARROW:u.trace("Focus sur la cellule suivante de la même colonne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.BOTOM);break;case l.KeyCodes.UP_ARROW:u.trace("Focus sur la cellule précédente de la même colonne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.TOP);break;case l.KeyCodes.HOME:u.trace("Focus sur la première cellule de la ligne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.HOME_COL);break;case l.KeyCodes.END:u.trace("Focus sur la dernière cellule de la ligne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.END_COL);break;case l.KeyCodes.PAGE_UP:u.trace("Focus sur la première cellule de la colonne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.HOME_LINE);break;case l.KeyCodes.PAGE_DOWN:u.trace("Focus sur la dernière cellule de la colonne"),this.props.navigateFct(this.props.cellCoordinate,n.NavigateDirection.END_LINE);break;case l.KeyCodes.ENTER:if(e.target!=this.tableCellRef[this.props.cellCoordinate.row]){r=!1;break}default:r=!1}r&&e.preventDefault()}},t.prototype.handleKeyDownWithModifier=function(e){var t=this,r=!1;switch(e.keyCode){case l.KeyCodes.SPACEBAR:e.shiftKey&&(u.trace("Shift + Space : sélection/déselection de la ligne"),this.props.toggleSelectLines(this.props.value)),r=!0;break;case 65:e.ctrlKey&&(u.trace("Ctrl + A : sélection/déselection de toutes les lignes"),this.props.toggleSelectLines(null,!this.props.isSelected)),r=!0;break;case 67:e.ctrlKey&&(document.addEventListener("copy",function(e){var r=t.getInputValue(t.tableCellRef);t.tableCellRef&&t.tableCellRef.textContent&&!r&&(r=t.tableCellRef.textContent),e.clipboardData.setData("text/plain",r),e.preventDefault()}),document.execCommand("copy"))}r&&e.preventDefault()},t.prototype.getInputValue=function(e){var t="";if(e&&e.children)for(var r=0;r<e.children.length;r++)t||("input"!=e.children[r].localName&&e.children[r].children?t=this.getInputValue(e.children[r]):"input"==e.children[r].localName&&(t=e.children[r].value));return t},t.prototype.handleEdition=function(e){c.isNull(e)?(this.setState({isEditing:!1}),this.tableCellRef.removeAttribute("disabled"),this.tableCellRef.classList.remove("datatable-cell-in-edition")):e===this.props.cellCoordinate.row?(this.setState({isEditing:e===this.props.cellCoordinate.row}),this.tableCellRef.classList.add("datatable-cell-in-edition")):"th"==this.tableCellRef.localName?(this.tableCellRef.classList.add("is_disabled"),this.tableCellRef.classList.remove("datatable-header-sortable-column","datatable-header-sorted","datatable-header-sorted-asc")):this.tableCellRef.setAttribute("disabled","true")},t.prototype.blurActions=function(e){this.setCellTabIndex(e,-1)},t.prototype.setCellTabIndex=function(e,t,r){e&&e.firstChild&&e.firstChild.focus?(e.firstChild.tabIndex=t,r&&e.firstChild.focus()):(e.tabIndex=t,r&&e.focus())},t.prototype.handleCellFocus=function(e){e&&this.setCellTabIndex(this.tableCellRef,0,!0)},t.prototype.render=function(){throw new Error("not use this render !")},t.prototype.getTabIndex=function(){return-1},t}(i.HornetComponent);t.AbstractCell=h},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(356),o=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.action.action-header-cell"),l=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.renderCell=function(){return o.trace("render ActionHeaderCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row),this.state.abbr?i.createElement("abbr",{lang:this.state.lang,title:this.state.abbr},this.state.title):this.state.title},t}(n.AbstractHeaderCell);t.ActionHeaderCell=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(4),o=r(311),l=r(438),c=s.Utils.getLogger("hornet-js-components.widget.table.footer"),u=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.i18n=a.i18n("table"),a.props.contentState.setMaxListeners(1/0),a.handleEdition=a.handleEdition.bind(a),a.props.contentState.on(o.ContentState.EDITION_CLIC_EVENT,a.handleEdition),a}return a.__extends(t,e),t.prototype.componentWillUnmount=function(){this.props.contentState.removeListener(o.ContentState.EDITION_CLIC_EVENT,this.handleEdition)},t.prototype.handleEdition=function(e){this.setState({disabled:void 0!==e&&null!==e})},t.prototype.render=function(){return c.trace("render"),i.createElement("div",{className:this.state.className,disabled:this.state.disabled},this.state.disabled?this.setChildrenDisabled():this.props.children)},t.prototype.setChildrenDisabled=function(){var e=this,t=[];return i.Children.map(this.props.children,function(r){r.type===l.Pager?t.push(e.wrap(l.Pager,r.props,{disabled:e.state.disabled})):t.push(r.props.children)}),t},t.defaultProps={className:"hornet-datatable-bottom"},t}(n.HornetComponent);t.Footer=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(4),n=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.render=function(){return s.createElement("div",null)},t.defaultProps={displayed:!1},t}(i.HornetComponent);t.Line=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});!function(e){e[e.RIGHT=0]="RIGHT",e[e.LEFT=1]="LEFT",e[e.TOP=2]="TOP",e[e.BOTOM=3]="BOTOM",e[e.HOME_LINE=4]="HOME_LINE",e[e.END_LINE=5]="END_LINE",e[e.HOME_COL=6]="HOME_COL",e[e.END_COL=7]="END_COL"}(t.NavigateDirection||(t.NavigateDirection={}))},function(e,t,r){"use strict";function a(e,t,r,n,o,l,c,u,h){if(r&&"object"==typeof r&&!Array.isArray(r)){t(r,n,o,l,c,u,h);for(var p in r){var d=r[p];if(Array.isArray(d)){if(p in i.arrayKeywords)for(var m=0;m<d.length;m++)a(e,t,d[m],n+"/"+p+"/"+m,o,n,p,r,m)}else if(p in i.propsKeywords){if(d&&"object"==typeof d)for(var f in d)a(e,t,d[f],n+"/"+p+"/"+s(f),o,n,p,r,f)}else(p in i.keywords||e.allKeys&&!(p in i.skipKeywords))&&a(e,t,d,n+"/"+p,o,n,p,r)}}}function s(e){return e.replace(/~/g,"~0").replace(/\//g,"~1")}var i=e.exports=function(e,t,r){"function"==typeof t&&(r=t,t={}),a(t,r,e,"",e)};i.keywords={additionalItems:!0,items:!0,contains:!0,additionalProperties:!0,propertyNames:!0,not:!0},i.arrayKeywords={items:!0,allOf:!0,anyOf:!0,oneOf:!0},i.propsKeywords={definitions:!0,properties:!0,patternProperties:!0,dependencies:!0},i.skipKeywords={enum:!0,const:!0,required:!0,maximum:!0,minimum:!0,exclusiveMaximum:!0,exclusiveMinimum:!0,multipleOf:!0,maxLength:!0,minLength:!0,pattern:!0,format:!0,maxItems:!0,minItems:!0,uniqueItems:!0,maxProperties:!0,minProperties:!0}},function(e,t,r){t.parse=r(446),t.stringify=r(447)},function(e,t){var r,a,s,i,n={'"':'"',"\\":"\\","/":"/",b:"\b",f:"\f",n:"\n",r:"\r",t:"\t"},o=function(e){throw{name:"SyntaxError",message:e,at:r,text:s}},l=function(e){return e&&e!==a&&o("Expected '"+e+"' instead of '"+a+"'"),a=s.charAt(r),r+=1,a},c=function(){var e,t="";for("-"===a&&(t="-",l("-"));a>="0"&&a<="9";)t+=a,l();if("."===a)for(t+=".";l()&&a>="0"&&a<="9";)t+=a;if("e"===a||"E"===a)for(t+=a,l(),"-"!==a&&"+"!==a||(t+=a,l());a>="0"&&a<="9";)t+=a,l();if(e=+t,isFinite(e))return e;o("Bad number")},u=function(){var e,t,r,s="";if('"'===a)for(;l();){if('"'===a)return l(),s;if("\\"===a)if(l(),"u"===a){for(r=0,t=0;t<4&&(e=parseInt(l(),16),isFinite(e));t+=1)r=16*r+e;s+=String.fromCharCode(r)}else{if("string"!=typeof n[a])break;s+=n[a]}else s+=a}o("Bad string")},h=function(){for(;a&&a<=" ";)l()},p=function(){switch(a){case"t":return l("t"),l("r"),l("u"),l("e"),!0;case"f":return l("f"),l("a"),l("l"),l("s"),l("e"),!1;case"n":return l("n"),l("u"),l("l"),l("l"),null}o("Unexpected '"+a+"'")},d=function(){var e=[];if("["===a){if(l("["),h(),"]"===a)return l("]"),e;for(;a;){if(e.push(i()),h(),"]"===a)return l("]"),e;l(","),h()}}o("Bad array")},m=function(){var e,t={};if("{"===a){if(l("{"),h(),"}"===a)return l("}"),t;for(;a;){if(e=u(),h(),l(":"),Object.hasOwnProperty.call(t,e)&&o('Duplicate key "'+e+'"'),t[e]=i(),h(),"}"===a)return l("}"),t;l(","),h()}}o("Bad object")};i=function(){switch(h(),a){case"{":return m();case"[":return d();case'"':return u();case"-":return c();default:return a>="0"&&a<="9"?c():p()}},e.exports=function(e,t){var n;return s=e,r=0,a=" ",n=i(),h(),a&&o("Syntax error"),"function"==typeof t?function e(r,a){var s,i,n=r[a];if(n&&"object"==typeof n)for(s in n)Object.prototype.hasOwnProperty.call(n,s)&&(i=e(n,s),void 0!==i?n[s]=i:delete n[s]);return t.call(r,a,n)}({"":n},""):n}},function(e,t){function r(e){return o.lastIndex=0,o.test(e)?'"'+e.replace(o,function(e){var t=l[e];return"string"==typeof t?t:"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+e+'"'}function a(e,t){var o,l,c,u,h,p=s,d=t[e];switch(d&&"object"==typeof d&&"function"==typeof d.toJSON&&(d=d.toJSON(e)),"function"==typeof n&&(d=n.call(t,e,d)),typeof d){case"string":return r(d);case"number":return isFinite(d)?String(d):"null";case"boolean":case"null":return String(d);case"object":if(!d)return"null";if(s+=i,h=[],"[object Array]"===Object.prototype.toString.apply(d)){for(u=d.length,o=0;o<u;o+=1)h[o]=a(o,d)||"null";return c=0===h.length?"[]":s?"[\n"+s+h.join(",\n"+s)+"\n"+p+"]":"["+h.join(",")+"]",s=p,c}if(n&&"object"==typeof n)for(u=n.length,o=0;o<u;o+=1)"string"==typeof(l=n[o])&&(c=a(l,d))&&h.push(r(l)+(s?": ":":")+c);else for(l in d)Object.prototype.hasOwnProperty.call(d,l)&&(c=a(l,d))&&h.push(r(l)+(s?": ":":")+c);return c=0===h.length?"{}":s?"{\n"+s+h.join(",\n"+s)+"\n"+p+"}":"{"+h.join(",")+"}",s=p,c}}var s,i,n,o=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,l={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"};e.exports=function(e,t,r){var o;if(s="",i="","number"==typeof r)for(o=0;o<r;o+=1)i+=" ";else"string"==typeof r&&(i=r);if(n=t,t&&"function"!=typeof t&&("object"!=typeof t||"number"!=typeof t.length))throw new Error("JSON.stringify");return a("",{"":e})}},,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(309),n=r(2),o=r(359),l=r(9),c=r(17),u=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.action.action-body-cell"),h=function(e){function t(t,r){var a=e.call(this,t,r)||this;return t.url&&(a.state.url=a.genUrlWithParams(t.url,t.value)),a.state.visible=!0,a.props.visible&&(a.state.visible=a.props.visible(a.props.value)),a.props.messageAlert&&(a.state.hasPopUp=!0,a.state.messageAlert=new o.Template(a.props.messageAlert).process(a.props.value,a.props.replaceUndef||"?"),a.state.titleAlert=new o.Template(a.props.titleAlert).process(a.props.value,a.props.replaceUndef||"?")),a.title=a.getCellTitleWithProps(t),a}return a.__extends(t,e),t.prototype.renderCell=function(){u.trace("render ActionBodyCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row);var e={"button-action":!0,"picto-svg":!0};this.state.className&&(e[this.state.className]=!0);var t=null;t="string"==typeof this.props.srcImg?n.createElement("img",{src:this.state.srcImg,className:this.state.classNameImg,alt:this.title}):this.props.srcImg;var r="function"==typeof this.state.disabled?this.state.disabled():this.state.disabled;return this.state.visible?n.createElement("a",{href:this.state.url||"#",className:c(e),title:this.title,"aria-label":this.title,onClick:this.onClick,"aria-haspopup":this.state.hasPopUp,disabled:this.props.contentState.itemInEdition&&!1===this.state.isEditing||r,tabIndex:-1,onKeyDown:this.handleKeyDownButton},t,this.state.label?n.createElement("span",{className:"label-button-action"},this.state.label):null):null},t.prototype.handleKeyDownButton=function(e){e.keyCode!==l.KeyCodes.ENTER&&e.keyCode!==l.KeyCodes.SPACEBAR||this.onClick(e)},t.prototype.getCellTitleWithProps=function(e){return e.alt||e.title?this.i18n(e.alt||e.title,e.value):null},t.prototype.onClick=function(e){this.props.messageAlert?(e.stopPropagation(),this.props.showAlert(this.state.messageAlert,this.state.titleAlert,this.onAction)):this.onAction()},t.prototype.onAction=function(){this.state.url?window.location.href=this.state.url:this.props.action&&this.props.action(this.props.value)},t.prototype.handleEdition=function(e){_.isNull(e)?(this.setState({isEditing:!1}),this.tableCellRef.removeAttribute("disabled"),this.tableCellRef.classList.remove("datatable-cell-in-edition")):e===this.props.cellCoordinate.row?(this.setState({isEditing:e===this.props.cellCoordinate.row}),this.tableCellRef.classList.add("datatable-cell-in-edition"),this.tableCellRef.setAttribute("disabled","true")):"th"==this.tableCellRef.localName?(this.tableCellRef.classList.add("is_disabled"),this.tableCellRef.classList.remove("datatable-header-sortable-column","datatable-header-sorted","datatable-header-sorted-asc")):this.tableCellRef.setAttribute("disabled","true")},t}(i.AbstractBodyCell);t.ActionBodyCell=h},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(308),i=r(478),n=r(479),o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.getBodyCell=function(){return i.CheckBodyCell},t.prototype.getHeaderCell=function(){return n.CheckHeaderCell},t.defaultProps=s.Column.mergeObjects(s.Column.defaultProps,{defaultStyle:{textAlign:"center",paddingLeft:0,width:"2.5em"},sortable:!1,hiddenable:!1}),t}(s.Column);t.CheckColumn=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(308),i=r(480),n=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.getBodyCell=function(){return i.DateBodyCell},t.defaultProps=s.Column.mergeObjects(s.Column.defaultProps,{sortable:!1,defaultStyle:{width:"6em"},hiddenable:!0}),t}(s.Column);t.DateColumn=n},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(308),i=r(475),n=r(440),o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.getHeaderCell=function(){return n.ActionHeaderCell},t.prototype.getBodyCell=function(){return i.EditionActionBodyCell},t.defaultProps=s.Column.mergeObjects(s.Column.defaultProps,{defaultStyle:{width:"4em"},sortable:!1,hiddenable:!1}),t}(s.Column);t.EditionActionColumn=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(442),i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t}(s.Line);t.LineAfter=i},function(e,t){e.exports={$schema:"http://json-schema.org/schema#",title:"Liste des secteurs",description:"Validation des données de formulaire d'un secteur",type:"object",properties:{nom:{description:"Nom du secteur",type:"string",maxLength:50,required:!0}}}},,,,,,,,,,,,,,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(309),n=r(2),o=r(119),l=r(307),c=r(9),u=r(359),h=r(17),p=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.action.edition-action-body-cell"),d=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.onClick=function(e){1===a.buttonsRef.indexOf(e.currentTarget)&&a.props.messageAlert&&a.props.showAlert?(e.stopPropagation(),a.props.showAlert(a.state.messageAlert,a.state.titleAlert,a.setItemInEdition)):a.setItemInEdition()},a.state.visible=!0,a.state.submitFocused=!1,a.props.visible&&(a.state.visible=a.props.visible(a.props.value)),a.props.messageAlert&&(a.state.messageAlert=new u.Template(a.props.messageAlert).process(a.props.value,a.props.replaceUndef||"?"),a.state.titleAlert=new u.Template(a.props.titleAlert).process(a.props.value,a.props.replaceUndef||"?")),a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(t,r){return e.prototype.shouldComponentUpdate.call(this,t,r)||r.isEditing!==this.state.isEditing},t.prototype.renderCell=function(){p.trace("render EditableActionBodyCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row);var e={"edition-button-action":!0};return this.state.className&&(e[this.state.className]=!0),this.buttonsRef=[],this.state.visible?this.state.isEditing?this.renderSaveCancelBoutton(e):this.renderEditionBoutton(e):null},t.prototype.getCellTitle=function(){return""},t.prototype.setItemInEdition=function(){o.NotificationManager.cleanAll(),this.props.contentState.setItemInEdition(this.state.isEditing?null:this.props.value,this.state.isEditing?null:this.props.coordinates.row)},t.prototype.renderEditionBoutton=function(e){return n.createElement("button",{className:h(e),title:this.i18n(this.state.titleEdit,this.props.value),"aria-label":this.i18n(this.state.titleEdit,this.props.value),type:"button",onClick:this.onClick,tabIndex:-1},n.createElement("img",{src:l.Picto.blue.quickEdit,className:this.state.classNameImg,alt:this.i18n(this.state.titleEdit,this.props.value),tabIndex:-1}))},t.prototype.renderSaveCancelBoutton=function(e){var t=this;return n.createElement("div",{onKeyDown:this.switchFocus},n.createElement("button",{ref:function(e){t.setButtonsRef(e)},className:h(e),title:this.state.titleSave,"aria-label":this.state.titleSave,type:"submit",tabIndex:-1},n.createElement("img",{src:l.Picto.editable.valider,className:this.state.classNameImg,alt:this.state.titleSave,tabIndex:-1})),n.createElement("button",{ref:function(e){t.setButtonsRef(e)},className:h(e),title:this.state.titleCancel,"aria-label":this.state.titleCancel,onClick:this.onClick,type:"button",tabIndex:-1},n.createElement("img",{src:l.Picto.editable.annuler,className:this.state.classNameImg,alt:this.state.titleCancel,tabIndex:-1})))},t.prototype.setButtonsRef=function(e){e&&this.buttonsRef.push(e)},t.prototype.switchFocus=function(e){e.stopPropagation();this.state.isEditing?e.keyCode===c.KeyCodes.RIGHT_ARROW&&this.state.submitFocused?this.buttonsRef[1].focus():e.keyCode!==c.KeyCodes.LEFT_ARROW||this.state.submitFocused?this.handleKeyDown(e):this.buttonsRef[0].focus():this.handleKeyDown(e),this.setState({submitFocused:!this.state.submitFocused})},t.prototype.handleCellFocus=function(e){-1===this.buttonsRef.indexOf(document.activeElement)&&(e instanceof HTMLButtonElement?(this.setState({submitFocused:"submit"===e.getAttribute("type")}),e.focus()):e&&e.children&&this.handleCellFocus(e.children[0]))},t}(i.AbstractBodyCell);t.EditionActionBodyCell=d},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(309),n=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.body-cell"),o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.prototype.renderCell=function(){return n.trace("render BodyCell -> column:",this.props.coordinates.column," - line:",this.props.coordinates.row,"- isFocused:",this.state.isFocused,"- tabIndex:",this.state.tabIndex),this.state.value},t}(i.AbstractBodyCell);t.BodyCell=o},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});/**
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
  * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.1.1
  * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
  * @license CECILL-2.1
  */
-var a=function(){function e(e,t){this.column=e,this.row=t}return e.prototype.isSame=function(e){return!(!e||e.column!=this.column||e.row!=this.row)},e}();t.CellCoordinates=a},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(310),n=r(309),o=r(320),l=r(2),c=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.check.check-body-cell"),u=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.handleToggleCheckBox=function(e){a.props.toggleSelectLines(a.props.value),e.stopPropagation()},a.handleChange=function(e){c.trace("checkbodycell => handlChange",a.props.cellCoordinate),a.checkBoxBodyRef&&(-1!==i.ArrayUtils.getIndexById(e,a.props.value)?a.setState({isSelected:!0}):a.setState({isSelected:!1}))},a.props.dataSource.on("select",a.handleChange),a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(t,r){return e.prototype.shouldComponentUpdate.call(this,t,r),!0},t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.props.dataSource.removeListener("select",this.handleChange)},t.prototype.renderCell=function(){var e=this;c.trace("render checkBodyCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row);var t=this.state.isSelected?this.props.altUnselect:this.props.altSelect,r={ref:function(t){e.checkBoxBodyRef=t},onChange:this.handleToggleCheckBox,checked:this.state.isSelected,name:"selectedItems-"+this.props.keyColumn,tabIndex:-1,disabled:this.setDisabled(),title:t&&this.i18n(t,this.props.value)};return l.createElement(o.CheckBox,a.__assign({},r))},t.prototype.setDisabled=function(){return void 0!==this.props.contentState.itemInEdition&&null!==this.props.contentState.itemInEdition},t.prototype.getCellTitle=function(){return""},t.prototype.blurActions=function(e){e instanceof HTMLInputElement?e.tabIndex=-1:e.children&&this.blurActions(e.children[0])},t.prototype.handleCellFocus=function(e){e&&(e instanceof HTMLInputElement?(e.focus(),e.tabIndex=0):e.children&&this.handleCellFocus(e.children[0]))},t}(n.AbstractBodyCell);t.CheckBodyCell=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(356),n=r(320),o=r(2),l=r(310),c=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.check.check-header-cell"),u=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.handleChange=a.handleChange.bind(a),a.props.dataSource.on("select",a.handleChange),a}return a.__extends(t,e),t.prototype.componentWillUnmount=function(){e.prototype.componentWillUnmount.call(this),this.props.dataSource.removeListener("select",this.handleChange)},t.prototype.renderCell=function(){var e=this;c.trace("render CheckHeaderCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row,"checked =>",this.props.isSelected);var t=function(t){e.props.toggleSelectLines(null,!e.state.isSelected)},r=this.state.isSelected?"table.deselectedAllTitle":"table.selectedAllTitle",s={ref:function(t){e.checkBoxRef=t},checked:this.state.isSelected,onChange:t,title:r&&this.i18n(r),name:"selectedItems-"+this.state.value,disabled:0===this.props.contentState.items.length||this.props.contentState.itemInEdition};return o.createElement(n.CheckBox,a.__assign({},s))},t.prototype.blurActions=function(e){e instanceof HTMLInputElement?e.tabIndex=-1:e.children&&this.blurActions(e.children[0])},t.prototype.handleCellFocus=function(e){e&&(e instanceof HTMLInputElement?(e.focus(),e.tabIndex=0):e.children&&this.handleCellFocus(e.children[0]))},t.prototype.handleChange=function(e,t){this.checkBoxRef&&(l.ArrayUtils.isInclude(this.props.contentState.items,e)?this.setState({isSelected:!0}):this.setState({isSelected:!1}))},t.prototype.getTabIndexFullKind=function(){return-1},t}(i.AbstractHeaderCell);t.CheckHeaderCell=u},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(309),n=r(10),o=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.date.date-body-cell"),l=function(e){function t(t,r){var a=e.call(this,t,r)||this;if(a.state.value)if(a.state.value instanceof Date||a.state.value instanceof Number)a.state.value=a.state.value;else if(!isNaN(a.state.value)&&isFinite(a.state.value))a.state.value=Number(a.state.value);else if(t.inputFormat){var s=n(a.state.value,t.inputFormat,!0);s.isValid()&&(a.state.value=s.toDate())}else o.error("Format date not supported ",a.props.keyColumn," - line:",a.props.coordinates.row),a.state.value=void 0;return a}return a.__extends(t,e),t.prototype.renderCell=function(){return o.trace("render DateBodyCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row),this.state.value?s.Utils.dateUtils.formatInTZ(this.state.value,this.props.format||this.i18n("calendar.dateFormat"),s.Utils.dateUtils.TZ_EUROPE_PARIS):""},t}(i.AbstractBodyCell);t.DateBodyCell=l},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(356),o=r(9),l=r(306),c=r(17),u=s.Utils.getLogger("hornet-js-react-components.widget.table.column.cell.header-cell"),h=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(t,r){return e.prototype.shouldComponentUpdate.call(this,t,r)||r.isFocused===this.state.isFocused},t.prototype.renderCell=function(){u.trace("render HeaderCell -> column:",this.props.coordinates.column," - line:",this.props.coordinates.row);var e=this.isSortedColumn(this.props.sortData),r="/img/tableau/ic_arrow_upward_black.svg",a={"arrow-sort":!0};this.state.sortData&&this.state.sortData.dir==l.SortDirection.DESC&&(r="/img/tableau/ic_arrow_downward_black.svg");var s=this.handleSortTitle(this.isSortedColumn(this.props.sortData),"none").title,n=e&&this.state.edition?i.createElement("div",null,this.props.title,i.createElement("img",{src:t.genUrlTheme(r),className:c(a),alt:s})):i.createElement("div",null,this.props.title);return this.props.sortable&&!this.props.contentState.itemInEdition&&(n=this.getColumnTriComponent()),n},t.prototype.getColumnTriComponent=function(){var e=this;u.trace("getColumnTriComponent");var r=this.props.sortData,a=r&&r.key||this.props.keyColumn,s=l.SortDirection.ASC,n=r&&r.key||null,h=this.state.sort&&this.state.sort.key||null;!n||n!=this.props.keyColumn&&n!=h||(u.trace("sens de tri courant :",r.dir),s=r.dir==l.SortDirection.ASC?l.SortDirection.DESC:l.SortDirection.ASC,u.trace("prochain sens de tri :",s));var p={key:a,dir:s},d=function(t){e.state.onSort(p)},m=function(t){t.keyCode!=o.KeyCodes.SPACEBAR&&t.keyCode!=o.KeyCodes.ENTER||e.state.onSort(p)};this.state.abbr&&!this.state.lang&&u.warn("Column ",this.props.keyColumn," Must have lang with abbr configuration");var f="/img/tableau/ic_arrow_upward_black.svg",v={"arrow-sort":!0};this.state.sortData&&this.state.sortData.dir==l.SortDirection.DESC&&(f="/img/tableau/ic_arrow_downward_black.svg");var g=this.handleSortTitle(this.isSortedColumn(this.props.sortData),"none").title;return i.createElement("div",{className:"datatable-header-sort-liner",role:"button",lang:this.state.lang,onClick:d,onKeyDown:m,tabIndex:-1},this.state.edition?i.createElement("div",null,this.state.abbr?i.createElement("abbr",{lang:this.state.lang,title:this.state.abbr},this.state.title):this.state.title):i.createElement("div",null,i.createElement("a",{href:"#",className:"arrow-sort-container",tabIndex:-1},this.state.abbr?i.createElement("abbr",{lang:this.state.lang,title:this.state.abbr},this.state.title):this.state.title),i.createElement("img",{src:t.genUrlTheme(f),className:c(v),alt:g,tabIndex:-1})))},t.defaultProps={sort:!1},t}(n.AbstractHeaderCell);t.HeaderCell=h},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(309),n=r(2),o=r(326),l=s.Utils.getLogger("hornet-js-react-components.widget.table.input-text-in-line-body-cell"),c=function(e){function t(t,r){var a=e.call(this,t,r)||this;return a.state.value=t.value[t.keyColumn],a}return a.__extends(t,e),t.prototype.shouldComponentUpdate=function(t,r){return e.prototype.shouldComponentUpdate.call(this,t,r)||r.isEditing!==this.state.isEditing},t.prototype.renderCell=function(){l.trace("render InputTextBodyCell-> column:",this.props.coordinates.column," - line:",this.props.coordinates.row);var e={name:this.state.keyColumn,hideError:!0,className:"table-cell-input",groupClass:"table-cell-container",type:"text",currentValue:this.state.value,title:this.state.title};return this.state.isEditing?n.createElement(o.InputField,a.__assign({},e)):this.state.value},t.prototype.getCellTitle=function(){return this.state.isEditing?"":this.state.value},t.prototype.handleCellFocus=function(e){e&&(this.state.isEditing?e instanceof HTMLInputElement?e.focus():e.children&&this.handleCellFocus(e.children[0]):e.focus())},t}(i.AbstractBodyCell);t.InputTextInLineBodyCell=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(442),i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t}(s.Line);t.LineBefore=i},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(2),i=r(121),n=r(313),o=r(17),l=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.render=function(){var e={"datatable-loader":this.state.isVisible&&this.count>0,"datatable-loaded":!this.state.isVisible},t={"datatable-line-loader":!0};return t[this.props.className+"-line-loader"]=!0,t[this.props.className+"-tr-with-colspan"]=!0,s.createElement("tr",{className:o(t)},s.createElement("th",{colSpan:this.state.nbColumns,style:{width:this.props.width+n.UNIT_SIZE}},s.createElement("div",{className:o(e)})))},t}(i.SpinnerComponent);t.SpinnerLoader=l;var c=function(e){function t(t,r){return e.call(this,t,r)||this}return a.__extends(t,e),t.prototype.render=function(){var e={};return this.state.isVisible&&this.count>0&&(e={className:o({"datatable-overlay":this.state.isVisible&&this.count>0})}),s.createElement("div",a.__assign({},e))},t}(i.SpinnerComponent);t.SpinnerOverlay=c},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(125),i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return a.__extends(t,e),t.defaultProps={message:t.getI18n("table"),shortcutDescriptions:[{shortcuts:["←","↑","→","↓"],description:t.getI18n("table.shortcuts.navigation"),or:!0},{shortcuts:["⇞"],and:!0,description:t.getI18n("table.shortcuts.firstLine")},{shortcuts:["⇟"],description:t.getI18n("table.shortcuts.lastLine"),or:!0},{shortcuts:["↖"],description:t.getI18n("table.shortcuts.lineBeginning")},{shortcuts:["Fin"],description:t.getI18n("table.shortcuts.lineEnd")},{shortcuts:["Ctrl","A"],and:!0,description:t.getI18n("table.shortcuts.selectAll")},{shortcuts:["Shift","Space"],and:!0,description:t.getI18n("table.shortcuts.selectCurrentLine")},{shortcuts:["Enter","F2"],or:!0,description:t.getI18n("table.shortcuts.toggleMode")},{shortcuts:["Echap"],and:!0,description:t.getI18n("table.shortcuts.escape")}]},t}(s.ButtonInfoAccessibilite);t.TableButtonInfoAccessibilite=i},,,,,,,,,,,,,,,,,,,,,,,,,,,,,function(e,t){e.exports={$schema:"http://json-schema.org/schema#",title:"Liste des secteurs",description:"Validation des données de formulaire d'un secteur",type:"object",properties:{nom:{description:"Nom du secteur",type:"string",maxLength:50,required:!0},desc:{description:"Description du secteur",type:"string",maxLength:200,required:!0}}}},,,,,,,,,,,,,,,,,,,,,,,,function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),s=r(0),i=r(2),n=r(12),o=r(122),l=r(44),c=r(119),u=r(341),h=r(372),p=r(326),d=r(312),m=r(378),f=r(308),v=r(323),g=r(454),y=r(377),E=r(376),b=r(342),S=r(313),C=r(307),T=r(355),P=r(357),A=r(318),I=r(319),w=r(339),D=r(455),x=r(306),R=r(306),O=r(514),F=r(457),k=s.Utils.getLogger("applitutoriel.views.adm.adm-lst-page"),N=function(e){function t(t,r){var a=e.call(this,t,r)||this;a.refHeaderTable.bind(a);var s=new w.DefaultSort([new x.SortData("dateCreat"),new x.SortData("auteurCreat",R.SortDirection.ASC)]);return a.dataSource=new A.DataSource([],{},[s]),a}return a.__extends(t,e),t.prototype.prepareClient=function(){this.refreshSecteurs()},t.prototype.refreshSecteurs=function(){var e=this;this.getService().lister().then(function(t){e.dataSource.deleteAll(),e.dataSource.add(!1,t)})},t.prototype.refHeaderTable=function(e){this.headerTable=e},t.prototype.render=function(){var e=this;k.trace("VIEW SecteursPage render");var t=this.i18n("administration.secteurs"),r=this.i18n("administration.secteurs.form");return i.createElement("div",null,i.createElement("h2",null,this.i18n("administration.secteurs.titreSecteur")),i.createElement(l.Notification,{id:"notif2"}),i.createElement(m.Table,{id:"liste-secteurs"},i.createElement(b.Header,{title:this.i18n("administration.secteurs").table.tableTitle,ref:this.refHeaderTable},i.createElement(P.ToggleColumnsButton,{hiddenColumns:{desc:!0,nom:!1},onChange:this.onChangeToggleColumns,selectAllItem:!1}),i.createElement(y.MenuActions,null,i.createElement(E.ActionButton,{title:this.i18n("administration.secteurs.table.addTitle"),srcImg:C.Picto.white.add,action:this.ajouterSecteur,priority:!0}),i.createElement(E.ActionButton,{title:this.i18n("administration.secteurs.table.sortMultiTitle"),srcImg:C.Picto.white.consulter,action:this.sortMulti,priority:!0}))),i.createElement(S.Content,{dataSource:this.dataSource,onSubmit:this.submitLineForm,schema:F,notifId:"notif2"},i.createElement(v.Columns,null,i.createElement(f.Column,{keyColumn:"nom",title:t.nom,editable:!0,sortable:!0}),i.createElement(f.Column,{keyColumn:"desc",title:t.description,sortable:!1}),i.createElement(g.DateColumn,{keyColumn:"dateCreat",title:t.dateCr,sortable:!0}),i.createElement(g.DateColumn,{keyColumn:"dateMajEnreg",title:t.dateMaj,sortable:!1}),i.createElement(f.Column,{keyColumn:"auteurCreat",title:t.auteur,sortable:!0}),i.createElement(T.ActionColumn,{keyColumn:"id",alt:t.modificationTitle,srcImg:C.Picto.blue.editer,action:this.editItem.bind(this)}),i.createElement(T.ActionColumn,{keyColumn:"id",alt:t.suppressionAlt,srcImg:C.Picto.blue.supprimer,action:this.supprimer.bind(this),messageAlert:this.i18n("administration.secteurs.confirmationSuppression"),titleAlert:this.i18n("administration.secteurs.suppressionTitle")}),i.createElement(D.EditionActionColumn,{keyColumn:"id",titleEdit:t.quickUpdateTitle,titleSave:"Enregistrer",titleCancel:"Annuler",messageAlert:this.i18n("administration.secteurs.confirmationAnnulationAction"),titleAlert:this.i18n("administration.secteurs.annulationTitle")})))),i.createElement(o.Modal,{ref:function(t){e.maModale=t},withoutOverflow:!0,underlayClickExits:!1,focusDialog:!1,onClickClose:this.closeModal},i.createElement("div",{className:"content-modal-body"},i.createElement(u.Form,{ref:function(t){e.monForm=t,e.monForm&&e.monForm.updateFields(e.item)},schema:O,formMessages:r,onSubmit:this.onSubmitEdition},i.createElement(p.InputField,{name:"id",type:"hidden"}),i.createElement(h.Row,null,i.createElement(p.InputField,{name:"nom",label:r.fields.nom.label,required:!0,size:40,maxLength:50})),i.createElement(h.Row,null,i.createElement(p.InputField,{name:"desc",label:r.fields.desc.label,required:!0,size:40,maxLength:200})),i.createElement(I.ButtonsArea,null,i.createElement(d.Button,{type:"submit",id:"enregistrer",name:"action:save",value:"Enregistrer",className:"hornet-button",label:this.i18n("form.valid"),title:this.i18n("administration.validTitle")}),i.createElement(d.Button,{type:"button",id:"cancel",name:"action:cancel",value:"Annuler",className:"hornet-button",label:this.i18n("form.cancel"),title:this.i18n("administration.cancelTitle"),onClick:this.closeModal}))))))},t.prototype.onChangeToggleColumns=function(e){k.debug("MAJ toggle columns :",e)},t.prototype.submitLineForm=function(e){var t=this;this.getService().modifier(e.id,e).then(function(){c.NotificationManager.notify(null,null,c.Notifications.makeSingleNotification("",t.i18n("info.message.IN-AD-LST-01"))),t.refreshSecteurs()})},t.prototype.supprimer=function(e){var t=this;k.trace("Utilisateur est OK pour supprimer l item id:",e.id),c.NotificationManager.cleanAll(),this.getService().supprimer(e.id).then(function(e){e.errors||(c.NotificationManager.notify(null,null,c.Notifications.makeSingleNotification("SECTEUR_DELETED","info.message.IN-AD-LST-02")),t.refreshSecteurs())})},t.prototype.editItem=function(e){this.maModale.setTitle(this.i18n("administration.modification")),this.maModale.setCloseLabel(this.i18n("administration.closeModification")),this.item=e,this.maModale.open()},t.prototype.ajouterSecteur=function(){this.maModale.setTitle(this.i18n("administration.ajout")).setCloseLabel(this.i18n("administration.closeAjout")).open()},t.prototype.sortMulti=function(){this.dataSource.sort([new x.SortData("dateCreat",R.SortDirection.DESC),new x.SortData("auteurCreat")])},t.prototype.closeModal=function(){this.maModale.close(),this.item=null},t.prototype.onSubmitEdition=function(e){var t=this;c.NotificationManager.cleanAll();var r=e;_.isEmpty(r.id)?(this.user&&(r.user=this.user.name),this.getService().creer(r).then(function(e){e.errors||(t.closeModal(),c.NotificationManager.notify(null,null,c.Notifications.makeSingleNotification("",t.i18n("info.message.IN-AD-LST-03"))),t.refreshSecteurs())})):this.getService().modifier(r.id,r).then(function(e){e.errors||(t.closeModal(),c.NotificationManager.notify(null,null,c.Notifications.makeSingleNotification("",t.i18n("info.message.IN-AD-LST-01"))),t.refreshSecteurs())})},t}(n.HornetPage);t.SecteursPage=N}]));
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var classNames = __webpack_require__(9);
+var _ = __webpack_require__(6);
+var dom_adapter_1 = __webpack_require__(326);
+var field_error_1 = __webpack_require__(353);
+var html_attributes_1 = __webpack_require__(354);
+var tool_tip_1 = __webpack_require__(356);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.abstract-field");
+var InlineStyle;
+(function (InlineStyle) {
+    InlineStyle[InlineStyle["NONE"] = 0] = "NONE";
+    InlineStyle[InlineStyle["FIELD"] = 1] = "FIELD";
+    InlineStyle[InlineStyle["ALL"] = 2] = "ALL";
+})(InlineStyle = exports.InlineStyle || (exports.InlineStyle = {}));
+/**
+ * Représente un champ de formulaire.
+ */
+var AbstractField = /** @class */ (function (_super) {
+    tslib_1.__extends(AbstractField, _super);
+    function AbstractField(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.makeState(_this.state);
+        return _this;
+    }
+    AbstractField.prototype.componentDidMount = function () {
+        this.mounted = true;
+        if (this.htmlElement) {
+            this.htmlElement.addEventListener("focus", this.handleSimulateScroll);
+        }
+        else {
+            if (this.multipleElement) {
+                for (var element in this.multipleElement) {
+                    this.multipleElement[element].addEventListener("focus", this.handleSimulateScroll);
+                }
+            }
+        }
+    };
+    AbstractField.prototype.componentWillUnmount = function () {
+        this.mounted = false;
+        if (this.htmlElement) {
+            this.htmlElement.removeEventListener("focus", this.handleSimulateScroll);
+        }
+        else {
+            if (this.multipleElement) {
+                for (var element in this.multipleElement) {
+                    this.multipleElement[element].removeEventListener("focus", this.handleSimulateScroll);
+                }
+            }
+        }
+    };
+    /**
+     * Génère l'état interne du composant à partir des propriétés indiquées
+     * @param props
+     */
+    AbstractField.prototype.makeState = function (state) {
+        this.processHtmlProps(state);
+    };
+    // Setters
+    AbstractField.prototype.setAbbr = function (abbr, callback) {
+        if (abbr !== this.state.abbr) {
+            this.setState({ abbr: abbr }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setGroupClass = function (groupClass, callback) {
+        if (groupClass !== this.state.groupClass) {
+            this.setState({ groupClass: groupClass }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setLabelClass = function (labelClass, callback) {
+        if (labelClass !== this.state.labelClass) {
+            this.setState({ labelClass: labelClass }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setFieldClass = function (fieldClass, callback) {
+        if (fieldClass !== this.state.fieldClass) {
+            this.setState({ fieldClass: fieldClass }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setToolTip = function (toolTip, callback) {
+        if (toolTip !== this.state.toolTip) {
+            this.setState({ toolTip: toolTip }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setIcoToolTip = function (icoToolTip, callback) {
+        if (icoToolTip !== this.state.icoToolTip) {
+            this.setState({ icoToolTip: icoToolTip }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setPrefix = function (prefix, callback) {
+        if (prefix !== this.state.prefix) {
+            this.setState({ prefix: prefix }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setSuffix = function (suffix, callback) {
+        if (suffix !== this.state.suffix) {
+            this.setState({ suffix: suffix }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setMarkRequired = function (markRequired, callback) {
+        if (this.state.markRequired === markRequired)
+            return this;
+        this.setState({ markRequired: markRequired }, callback);
+        return this;
+    };
+    AbstractField.prototype.setrequiredLabel = function (requiredLabel, callback) {
+        if (requiredLabel !== this.state.requiredLabel) {
+            this.setState({ requiredLabel: requiredLabel }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setImgFilePath = function (imgFilePath, callback) {
+        if (imgFilePath !== this.state.imgFilePath) {
+            this.setState({ imgFilePath: imgFilePath }, callback);
+        }
+        return this;
+    };
+    AbstractField.prototype.setErrorComponent = function (errorComponent, callback) {
+        this.setState({ errorComponent: errorComponent }, callback);
+        return this;
+    };
+    AbstractField.prototype.setErrors = function (errors, callback) {
+        if (!this.state.errors && !errors)
+            return this;
+        this.setState({ errors: errors }, callback);
+        return this;
+    };
+    /**
+     * @override
+     */
+    AbstractField.prototype.setAttribute = function (name, value) {
+        _super.prototype.setAttribute.call(this, name, value);
+        /* L'adaptateur DOM met à jour l'élément dans le DOM : on met ici à jour l'état interne du composant */
+        var newState = {};
+        newState[name] = value;
+        if (newState[name] !== this.state[name]) {
+            this.setState(newState);
+        }
+        return this;
+    };
+    /**
+     * @override
+     */
+    AbstractField.prototype.setCurrentChecked = function (value) {
+        _super.prototype.setCurrentChecked.call(this, value);
+        /* L'adaptateur DOM met à jour l'élément dans le DOM : on met ici à jour l'état interne du composant */
+        this.setState({ currentChecked: value });
+        return this;
+    };
+    /**
+     * @override
+     */
+    AbstractField.prototype.setCurrentValue = function (value) {
+        _super.prototype.setCurrentValue.call(this, value);
+        /* L'adaptateur DOM met à jour l'élément dans le DOM : on met ici à jour l'état interne du composant */
+        this.setState({ currentValue: value });
+        return this;
+    };
+    /**
+     * @override
+     */
+    AbstractField.prototype.setReadOnly = function (value) {
+        if (this.state.readOnly === value)
+            return this;
+        this.setState({ readOnly: value });
+        return this;
+    };
+    /**
+     * @override
+     */
+    AbstractField.prototype.setDisabled = function (value) {
+        if (this.state.disabled === value)
+            return this;
+        this.setState({ disabled: value });
+        return this;
+    };
+    AbstractField.prototype.hasErrors = function () {
+        var fieldErrors = null;
+        if (this.state.errors) {
+            fieldErrors = this.state.errors.filter(function (error) {
+                return (error.field == this.state.name || error.additionalInfos.linkedFieldsName == this.state.name);
+            }, this);
+        }
+        if (fieldErrors && (fieldErrors.length > 0)) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * @inheritDoc
+     */
+    AbstractField.prototype.render = function () {
+        var type = this.state.type;
+        if (type) {
+            type = type.toLowerCase();
+        }
+        var cx = classNames(this.state.groupClass, "abstractfield-container", {
+            "inline": this.state.inline == InlineStyle.ALL,
+            "readonly": this.state.readOnly
+        });
+        /* On ne génère pas le rendu du label et des div conteneurs lorsque le champ est caché */
+        return ((type == "hidden") ? this.renderWidget() :
+            React.createElement("div", { className: cx },
+                this.state.label ? this.renderLabel(this.state.id, this.state.name, this.state.label, this.state.required) : null,
+                this.renderField()));
+    };
+    /**
+     * Met à jour l'état interne avec les nouvelles propriétés.
+     * Surcharge la méthode parente : les attributs HTML standards sont initialisés via la fonction générique setAttribute.
+     * @param nextProps nouvelles propriétés
+     * @param nextContext nouveau contexte
+     * @override
+     */
+    AbstractField.prototype.componentWillReceiveProps = function (nextProps, nextContext) {
+        for (var key in nextProps) {
+            /* On doit s'assurer que chaque propriété a effectivement changé, car componentWillReceiveProps peut aussi
+             * être appelée alors qu'aucune propriété n'a changé (cf.http://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html)
+             * Dans ce cas cela poserait problème, car l'état pourrait avaoir été modifié
+             * via un setter alors que la propriété utilisée initialement pour le constructeur n'a pas changé.*/
+            if (this.props[key] != nextProps[key]) {
+                if (key in html_attributes_1.HTML_ATTRIBUTES) {
+                    /* Propriété HTML standard */
+                    this.setAttribute(key, nextProps[key]);
+                }
+                else {
+                    /* Propriété spécifique hornet : un 'setter' est certainement présent */
+                    var setterName = _.camelCase("set " + (key));
+                    if (this[setterName]) {
+                        this[setterName](nextProps[key]);
+                    }
+                    else {
+                        var state = void 0;
+                        state[key] = nextProps[key];
+                        this.setState(state);
+                    }
+                }
+            }
+        }
+    };
+    /**
+     * Génère le rendu des erreurs de validation éventuelles
+     */
+    AbstractField.prototype.renderErrors = function () {
+        var fieldErrorProps = {
+            errors: this.state.errors,
+            fieldName: this.state.name,
+            hideError: this.state.hideError
+        };
+        // get the field error component by state ?
+        var Error = this.state.errorComponent;
+        return React.createElement(Error, tslib_1.__assign({}, fieldErrorProps));
+    };
+    /**
+     * Génère le rendu du libellé pour le champ
+     * @param fieldId identifiant du champ
+     * @param fieldName nom du champ
+     * @param label libellé à afficher
+     * @param required indique si le champ est obligatoire
+     * @returns {any}
+     */
+    AbstractField.prototype.renderLabel = function (fieldId, fieldName, label, required) {
+        var urlTheme = this.state.imgFilePath || AbstractField.genUrlTheme(), urlIcoTooltip = urlTheme + this.state.icoToolTip;
+        if (this.state.abbr && !this.state.lang) {
+            logger.warn("Field ", fieldName, " Must have lang with abbr configuration");
+        }
+        var ariaDescribedby = { "aria-describedby": fieldName + "Tooltip" };
+        return (React.createElement("div", { className: this.state.labelClass + " label-container" },
+            React.createElement("label", tslib_1.__assign({ htmlFor: fieldId, id: fieldName + "Label", className: "label-content" }, this.state.toolTip ? ariaDescribedby : null),
+                (this.state.abbr) ?
+                    React.createElement("abbr", { lang: this.state.lang, title: this.state.abbr },
+                        React.createElement("span", { className: "label-abbr" }, label)) : React.createElement("span", { className: "label" }, label),
+                required && this.state.markRequired ?
+                    React.createElement("span", { className: "label-required" },
+                        React.createElement("abbr", { title: this.getRequiredLabel() }, "*")) : null,
+                this.state.toolTip ?
+                    React.createElement(tool_tip_1.ToolTip, { alt: this.state.toolTip, src: urlIcoTooltip, idSpan: fieldName + "Tooltip" }) : null)));
+    };
+    AbstractField.prototype.getRequiredLabel = function () {
+        var requiredLabel = this.state.requiredLabel;
+        if (!requiredLabel) {
+            var i18nRequiredLabel = this.i18n("form.requiredLabel");
+            if (i18nRequiredLabel) {
+                requiredLabel = i18nRequiredLabel;
+            }
+            else {
+                requiredLabel = "Obligatoire";
+            }
+        }
+        return requiredLabel;
+    };
+    /**
+     * Applique certaines règles par défaut sur les propriétés HTML standards
+     * @param propriétés à traiter. Cet objet est éventuellement modifié.
+     */
+    AbstractField.prototype.processHtmlProps = function (state) {
+        if (state) {
+            /* Si l'id n'est pas explicitement spécifié, on lui affecte la même valeur que le nom, car il sera utilisé
+             * comme ancre pour les messages d'erreur de validation */
+            if (state.name && !state.id) {
+                state.id = state.name;
+            }
+            /* Lorsque le champ est requis, ajoute automatiquement la propriété "aria-required" pour assurer le maximum
+             de compatibilité avec les outils d'accessibilité */
+            // if (state.required === true) {
+            //     state[ "aria-required" ] = true;
+            // }
+        }
+    };
+    /**
+     * @returns {TResult} les propriétés html standard de ce champ
+     */
+    AbstractField.prototype.getHtmlProps = function () {
+        /* On n'inclut pas les propriétés spécifiques qui ne concernent pas un champ HTML standard */
+        var htmlProps = { name: "" };
+        for (var key in this.state) {
+            if (key in html_attributes_1.HTML_ATTRIBUTES) {
+                htmlProps[key] = this.state[key];
+            }
+        }
+        if (this.hasErrors()) {
+            htmlProps["aria-describedby"] = this.state.name + "-error";
+        }
+        this.processHtmlProps(htmlProps);
+        delete htmlProps["label"];
+        return htmlProps;
+    };
+    /**
+     * Génère le rendu des élements assurant la saisie des valeurs
+     * @returns {any}
+     */
+    AbstractField.prototype.renderField = function () {
+        return (React.createElement("div", { className: this.state.fieldClass + " abstractfield-field-content" },
+            this.state.prefix ? React.createElement("span", { className: "abstractfield-field-prefix" }, this.state.prefix) : null,
+            this.renderWidget(),
+            this.state.suffix ? React.createElement("span", { className: "abstractfield-field-suffix" }, this.state.suffix) : null,
+            this.renderErrors()));
+    };
+    /**
+     *  Lorsque le champ prends le focus on verifie qu'il n'est pas caché par le bandeau
+     *  si c'est le cas on effecteur un scroll du double de la hauteur du bandeau
+     */
+    AbstractField.prototype.handleSimulateScroll = function () {
+        var elementWithFocusPosTop = this.htmlElement ? this.htmlElement.getBoundingClientRect().top : this.multipleElement[0].getBoundingClientRect().top;
+        var stickyElmtPos = (document.getElementById("banner")) ? document.getElementById("banner").offsetHeight : null;
+        if (elementWithFocusPosTop <= stickyElmtPos) {
+            window.scrollBy(0, -(window.innerHeight / 2));
+        }
+    };
+    /** Valeurs par défaut des propriétés */
+    AbstractField.defaultProps = {
+        /* Le libellé occupe la moitié du neoud parent */
+        labelClass: "",
+        /* Le champ occupe la moitié du neoud parent */
+        fieldClass: "",
+        icoToolTip: "/img/tooltip/tooltip.svg",
+        markRequired: true,
+        errorComponent: field_error_1.FieldError,
+        lang: (hornet_js_utils_1.Utils.getCls("hornet.internationalization") && hornet_js_utils_1.Utils.getCls("hornet.internationalization").lang) ? hornet_js_utils_1.Utils.getCls("hornet.internationalization").lang : "fr",
+        inline: InlineStyle
+    };
+    AbstractField.Inline = InlineStyle;
+    return AbstractField;
+}(dom_adapter_1.DomAdapter));
+exports.AbstractField = AbstractField;
+
+
+
+/***/ }),
+
+/***/ 312:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+
+module.exports = {
+  copy: copy,
+  checkDataType: checkDataType,
+  checkDataTypes: checkDataTypes,
+  coerceToTypes: coerceToTypes,
+  toHash: toHash,
+  getProperty: getProperty,
+  escapeQuotes: escapeQuotes,
+  equal: __webpack_require__(323),
+  ucs2length: __webpack_require__(379),
+  varOccurences: varOccurences,
+  varReplace: varReplace,
+  cleanUpCode: cleanUpCode,
+  finalCleanUpCode: finalCleanUpCode,
+  schemaHasRules: schemaHasRules,
+  schemaHasRulesExcept: schemaHasRulesExcept,
+  toQuotedString: toQuotedString,
+  getPathExpr: getPathExpr,
+  getPath: getPath,
+  getData: getData,
+  unescapeFragment: unescapeFragment,
+  unescapeJsonPointer: unescapeJsonPointer,
+  escapeFragment: escapeFragment,
+  escapeJsonPointer: escapeJsonPointer
+};
+
+
+function copy(o, to) {
+  to = to || {};
+  for (var key in o) to[key] = o[key];
+  return to;
+}
+
+
+function checkDataType(dataType, data, negate) {
+  var EQUAL = negate ? ' !== ' : ' === '
+    , AND = negate ? ' || ' : ' && '
+    , OK = negate ? '!' : ''
+    , NOT = negate ? '' : '!';
+  switch (dataType) {
+    case 'null': return data + EQUAL + 'null';
+    case 'array': return OK + 'Array.isArray(' + data + ')';
+    case 'object': return '(' + OK + data + AND +
+                          'typeof ' + data + EQUAL + '"object"' + AND +
+                          NOT + 'Array.isArray(' + data + '))';
+    case 'integer': return '(typeof ' + data + EQUAL + '"number"' + AND +
+                           NOT + '(' + data + ' % 1)' +
+                           AND + data + EQUAL + data + ')';
+    default: return 'typeof ' + data + EQUAL + '"' + dataType + '"';
+  }
+}
+
+
+function checkDataTypes(dataTypes, data) {
+  switch (dataTypes.length) {
+    case 1: return checkDataType(dataTypes[0], data, true);
+    default:
+      var code = '';
+      var types = toHash(dataTypes);
+      if (types.array && types.object) {
+        code = types.null ? '(': '(!' + data + ' || ';
+        code += 'typeof ' + data + ' !== "object")';
+        delete types.null;
+        delete types.array;
+        delete types.object;
+      }
+      if (types.number) delete types.integer;
+      for (var t in types)
+        code += (code ? ' && ' : '' ) + checkDataType(t, data, true);
+
+      return code;
+  }
+}
+
+
+var COERCE_TO_TYPES = toHash([ 'string', 'number', 'integer', 'boolean', 'null' ]);
+function coerceToTypes(optionCoerceTypes, dataTypes) {
+  if (Array.isArray(dataTypes)) {
+    var types = [];
+    for (var i=0; i<dataTypes.length; i++) {
+      var t = dataTypes[i];
+      if (COERCE_TO_TYPES[t]) types[types.length] = t;
+      else if (optionCoerceTypes === 'array' && t === 'array') types[types.length] = t;
+    }
+    if (types.length) return types;
+  } else if (COERCE_TO_TYPES[dataTypes]) {
+    return [dataTypes];
+  } else if (optionCoerceTypes === 'array' && dataTypes === 'array') {
+    return ['array'];
+  }
+}
+
+
+function toHash(arr) {
+  var hash = {};
+  for (var i=0; i<arr.length; i++) hash[arr[i]] = true;
+  return hash;
+}
+
+
+var IDENTIFIER = /^[a-z$_][a-z$_0-9]*$/i;
+var SINGLE_QUOTE = /'|\\/g;
+function getProperty(key) {
+  return typeof key == 'number'
+          ? '[' + key + ']'
+          : IDENTIFIER.test(key)
+            ? '.' + key
+            : "['" + escapeQuotes(key) + "']";
+}
+
+
+function escapeQuotes(str) {
+  return str.replace(SINGLE_QUOTE, '\\$&')
+            .replace(/\n/g, '\\n')
+            .replace(/\r/g, '\\r')
+            .replace(/\f/g, '\\f')
+            .replace(/\t/g, '\\t');
+}
+
+
+function varOccurences(str, dataVar) {
+  dataVar += '[^0-9]';
+  var matches = str.match(new RegExp(dataVar, 'g'));
+  return matches ? matches.length : 0;
+}
+
+
+function varReplace(str, dataVar, expr) {
+  dataVar += '([^0-9])';
+  expr = expr.replace(/\$/g, '$$$$');
+  return str.replace(new RegExp(dataVar, 'g'), expr + '$1');
+}
+
+
+var EMPTY_ELSE = /else\s*{\s*}/g
+  , EMPTY_IF_NO_ELSE = /if\s*\([^)]+\)\s*\{\s*\}(?!\s*else)/g
+  , EMPTY_IF_WITH_ELSE = /if\s*\(([^)]+)\)\s*\{\s*\}\s*else(?!\s*if)/g;
+function cleanUpCode(out) {
+  return out.replace(EMPTY_ELSE, '')
+            .replace(EMPTY_IF_NO_ELSE, '')
+            .replace(EMPTY_IF_WITH_ELSE, 'if (!($1))');
+}
+
+
+var ERRORS_REGEXP = /[^v.]errors/g
+  , REMOVE_ERRORS = /var errors = 0;|var vErrors = null;|validate.errors = vErrors;/g
+  , REMOVE_ERRORS_ASYNC = /var errors = 0;|var vErrors = null;/g
+  , RETURN_VALID = 'return errors === 0;'
+  , RETURN_TRUE = 'validate.errors = null; return true;'
+  , RETURN_ASYNC = /if \(errors === 0\) return data;\s*else throw new ValidationError\(vErrors\);/
+  , RETURN_DATA_ASYNC = 'return data;'
+  , ROOTDATA_REGEXP = /[^A-Za-z_$]rootData[^A-Za-z0-9_$]/g
+  , REMOVE_ROOTDATA = /if \(rootData === undefined\) rootData = data;/;
+
+function finalCleanUpCode(out, async) {
+  var matches = out.match(ERRORS_REGEXP);
+  if (matches && matches.length == 2) {
+    out = async
+          ? out.replace(REMOVE_ERRORS_ASYNC, '')
+               .replace(RETURN_ASYNC, RETURN_DATA_ASYNC)
+          : out.replace(REMOVE_ERRORS, '')
+               .replace(RETURN_VALID, RETURN_TRUE);
+  }
+
+  matches = out.match(ROOTDATA_REGEXP);
+  if (!matches || matches.length !== 3) return out;
+  return out.replace(REMOVE_ROOTDATA, '');
+}
+
+
+function schemaHasRules(schema, rules) {
+  if (typeof schema == 'boolean') return !schema;
+  for (var key in schema) if (rules[key]) return true;
+}
+
+
+function schemaHasRulesExcept(schema, rules, exceptKeyword) {
+  if (typeof schema == 'boolean') return !schema && exceptKeyword != 'not';
+  for (var key in schema) if (key != exceptKeyword && rules[key]) return true;
+}
+
+
+function toQuotedString(str) {
+  return '\'' + escapeQuotes(str) + '\'';
+}
+
+
+function getPathExpr(currentPath, expr, jsonPointers, isNumber) {
+  var path = jsonPointers // false by default
+              ? '\'/\' + ' + expr + (isNumber ? '' : '.replace(/~/g, \'~0\').replace(/\\//g, \'~1\')')
+              : (isNumber ? '\'[\' + ' + expr + ' + \']\'' : '\'[\\\'\' + ' + expr + ' + \'\\\']\'');
+  return joinPaths(currentPath, path);
+}
+
+
+function getPath(currentPath, prop, jsonPointers) {
+  var path = jsonPointers // false by default
+              ? toQuotedString('/' + escapeJsonPointer(prop))
+              : toQuotedString(getProperty(prop));
+  return joinPaths(currentPath, path);
+}
+
+
+var JSON_POINTER = /^\/(?:[^~]|~0|~1)*$/;
+var RELATIVE_JSON_POINTER = /^([0-9]+)(#|\/(?:[^~]|~0|~1)*)?$/;
+function getData($data, lvl, paths) {
+  var up, jsonPointer, data, matches;
+  if ($data === '') return 'rootData';
+  if ($data[0] == '/') {
+    if (!JSON_POINTER.test($data)) throw new Error('Invalid JSON-pointer: ' + $data);
+    jsonPointer = $data;
+    data = 'rootData';
+  } else {
+    matches = $data.match(RELATIVE_JSON_POINTER);
+    if (!matches) throw new Error('Invalid JSON-pointer: ' + $data);
+    up = +matches[1];
+    jsonPointer = matches[2];
+    if (jsonPointer == '#') {
+      if (up >= lvl) throw new Error('Cannot access property/index ' + up + ' levels up, current level is ' + lvl);
+      return paths[lvl - up];
+    }
+
+    if (up > lvl) throw new Error('Cannot access data ' + up + ' levels up, current level is ' + lvl);
+    data = 'data' + ((lvl - up) || '');
+    if (!jsonPointer) return data;
+  }
+
+  var expr = data;
+  var segments = jsonPointer.split('/');
+  for (var i=0; i<segments.length; i++) {
+    var segment = segments[i];
+    if (segment) {
+      data += getProperty(unescapeJsonPointer(segment));
+      expr += ' && ' + data;
+    }
+  }
+  return expr;
+}
+
+
+function joinPaths (a, b) {
+  if (a == '""') return b;
+  return (a + ' + ' + b).replace(/' \+ '/g, '');
+}
+
+
+function unescapeFragment(str) {
+  return unescapeJsonPointer(decodeURIComponent(str));
+}
+
+
+function escapeFragment(str) {
+  return encodeURIComponent(escapeJsonPointer(str));
+}
+
+
+function escapeJsonPointer(str) {
+  return str.replace(/~/g, '~0').replace(/\//g, '~1');
+}
+
+
+function unescapeJsonPointer(str) {
+  return str.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
+
+/***/ }),
+
+/***/ 315:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+/**
+ * Enumération des sens de tri de tableau
+ * @enum
+ */
+var SortDirection;
+(function (SortDirection) {
+    SortDirection[SortDirection["ASC"] = 0] = "ASC";
+    SortDirection[SortDirection["DESC"] = 1] = "DESC";
+})(SortDirection = exports.SortDirection || (exports.SortDirection = {}));
+/***
+ * @description Classe de configuration pour le lancement d'un tri
+ * @interface
+  */
+var SortData = /** @class */ (function () {
+    /***
+     * @param {string} key Clé de la colonnne sur laquelle le tri est effectué
+     * @param {SortDirection} dir Sens du tri
+     */
+    function SortData(key, dir) {
+        if (dir === void 0) { dir = SortDirection.ASC; }
+        this.key = key;
+        this.dir = dir;
+    }
+    return SortData;
+}());
+exports.SortData = SortData;
+
+
+
+/***/ }),
+
+/***/ 317:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+var classNames = __webpack_require__(9);
+/**
+ * Composant Button
+ */
+var Button = /** @class */ (function (_super) {
+    tslib_1.__extends(Button, _super);
+    function Button(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.state.effect = false;
+        _this.state.css = { dislay: "none" };
+        return _this;
+    }
+    /**
+     * @inheritDoc
+     */
+    Button.prototype.render = function () {
+        return ((this.state.type === "link") ? this.renderLink() : this.renderButton());
+    };
+    /**
+     * Rendu type Button
+     * @returns {any}
+     * @protected
+     */
+    Button.prototype.renderButton = function () {
+        var classes = {};
+        if (this.state.className) {
+            classes[this.state.className] = true;
+        }
+        return (React.createElement("button", { type: this.state.type, id: this.state.id, name: this.state.name, value: this.state.value, onClick: this.handleClick, className: classNames(classes), title: this.state.title, disabled: this.state.disabled, "aria-haspopup": this.props.hasPopUp },
+            this.state.label,
+            this.state.effect ? React.createElement("div", { className: "ripple-effect", style: this.state.css }) : null));
+    };
+    /**
+     * Rendu Type Link
+     * @returns {any}
+     * @protected
+     */
+    Button.prototype.renderLink = function () {
+        var classes = {};
+        if (this.state.className) {
+            classes[this.state.className] = true;
+        }
+        var aProps = {
+            href: this.state.url,
+            className: classNames(classes),
+            title: this.state.title,
+            onClick: this.handleClick,
+            disabled: this.state.disabled
+        };
+        return (React.createElement("a", tslib_1.__assign({}, aProps),
+            this.state.label,
+            this.state.effect ? React.createElement("div", { className: "ripple-effect", style: this.state.css }) : null));
+    };
+    /**
+     * Evènement déclenché lors du clic sur le bouton
+     * @param e
+     * @protected
+     */
+    Button.prototype.handleClick = function (e) {
+        if (this.state.onClick != null) {
+            this.state.onClick(e);
+        }
+        this.rippleEffect(e);
+    };
+    /**
+     * Effet activé lors d'un lcick sur un bouton
+     * @param e
+     */
+    Button.prototype.rippleEffect = function (e) {
+        var _this = this;
+        var xPos = e.pageX - e.target.offsetLeft;
+        var yPos = e.pageY - e.target.offsetTop;
+        var size = e.target.clientHeight;
+        var css = ({
+            top: yPos - (size / 2),
+            left: xPos - (size / 2),
+            height: size + "px",
+            width: size + "px"
+        });
+        this.setState({ effect: true, css: css });
+        setTimeout(function () {
+            if (_this.mounted) {
+                _this.setState({ effect: false });
+            }
+        }, 1500);
+    };
+    Button.prototype.componentWillUnmount = function () {
+        _super.prototype.componentWillUnmount.call(this);
+        this.mounted = false;
+    };
+    Button.defaultProps = {
+        disabled: false
+    };
+    return Button;
+}(hornet_component_1.HornetComponent));
+exports.Button = Button;
+
+
+
+/***/ }),
+
+/***/ 319:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+var ReactDOM = __webpack_require__(31);
+/**
+ * Champ de formulaire Hornet de type Checkbox
+ */
+var CheckBox = /** @class */ (function (_super) {
+    tslib_1.__extends(CheckBox, _super);
+    function CheckBox(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.checked = _this.props.checked;
+        return _this;
+    }
+    /**
+     * @inheritDoc
+     */
+    CheckBox.prototype.componentDidMount = function () {
+        _super.prototype.componentDidMount.call(this);
+        var checkbox = ReactDOM.findDOMNode(this.inputRef);
+        checkbox.checked = this.checked;
+    };
+    /**
+     * @inheritDoc
+     */
+    CheckBox.prototype.componentWillReceiveProps = function (nextProps, nextState) {
+        this.checked = nextProps.checked;
+        var checkbox = ReactDOM.findDOMNode(this.inputRef);
+        if (checkbox) {
+            checkbox.checked = this.checked;
+        }
+    };
+    /**
+     * @inheritDoc
+     */
+    CheckBox.prototype.render = function () {
+        var _this = this;
+        var labelProps = {
+            className: "checkbox-content",
+            disabled: this.props.disabled,
+            title: this.props.title
+        };
+        var inputProps = {
+            onChange: this.onChange,
+            title: this.props.title,
+            name: this.props.name,
+            id: this.props.id
+        };
+        return (React.createElement("label", tslib_1.__assign({}, labelProps, { onKeyDown: this.onClick }),
+            React.createElement("input", tslib_1.__assign({ type: "checkbox", value: "true" }, inputProps, { ref: function (ref) { _this.inputRef = ref; } })),
+            React.createElement("span", { className: "checkbox-material" },
+                React.createElement("span", { className: "check" })),
+            (this.state.label) ? this.state.label : ""));
+    };
+    /**
+     * fonction appelée au clic sur la checkbox
+     * @param e
+     */
+    CheckBox.prototype.onClick = function (e) {
+        var checkbox = ReactDOM.findDOMNode(this.inputRef);
+        checkbox.checked = !checkbox.checked;
+    };
+    /**
+     * fonction appelée au changement de valeur de la checkbox
+     * @param e
+     */
+    CheckBox.prototype.onChange = function (e) {
+        if (this.props.onChange) {
+            this.props.onChange(e);
+        }
+    };
+    return CheckBox;
+}(hornet_component_1.HornetComponent));
+exports.CheckBox = CheckBox;
+
+
+
+/***/ }),
+
+/***/ 321:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var events = __webpack_require__(35);
+var _ = __webpack_require__(6);
+var promise_api_1 = __webpack_require__(19);
+var technical_error_1 = __webpack_require__(12);
+var codes_error_1 = __webpack_require__(44);
+var object_utils_1 = __webpack_require__(124);
+var datasource_option_1 = __webpack_require__(348);
+var datasource_config_1 = __webpack_require__(375);
+var datasource_config_page_1 = __webpack_require__(349);
+var DataSourceStatus;
+(function (DataSourceStatus) {
+    DataSourceStatus[DataSourceStatus["Dummy"] = 0] = "Dummy";
+    DataSourceStatus[DataSourceStatus["Initialized"] = 1] = "Initialized";
+})(DataSourceStatus = exports.DataSourceStatus || (exports.DataSourceStatus = {}));
+/***
+ * @classdesc Classe de base des datasources
+ * elle contient une methode pour récupérer des datas, varie selon le type de datasource;
+ * elle implémente une methode qui transforme les données récupérées selon une classe de mapping  {@link DataSourceMap} afin de l'exploiter directement par l'IHM.
+ * liste des events déclenchés par le datasource lorsque les opérations sont effectuées:
+ * -init
+ * -fetch
+ * -add
+ * -delete
+ * -select
+ * -sort
+ * -filter
+ * -error see{@link CodesError.DATASOURCE*}
+ * @class
+ * @extends EventEmitter
+ */
+var DataSource = /** @class */ (function (_super) {
+    tslib_1.__extends(DataSource, _super);
+    /***
+     * @param {DataSourceConfig|DataSourceConfigPage|Array<T>}
+     *        config : accepte soit une liste de l'éléments Array<T>, soit un service DataSourceConfig | DataSourceConfigPage
+     * @param {DataSourceMap} keysMap  : utilisée pour la transformation des resultats du fetch.
+     * @param {DataSourceOption[]} options : liste de paramètres supplémentaires à transmettre au fetch
+     * Pour un config de type
+     */
+    function DataSource(config, keysMap, options) {
+        if (keysMap === void 0) { keysMap = {}; }
+        var _this = _super.call(this) || this;
+        _this.config = config;
+        _this.keysMap = keysMap;
+        _this.options = options;
+        /***
+         * tableau de résultats du datasource
+         * @instance
+         */
+        _this.datasourceResults = [];
+        /***
+         * backup des résultats du datasource
+         * @instance
+         */
+        _this._results_backup = [];
+        /***
+         * mode filtre
+         * @instance
+         */
+        _this._filtering_flag = false;
+        /**
+         * Indique si le datasource courant est de type DataSourceArray.
+         */
+        _this.isDataSourceArray = false;
+        /**
+         * Sauvegarde des argument du fetch pour rejouer lors du tri
+         */
+        _this.fetchArgsSaved = null;
+        /**
+         * nom des argument du fetch pour rejouer lors du tri en lui ajoutant le sortData
+         */
+        _this.fetchAttrName = "criteres";
+        _this._status = DataSourceStatus.Dummy;
+        _this.config = config;
+        if (!_this.config) {
+            _this.config = [];
+        }
+        if (_this.config instanceof datasource_config_1.DataSourceConfig) {
+            _this.scope = _this.config.scope;
+            _this.method = _this.config.scope[_this.config.methodName];
+            _this.fetchAttrName = _this.config.fetchAttrName || "criteres";
+        }
+        if (_this.config instanceof datasource_config_page_1.DataSourceConfigPage) {
+            _this.scope = _this.config.page.getService();
+            _this.method = _this.config.method;
+            _this.fetchAttrName = _this.config.fetchAttrName || "criteres";
+        }
+        if (_this.config instanceof Array) {
+            _this.isDataSourceArray = true;
+            _this.init();
+        }
+        var init = _.find(options, function (option) {
+            return option instanceof datasource_option_1.InitAsync;
+        });
+        var sort = _.find(options, function (option) {
+            return option instanceof datasource_option_1.DefaultSort;
+        });
+        _this.defaultSort = sort ? sort : null;
+        _this.initAsync = init ? init : null;
+        return _this;
+    }
+    /***
+     * Méthode qui déclenche un fetch appelé pour initialiser un datasource.
+     * @param {any} args  paramètres à renseigner pour l'appel de la méthode de récupération des données.
+     * Déchenche un event init
+     */
+    DataSource.prototype.init = function (args) {
+        (this.initAsync && this.initAsync.isAsync) ? this.initData(args) : this.initDataSync(args);
+    };
+    /***
+     * Méthode qui déclenche un fetch appelé pour initialiser un datasource.
+     * @param {any} args  paramètres à renseigner pour l'appel de la méthode de récupération des données.
+     * Déchenche un event init
+     */
+    DataSource.prototype.initDataSync = function (args) {
+        var _this = this;
+        if (this.isDataSourceArray) {
+            this.addDataSync(false, this.config);
+            //nettoyage
+            this.config = [];
+            this.emit("init", this.results);
+            this._status = DataSourceStatus.Initialized;
+            return this.results;
+        }
+        else {
+            this.fetchData(false, args).then(function () {
+                _this.emit("init", _this.results);
+                _this._status = DataSourceStatus.Initialized;
+                return _this.results;
+            });
+        }
+    };
+    /***
+     * Méthode qui déclenche un fetch appelé pour initialiser un datasource.
+     * @param {any} args  paramètres à renseigner pour l'appel de la méthode de récupération des données.
+     * Déchenche un event init
+     */
+    DataSource.prototype.initData = function (args) {
+        var _this = this;
+        return this.isDataSourceArray ? this.addData(false, this.config).then(function () {
+            //nettoyage
+            _this.config = [];
+            _this.emit("init", _this.results);
+            _this._status = DataSourceStatus.Initialized;
+            return _this.results;
+        }).catch(function (error) {
+            throw error;
+        }) : this.fetchData(false, args).then(function () {
+            _this.emit("init", _this.results);
+            _this._status = DataSourceStatus.Initialized;
+            return _this.results;
+        });
+    };
+    /**
+     * On considère que les données sont dèjà présentes dans le datasource, on envoie juste l'event fetch au composant
+     * pour forcer le rendu avec ses anciennes données.
+     */
+    DataSource.prototype.reload = function () {
+        var _this = this;
+        promise_api_1.Promise.resolve().then(function () {
+            _this.emit("fetch", _this.results);
+        });
+    };
+    Object.defineProperty(DataSource.prototype, "selected", {
+        /**
+         * renvoie la valeur selectionnée courante.
+         */
+        get: function () {
+            return this._selected;
+        },
+        set: function (value) {
+            this._selected = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /***
+    * Méthode qui retourne des items du result d'un datasource.
+    * {@link https://lodash.com/docs/#every}
+    * @param criteria
+    * @return renvoie les éléments trouvés
+    */
+    DataSource.prototype.findAll = function (criteria) {
+        return _.filter(this.results, criteria);
+    };
+    /**
+     * supprime l'item du dataSource
+     * @param item
+     */
+    DataSource.prototype.removeUnSelectedItem = function (item) {
+        if (!item)
+            return;
+        if (this._selected instanceof Array) {
+            _.remove(this._selected, item);
+        }
+        else {
+            if (item === this._selected) {
+                this._selected = undefined;
+            }
+        }
+    };
+    Object.defineProperty(DataSource.prototype, "results", {
+        /**
+         * renvoie le tableau des résultats.
+         */
+        get: function () {
+            return this.datasourceResults;
+        },
+        /**
+         * enregistre les résultats dans le datasource
+         * @param {any[]} results les données du data source (post-transformation {@link DataSource#transformData}).
+         */
+        set: function (results) {
+            this.datasourceResults = results;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(DataSource.prototype, "status", {
+        get: function () {
+            return this._status;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * renvoie le tri par defaut
+     */
+    DataSource.prototype.getDefaultSort = function () {
+        return this.defaultSort;
+    };
+    /***
+     * Méthode qui implémente la méthode de récupération des datas (une par type de datasource)
+     * Déchenche un event fetch
+     * @param {Boolean} triggerFetch  déclenche un évènement "fetch" après l'opération si true.
+     * @param {any} args  paramètres à renseigner pour l'appel de la méthode de récupération des données.
+     * @param {boolean} noSave indicateur pour sauvegarder ou non les paramètres du fetch pour les rejouer sur un sort service
+     * @example
+     * dataSource.on("fetch", (MappedResult)=>{
+     *       //staff
+     *   })
+     * dataSource.fetch();
+     * @void
+     */
+    DataSource.prototype.fetch = function (triggerFetch, args, noSave) {
+        //suppression de l'historique de selection
+        // le mae n'est pas prêt...
+        this.selectClean(!noSave);
+        if (!noSave) {
+            this.fetchArgsSaved = args;
+        }
+        this.fetchData(triggerFetch, args);
+    };
+    /***
+     * Méthode qui déclenche les events
+     **/
+    DataSource.prototype.emitEvent = function (name) {
+        var _this = this;
+        var arg = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            arg[_i - 1] = arguments[_i];
+        }
+        if (this._status === DataSourceStatus.Dummy) {
+            this._status = DataSourceStatus.Initialized;
+        }
+        setTimeout(function () {
+            _this.emit.apply(_this, [name].concat(arg));
+        }, 0);
+    };
+    /***
+     * Méthode qui implémente la méthode de récupération des datas (une par type de datasource)
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {any[]} ...args paramètres à renseigner pour l'appel de la méthode de récupération des données.
+     * @return {T} une promesse de type result de T.
+     * @example
+     * dataSource.on("fetch", (MappedResult)=>{
+     *       //staff
+     *   })
+     * dataSource.fetch();
+     * @void
+     */
+    DataSource.prototype.fetchData = function (triggerFetch, args) {
+        var _this = this;
+        this.emit("loadingData", true);
+        var fetchOptions = _.filter(this.options, function (option) {
+            return option.sendToFetch();
+        });
+        var fetchArgs = (typeof args !== "undefined") ? [args].concat(fetchOptions) : fetchOptions;
+        var p = this.isDataSourceArray ?
+            //déclenchement de l'event fetch (si demandé) avec le result du data source en datasourceArray
+            promise_api_1.Promise.resolve().then(function () {
+                if (triggerFetch) {
+                    if (_this.defaultSort && !(args && args["sort"])) {
+                        var options = { sortDatas: _this.defaultSort.sort, compare: _this.defaultSort };
+                        _this.sortData(options);
+                    }
+                    _this.emit("fetch", _this.results);
+                }
+                else {
+                    return false;
+                }
+            }) :
+            //déclenchement de l'event fetch (si demandé) avec datasourceService
+            //après la requete de service, une transformation sera appliquée sur les données récoltées
+            this.method.apply(this.scope, fetchArgs)
+                .then(function (result) {
+                return _this.transformData([result]).then(function (res) {
+                    //affectation des data dans le result du datasource
+                    _this.results = res;
+                    var args = fetchArgs[0];
+                    if (_this.defaultSort && !(args && args["sort"])) {
+                        var options = { sortDatas: _this.defaultSort.sort, compare: _this.defaultSort };
+                        _this.sortData(options);
+                    }
+                    triggerFetch ? _this.emit("fetch", _this.results) : null;
+                    return _this.results;
+                }).catch(function (e) {
+                    var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_FETCH_ERROR, null, e);
+                    _this.emit("error", error);
+                });
+            });
+        return p.finally(function () {
+            _this.emitEvent("loadingData", false);
+        });
+    };
+    /***
+     * Ajout un élément ou des éléments au result du datasource
+     * cette action déclenche l'évènement add.
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {(T|T[])[]} items correspond aux données à ajouter, un appel à la méthode {@link DataSource#transformData} sera effectué
+     * @example
+     * dataSource.on("add", (IncreasedResult)=>{
+     *       //staff
+     *   })
+     * dataSource.add();
+     * @void
+     */
+    DataSource.prototype.add = function (triggerFetch) {
+        var _this = this;
+        var items = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            items[_i - 1] = arguments[_i];
+        }
+        this.addData.apply(this, [triggerFetch].concat(items)).then(function (result) {
+            _this.emit("add", result);
+            return _this.results;
+        }).catch(function (e) {
+            var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_ADD_ERROR, null, e);
+            _this.emit("error", error);
+        });
+    };
+    /***
+     * Ajout un élément ou des éléments au result du datasource
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {(T|T[])[]} items correspond aux données à ajouter, un appel à la méthode {@link DataSource#transformData} sera effectué
+     * @return une promise du result modifié
+     */
+    DataSource.prototype.addData = function (triggerFetch) {
+        var _this = this;
+        var items = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            items[_i - 1] = arguments[_i];
+        }
+        this.emit("loadingData", true);
+        return promise_api_1.Promise.resolve().then(function () {
+            return _this.transformData(items).then(function (result) {
+                try {
+                    _this.datasourceResults = _this.datasourceResults.concat(result);
+                    if (_this.defaultSort) {
+                        var options = { sortDatas: _this.defaultSort.sort, compare: _this.defaultSort };
+                        _this.sortData(options);
+                    }
+                    if (triggerFetch)
+                        _this.emit("fetch", _this.results);
+                    return _this.datasourceResults;
+                }
+                catch (e) {
+                    var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_ADD_ERROR, null, e);
+                    _this.emit("error", error);
+                }
+            });
+        }).finally(function () {
+            _this.emitEvent("loadingData", false);
+        });
+    };
+    /***
+     * Ajout un élément ou des éléments au result du datasource
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {(T|T[])[]} items correspond aux données à ajouter, un appel à la méthode {@link DataSource#transformData} sera effectué
+     * @return {any[]} result modifié
+     */
+    DataSource.prototype.addDataSync = function (triggerFetch) {
+        var items = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            items[_i - 1] = arguments[_i];
+        }
+        this.emit("loadingData", true);
+        var res = null;
+        try {
+            var result = this.transformDataSync(items);
+            this.datasourceResults = this.datasourceResults.concat(result);
+            if (this.defaultSort) {
+                var options = { sortDatas: this.defaultSort.sort, compare: this.defaultSort };
+                this.sortData(options);
+            }
+            if (triggerFetch)
+                this.emit("fetch", this.results);
+            res = this.datasourceResults;
+        }
+        catch (e) {
+            var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_ADD_ERROR, null, e);
+            this.emit("error", error);
+        }
+        this.emit("loadingData", false);
+        return res;
+    };
+    /***
+     * enlève un élément ou des éléments au result du datasource
+     * cette action déclenche l'évènement delete
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {(T|T[])[]} items correspond aux données à ajouter, un appel à la méthode {@link DataSource#transformData} sera effectué
+     * @void
+     */
+    DataSource.prototype.delete = function (triggerFetch) {
+        var _this = this;
+        var items = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            items[_i - 1] = arguments[_i];
+        }
+        this.deleteData.apply(this, [triggerFetch].concat(items)).then(function (result) {
+            _this.emit("delete", result);
+            return _this.results;
+        }).catch(function (e) {
+            var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_DELETE_ERROR, null, e);
+            _this.emit("error", error);
+        });
+    };
+    /**
+     * supprime toutes les données du datasource.
+     */
+    DataSource.prototype.deleteAll = function () {
+        this.selectClean(true);
+        this.results = [];
+        this.emit("delete", this.results);
+    };
+    /***
+     * enlève un élément ou des éléments au result du datasource
+     * @param {Boolean} triggerFetch déclenche un évènement "fetch" après l'opération si true.
+     * @param {(T|T[])[]} items correspond aux données à supprimer, un appel à la méthode {@link DataSource#transformData} sera effectué
+     * @return {Promise<Array<<any>>} une promise du result modifié
+     */
+    DataSource.prototype.deleteData = function (triggerFetch) {
+        var _this = this;
+        if (triggerFetch === void 0) { triggerFetch = false; }
+        var items = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            items[_i - 1] = arguments[_i];
+        }
+        this.emit("loadingData", true);
+        return promise_api_1.Promise.resolve().then(function () {
+            return _this.transformData(items).then(function (result) {
+                _.map(result, function (item) {
+                    _.remove(_this.datasourceResults, item);
+                });
+                if (triggerFetch)
+                    _this.emit("fetch", _this.results);
+                return _this.results;
+            }).catch(function (e) {
+                var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_DELETE_ERROR, null, e);
+                _this.emit("error", error);
+            });
+        }).finally(function () {
+            _this.emitEvent("loadingData", false);
+        });
+    };
+    /**
+     * permet de normaliser les elements du spread
+     * @param {(T|T[])[]} data : les paramètres à normaliser
+     */
+    DataSource.prototype.getSpreadValues = function (data) {
+        var _data = data;
+        if (_data.length == 0)
+            return [];
+        //for spread operator
+        if (_data[0] instanceof Array) {
+            _data = _data[0];
+        }
+        return _data;
+    };
+    /***
+     * méthode qui convertie les données brutes en données exploitable par l'IHM.
+     * @param {(T|T[])[]} data les données brutes.
+     * @return {Promise<Array<<any>>} renvoie les données transformées à partir des données brutes et la classe de mapping  {@link DataSourceMap}
+     */
+    DataSource.prototype.transformData = function (data) {
+        var _this = this;
+        return promise_api_1.Promise.resolve().then(function () {
+            return _this.transformDataSync(data);
+        });
+    };
+    /***
+     * méthode qui convertie les données brutes en données exploitable par l'IHM.
+     * @param {(T|T[])[]} data les données brutes.
+     * @return {Array<any>} renvoie les données transformées à partir des données brutes et la classe de mapping  {@link DataSourceMap}
+     */
+    DataSource.prototype.transformDataSync = function (data) {
+        var _this = this;
+        if (data["errors"]) {
+            var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_RESPONSE_ERROR, data["errors"]);
+            this.emit("error", error);
+            throw error;
+        }
+        var _data = this.getSpreadValues(data);
+        if (!this.keysMap || Object.keys(this.keysMap) == 0) {
+            return _data;
+        }
+        return _data.map(function (item) {
+            if (item) {
+                var resultKeys_1 = {};
+                Object.keys(_this.keysMap).map(function (key) {
+                    resultKeys_1[key] = object_utils_1.ObjectUtils.getSubObject(item, _this.keysMap[key]);
+                });
+                return resultKeys_1;
+            }
+        });
+    };
+    /**
+     * Fonction de tri
+     * @param {SortData[]} sort  données de tri
+     * @param {(a: any, b: any) => number} Fonction de comparaison.
+     */
+    DataSource.prototype.sortData = function (options) {
+        if (options.compare) {
+            var exec = options.compare;
+            if (options.compare.compare) {
+                exec = options.compare.compare;
+            }
+            if (options.compare.initCompare) {
+                if (typeof options.compare.initCompare == "function") {
+                    exec = options.compare.initCompare;
+                }
+                else {
+                    exec = options.compare.getCompareFunction(options.compare.initCompare);
+                }
+            }
+            this.results = this.results.sort(exec.bind(options.sortDatas, options.sortDatas));
+        }
+        else {
+            var keys = [];
+            var directions = [];
+            for (var i = 0; i < options.sortDatas.length; i++) {
+                keys.push(options.sortDatas[i].key);
+                directions.push(options.sortDatas[i].dir ? "desc" : "asc");
+            }
+            this.results = _.orderBy(this.results, keys, directions);
+        }
+    };
+    /***
+     * Fonction de tri
+     * @param {SortData[]} sortData.
+     * @param {(a: any, b: any) => number} Fonction de comparaison.
+     * @example
+     * dataSource.on("sort", (SortedResult)=>{
+     *       //staff
+     *   })
+     * dataSource.sort(sortData);
+     * @void
+     */
+    DataSource.prototype.sort = function (options) {
+        var _this = this;
+        this.emit("loadingData", true);
+        promise_api_1.Promise.resolve().then(function () {
+            try {
+                if (_this.isDataSourceArray) {
+                    if (_this.defaultSort)
+                        _this.defaultSort.sort = options.sortDatas;
+                    options.compare = options.compare || _this.defaultSort;
+                    _this.sortData(options);
+                    _this.emitEvent("sort", _this.results, options.sortDatas);
+                    return _this.results;
+                }
+                else {
+                    return _this.fetchData(false, _this.getFetchArgs("sort", options.sortDatas))
+                        .then(function (results) {
+                        _this.emitEvent("sort", _this.results, options.sortDatas);
+                        return results;
+                    });
+                }
+            }
+            catch (e) {
+                var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_SORT_ERROR, null, e);
+                _this.emit("error", error);
+            }
+        }).finally(function () {
+            _this.emitEvent("loadingData", false);
+        });
+    };
+    /***
+     * Renvoie un sous-ensemble des resultats filtrés
+     * @param config correspond soit aux critères de filtrage soit à une fonction (appelée à chaque itération) {@link https://lodash.com/docs/#filter}
+     * @param cancelFilterHistory false si on souhaite garder un historique des filtres true sinon. false par défaut
+     * @example
+     * dataSource.on("filter", (filteredResult)=>{
+     *       //staff
+     *   })
+     * dataSource.filter(config, cancelFilterHistory);
+     * @void
+     */
+    DataSource.prototype.filter = function (config, cancelFilterHistory) {
+        var _this = this;
+        if (cancelFilterHistory === void 0) { cancelFilterHistory = false; }
+        this.emit("loadingData", true);
+        if (this.isDataSourceArray) {
+            if (cancelFilterHistory) {
+                if (!this._filtering_flag) {
+                    //backup
+                    this._results_backup = this.datasourceResults;
+                    this._filtering_flag = true;
+                }
+                else {
+                    //restore
+                    this.datasourceResults = this._results_backup;
+                }
+            }
+        }
+        promise_api_1.Promise.resolve().then(function () {
+            try {
+                if (_this.isDataSourceArray) {
+                    _this.datasourceResults = _.filter(_this.results, config);
+                    _this.emitEvent("filter", _this.results);
+                }
+                else {
+                    _this.fetchData(false, _this.getFetchArgs("filter", config)).then(function () {
+                        _this.emitEvent("filter", _this.results);
+                    });
+                }
+            }
+            catch (e) {
+                var error = new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_FILTER_ERROR, null, e);
+                _this.emit("error", error);
+            }
+        }).finally(function () {
+            _this.emitEvent("loadingData", false);
+        });
+    };
+    /***
+     * Annule tous les filtres et restaure les valeurs d'origine.
+     * dataSource.cancelFilter();
+     * @void
+     */
+    DataSource.prototype.cancelFilter = function () {
+        if (this._filtering_flag) {
+            this.datasourceResults = this._results_backup;
+        }
+    };
+    /***
+     * Permet de selectionner un element ou des elements du datasource
+     * déclenche un evènement "select".
+     * @param args correspond aux éléments sélectionnées
+     * @param index dans le cas de la selection d'une ligne
+     * @example
+     * dataSource.on("select", (selectedItems)=>{
+     *       //staff
+     *   })
+     * dataSource.select(items);
+     * @void
+     */
+    DataSource.prototype.select = function (args) {
+        this._selected = args;
+        this.emit("select", this.selected);
+    };
+    /***
+     * Supprime toute sélection dans le datasource.
+     * @void
+     */
+    DataSource.prototype.selectClean = function (flag) {
+        if (flag) {
+            this.select(undefined);
+        }
+        this._selected = undefined;
+    };
+    /**
+     * reconstitue un objet parametre du fetch
+     * @param {string} attrName nom de l'attribut ajouter
+     * @param {objet} value valeur de l'attribut ajouter
+     * @param {objet=} param
+     */
+    DataSource.prototype.getFetchArgs = function (attrName, value, param) {
+        var fetchArgs = value;
+        if (param || this.fetchArgsSaved) {
+            if (value) {
+                fetchArgs = param || {};
+                if (!param) {
+                    fetchArgs[this.fetchAttrName] = this.fetchArgsSaved;
+                }
+                fetchArgs[attrName] = value;
+            }
+            else {
+                fetchArgs = param || this.fetchArgsSaved;
+            }
+        }
+        return fetchArgs;
+    };
+    return DataSource;
+}(events.EventEmitter));
+exports.DataSource = DataSource;
+
+
+
+/***/ }),
+
+/***/ 322:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var url = __webpack_require__(46)
+  , equal = __webpack_require__(323)
+  , util = __webpack_require__(312)
+  , SchemaObject = __webpack_require__(335)
+  , traverse = __webpack_require__(380);
+
+module.exports = resolve;
+
+resolve.normalizeId = normalizeId;
+resolve.fullPath = getFullPath;
+resolve.url = resolveUrl;
+resolve.ids = resolveIds;
+resolve.inlineRef = inlineRef;
+resolve.schema = resolveSchema;
+
+/**
+ * [resolve and compile the references ($ref)]
+ * @this   Ajv
+ * @param  {Function} compile reference to schema compilation funciton (localCompile)
+ * @param  {Object} root object with information about the root schema for the current schema
+ * @param  {String} ref reference to resolve
+ * @return {Object|Function} schema object (if the schema can be inlined) or validation function
+ */
+function resolve(compile, root, ref) {
+  /* jshint validthis: true */
+  var refVal = this._refs[ref];
+  if (typeof refVal == 'string') {
+    if (this._refs[refVal]) refVal = this._refs[refVal];
+    else return resolve.call(this, compile, root, refVal);
+  }
+
+  refVal = refVal || this._schemas[ref];
+  if (refVal instanceof SchemaObject) {
+    return inlineRef(refVal.schema, this._opts.inlineRefs)
+            ? refVal.schema
+            : refVal.validate || this._compile(refVal);
+  }
+
+  var res = resolveSchema.call(this, root, ref);
+  var schema, v, baseId;
+  if (res) {
+    schema = res.schema;
+    root = res.root;
+    baseId = res.baseId;
+  }
+
+  if (schema instanceof SchemaObject) {
+    v = schema.validate || compile.call(this, schema.schema, root, undefined, baseId);
+  } else if (schema !== undefined) {
+    v = inlineRef(schema, this._opts.inlineRefs)
+        ? schema
+        : compile.call(this, schema, root, undefined, baseId);
+  }
+
+  return v;
+}
+
+
+/**
+ * Resolve schema, its root and baseId
+ * @this Ajv
+ * @param  {Object} root root object with properties schema, refVal, refs
+ * @param  {String} ref  reference to resolve
+ * @return {Object} object with properties schema, root, baseId
+ */
+function resolveSchema(root, ref) {
+  /* jshint validthis: true */
+  var p = url.parse(ref, false, true)
+    , refPath = _getFullPath(p)
+    , baseId = getFullPath(this._getId(root.schema));
+  if (refPath !== baseId) {
+    var id = normalizeId(refPath);
+    var refVal = this._refs[id];
+    if (typeof refVal == 'string') {
+      return resolveRecursive.call(this, root, refVal, p);
+    } else if (refVal instanceof SchemaObject) {
+      if (!refVal.validate) this._compile(refVal);
+      root = refVal;
+    } else {
+      refVal = this._schemas[id];
+      if (refVal instanceof SchemaObject) {
+        if (!refVal.validate) this._compile(refVal);
+        if (id == normalizeId(ref))
+          return { schema: refVal, root: root, baseId: baseId };
+        root = refVal;
+      } else {
+        return;
+      }
+    }
+    if (!root.schema) return;
+    baseId = getFullPath(this._getId(root.schema));
+  }
+  return getJsonPointer.call(this, p, baseId, root.schema, root);
+}
+
+
+/* @this Ajv */
+function resolveRecursive(root, ref, parsedRef) {
+  /* jshint validthis: true */
+  var res = resolveSchema.call(this, root, ref);
+  if (res) {
+    var schema = res.schema;
+    var baseId = res.baseId;
+    root = res.root;
+    var id = this._getId(schema);
+    if (id) baseId = resolveUrl(baseId, id);
+    return getJsonPointer.call(this, parsedRef, baseId, schema, root);
+  }
+}
+
+
+var PREVENT_SCOPE_CHANGE = util.toHash(['properties', 'patternProperties', 'enum', 'dependencies', 'definitions']);
+/* @this Ajv */
+function getJsonPointer(parsedRef, baseId, schema, root) {
+  /* jshint validthis: true */
+  parsedRef.hash = parsedRef.hash || '';
+  if (parsedRef.hash.slice(0,2) != '#/') return;
+  var parts = parsedRef.hash.split('/');
+
+  for (var i = 1; i < parts.length; i++) {
+    var part = parts[i];
+    if (part) {
+      part = util.unescapeFragment(part);
+      schema = schema[part];
+      if (schema === undefined) break;
+      var id;
+      if (!PREVENT_SCOPE_CHANGE[part]) {
+        id = this._getId(schema);
+        if (id) baseId = resolveUrl(baseId, id);
+        if (schema.$ref) {
+          var $ref = resolveUrl(baseId, schema.$ref);
+          var res = resolveSchema.call(this, root, $ref);
+          if (res) {
+            schema = res.schema;
+            root = res.root;
+            baseId = res.baseId;
+          }
+        }
+      }
+    }
+  }
+  if (schema !== undefined && schema !== root.schema)
+    return { schema: schema, root: root, baseId: baseId };
+}
+
+
+var SIMPLE_INLINED = util.toHash([
+  'type', 'format', 'pattern',
+  'maxLength', 'minLength',
+  'maxProperties', 'minProperties',
+  'maxItems', 'minItems',
+  'maximum', 'minimum',
+  'uniqueItems', 'multipleOf',
+  'required', 'enum'
+]);
+function inlineRef(schema, limit) {
+  if (limit === false) return false;
+  if (limit === undefined || limit === true) return checkNoRef(schema);
+  else if (limit) return countKeys(schema) <= limit;
+}
+
+
+function checkNoRef(schema) {
+  var item;
+  if (Array.isArray(schema)) {
+    for (var i=0; i<schema.length; i++) {
+      item = schema[i];
+      if (typeof item == 'object' && !checkNoRef(item)) return false;
+    }
+  } else {
+    for (var key in schema) {
+      if (key == '$ref') return false;
+      item = schema[key];
+      if (typeof item == 'object' && !checkNoRef(item)) return false;
+    }
+  }
+  return true;
+}
+
+
+function countKeys(schema) {
+  var count = 0, item;
+  if (Array.isArray(schema)) {
+    for (var i=0; i<schema.length; i++) {
+      item = schema[i];
+      if (typeof item == 'object') count += countKeys(item);
+      if (count == Infinity) return Infinity;
+    }
+  } else {
+    for (var key in schema) {
+      if (key == '$ref') return Infinity;
+      if (SIMPLE_INLINED[key]) {
+        count++;
+      } else {
+        item = schema[key];
+        if (typeof item == 'object') count += countKeys(item) + 1;
+        if (count == Infinity) return Infinity;
+      }
+    }
+  }
+  return count;
+}
+
+
+function getFullPath(id, normalize) {
+  if (normalize !== false) id = normalizeId(id);
+  var p = url.parse(id, false, true);
+  return _getFullPath(p);
+}
+
+
+function _getFullPath(p) {
+  var protocolSeparator = p.protocol || p.href.slice(0,2) == '//' ? '//' : '';
+  return (p.protocol||'') + protocolSeparator + (p.host||'') + (p.path||'')  + '#';
+}
+
+
+var TRAILING_SLASH_HASH = /#\/?$/;
+function normalizeId(id) {
+  return id ? id.replace(TRAILING_SLASH_HASH, '') : '';
+}
+
+
+function resolveUrl(baseId, id) {
+  id = normalizeId(id);
+  return url.resolve(baseId, id);
+}
+
+
+/* @this Ajv */
+function resolveIds(schema) {
+  var schemaId = normalizeId(this._getId(schema));
+  var baseIds = {'': schemaId};
+  var fullPaths = {'': getFullPath(schemaId, false)};
+  var localRefs = {};
+  var self = this;
+
+  traverse(schema, {allKeys: true}, function(sch, jsonPtr, rootSchema, parentJsonPtr, parentKeyword, parentSchema, keyIndex) {
+    if (jsonPtr === '') return;
+    var id = self._getId(sch);
+    var baseId = baseIds[parentJsonPtr];
+    var fullPath = fullPaths[parentJsonPtr] + '/' + parentKeyword;
+    if (keyIndex !== undefined)
+      fullPath += '/' + (typeof keyIndex == 'number' ? keyIndex : util.escapeFragment(keyIndex));
+
+    if (typeof id == 'string') {
+      id = baseId = normalizeId(baseId ? url.resolve(baseId, id) : id);
+
+      var refVal = self._refs[id];
+      if (typeof refVal == 'string') refVal = self._refs[refVal];
+      if (refVal && refVal.schema) {
+        if (!equal(sch, refVal.schema))
+          throw new Error('id "' + id + '" resolves to more than one schema');
+      } else if (id != normalizeId(fullPath)) {
+        if (id[0] == '#') {
+          if (localRefs[id] && !equal(sch, localRefs[id]))
+            throw new Error('id "' + id + '" resolves to more than one schema');
+          localRefs[id] = sch;
+        } else {
+          self._refs[id] = fullPath;
+        }
+      }
+    }
+    baseIds[jsonPtr] = baseId;
+    fullPaths[jsonPtr] = fullPath;
+  });
+
+  return localRefs;
+}
+
+
+/***/ }),
+
+/***/ 323:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isArray = Array.isArray;
+var keyList = Object.keys;
+var hasProp = Object.prototype.hasOwnProperty;
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  var arrA = isArray(a)
+    , arrB = isArray(b)
+    , i
+    , length
+    , key;
+
+  if (arrA && arrB) {
+    length = a.length;
+    if (length != b.length) return false;
+    for (i = 0; i < length; i++)
+      if (!equal(a[i], b[i])) return false;
+    return true;
+  }
+
+  if (arrA != arrB) return false;
+
+  var dateA = a instanceof Date
+    , dateB = b instanceof Date;
+  if (dateA != dateB) return false;
+  if (dateA && dateB) return a.getTime() == b.getTime();
+
+  var regexpA = a instanceof RegExp
+    , regexpB = b instanceof RegExp;
+  if (regexpA != regexpB) return false;
+  if (regexpA && regexpB) return a.toString() == b.toString();
+
+  if (a instanceof Object && b instanceof Object) {
+    var keys = keyList(a);
+    length = keys.length;
+
+    if (length !== keyList(b).length)
+      return false;
+
+    for (i = 0; i < length; i++)
+      if (!hasProp.call(b, keys[i])) return false;
+
+    for (i = 0; i < length; i++) {
+      key = keys[i];
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  }
+
+  return false;
+};
+
+
+/***/ }),
+
+/***/ 324:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var resolve = __webpack_require__(322);
+
+module.exports = {
+  Validation: errorSubclass(ValidationError),
+  MissingRef: errorSubclass(MissingRefError)
+};
+
+
+function ValidationError(errors) {
+  this.message = 'validation failed';
+  this.errors = errors;
+  this.ajv = this.validation = true;
+}
+
+
+MissingRefError.message = function (baseId, ref) {
+  return 'can\'t resolve reference ' + ref + ' from id ' + baseId;
+};
+
+
+function MissingRefError(baseId, ref, message) {
+  this.message = message || MissingRefError.message(baseId, ref);
+  this.missingRef = resolve.url(baseId, ref);
+  this.missingSchema = resolve.normalizeId(resolve.fullPath(this.missingRef));
+}
+
+
+function errorSubclass(Subclass) {
+  Subclass.prototype = Object.create(Error.prototype);
+  Subclass.prototype.constructor = Subclass;
+  return Subclass;
+}
+
+
+/***/ }),
+
+/***/ 325:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  metaSchemaRef: metaSchemaRef
+};
+
+var META_SCHEMA_ID = 'http://json-schema.org/draft-06/schema';
+
+function metaSchemaRef(ajv) {
+  var defaultMeta = ajv._opts.defaultMeta;
+  if (typeof defaultMeta == 'string') return { $ref: defaultMeta };
+  if (ajv.getSchema(META_SCHEMA_ID)) return { $ref: META_SCHEMA_ID };
+  console.warn('meta schema not defined');
+  return {};
+}
+
+
+/***/ }),
+
+/***/ 326:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+var hornet_component_1 = __webpack_require__(3);
+var form_utils_1 = __webpack_require__(328);
+var hornet_js_utils_1 = __webpack_require__(1);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.dom-adapter");
+/**
+ * Adaptateur DOM pour un champ de formulaire
+ */
+var DomAdapter = /** @class */ (function (_super) {
+    tslib_1.__extends(DomAdapter, _super);
+    function DomAdapter(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    DomAdapter.prototype.getElementType = function (elt) {
+        var tag = this.htmlElement.tagName.toLowerCase();
+        var type = null;
+        if (tag == "input") {
+            type = this.htmlElement["type"];
+        }
+        else if (tag == "textarea") {
+            type = "textarea";
+        }
+        else if (tag == "select") {
+            type = "select";
+        }
+        return type;
+    };
+    DomAdapter.prototype.getHornetForm = function () {
+        if (this.htmlElement) {
+            return this.htmlElement.form.__component;
+        }
+        else {
+            return this.multipleElement[0].form.__component;
+        }
+    };
+    DomAdapter.prototype.registerHtmlElement = function (elt) {
+        if (elt == null) {
+            if (this.htmlElement) {
+                this.htmlElement["__component"] = null;
+            }
+            this.name = null;
+            this.type = null;
+            this.htmlElement = null;
+        }
+        else {
+            if (this.htmlElement) {
+                this.addHtmlElement(elt);
+            }
+            else {
+                this.htmlElement = elt;
+                this.name = this.htmlElement.name;
+                this.type = this.getElementType(elt);
+                this.htmlElement["__component"] = this;
+            }
+        }
+    };
+    DomAdapter.prototype.addHtmlElement = function (elt) {
+        if (this.htmlElement) {
+            var type = this.getElementType(elt);
+            if (this.type == type && type == "radio") {
+                this.multipleElement = [];
+                this.multipleElement.push(this.htmlElement);
+                elt["__component"] = this;
+                this.multipleElement.push(elt);
+                this.htmlElement = null;
+            }
+            else {
+                logger.error("DomAdapter.addHtmlElement > different or unallowed types : " + this.type + " and " + type);
+            }
+        }
+        else {
+            elt["__component"] = this;
+            this.multipleElement.push(elt);
+        }
+    };
+    /**
+     * Renvoie la valeur de la propriété HTML indiquée
+     * @param name nom de la propriété
+     * @returns {string} la valeur ou null si la propriété n'est pas définie
+     */
+    DomAdapter.prototype.getAttribute = function (name) {
+        if (this.htmlElement) {
+            return this.htmlElement.getAttribute(name);
+        }
+    };
+    /**
+     * Initialise la propriété HTML avec la valeur indiquée
+     * @param name nom de la propriété
+     * @param value valeur
+     * @returns {DomAdapter} cette instance
+     */
+    DomAdapter.prototype.setAttribute = function (name, value) {
+        if (this.htmlElement) {
+            this.htmlElement.setAttribute(name, value);
+        }
+        else if (this.multipleElement) {
+            for (var i = 0; i < this.multipleElement.length; i++) {
+                this.multipleElement[i].setAttribute(name, value);
+            }
+        }
+        return this;
+    };
+    /**
+     * Pour une case à cocher, initialise la propriété checked
+     * @param value booléen
+     * @returns {DomAdapter} cette instance
+     */
+    DomAdapter.prototype.setCurrentChecked = function (value) {
+        if (this.htmlElement && this.type == "checkbox") {
+            this.htmlElement.checked = value;
+        }
+        return this;
+    };
+    /**
+     * Initialise la valeur courante du champ de formulaire
+     * @param value valeur à utiliser
+     * @returns {DomAdapter} cette instance
+     */
+    DomAdapter.prototype.setCurrentValue = function (value) {
+        var _this = this;
+        var strValue = (value != null && value.toString) ? value.toString() : "";
+        var type = this.type;
+        if (type) {
+            type = type.toLowerCase();
+        }
+        if (this.htmlElement) {
+            if (type == "text" || type == "textarea" || type == "hidden" || type == "checkbox"
+                || (type == "select" && this.htmlElement.multiple === false)) {
+                this.htmlElement.value = (this.htmlElement.dataset && this.htmlElement.dataset.multiple === "true") ? (value ? JSON.stringify(value) : "") : strValue;
+            }
+            else if (type == "select" /*select multiple*/) {
+                if (value instanceof Array) {
+                    this.htmlElement.value = null;
+                    value.forEach(function (val) {
+                        for (var i = 0; i < _this.htmlElement.options.length; i++) {
+                            if (_this.htmlElement.options[i].value == val) {
+                                _this.htmlElement.options[i].selected = true;
+                                return;
+                            }
+                        }
+                    });
+                }
+                else {
+                    this.htmlElement.value = value;
+                }
+            }
+        }
+        else if (this.multipleElement) {
+            for (var i = 0; i < this.multipleElement.length; i++) {
+                if (this.multipleElement[i].value == strValue) {
+                    this.multipleElement[i].checked = true;
+                }
+                else {
+                    this.multipleElement[i].checked = false;
+                }
+            }
+        }
+        return this;
+    };
+    /**
+     * Renvoie la valeur courante du champ de formulaire
+     * @returns {null}
+     */
+    DomAdapter.prototype.getCurrentValue = function () {
+        var val = null;
+        if (this.htmlElement) {
+            var type = this.type;
+            if (type) {
+                type = type.toLowerCase();
+            }
+            if (type == "text" || type == "textarea" || type == "hidden"
+                || (type == "select" && this.htmlElement.multiple === false)) {
+                try {
+                    if (Array.isArray(JSON.parse(this.htmlElement.value))) {
+                        val = JSON.parse(this.htmlElement.value);
+                    }
+                    else {
+                        val = this.htmlElement.value;
+                    }
+                }
+                catch (e) {
+                    val = this.htmlElement.value;
+                }
+            }
+            else if (type == "select" /*select multiple*/) {
+                val = [];
+                /* Note : l'attribut selectedOptions n'est pas supporté par Internet Explorer */
+                for (var i = 0; i < this.htmlElement.options.length; i++) {
+                    var option = this.htmlElement.options[i];
+                    if (option.selected) {
+                        val.push(option.value);
+                    }
+                }
+            }
+            else if (type == "checkbox") {
+                // if(!_.isEmpty(this.htmlElement.value) && this.htmlElement.value != "on") {
+                //     /* Cas où une valeur est explicitement spécifiée */
+                //     if (this.htmlElement.checked) {
+                //         val = this.htmlElement.value;
+                //     } else {
+                //         val = "";
+                //     }
+                // } else {
+                /* Pas de valeur spécifique : la valeur est un booléen égal à checked */
+                val = this.htmlElement.checked;
+                // }
+            }
+            else if (type == "file") {
+                var fileList = this.htmlElement.files;
+                if (fileList && fileList.length >= 1) {
+                    /* Pour simplifier la validation et la transmission via super-agent,
+                     un seul fichier par champ de type "file" est pris en compte */
+                    val = fileList[0];
+                }
+                else {
+                    /* Aucun fichier n'a été sélectionné : on récupère les informations de celui qui avait
+                     éventuellement déjà été transmis */
+                    // TODO à réactiver : voir pourquoi le composant UploadFileField ne peut être utilisé
+                    val = form_utils_1.FormUtils.extractFileData(this.htmlElement);
+                }
+            }
+        }
+        else if (this.multipleElement) {
+            for (var i = 0; i < this.multipleElement.length; i++) {
+                if (this.multipleElement[i].checked) {
+                    val = this.multipleElement[i].value;
+                    break;
+                }
+            }
+        }
+        return val;
+    };
+    /**
+     * Bascule le champ en readOnly
+     * @param value valeur à utiliser
+     * @returns {DomAdapter} cette instance
+     */
+    DomAdapter.prototype.setReadOnly = function (value) {
+        if (this.htmlElement) {
+            this.htmlElement.readOnly = value;
+            if (value) {
+                this.htmlElement.classList.add("readonly");
+            }
+            else {
+                this.htmlElement.classList.remove("readonly");
+            }
+        }
+        return this;
+    };
+    /**
+     * Bascule le champ en readOnly
+     * @param value valeur à utiliser
+     * @returns {DomAdapter} cette instance
+     */
+    DomAdapter.prototype.setDisabled = function (value) {
+        if (this.htmlElement) {
+            this.htmlElement.disabled = value;
+        }
+        return this;
+    };
+    return DomAdapter;
+}(hornet_component_1.HornetComponent));
+exports.DomAdapter = DomAdapter;
+
+
+
+/***/ }),
+
+/***/ 328:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var notification_manager_1 = __webpack_require__(122);
+var _ = __webpack_require__(6);
+var IntlMessageFormat = __webpack_require__(128);
+var FormUtils = /** @class */ (function () {
+    function FormUtils() {
+    }
+    /**
+     * Extrait le nom du champ depuis l'erreur de validation indiquée
+     * Le nom du champ peut être un "path" tel que "ville.pays.id".
+     * @param error une erreur de validation ajv
+     * @return le nom du champ, ou une chaîne vide si non renseigné
+     */
+    FormUtils.extractFieldName = function (error) {
+        var fieldName = "";
+        if (error) {
+            if (error.dataPath && error.dataPath.length > 1) {
+                var offset = 0;
+                if (error.dataPath.charAt(0) == ".") {
+                    offset = 1;
+                }
+                fieldName = error.dataPath.substring(offset);
+            }
+            if (error.keyword == "required") {
+                if (error.params && error.params.missingProperty) {
+                    if (fieldName) {
+                        fieldName += ".";
+                    }
+                    fieldName += error.params.missingProperty;
+                }
+            }
+        }
+        return fieldName;
+    };
+    /**
+     * Génère le message d'erreur correspondant au mot-clé et au champ indiqués
+     * @param keyword mot clé de validation json-schema
+     * @param fieldName nom du champ (peut être un "path" tel que "ville.pays.id")
+     * @param fieldsMessages messages spécifiques aux champs du formulaire
+     * @param genericValidationMessages messages d'erreur génériques
+     * @param complement
+     * @return le message ou undefined lorsqu'aucun n'est défini pour le mot-clé indiqué
+     */
+    FormUtils.extractMessage = function (keyword, fieldName, fieldsMessages, genericValidationMessages, complement) {
+        var message;
+        var specificMessage = _.get(fieldsMessages, fieldName + "." + keyword);
+        if (_.isString(specificMessage)) {
+            message = specificMessage;
+            if (complement) {
+                complement["field"] = fieldName;
+                var intlMsg = new IntlMessageFormat(specificMessage);
+                message = intlMsg.format(complement);
+            }
+        }
+        else if (genericValidationMessages) {
+            var genericMessage = genericValidationMessages[keyword] || genericValidationMessages["generic"];
+            if (_.isString(genericMessage)) {
+                var intlMsg = new IntlMessageFormat(genericMessage);
+                message = intlMsg.format({ field: fieldName });
+            }
+        }
+        return message;
+    };
+    /**
+     * Traite les erreurs de validation de formulaire : renvoie des notifications d'erreur.
+     * @param errors liste d'erreurs éventuellement vide
+     * @param fields Liste des champs du formulaire
+     * @param fieldsMessages messages spécifiques aux champs du formulaire
+     * @param genericValidationMessages messages d'erreur génériques
+     * @return {Notifications} les notifications correspondant aux erreurs de validation
+     */
+    FormUtils.getErrors = function (errors, fields, fieldsMessages, genericValidationMessages) {
+        var notificationsError = new notification_manager_1.Notifications();
+        for (var index = 0; index < errors.length; index++) {
+            var error = errors[index];
+            var erreurNotification = new notification_manager_1.NotificationType();
+            erreurNotification.id = "ACTION_ERREUR_" + index;
+            erreurNotification.text = error.message;
+            var fieldName = FormUtils.extractFieldName(error);
+            if (fieldName) {
+                erreurNotification.anchor = fieldName + "_anchor";
+                erreurNotification.field = fieldName;
+                erreurNotification.additionalInfos = error.params;
+                var complement = {};
+                // Gestion des champs editables d'un tableau
+                if (fields[fieldName] && fields[fieldName].props && fields[fieldName].props.title) {
+                    var data = fieldName.split(".");
+                    if (!isNaN(data[data.length - 2])) {
+                        fieldName = data[data.length - 1];
+                        complement = { complement: (parseInt(data[data.length - 2]) + 1).toString() };
+                    }
+                }
+                var message = FormUtils.extractMessage(error.keyword, fieldName, fieldsMessages, genericValidationMessages, complement);
+                if (message) {
+                    /* Surcharge du message produit par ajv */
+                    erreurNotification.text = message;
+                }
+            }
+            notificationsError.addNotification(erreurNotification);
+        }
+        return notificationsError;
+    };
+    /**
+     * Récupère les informations du fichier éventuellement déjà sélectionné associé à un champ de type "file"
+     * @param inputItem champ de formulaire de type envoi de fichier
+     * @returns {UploadedFile} une instance de UploadedFile ou undefined
+     */
+    FormUtils.extractFileData = function (inputItem) {
+        var selectedFile;
+        if (inputItem.dataset && inputItem.dataset["fileId"]) {
+            selectedFile = {
+                id: parseInt(inputItem.dataset["fileId"]),
+                originalname: inputItem.dataset["fileOriginalname"],
+                name: inputItem.dataset["fileName"],
+                mimeType: inputItem.dataset["fileMimeType"],
+                encoding: inputItem.dataset["fileEncoding"],
+                size: parseInt(inputItem.dataset["fileSize"]),
+                buffer: null
+            };
+        }
+        return selectedFile;
+    };
+    return FormUtils;
+}());
+exports.FormUtils = FormUtils;
+
+
+
+/***/ }),
+
+/***/ 329:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+var abstract_field_1 = __webpack_require__(311);
+var classNames = __webpack_require__(9);
+var _ = __webpack_require__(6);
+/**
+ * Composant représentant les buttons d'action du formulaire
+ */
+var ButtonsArea = /** @class */ (function (_super) {
+    tslib_1.__extends(ButtonsArea, _super);
+    function ButtonsArea(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    /**
+     * Génère la configuration des boutons par défaut : "Valider" de type "submit" et "Annuler" de type "reset".
+     * @returns {*[]}
+     */
+    ButtonsArea.prototype.getDefaultButtons = function () {
+        return [
+            {
+                type: "submit",
+                id: "form_btnValider",
+                name: "action:valid",
+                value: this.i18n("form").valid,
+                className: "hornet-button",
+                label: this.i18n("form").valid,
+                title: this.i18n("form").validTitle
+            },
+            {
+                type: "reset",
+                id: "form_btnCancel",
+                name: "action:cancel",
+                value: this.i18n("form").cancel,
+                className: "hornet-button",
+                onClick: null,
+                label: this.i18n("form").cancel,
+                title: this.i18n("form").cancelTitle
+            }
+        ];
+    };
+    /**
+     * @inheritDoc
+     */
+    ButtonsArea.prototype.render = function () {
+        var buttons;
+        if (!this.state.children) {
+            buttons = this.getDefaultButtons();
+        }
+        var classList = {
+            "button-area": true,
+            "grid": true,
+            "has-gutter": ((this.state.children) && (this.state.children.length > 1)) ? true : false,
+            "flex-container": true
+        };
+        if (this.props.className)
+            classList[this.props.className] = true;
+        var width = this.props.width + "%";
+        return (React.createElement("div", { className: classNames(classList), style: { width: width } }, this.state.children));
+    };
+    ButtonsArea.defaultProps = _.assign(_.cloneDeep(abstract_field_1.AbstractField.defaultProps), {
+        width: 100
+    });
+    return ButtonsArea;
+}(hornet_component_1.HornetComponent));
+exports.ButtonsArea = ButtonsArea;
+
+
+
+/***/ }),
+
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var hornet_event_1 = __webpack_require__(7);
+exports.VALUE_CHANGED_EVENT = new hornet_event_1.HornetEvent("VALUE_CHANGED_EVENT");
+
+
+
+/***/ }),
+
+/***/ 333:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var abstract_field_1 = __webpack_require__(311);
+var spinner_component_input_1 = __webpack_require__(365);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.abstract-field-datasource");
+/**
+ * Représente un champ de formulaire qui possède un datasource
+ */
+var AbstractFieldDatasource = /** @class */ (function (_super) {
+    tslib_1.__extends(AbstractFieldDatasource, _super);
+    function AbstractFieldDatasource(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    /**
+     * Méthode qui controle l'affichage et la suppression du spinner
+     * @param flag booléen true pour l'afficher false sinon
+     */
+    AbstractFieldDatasource.prototype.displaySpinner = function (flag) {
+        this.state.inProgress = flag;
+        if (!this.props.hideSpinner) {
+            this.refs.spinnerLoader && this.refs.spinnerLoader.progress(flag);
+            flag ? this.showSpinnerComponent() : this.hideSpinnerComponent();
+        }
+    };
+    /**
+     * @inheritDoc
+     */
+    AbstractFieldDatasource.prototype.componentWillMount = function () {
+        _super.prototype.componentWillMount.call(this);
+        if (this.props.dataSource) {
+            this.setItem();
+        }
+    };
+    /**
+     * @inheritDoc
+     */
+    AbstractFieldDatasource.prototype.componentDidMount = function () {
+        _super.prototype.componentDidMount.call(this);
+        if (this.props.dataSource) {
+            this.props.dataSource.on("fetch", this.setItem);
+            this.props.dataSource.on("init", this.setItem);
+            this.props.dataSource.on("add", this.setItem);
+            this.props.dataSource.on("delete", this.setItem);
+            this.props.dataSource.on("sort", this.setItem);
+            this.props.dataSource.on("filter", this.setItem);
+            this.props.dataSource.on("loadingData", this.displaySpinner);
+        }
+    };
+    /**
+     * @inheritDoc
+     */
+    AbstractFieldDatasource.prototype.componentWillUnmount = function () {
+        _super.prototype.componentWillUnmount.call(this);
+        if (this.props.dataSource) {
+            this.props.dataSource.removeListener("fetch", this.setItem);
+            this.props.dataSource.removeListener("init", this.setItem);
+            this.props.dataSource.removeListener("add", this.setItem);
+            this.props.dataSource.removeListener("delete", this.setItem);
+            this.props.dataSource.removeListener("sort", this.setItem);
+            this.props.dataSource.removeListener("filter", this.setItem);
+            this.props.dataSource.removeListener("loadingData", this.displaySpinner);
+        }
+    };
+    /**
+     * enregistre la liste des choix possibles
+     */
+    AbstractFieldDatasource.prototype.setItem = function () {
+        this.setState({ items: this.props.dataSource.results });
+        /* permet de faire appel a la méthode setCurrentValue de dom-adapter pour cocher les valeurs*/
+        this.setCurrentValue(this.state.currentValue);
+    };
+    /**
+     * Méthode premettant d'afficher le spinner
+     * @returns {Table}
+     */
+    AbstractFieldDatasource.prototype.showSpinnerComponent = function () {
+        this.setState({ spinner: true });
+        return this;
+    };
+    /**
+     * Méthode premettant de masquer le spinner
+     * @returns {Table}
+     */
+    AbstractFieldDatasource.prototype.hideSpinnerComponent = function () {
+        this.setState({ spinner: false });
+        return this;
+    };
+    AbstractFieldDatasource.prototype.setDataSource = function (value, callback) {
+        /** liste des choix disponibles */
+        this.setState({ dataSource: value }, callback);
+        return this;
+    };
+    AbstractFieldDatasource.prototype.updateDataSource = function (value) {
+        this.setDataSource(value);
+    };
+    /**
+     * Génère le rendu des élements assurant la saisie des valeurs
+     * @returns {any}
+     */
+    AbstractFieldDatasource.prototype.renderField = function () {
+        return (React.createElement("div", { className: this.state.fieldClass + " abstractfield-field-content" },
+            React.createElement(spinner_component_input_1.SpinnerComponentInput, { ref: "spinnerLoader", isVisible: this.state.spinner }),
+            this.state.prefix ? React.createElement("span", { className: "abstractfield-field-prefix" }, this.state.prefix) : null,
+            this.renderWidget(),
+            this.state.suffix ? React.createElement("span", { className: "abstractfield-field-suffix" }, this.state.suffix) : null,
+            this.renderErrors()));
+    };
+    return AbstractFieldDatasource;
+}(abstract_field_1.AbstractField));
+exports.AbstractFieldDatasource = AbstractFieldDatasource;
+
+
+
+/***/ }),
+
+/***/ 334:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var events = __webpack_require__(35);
+var AutoCompleteState = /** @class */ (function (_super) {
+    tslib_1.__extends(AutoCompleteState, _super);
+    function AutoCompleteState() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * mets à jour l'élément focus
+     * @param choiceFocused
+     * @param {string} value
+     */
+    AutoCompleteState.prototype.setFocusOn = function (choiceFocused, value, index) {
+        var _this = this;
+        setTimeout(function () {
+            _this.emit(AutoCompleteState.FOCUS_CHANGE_EVENT, _this.choiceFocused, choiceFocused, value, index);
+        });
+        this.choiceFocused = choiceFocused;
+    };
+    AutoCompleteState.FOCUS_CHANGE_EVENT = "onFocusChange";
+    return AutoCompleteState;
+}(events.EventEmitter));
+exports.AutoCompleteState = AutoCompleteState;
+
+
+
+/***/ }),
+
+/***/ 335:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var util = __webpack_require__(312);
+
+module.exports = SchemaObject;
+
+function SchemaObject(obj) {
+  util.copy(obj, this);
+}
+
+
+/***/ }),
+
+/***/ 336:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (data, opts) {
+    if (!opts) opts = {};
+    if (typeof opts === 'function') opts = { cmp: opts };
+    var cycles = (typeof opts.cycles === 'boolean') ? opts.cycles : false;
+
+    var cmp = opts.cmp && (function (f) {
+        return function (node) {
+            return function (a, b) {
+                var aobj = { key: a, value: node[a] };
+                var bobj = { key: b, value: node[b] };
+                return f(aobj, bobj);
+            };
+        };
+    })(opts.cmp);
+
+    var seen = [];
+    return (function stringify (node) {
+        if (node && node.toJSON && typeof node.toJSON === 'function') {
+            node = node.toJSON();
+        }
+
+        if (node === undefined) return;
+        if (typeof node == 'number') return isFinite(node) ? '' + node : 'null';
+        if (typeof node !== 'object') return JSON.stringify(node);
+
+        var i, out;
+        if (Array.isArray(node)) {
+            out = '[';
+            for (i = 0; i < node.length; i++) {
+                if (i) out += ',';
+                out += stringify(node[i]) || 'null';
+            }
+            return out + ']';
+        }
+
+        if (node === null) return 'null';
+
+        if (seen.indexOf(node) !== -1) {
+            if (cycles) return JSON.stringify('__cycle__');
+            throw new TypeError('Converting circular structure to JSON');
+        }
+
+        var seenIndex = seen.push(node) - 1;
+        var keys = Object.keys(node).sort(cmp && cmp(node));
+        out = '';
+        for (i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var value = stringify(node[key]);
+
+            if (!value) continue;
+            if (out) out += ',';
+            out += JSON.stringify(key) + ':' + value;
+        }
+        seen.splice(seenIndex, 1);
+        return '{' + out + '}';
+    })(data);
+};
+
+
+/***/ }),
+
+/***/ 337:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_validate(it, $keyword, $ruleType) {
+  var out = '';
+  var $async = it.schema.$async === true,
+    $refKeywords = it.util.schemaHasRulesExcept(it.schema, it.RULES.all, '$ref'),
+    $id = it.self._getId(it.schema);
+  if (it.isTop) {
+    out += ' var validate = ';
+    if ($async) {
+      it.async = true;
+      out += 'async ';
+    }
+    out += 'function(data, dataPath, parentData, parentDataProperty, rootData) { \'use strict\'; ';
+    if ($id && (it.opts.sourceCode || it.opts.processCode)) {
+      out += ' ' + ('/\*# sourceURL=' + $id + ' */') + ' ';
+    }
+  }
+  if (typeof it.schema == 'boolean' || !($refKeywords || it.schema.$ref)) {
+    var $keyword = 'false schema';
+    var $lvl = it.level;
+    var $dataLvl = it.dataLevel;
+    var $schema = it.schema[$keyword];
+    var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+    var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+    var $breakOnError = !it.opts.allErrors;
+    var $errorKeyword;
+    var $data = 'data' + ($dataLvl || '');
+    var $valid = 'valid' + $lvl;
+    if (it.schema === false) {
+      if (it.isTop) {
+        $breakOnError = true;
+      } else {
+        out += ' var ' + ($valid) + ' = false; ';
+      }
+      var $$outStack = $$outStack || [];
+      $$outStack.push(out);
+      out = ''; /* istanbul ignore else */
+      if (it.createErrors !== false) {
+        out += ' { keyword: \'' + ($errorKeyword || 'false schema') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+        if (it.opts.messages !== false) {
+          out += ' , message: \'boolean schema is false\' ';
+        }
+        if (it.opts.verbose) {
+          out += ' , schema: false , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+        }
+        out += ' } ';
+      } else {
+        out += ' {} ';
+      }
+      var __err = out;
+      out = $$outStack.pop();
+      if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+        if (it.async) {
+          out += ' throw new ValidationError([' + (__err) + ']); ';
+        } else {
+          out += ' validate.errors = [' + (__err) + ']; return false; ';
+        }
+      } else {
+        out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+      }
+    } else {
+      if (it.isTop) {
+        if ($async) {
+          out += ' return data; ';
+        } else {
+          out += ' validate.errors = null; return true; ';
+        }
+      } else {
+        out += ' var ' + ($valid) + ' = true; ';
+      }
+    }
+    if (it.isTop) {
+      out += ' }; return validate; ';
+    }
+    return out;
+  }
+  if (it.isTop) {
+    var $top = it.isTop,
+      $lvl = it.level = 0,
+      $dataLvl = it.dataLevel = 0,
+      $data = 'data';
+    it.rootId = it.resolve.fullPath(it.self._getId(it.root.schema));
+    it.baseId = it.baseId || it.rootId;
+    delete it.isTop;
+    it.dataPathArr = [undefined];
+    out += ' var vErrors = null; ';
+    out += ' var errors = 0;     ';
+    out += ' if (rootData === undefined) rootData = data; ';
+  } else {
+    var $lvl = it.level,
+      $dataLvl = it.dataLevel,
+      $data = 'data' + ($dataLvl || '');
+    if ($id) it.baseId = it.resolve.url(it.baseId, $id);
+    if ($async && !it.async) throw new Error('async schema in sync schema');
+    out += ' var errs_' + ($lvl) + ' = errors;';
+  }
+  var $valid = 'valid' + $lvl,
+    $breakOnError = !it.opts.allErrors,
+    $closingBraces1 = '',
+    $closingBraces2 = '';
+  var $errorKeyword;
+  var $typeSchema = it.schema.type,
+    $typeIsArray = Array.isArray($typeSchema);
+  if ($typeIsArray && $typeSchema.length == 1) {
+    $typeSchema = $typeSchema[0];
+    $typeIsArray = false;
+  }
+  if (it.schema.$ref && $refKeywords) {
+    if (it.opts.extendRefs == 'fail') {
+      throw new Error('$ref: validation keywords used in schema at path "' + it.errSchemaPath + '" (see option extendRefs)');
+    } else if (it.opts.extendRefs !== true) {
+      $refKeywords = false;
+      it.logger.warn('$ref: keywords ignored in schema at path "' + it.errSchemaPath + '"');
+    }
+  }
+  if (it.schema.$comment && it.opts.$comment) {
+    out += ' ' + (it.RULES.all.$comment.code(it, '$comment'));
+  }
+  if ($typeSchema) {
+    if (it.opts.coerceTypes) {
+      var $coerceToTypes = it.util.coerceToTypes(it.opts.coerceTypes, $typeSchema);
+    }
+    var $rulesGroup = it.RULES.types[$typeSchema];
+    if ($coerceToTypes || $typeIsArray || $rulesGroup === true || ($rulesGroup && !$shouldUseGroup($rulesGroup))) {
+      var $schemaPath = it.schemaPath + '.type',
+        $errSchemaPath = it.errSchemaPath + '/type';
+      var $schemaPath = it.schemaPath + '.type',
+        $errSchemaPath = it.errSchemaPath + '/type',
+        $method = $typeIsArray ? 'checkDataTypes' : 'checkDataType';
+      out += ' if (' + (it.util[$method]($typeSchema, $data, true)) + ') { ';
+      if ($coerceToTypes) {
+        var $dataType = 'dataType' + $lvl,
+          $coerced = 'coerced' + $lvl;
+        out += ' var ' + ($dataType) + ' = typeof ' + ($data) + '; ';
+        if (it.opts.coerceTypes == 'array') {
+          out += ' if (' + ($dataType) + ' == \'object\' && Array.isArray(' + ($data) + ')) ' + ($dataType) + ' = \'array\'; ';
+        }
+        out += ' var ' + ($coerced) + ' = undefined; ';
+        var $bracesCoercion = '';
+        var arr1 = $coerceToTypes;
+        if (arr1) {
+          var $type, $i = -1,
+            l1 = arr1.length - 1;
+          while ($i < l1) {
+            $type = arr1[$i += 1];
+            if ($i) {
+              out += ' if (' + ($coerced) + ' === undefined) { ';
+              $bracesCoercion += '}';
+            }
+            if (it.opts.coerceTypes == 'array' && $type != 'array') {
+              out += ' if (' + ($dataType) + ' == \'array\' && ' + ($data) + '.length == 1) { ' + ($coerced) + ' = ' + ($data) + ' = ' + ($data) + '[0]; ' + ($dataType) + ' = typeof ' + ($data) + ';  } ';
+            }
+            if ($type == 'string') {
+              out += ' if (' + ($dataType) + ' == \'number\' || ' + ($dataType) + ' == \'boolean\') ' + ($coerced) + ' = \'\' + ' + ($data) + '; else if (' + ($data) + ' === null) ' + ($coerced) + ' = \'\'; ';
+            } else if ($type == 'number' || $type == 'integer') {
+              out += ' if (' + ($dataType) + ' == \'boolean\' || ' + ($data) + ' === null || (' + ($dataType) + ' == \'string\' && ' + ($data) + ' && ' + ($data) + ' == +' + ($data) + ' ';
+              if ($type == 'integer') {
+                out += ' && !(' + ($data) + ' % 1)';
+              }
+              out += ')) ' + ($coerced) + ' = +' + ($data) + '; ';
+            } else if ($type == 'boolean') {
+              out += ' if (' + ($data) + ' === \'false\' || ' + ($data) + ' === 0 || ' + ($data) + ' === null) ' + ($coerced) + ' = false; else if (' + ($data) + ' === \'true\' || ' + ($data) + ' === 1) ' + ($coerced) + ' = true; ';
+            } else if ($type == 'null') {
+              out += ' if (' + ($data) + ' === \'\' || ' + ($data) + ' === 0 || ' + ($data) + ' === false) ' + ($coerced) + ' = null; ';
+            } else if (it.opts.coerceTypes == 'array' && $type == 'array') {
+              out += ' if (' + ($dataType) + ' == \'string\' || ' + ($dataType) + ' == \'number\' || ' + ($dataType) + ' == \'boolean\' || ' + ($data) + ' == null) ' + ($coerced) + ' = [' + ($data) + ']; ';
+            }
+          }
+        }
+        out += ' ' + ($bracesCoercion) + ' if (' + ($coerced) + ' === undefined) {   ';
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ($errorKeyword || 'type') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { type: \'';
+          if ($typeIsArray) {
+            out += '' + ($typeSchema.join(","));
+          } else {
+            out += '' + ($typeSchema);
+          }
+          out += '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'should be ';
+            if ($typeIsArray) {
+              out += '' + ($typeSchema.join(","));
+            } else {
+              out += '' + ($typeSchema);
+            }
+            out += '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+        out += ' } else {  ';
+        var $parentData = $dataLvl ? 'data' + (($dataLvl - 1) || '') : 'parentData',
+          $parentDataProperty = $dataLvl ? it.dataPathArr[$dataLvl] : 'parentDataProperty';
+        out += ' ' + ($data) + ' = ' + ($coerced) + '; ';
+        if (!$dataLvl) {
+          out += 'if (' + ($parentData) + ' !== undefined)';
+        }
+        out += ' ' + ($parentData) + '[' + ($parentDataProperty) + '] = ' + ($coerced) + '; } ';
+      } else {
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ($errorKeyword || 'type') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { type: \'';
+          if ($typeIsArray) {
+            out += '' + ($typeSchema.join(","));
+          } else {
+            out += '' + ($typeSchema);
+          }
+          out += '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'should be ';
+            if ($typeIsArray) {
+              out += '' + ($typeSchema.join(","));
+            } else {
+              out += '' + ($typeSchema);
+            }
+            out += '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+      }
+      out += ' } ';
+    }
+  }
+  if (it.schema.$ref && !$refKeywords) {
+    out += ' ' + (it.RULES.all.$ref.code(it, '$ref')) + ' ';
+    if ($breakOnError) {
+      out += ' } if (errors === ';
+      if ($top) {
+        out += '0';
+      } else {
+        out += 'errs_' + ($lvl);
+      }
+      out += ') { ';
+      $closingBraces2 += '}';
+    }
+  } else {
+    var arr2 = it.RULES;
+    if (arr2) {
+      var $rulesGroup, i2 = -1,
+        l2 = arr2.length - 1;
+      while (i2 < l2) {
+        $rulesGroup = arr2[i2 += 1];
+        if ($shouldUseGroup($rulesGroup)) {
+          if ($rulesGroup.type) {
+            out += ' if (' + (it.util.checkDataType($rulesGroup.type, $data)) + ') { ';
+          }
+          if (it.opts.useDefaults && !it.compositeRule) {
+            if ($rulesGroup.type == 'object' && it.schema.properties) {
+              var $schema = it.schema.properties,
+                $schemaKeys = Object.keys($schema);
+              var arr3 = $schemaKeys;
+              if (arr3) {
+                var $propertyKey, i3 = -1,
+                  l3 = arr3.length - 1;
+                while (i3 < l3) {
+                  $propertyKey = arr3[i3 += 1];
+                  var $sch = $schema[$propertyKey];
+                  if ($sch.default !== undefined) {
+                    var $passData = $data + it.util.getProperty($propertyKey);
+                    out += '  if (' + ($passData) + ' === undefined) ' + ($passData) + ' = ';
+                    if (it.opts.useDefaults == 'shared') {
+                      out += ' ' + (it.useDefault($sch.default)) + ' ';
+                    } else {
+                      out += ' ' + (JSON.stringify($sch.default)) + ' ';
+                    }
+                    out += '; ';
+                  }
+                }
+              }
+            } else if ($rulesGroup.type == 'array' && Array.isArray(it.schema.items)) {
+              var arr4 = it.schema.items;
+              if (arr4) {
+                var $sch, $i = -1,
+                  l4 = arr4.length - 1;
+                while ($i < l4) {
+                  $sch = arr4[$i += 1];
+                  if ($sch.default !== undefined) {
+                    var $passData = $data + '[' + $i + ']';
+                    out += '  if (' + ($passData) + ' === undefined) ' + ($passData) + ' = ';
+                    if (it.opts.useDefaults == 'shared') {
+                      out += ' ' + (it.useDefault($sch.default)) + ' ';
+                    } else {
+                      out += ' ' + (JSON.stringify($sch.default)) + ' ';
+                    }
+                    out += '; ';
+                  }
+                }
+              }
+            }
+          }
+          var arr5 = $rulesGroup.rules;
+          if (arr5) {
+            var $rule, i5 = -1,
+              l5 = arr5.length - 1;
+            while (i5 < l5) {
+              $rule = arr5[i5 += 1];
+              if ($shouldUseRule($rule)) {
+                var $code = $rule.code(it, $rule.keyword, $rulesGroup.type);
+                if ($code) {
+                  out += ' ' + ($code) + ' ';
+                  if ($breakOnError) {
+                    $closingBraces1 += '}';
+                  }
+                }
+              }
+            }
+          }
+          if ($breakOnError) {
+            out += ' ' + ($closingBraces1) + ' ';
+            $closingBraces1 = '';
+          }
+          if ($rulesGroup.type) {
+            out += ' } ';
+            if ($typeSchema && $typeSchema === $rulesGroup.type && !$coerceToTypes) {
+              out += ' else { ';
+              var $schemaPath = it.schemaPath + '.type',
+                $errSchemaPath = it.errSchemaPath + '/type';
+              var $$outStack = $$outStack || [];
+              $$outStack.push(out);
+              out = ''; /* istanbul ignore else */
+              if (it.createErrors !== false) {
+                out += ' { keyword: \'' + ($errorKeyword || 'type') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { type: \'';
+                if ($typeIsArray) {
+                  out += '' + ($typeSchema.join(","));
+                } else {
+                  out += '' + ($typeSchema);
+                }
+                out += '\' } ';
+                if (it.opts.messages !== false) {
+                  out += ' , message: \'should be ';
+                  if ($typeIsArray) {
+                    out += '' + ($typeSchema.join(","));
+                  } else {
+                    out += '' + ($typeSchema);
+                  }
+                  out += '\' ';
+                }
+                if (it.opts.verbose) {
+                  out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+                }
+                out += ' } ';
+              } else {
+                out += ' {} ';
+              }
+              var __err = out;
+              out = $$outStack.pop();
+              if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+                if (it.async) {
+                  out += ' throw new ValidationError([' + (__err) + ']); ';
+                } else {
+                  out += ' validate.errors = [' + (__err) + ']; return false; ';
+                }
+              } else {
+                out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+              }
+              out += ' } ';
+            }
+          }
+          if ($breakOnError) {
+            out += ' if (errors === ';
+            if ($top) {
+              out += '0';
+            } else {
+              out += 'errs_' + ($lvl);
+            }
+            out += ') { ';
+            $closingBraces2 += '}';
+          }
+        }
+      }
+    }
+  }
+  if ($breakOnError) {
+    out += ' ' + ($closingBraces2) + ' ';
+  }
+  if ($top) {
+    if ($async) {
+      out += ' if (errors === 0) return data;           ';
+      out += ' else throw new ValidationError(vErrors); ';
+    } else {
+      out += ' validate.errors = vErrors; ';
+      out += ' return errors === 0;       ';
+    }
+    out += ' }; return validate;';
+  } else {
+    out += ' var ' + ($valid) + ' = errors === errs_' + ($lvl) + ';';
+  }
+  out = it.util.cleanUpCode(out);
+  if ($top) {
+    out = it.util.finalCleanUpCode(out, $async);
+  }
+
+  function $shouldUseGroup($rulesGroup) {
+    var rules = $rulesGroup.rules;
+    for (var i = 0; i < rules.length; i++)
+      if ($shouldUseRule(rules[i])) return true;
+  }
+
+  function $shouldUseRule($rule) {
+    return it.schema[$rule.keyword] !== undefined || ($rule.implements && $ruleImplementsSomeKeyword($rule));
+  }
+
+  function $ruleImplementsSomeKeyword($rule) {
+    var impl = $rule.implements;
+    for (var i = 0; i < impl.length; i++)
+      if (it.schema[impl[i]] !== undefined) return true;
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 338:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate__limit(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $isMax = $keyword == 'maximum',
+    $exclusiveKeyword = $isMax ? 'exclusiveMaximum' : 'exclusiveMinimum',
+    $schemaExcl = it.schema[$exclusiveKeyword],
+    $isDataExcl = it.opts.$data && $schemaExcl && $schemaExcl.$data,
+    $op = $isMax ? '<' : '>',
+    $notOp = $isMax ? '>' : '<',
+    $errorKeyword = undefined;
+  if ($isDataExcl) {
+    var $schemaValueExcl = it.util.getData($schemaExcl.$data, $dataLvl, it.dataPathArr),
+      $exclusive = 'exclusive' + $lvl,
+      $exclType = 'exclType' + $lvl,
+      $exclIsNumber = 'exclIsNumber' + $lvl,
+      $opExpr = 'op' + $lvl,
+      $opStr = '\' + ' + $opExpr + ' + \'';
+    out += ' var schemaExcl' + ($lvl) + ' = ' + ($schemaValueExcl) + '; ';
+    $schemaValueExcl = 'schemaExcl' + $lvl;
+    out += ' var ' + ($exclusive) + '; var ' + ($exclType) + ' = typeof ' + ($schemaValueExcl) + '; if (' + ($exclType) + ' != \'boolean\' && ' + ($exclType) + ' != \'undefined\' && ' + ($exclType) + ' != \'number\') { ';
+    var $errorKeyword = $exclusiveKeyword;
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = ''; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ($errorKeyword || '_exclusiveLimit') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'' + ($exclusiveKeyword) + ' should be boolean\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    var __err = out;
+    out = $$outStack.pop();
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError([' + (__err) + ']); ';
+      } else {
+        out += ' validate.errors = [' + (__err) + ']; return false; ';
+      }
+    } else {
+      out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    }
+    out += ' } else if ( ';
+    if ($isData) {
+      out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+    }
+    out += ' ' + ($exclType) + ' == \'number\' ? ( (' + ($exclusive) + ' = ' + ($schemaValue) + ' === undefined || ' + ($schemaValueExcl) + ' ' + ($op) + '= ' + ($schemaValue) + ') ? ' + ($data) + ' ' + ($notOp) + '= ' + ($schemaValueExcl) + ' : ' + ($data) + ' ' + ($notOp) + ' ' + ($schemaValue) + ' ) : ( (' + ($exclusive) + ' = ' + ($schemaValueExcl) + ' === true) ? ' + ($data) + ' ' + ($notOp) + '= ' + ($schemaValue) + ' : ' + ($data) + ' ' + ($notOp) + ' ' + ($schemaValue) + ' ) || ' + ($data) + ' !== ' + ($data) + ') { var op' + ($lvl) + ' = ' + ($exclusive) + ' ? \'' + ($op) + '\' : \'' + ($op) + '=\';';
+  } else {
+    var $exclIsNumber = typeof $schemaExcl == 'number',
+      $opStr = $op;
+    if ($exclIsNumber && $isData) {
+      var $opExpr = '\'' + $opStr + '\'';
+      out += ' if ( ';
+      if ($isData) {
+        out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+      }
+      out += ' ( ' + ($schemaValue) + ' === undefined || ' + ($schemaExcl) + ' ' + ($op) + '= ' + ($schemaValue) + ' ? ' + ($data) + ' ' + ($notOp) + '= ' + ($schemaExcl) + ' : ' + ($data) + ' ' + ($notOp) + ' ' + ($schemaValue) + ' ) || ' + ($data) + ' !== ' + ($data) + ') { ';
+    } else {
+      if ($exclIsNumber && $schema === undefined) {
+        $exclusive = true;
+        $errorKeyword = $exclusiveKeyword;
+        $errSchemaPath = it.errSchemaPath + '/' + $exclusiveKeyword;
+        $schemaValue = $schemaExcl;
+        $notOp += '=';
+      } else {
+        if ($exclIsNumber) $schemaValue = Math[$isMax ? 'min' : 'max']($schemaExcl, $schema);
+        if ($schemaExcl === ($exclIsNumber ? $schemaValue : true)) {
+          $exclusive = true;
+          $errorKeyword = $exclusiveKeyword;
+          $errSchemaPath = it.errSchemaPath + '/' + $exclusiveKeyword;
+          $notOp += '=';
+        } else {
+          $exclusive = false;
+          $opStr += '=';
+        }
+      }
+      var $opExpr = '\'' + $opStr + '\'';
+      out += ' if ( ';
+      if ($isData) {
+        out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+      }
+      out += ' ' + ($data) + ' ' + ($notOp) + ' ' + ($schemaValue) + ' || ' + ($data) + ' !== ' + ($data) + ') { ';
+    }
+  }
+  $errorKeyword = $errorKeyword || $keyword;
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ($errorKeyword || '_limit') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { comparison: ' + ($opExpr) + ', limit: ' + ($schemaValue) + ', exclusive: ' + ($exclusive) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should be ' + ($opStr) + ' ';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue);
+      } else {
+        out += '' + ($schemaValue) + '\'';
+      }
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + ($schema);
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += ' } ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 339:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate__limitItems(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $op = $keyword == 'maxItems' ? '>' : '<';
+  out += 'if ( ';
+  if ($isData) {
+    out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+  }
+  out += ' ' + ($data) + '.length ' + ($op) + ' ' + ($schemaValue) + ') { ';
+  var $errorKeyword = $keyword;
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ($errorKeyword || '_limitItems') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { limit: ' + ($schemaValue) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should NOT have ';
+      if ($keyword == 'maxItems') {
+        out += 'more';
+      } else {
+        out += 'less';
+      }
+      out += ' than ';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + ($schema);
+      }
+      out += ' items\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + ($schema);
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '} ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 340:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate__limitLength(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $op = $keyword == 'maxLength' ? '>' : '<';
+  out += 'if ( ';
+  if ($isData) {
+    out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+  }
+  if (it.opts.unicode === false) {
+    out += ' ' + ($data) + '.length ';
+  } else {
+    out += ' ucs2length(' + ($data) + ') ';
+  }
+  out += ' ' + ($op) + ' ' + ($schemaValue) + ') { ';
+  var $errorKeyword = $keyword;
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ($errorKeyword || '_limitLength') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { limit: ' + ($schemaValue) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should NOT be ';
+      if ($keyword == 'maxLength') {
+        out += 'longer';
+      } else {
+        out += 'shorter';
+      }
+      out += ' than ';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + ($schema);
+      }
+      out += ' characters\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + ($schema);
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '} ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 341:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate__limitProperties(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $op = $keyword == 'maxProperties' ? '>' : '<';
+  out += 'if ( ';
+  if ($isData) {
+    out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'number\') || ';
+  }
+  out += ' Object.keys(' + ($data) + ').length ' + ($op) + ' ' + ($schemaValue) + ') { ';
+  var $errorKeyword = $keyword;
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ($errorKeyword || '_limitProperties') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { limit: ' + ($schemaValue) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should NOT have ';
+      if ($keyword == 'maxProperties') {
+        out += 'more';
+      } else {
+        out += 'less';
+      }
+      out += ' than ';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + ($schema);
+      }
+      out += ' properties\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + ($schema);
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '} ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 342:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var TIME = /^(\d\d):(\d\d):(\d\d)(\.\d+)?(z|[+-]\d\d:\d\d)?$/i;
+var DATE_TIME_SEPARATOR = /t|\s/i;
+
+var COMPARE_FORMATS = {
+  date: compareDate,
+  time: compareTime,
+  'date-time': compareDateTime
+};
+
+module.exports = function (minMax) {
+  var keyword = 'format' + minMax;
+  return function defFunc(ajv) {
+    defFunc.definition = {
+      type: 'string',
+      inline: __webpack_require__(422),
+      statements: true,
+      errors: 'full',
+      metaSchema: {
+        anyOf: [
+          { type: 'string' },
+          {
+            type: 'object',
+            required: [ '$data' ],
+            properties: {
+              $data: {
+                type: 'string',
+                anyOf: [
+                  { format: 'relative-json-pointer' },
+                  { format: 'json-pointer' }
+                ]
+              }
+            },
+            additionalProperties: false
+          }
+        ]
+      }
+    };
+
+    ajv.addKeyword(keyword, defFunc.definition);
+    ajv.addKeyword('formatExclusive' + minMax);
+    extendFormats(ajv);
+    return ajv;
+  };
+};
+
+
+function extendFormats(ajv) {
+  var formats = ajv._formats;
+  for (var name in COMPARE_FORMATS) {
+    var format = formats[name];
+    // the last condition is needed if it's RegExp from another window
+    if (typeof format != 'object' || format instanceof RegExp || !format.validate)
+      format = formats[name] = { validate: format };
+    if (!format.compare)
+      format.compare = COMPARE_FORMATS[name];
+  }
+}
+
+
+function compareDate(d1, d2) {
+  if (!(d1 && d2)) return;
+  if (d1 > d2) return 1;
+  if (d1 < d2) return -1;
+  if (d1 === d2) return 0;
+}
+
+
+function compareTime(t1, t2) {
+  if (!(t1 && t2)) return;
+  t1 = t1.match(TIME);
+  t2 = t2.match(TIME);
+  if (!(t1 && t2)) return;
+  t1 = t1[1] + t1[2] + t1[3] + (t1[4]||'');
+  t2 = t2[1] + t2[2] + t2[3] + (t2[4]||'');
+  if (t1 > t2) return 1;
+  if (t1 < t2) return -1;
+  if (t1 === t2) return 0;
+}
+
+
+function compareDateTime(dt1, dt2) {
+  if (!(dt1 && dt2)) return;
+  dt1 = dt1.split(DATE_TIME_SEPARATOR);
+  dt2 = dt2.split(DATE_TIME_SEPARATOR);
+  var res = compareDate(dt1[0], dt2[0]);
+  if (res === undefined) return;
+  return res || compareTime(dt1[1], dt2[1]);
+}
+
+
+/***/ }),
+
+/***/ 343:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var abstract_field_1 = __webpack_require__(311);
+var picto_1 = __webpack_require__(123);
+var _ = __webpack_require__(6);
+var classNames = __webpack_require__(9);
+var hornet_event_1 = __webpack_require__(7);
+var event_1 = __webpack_require__(330);
+var InputField = /** @class */ (function (_super) {
+    tslib_1.__extends(InputField, _super);
+    function InputField() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * Génère le rendu spécifique du champ
+     * @returns {any}
+     * @override
+     */
+    InputField.prototype.renderWidget = function () {
+        var _this = this;
+        var htmlProps = _.cloneDeep(this.getHtmlProps());
+        if (this.state.currentValue != null) {
+            _.assign(htmlProps, { "defaultValue": this.props.currentValue });
+        }
+        var inputClasses = {
+            "has-error": this.hasErrors(),
+            "input": true
+        };
+        if (htmlProps["className"]) {
+            inputClasses[htmlProps["className"]] = true;
+        }
+        if (this.state.alignment) {
+            inputClasses[this.state.alignment] = true;
+        }
+        htmlProps["onChange"] = this.state.resettable ? this.handleChangeInput : htmlProps["onChange"];
+        htmlProps["className"] = classNames(inputClasses);
+        return (React.createElement("div", null,
+            React.createElement("input", tslib_1.__assign({ ref: function (elt) { return _this.registerHtmlElement(elt); } }, htmlProps)),
+            this.state.resettable && this.state.valued && !this.state.readOnly && !this.state.disabled ? this.renderResetButton() :
+                React.createElement("div", null)));
+    };
+    /**
+     * Surcharge de la méthode
+     * @param value
+     * @returns {InputField}
+     */
+    InputField.prototype.setCurrentValue = function (value) {
+        _super.prototype.setCurrentValue.call(this, value);
+        this.setState({ valued: (value !== "" && value) });
+        return this;
+    };
+    InputField.prototype.isValued = function () {
+        return this.state.valued || this.props.value;
+    };
+    /**
+     * rendu html du bouton reset
+     * @returns {any}
+     */
+    InputField.prototype.renderResetButton = function () {
+        var htmlProps = _.cloneDeep(this.getHtmlProps());
+        var hidden = htmlProps["type"] === "hidden";
+        var classList = {
+            "input-reset": true,
+            "input-reset-hidden": (!this.isValued() || hidden)
+        };
+        var aProps = {};
+        if (this.isValued()) {
+            aProps["onClick"] = this.resetValue;
+        }
+        var prefixID = this.props.id || this.props.name;
+        return (React.createElement("span", { className: classNames(classList), role: "button", "aria-hidden": !this.state.valued, id: prefixID + "ResetButton" },
+            React.createElement("a", tslib_1.__assign({}, aProps),
+                React.createElement("img", { src: picto_1.Picto.grey.close, alt: this.i18n("inputField.messageBtn"), title: this.i18n("inputField.messageBtn") }))));
+    };
+    /**
+     * Permet de rendre à null la valeur du champ et de masquer la colonne
+     */
+    InputField.prototype.resetValue = function () {
+        this.htmlElement.value = null;
+        if (this.htmlElement && this.htmlElement.onchange)
+            this.htmlElement.onchange();
+        hornet_event_1.fireHornetEvent(event_1.VALUE_CHANGED_EVENT.withData(this.htmlElement));
+        this.setState({ valued: false });
+    };
+    /**
+     * Action exécutée lors d'un changement de valeur du champ
+     * @param e
+     */
+    InputField.prototype.handleChangeInput = function (e) {
+        if (this.htmlElement && this.htmlElement.value) {
+            if (!this.state.valued) {
+                this.setState({ valued: true });
+            }
+        }
+        else if (this.state.valued) {
+            this.setState({ valued: false });
+        }
+        var htmlProps = this.getHtmlProps();
+        if (_.isFunction(htmlProps["onChange"])) {
+            htmlProps["onChange"](e);
+        }
+    };
+    InputField.defaultProps = _.assign({ type: "text", resettable: true }, abstract_field_1.AbstractField.defaultProps);
+    return InputField;
+}(abstract_field_1.AbstractField));
+exports.InputField = InputField;
+
+
+
+/***/ }),
+
+/***/ 347:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var notification_1 = __webpack_require__(43);
+var abstract_field_1 = __webpack_require__(311);
+var abstract_form_1 = __webpack_require__(361);
+var upload_file_field_1 = __webpack_require__(362);
+var form_utils_1 = __webpack_require__(328);
+var dom_adapter_1 = __webpack_require__(326);
+var auto_complete_field_1 = __webpack_require__(357);
+var notification_manager_1 = __webpack_require__(122);
+var checkbox_field_1 = __webpack_require__(358);
+var data_validator_1 = __webpack_require__(376);
+var classNames = __webpack_require__(9);
+var _ = __webpack_require__(6);
+var select_field_1 = __webpack_require__(366);
+var buttons_area_1 = __webpack_require__(329);
+var event_1 = __webpack_require__(330);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.form");
+/**
+ * Composant permettant de rendre un formulaire Hornet de manière standardisée
+ */
+var Form = /** @class */ (function (_super) {
+    tslib_1.__extends(Form, _super);
+    function Form(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        var calendarLocale = _this.i18n("calendar");
+        if (calendarLocale == null) {
+            calendarLocale = {};
+        }
+        /* Messages génériques */
+        /* Configuration locale des calendriers et dates */
+        _this.state.calendarLocale = calendarLocale;
+        _this.state.customNotif = props.notifId != null;
+        _this.state.notifId = props.notifId != null ? props.notifId : "Form-" + (Form.idx++);
+        _this.listen(event_1.VALUE_CHANGED_EVENT, function (ev) {
+            if (ev.detail.form.id == _this.state.id) {
+                _this.state.onFormChange();
+            }
+        });
+        return _this;
+    }
+    // Setters (pas de setter sur defaultValues, car cette propriété sert uniquement lors du montage initial du composant
+    Form.prototype.setName = function (value, callback) {
+        this.setState({ name: value }, callback);
+        return this;
+    };
+    Form.prototype.setOnSubmit = function (handler, callback) {
+        this.setState({ onSubmit: handler }, callback);
+        return this;
+    };
+    Form.prototype.setOnFormChange = function (handler, callback) {
+        this.setState({ onFormChange: handler }, callback);
+        return this;
+    };
+    Form.prototype.setIsMandatoryFieldsHidden = function (value, callback) {
+        this.setState({ isMandatoryFieldsHidden: value }, callback);
+        return this;
+    };
+    Form.prototype.setSubTitle = function (value, callback) {
+        this.setState({ subTitle: value }, callback);
+        return this;
+    };
+    Form.prototype.setText = function (value, callback) {
+        this.setState({ text: value }, callback);
+        return this;
+    };
+    Form.prototype.setClassName = function (value, callback) {
+        this.setState({ className: value }, callback);
+        return this;
+    };
+    Form.prototype.setMarkRequired = function (value, callback) {
+        this.setState({ markRequired: value }, callback);
+        /* Propagation de la propriété aux champs Hornet appartenant à ce formulaire */
+        this.updateMarkRequiredFields(value);
+        return this;
+    };
+    Form.prototype.setImgFilePath = function (value, callback) {
+        this.setState({ imgFilePath: value }, callback);
+        /* Propagation de la propriété aux champs Hornet appartenant à ce formulaire */
+        this.updateImagFilePathFields(value);
+        return this;
+    };
+    Form.prototype.setSchema = function (value, callback) {
+        this.setState({ schema: value }, callback);
+        return this;
+    };
+    Form.prototype.setValidationOptions = function (value, callback) {
+        this.setState({ validationOptions: value }, callback);
+        return this;
+    };
+    Form.prototype.setFormMessages = function (value, callback) {
+        this.setState({ formMessages: value }, callback);
+        return this;
+    };
+    Form.prototype.setCustomValidators = function (value, callback) {
+        this.setState({ customValidators: value }, callback);
+        return this;
+    };
+    Form.prototype.setNotifId = function (value, callback) {
+        if (value != null) {
+            this.setState({ notifId: value, customNotif: true }, callback);
+        }
+        else {
+            this.setState({ notifId: "Form-" + (Form.idx++), customNotif: false }, callback);
+        }
+        return this;
+    };
+    Form.prototype.componentWillUnmount = function () {
+        _super.prototype.componentWillUnmount.call(this);
+        notification_manager_1.NotificationManager.clean(this.state.notifId, this.state.id);
+        if (this.formElement) {
+            this.formElement["__component"] = null;
+        }
+    };
+    Form.prototype.componentDidMount = function () {
+        _super.prototype.componentDidMount.call(this);
+        /* On évite la soumission intempestive du formulaire en cas de clics répétés ou de touche entrée maintenue
+         sur le bouton de soumission*/
+        this.debouncedValidateAndSubmit = _.debounce(this.validateAndSubmit, 500);
+        if (this.state.defaultValues) {
+            this.updateFields(this.state.defaultValues);
+        }
+        if (!this.isOneRequired(this.state.children)) {
+            this.setMarkRequired(false);
+        }
+    };
+    /**
+     * Met à jour la propriété markRequired sur chacun des champs héritant de AbstractField contenus dans le formulaire
+     * @param isMarkRequired valeur à assigner à la propriété 'markRequired'
+     * @return ce formulaire
+     */
+    Form.prototype.updateMarkRequiredFields = function (isMarkRequired) {
+        var fields = this.extractFields();
+        /* Met à jour l'affichage de chaque champ en cas de readOnly*/
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            if (field instanceof abstract_field_1.AbstractField) {
+                field.setMarkRequired(isMarkRequired);
+            }
+            return true;
+        });
+        return this;
+    };
+    /**
+     * Met à jour la propriété imgFilePath sur chacun des champs héritant de AbstractField contenus dans le formulaire
+     * @param imgFilePath valeur à assigner à la propriété 'imgFilePath'
+     * @return ce formulaire
+     */
+    Form.prototype.updateImagFilePathFields = function (imgFilePath) {
+        var fields = this.extractFields();
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            if (field instanceof abstract_field_1.AbstractField) {
+                field.setImgFilePath(imgFilePath);
+            }
+            return true;
+        });
+        return this;
+    };
+    /**
+     * Met à jour les valeurs courantes des champs du formulaire
+     * @param data données du formulaire (clé : nom du champ -> valeur du champ)
+     */
+    Form.prototype.updateFields = function (data) {
+        var fields = this.extractFields();
+        this.propagateParentState();
+        for (var nameField in fields) {
+            var val = _.get(data, nameField);
+            if (val != null) {
+                if (fields[nameField] instanceof checkbox_field_1.CheckBoxField) {
+                    /* Traitement spécifique pour une checkbox : on affecte currentChecked lorsque la valeur est booléenne*/
+                    // if (val === true || val === false) {
+                    //     fields[name].setCurrentValue("");
+                    fields[nameField].setCurrentChecked(val);
+                    // } else {
+                    //     fields[name].setCurrentValue(val);
+                    // }
+                }
+                else {
+                    if (fields[nameField] instanceof select_field_1.SelectField || fields[nameField] instanceof auto_complete_field_1.AutoCompleteField) {
+                        if (val instanceof Array) {
+                            var choices = [];
+                            /** TODO : a deplace dans le composant autocompleteField */
+                            if (fields[nameField].state.multiple) {
+                                for (var i = 0; i < fields[nameField].state.allChoices.length; i++) {
+                                    var choice = fields[nameField].state.allChoices[i];
+                                    for (var j = 0; j < val.length; j++) {
+                                        if (val[j].toString() == choice["value"]) {
+                                            choices.push(choice["value"]);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < fields[nameField].state.dataSource.length; i++) {
+                                    var choice = fields[nameField].state.dataSource[i];
+                                    for (var j = 0; j < val.length; j++) {
+                                        if (val[j].toString() == choice[fields[nameField].state.valueKey]) {
+                                            choices.push(choice[fields[nameField].state.valueKey]);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            fields[nameField].setCurrentValue(choices);
+                        }
+                        else {
+                            fields[nameField].setCurrentValue(val);
+                        }
+                    }
+                    else {
+                        /* Traitement des champs radio et select en mode readOnly */
+                        if ((fields[nameField].state.choices) && (this.state.readOnly || fields[nameField].state.readOnly)) {
+                            for (var i = 0; i < fields[nameField].state.dataSource.length; i++) {
+                                var choice = fields[nameField].state.dataSource[i];
+                                if (val.toString() == choice[fields[nameField].state.valueKey]) {
+                                    fields[nameField].setCurrentValue(choice[fields[nameField].state.valueKey]);
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            fields[nameField].setCurrentValue(val);
+                        }
+                    }
+                }
+            }
+            else {
+                if (fields[nameField] instanceof checkbox_field_1.CheckBoxField) {
+                    fields[nameField].setCurrentChecked(false);
+                }
+                else {
+                    fields[nameField].setCurrentValue(null);
+                }
+            }
+        }
+    };
+    /**
+     * Traitement spécifique des notifications concernant les champs d'autocomplétion
+     * @param fields champs du formulaire
+     * @param notifs notifications d'erreurs de validation
+     */
+    Form.prototype.processAutocompleteErrors = function (fields, notifs) {
+        var processedNotifs = notifs.getNotifications().map(function (notif) {
+            /* Parcours de tous les champs */
+            Object.keys(fields).every(function (key) {
+                var field = fields[key];
+                if (field instanceof auto_complete_field_1.AutoCompleteField) {
+                    var autoField = field;
+                    /* La notification référence le nom global du champ d'auto-complétion
+                     ou bien le champ caché contenant la valeur :
+                     on modifie cette référence pour pointer vers le champ de saisie libre */
+                    // if (notif.field == autoField.getAttribute("name") ||
+                    if (notif.field == autoField.state.name ||
+                        notif.field == (autoField.getValueFieldName())) {
+                        notif.field = autoField.getFreeTypingFieldName();
+                        /* Fin de la boucle de parcours des auto-complete */
+                        return false;
+                    }
+                }
+                return true;
+            }, this);
+            return notif;
+        }, this);
+        notifs.setNotifications(processedNotifs);
+    };
+    /**
+     * Déclenche les notifications correspondant aux éventuelles erreurs de validation
+     * @param errors erreurs de validation de formulaire, éventuellement vides
+     */
+    Form.prototype.notifyErrors = function (errors) {
+        if (errors) {
+            var fieldsMessages = this.state.formMessages && this.state.formMessages.fields;
+            var genericValidationMessages = this.i18n("form.validation");
+            var fields_1 = this.extractFields();
+            var notificationsError_1 = form_utils_1.FormUtils.getErrors(errors, fields_1, fieldsMessages, genericValidationMessages);
+            /* Post-traitement des notifications concernant les champs d'autocomplétion */
+            this.processAutocompleteErrors(fields_1, notificationsError_1);
+            /* Met à jour les erreurs affichées par chaque composant champ */
+            Object.keys(fields_1).every(function (key) {
+                var field = fields_1[key];
+                if (field instanceof abstract_field_1.AbstractField) {
+                    field.setErrors(notificationsError_1.getNotifications());
+                }
+                return true;
+            });
+            /* Emission des notifications */
+            notification_manager_1.NotificationManager.notify(this.state.notifId, this.state.id, notificationsError_1);
+        }
+    };
+    /**
+     * Transforme les valeurs des champs déclarés avec le format "date-time" dans le schéma de validation :
+     * effectue la conversion depuis la locale courante, vers le format ISO 8601. Ceci permet une validation isomorphique
+     * côté client comme serveur en utilisant le même schéma, et la conversion automatique en objet Date côté backend REST
+     * reste possible.
+     * @param schema schéma de validation JSON-Schema
+     * @param data données de formualaire
+     */
+    Form.prototype.transformDatesToISO = function (schema, data) {
+        if (schema && schema.properties && data) {
+            var propNames = Object.keys(schema.properties);
+            var property = void 0, propName = void 0;
+            for (var i = 0; i < propNames.length; i++) {
+                propName = propNames[i];
+                property = schema.properties[propName];
+                if (property.type == "object") {
+                    /* Appel récursif sur les éventuelles propriétés incluses dans le sous-schéma */
+                    this.transformDatesToISO(property, data[propName]);
+                }
+                else if (property.format == "date-time") {
+                    if (data[propName]) {
+                        var date = hornet_js_utils_1.Utils.dateUtils.parseInTZ(data[propName], this.state.calendarLocale.dateFormat);
+                        if (date) {
+                            /* La chaîne de caractères est une date valide pour la locale : on convertit en représentation ISO 8601.*/
+                            data[propName] = date.toISOString();
+                        }
+                        /* Sinon la valeur incorrecte est conservée*/
+                    }
+                }
+            }
+        }
+    };
+    /**
+     * Déclenche la validation du formulaire, notifie les erreurs éventuelles et exécute la fonction
+     * onSubmit présente dans les propriétés s'il n'y a pas d'erreurs
+     *
+     */
+    Form.prototype.validateAndSubmit = function () {
+        if (this.formElement) {
+            logger.trace("Validation et envoi du formulaire");
+            var data = this.extractData();
+            if (this.state.onBeforeSubmit) {
+                this.state.onBeforeSubmit(data);
+            }
+            var options = this.state.validationOptions;
+            var schema = data_validator_1.DataValidator.transformRequiredStrings(this.state.schema);
+            this.transformDatesToISO(this.state.schema, data);
+            var validationRes = new data_validator_1.DataValidator(schema, this.state.customValidators, options).validate(data);
+            if (!validationRes.valid) {
+                this.notifyErrors(validationRes.errors);
+            }
+            else {
+                this.cleanFormErrors();
+                if (this.state.onSubmit) {
+                    this.state.onSubmit(data);
+                }
+            }
+        }
+    };
+    /**
+     * Supprime les nofifications d'erreurs et les erreurs associées à chaque champ de ce formulaire
+     */
+    Form.prototype.cleanFormErrors = function () {
+        var fields = this.extractFields();
+        for (var fieldName in fields) {
+            var field = fields[fieldName];
+            if (field instanceof abstract_field_1.AbstractField) {
+                field.setErrors(null);
+            }
+        }
+        notification_manager_1.NotificationManager.clean(this.state.notifId, this.state.id);
+    };
+    /**
+     * Met à jour les valeurs courantes des champs du formulaire et
+     * supprime les nofifications d'erreurs et les erreurs associées à chaque champ de ce formulaire
+     * @param data données du formulaire (clé : nom du champ -> valeur du champ)
+     */
+    Form.prototype.updateFieldsAndClean = function (data) {
+        this.updateFields(data);
+        this.cleanFormErrors();
+    };
+    /**
+     * Méthode permettant d'alimenter le bloc Notifications d'erreurs puis de déléguer l'évent au composant parent
+     * @param e
+     *
+     */
+    Form.prototype._submitHornetForm = function (e) {
+        /* e.preventDefault ne doit pas être 'débouncée', sinon la soumission par défaut du formulaire serait effectuée */
+        e.preventDefault();
+        this.debouncedValidateAndSubmit();
+    };
+    /** @override */
+    Form.prototype.propagateParentState = function () {
+        /* Le composant parent se charge de propager les propriétés readOnly et disabled */
+        _super.prototype.propagateParentState.call(this);
+        var fields = this.extractFields();
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            if (field instanceof abstract_field_1.AbstractField) {
+                field.setMarkRequired(this.state.markRequired);
+                field.setImgFilePath(this.state.imgFilePath);
+            }
+            return true;
+        }, this);
+    };
+    /** @override */
+    Form.prototype.extractFields = function () {
+        var fields = {};
+        if (this.formElement) {
+            for (var index = 0; index < this.formElement.elements.length; index++) {
+                var item = this.formElement.elements[index];
+                if (item["name"]) {
+                    if (item["__component"]) {
+                        fields[item["name"]] = item["__component"];
+                    }
+                    else {
+                        if (fields[item["name"]]) {
+                            fields[item["name"]].addHtmlElement(item);
+                        }
+                        else {
+                            fields[item["name"]] = new dom_adapter_1.DomAdapter();
+                            fields[item["name"]].registerHtmlElement(item);
+                        }
+                    }
+                }
+            }
+        }
+        return fields;
+    };
+    /**
+     * Méthode permettant de déterminer si le formulaire dispose d'un champ de type UploadFileField
+     * Dans ce cas, on ajoute la propriété ["encType"] = "multipart/form-data" au formulaire
+     * @param items
+     * @returns {boolean}
+     */
+    Form.prototype.isMultiPartForm = function (items) {
+        var _this = this;
+        var isMultiPart = false;
+        React.Children.map(items, function (child) {
+            if (!isMultiPart) {
+                if (child != null) {
+                    if (child["props"] && child["props"].children) {
+                        isMultiPart = _this.isMultiPartForm(child["props"].children);
+                    }
+                    if (!isMultiPart && child.type === upload_file_field_1.UploadFileField) {
+                        isMultiPart = true;
+                    }
+                }
+            }
+        });
+        return isMultiPart;
+    };
+    /**
+     * Méthode permettant de déterminer s'il y a au moins un champ requis.
+     * @param items
+     * @returns {boolean}
+     */
+    Form.prototype.isOneRequired = function (items) {
+        var _this = this;
+        var isOneRequired = false;
+        React.Children.map(items, function (child) {
+            if (!isOneRequired) {
+                if (child != null) {
+                    if (child["props"] && child["props"].children) {
+                        isOneRequired = _this.isOneRequired(child["props"].children);
+                    }
+                    if (!isOneRequired && child.props && child.props.required == true) {
+                        isOneRequired = true;
+                    }
+                }
+            }
+        });
+        return isOneRequired;
+    };
+    /**
+     * @inheritDoc
+     */
+    Form.prototype.render = function () {
+        var classes = {
+            "form": true,
+            "clear": true,
+            /* Application du style CSS readonly à tout le bloc lorsque tous les champs sont en lecture seule */
+            "readonly": this.state.readOnly
+        };
+        logger.trace("render(), HornetForm ");
+        var customNotif = null;
+        if (!this.state.customNotif) {
+            customNotif = (React.createElement(notification_1.Notification, { id: this.state.notifId }));
+        }
+        /* La validation de formulaire HTML 5 est désactivée (noValidate="true") :
+         on s'appuie uniquement sur la validation à la soumission et on a ainsi un rendu cohérent entre navigateurs. */
+        var formProps = {
+            id: this.state.id,
+            name: this.state.name,
+            className: this.state.className,
+            method: "post",
+            onSubmit: this._submitHornetForm,
+            noValidate: true,
+            onChange: this.state.onFormChange ? this.state.onFormChange : undefined,
+            ref: this.registerForm
+        };
+        if (this.isMultiPartForm(this.state.children)) {
+            formProps["encType"] = "multipart/form-data";
+        }
+        var textHtmlProps = {
+            lang: this.props.textLang ? this.props.textLang : null
+        };
+        return (React.createElement("section", { className: "form-container" },
+            customNotif,
+            React.createElement("div", { className: classNames(classes) },
+                React.createElement("form", tslib_1.__assign({}, formProps),
+                    (this.state.subTitle || this.state.text
+                        || (this.state.markRequired && !this.state.isMandatoryFieldsHidden)) ?
+                        React.createElement("div", { className: "form-titles" },
+                            this.state.subTitle ? React.createElement("h3", { className: "form-soustitre" }, this.state.subTitle) : null,
+                            this.state.text ?
+                                React.createElement("p", tslib_1.__assign({ className: "form-texte" }, textHtmlProps), this.state.text) : null,
+                            this.state.markRequired && !this.state.isMandatoryFieldsHidden ?
+                                React.createElement("p", { className: "discret" }, this.i18n("form.fillField")) : null)
+                        : null,
+                    (this.state.children) ?
+                        React.createElement("div", { className: "form-content" },
+                            React.createElement("div", null, this.state.children))
+                        : null))));
+    };
+    /**
+     * retourne un tableau de bouton pour la validation du formulaire
+     * @param children
+     * @returns {Array<any>}
+     */
+    Form.prototype.getButtonsArea = function (children) {
+        var tableauButtonsArea = [];
+        React.Children.map(children, function (child) {
+            if (child.type === buttons_area_1.ButtonsArea) {
+                tableauButtonsArea.push(child);
+            }
+        });
+        return tableauButtonsArea;
+    };
+    Form.idx = 0;
+    /** Valeur de propriétés par défaut */
+    Form.defaultProps = _.assign(_.cloneDeep(abstract_form_1.AbstractForm.defaultProps), {
+        markRequired: true,
+        isMandatoryFieldsHidden: false,
+        subTitle: null,
+        className: "formRecherche",
+        customValidators: [],
+        validationOptions: data_validator_1.DataValidator.DEFAULT_VALIDATION_OPTIONS
+    });
+    return Form;
+}(abstract_form_1.AbstractForm));
+exports.Form = Form;
+
+
+
+/***/ }),
+
+/***/ 348:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var sort_data_1 = __webpack_require__(315);
+var technical_error_1 = __webpack_require__(12);
+var codes_error_1 = __webpack_require__(44);
+var hornet_js_utils_1 = __webpack_require__(1);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-core.component.datasource.options.datasource-option");
+var CompareMethod;
+(function (CompareMethod) {
+    CompareMethod[CompareMethod["COMPARE_DEFAULT"] = 1] = "COMPARE_DEFAULT";
+    CompareMethod[CompareMethod["COMPARE_WITH_LOWERCASE"] = 2] = "COMPARE_WITH_LOWERCASE";
+    CompareMethod[CompareMethod["COMPARE_WITH_UPPERCASE"] = 3] = "COMPARE_WITH_UPPERCASE";
+})(CompareMethod = exports.CompareMethod || (exports.CompareMethod = {}));
+/**
+ * Option de tri par defaut dans un datasourcede
+ */
+var DefaultSort = /** @class */ (function () {
+    /***
+     * @param {SortData[]} sort  données de tri
+     * @param {(a: any, b: any) => number} Fonction de comparaison (optionnel).
+     * @param {boolean} sendFetch définit si l'option doit être envoyée au fetch ou pas.
+     *
+     */
+    function DefaultSort(sort, initCompare, sendFetch) {
+        if (initCompare === void 0) { initCompare = CompareMethod.COMPARE_DEFAULT; }
+        if (sendFetch === void 0) { sendFetch = false; }
+        this.sort = sort;
+        this.initCompare = initCompare;
+        this.sendFetch = sendFetch;
+        this.compare = function (sort, a, b) {
+            if (arguments.length < 3) {
+                var msg = "3 arguments sont necessaires [sortData, a, b]";
+                logger.error(msg);
+                throw new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_SORT_ARGS_ERROR, { errorMessage: codes_error_1.CodesError.DEFAULT_ERROR_MSG }, null);
+            }
+            if (this.initCompare && typeof this.initCompare == "function") {
+                return this.initCompare(a, b);
+            }
+            else {
+                var sortDatas = sort ? sort : (this.sort && this.sort.length > 0) ? this.sort : [];
+                var result_1;
+                sortDatas.every(function (sortData) {
+                    var aValue = a[sortData["key"]];
+                    var bValue = b[sortData["key"]];
+                    if (aValue < bValue) {
+                        result_1 = (sortData.dir == sort_data_1.SortDirection.ASC) ? -1 : 1;
+                        return false;
+                    }
+                    if (aValue == bValue) {
+                        return true;
+                    }
+                    if (aValue > bValue) {
+                        result_1 = (sortData.dir == sort_data_1.SortDirection.ASC) ? 1 : -1;
+                        return false;
+                    }
+                });
+                return result_1;
+            }
+        };
+        this.compareUpperCase = function (sort, a, b) {
+            if (arguments.length < 3) {
+                var msg = "3 arguments sont necessaires [sortData, a, b]";
+                logger.error(msg);
+                throw new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_SORT_ARGS_ERROR, { errorMessage: codes_error_1.CodesError.DEFAULT_ERROR_MSG }, null);
+            }
+            var sortDatas = sort ? sort : (this.sort && this.sort.length > 0) ? this.sort : [];
+            var result;
+            sortDatas.every(function (sortData) {
+                var aValue = a[sortData["key"]];
+                var bValue = b[sortData["key"]];
+                aValue = (typeof a[sortData["key"]] == "string") ? a[sortData["key"]].toUpperCase() : (typeof a[sortData["key"]] == "undefined") ? "" : a[sortData["key"]];
+                bValue = (typeof b[sortData["key"]] == "string") ? b[sortData["key"]].toUpperCase() : (typeof b[sortData["key"]] == "undefined") ? "" : b[sortData["key"]];
+                if (aValue < bValue) {
+                    result = (sortData.dir == sort_data_1.SortDirection.ASC) ? -1 : 1;
+                    return false;
+                }
+                if (aValue == bValue) {
+                    return true;
+                }
+                if (aValue > bValue) {
+                    result = (sortData.dir == sort_data_1.SortDirection.ASC) ? 1 : -1;
+                    return false;
+                }
+            });
+            return result;
+        };
+        this.compareLowerCase = function (sort, a, b) {
+            if (arguments.length < 3) {
+                var msg = "3 arguments sont necessaires [sortData, a, b]";
+                logger.error(msg);
+                throw new technical_error_1.TechnicalError("ERR_TECH_" + codes_error_1.CodesError.DATASOURCE_SORT_ARGS_ERROR, { errorMessage: codes_error_1.CodesError.DEFAULT_ERROR_MSG }, null);
+            }
+            var sortDatas = sort ? sort : (this.sort && this.sort.length > 0) ? this.sort : [];
+            var result;
+            sortDatas.every(function (sortData) {
+                var aValue = a[sortData["key"]];
+                var bValue = b[sortData["key"]];
+                aValue = (typeof a[sortData["key"]] == "string") ? a[sortData["key"]].toLowerCase() : (typeof a[sortData["key"]] == "undefined") ? "" : a[sortData["key"]];
+                bValue = (typeof b[sortData["key"]] == "string") ? b[sortData["key"]].toLowerCase() : (typeof b[sortData["key"]] == "undefined") ? "" : b[sortData["key"]];
+                if (aValue < bValue) {
+                    result = (sortData.dir == sort_data_1.SortDirection.ASC) ? -1 : 1;
+                    return false;
+                }
+                if (aValue == bValue) {
+                    return true;
+                }
+                if (aValue > bValue) {
+                    result = (sortData.dir == sort_data_1.SortDirection.ASC) ? 1 : -1;
+                    return false;
+                }
+            });
+            return result;
+        };
+    }
+    /**
+     * définit si l'option doit être envoyée au fetch ou pas
+     * @returns {boolean}
+     */
+    DefaultSort.prototype.sendToFetch = function () {
+        return this.sendFetch;
+    };
+    DefaultSort.prototype.getCompareFunction = function (number) {
+        switch (number) {
+            case CompareMethod.COMPARE_WITH_LOWERCASE:
+                return this.compareLowerCase;
+            case CompareMethod.COMPARE_WITH_UPPERCASE:
+                return this.compareUpperCase;
+            default:
+                return this.compare;
+        }
+    };
+    return DefaultSort;
+}());
+exports.DefaultSort = DefaultSort;
+var SpinnerOption = /** @class */ (function () {
+    /**
+     * @param {SpinnerType} type : type de spinner
+     * @param {boolean} sendFetch définit si l'option doit être envoyée au fetch ou pas.
+     */
+    function SpinnerOption(type, sendFetch) {
+        this.type = type;
+        this.sendFetch = sendFetch;
+    }
+    /**
+     * définit si l'option doit etre envoyée au fetch ou pas
+     * @returns {boolean}
+     */
+    SpinnerOption.prototype.sendToFetch = function () {
+        return false;
+    };
+    return SpinnerOption;
+}());
+exports.SpinnerOption = SpinnerOption;
+/**
+ * Mode d'initialisation de l'init dans un datasource
+ */
+var InitAsync = /** @class */ (function () {
+    /**
+     * @param {boolean} isAsync : type d'initialisation
+     * @param {boolean} sendFetch définit si l'option doit être envoyée au fetch ou pas.
+     */
+    function InitAsync(isAsync, sendFetch) {
+        this.isAsync = isAsync;
+        this.sendFetch = sendFetch;
+    }
+    /**
+     * définit si l'option doit etre envoyée au fetch ou pas
+     * @returns {boolean}
+     */
+    InitAsync.prototype.sendToFetch = function () {
+        return false;
+    };
+    return InitAsync;
+}());
+exports.InitAsync = InitAsync;
+
+
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @classdesc Classe de configuration pour les datasources de type service
+ * @class
+ */
+var DataSourceConfigPage = /** @class */ (function () {
+    function DataSourceConfigPage(page, method, fetchAttrName) {
+        this.page = page;
+        this.method = method;
+        this.fetchAttrName = fetchAttrName;
+    }
+    return DataSourceConfigPage;
+}());
+exports.DataSourceConfigPage = DataSourceConfigPage;
+
+
+
+/***/ }),
+
+/***/ 353:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+/**
+ * Génère le rendu d'un ou plusieurs message d'erreur de validation au-dessus d'un champ de formulaire
+ */
+var FieldError = /** @class */ (function (_super) {
+    tslib_1.__extends(FieldError, _super);
+    function FieldError() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * @inheritDoc
+     */
+    FieldError.prototype.render = function () {
+        var _this = this;
+        /* Filtrage des erreurs correspondant au nom du champ*/
+        var fieldErrors;
+        if (this.state.errors) {
+            fieldErrors = this.state.errors.filter(function (error) {
+                return (error.field == this.state.fieldName && !this.state.hideError);
+            }, this);
+        }
+        else {
+            fieldErrors = new Array(0);
+        }
+        return (fieldErrors.length > 0 ?
+            React.createElement("div", { className: "fielderror-container" }, fieldErrors.map(function (error) {
+                return React.createElement("div", { key: error.id, className: "fielderror-content formmgr-message-text", id: _this.props.fieldName + "-error" }, error.text);
+            })) : null);
+    };
+    FieldError.defaultProps = {
+        errors: new Array(0)
+    };
+    return FieldError;
+}(hornet_component_1.HornetComponent));
+exports.FieldError = FieldError;
+
+
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var html_const_attributes_1 = __webpack_require__(355);
+var _ = __webpack_require__(6);
+/**
+ * Object contenant toutes les propriétés standards HTML définies dans HornetHTMLAttributes.
+ * Sert à vérifier si une propriété est une propriété standard HTML.
+ */
+exports.HTML_ATTRIBUTES = _.assign(html_const_attributes_1.HtmlAttributes.HTML_NON_STANDARD_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_RDFA_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_CONFIG_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_PRESENTATION_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_FORM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_GLOBAL_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_MEDIA_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.HTML_STANDARD_META_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_CLIPBOARD_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_COMPOSE_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_FOCUS_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_FORM_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_IMAGE_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_KEYBOARD_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_MEDIA_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_BASIC_MOUSE_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_DRAG_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_SELECT_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_TOUCH_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_SCROLL_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_WHEEL_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_ANIMATION_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_TRANSITION_DOM_ATTRIBUTES, html_const_attributes_1.HtmlAttributes.REACT_BASIC_DOM_ATTRIBUTES);
+
+
+
+/***/ }),
+
+/***/ 355:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+// TODO tetaudf - retirer les constantes en évitant la valorisation explicite grâce au décorateur @AutoInit
+exports.HTML_STANDARD_CONFIG_ATTRIBUTES = {
+    accept: "",
+    acceptCharset: "",
+    action: "",
+    autoComplete: "",
+    charSet: "",
+    challenge: "",
+    checked: true,
+    classID: "",
+    dateTime: "",
+    default: true,
+    defer: true,
+    disabled: true,
+    download: null,
+    encType: "",
+    high: 1,
+    href: "",
+    hrefLang: "",
+    htmlFor: "",
+    inputMode: "",
+    integrity: "",
+    is: "",
+    keyParams: "",
+    keyType: "",
+    list: "",
+    low: 1,
+    manifest: "",
+    method: "",
+    multiple: true,
+    name: "",
+    open: true,
+    optimum: 1,
+    pattern: "",
+    placeholder: "",
+    radioGroup: "",
+    readOnly: true,
+    rel: "",
+    role: "",
+    sandbox: "",
+    scrolling: "",
+    seamless: true,
+    sizes: "",
+    summary: "",
+    target: "",
+    type: "",
+    useMap: ""
+};
+exports.HTML_STANDARD_FORM_ATTRIBUTES = {
+    form: "",
+    formAction: "",
+    formEncType: "",
+    formMethod: "",
+    formNoValidate: true,
+    formTarget: "",
+    noValidate: true,
+    required: true,
+    wrap: ""
+};
+exports.HTML_STANDARD_GLOBAL_ATTRIBUTES = {
+    accessKey: "",
+    className: "",
+    contentEditable: true,
+    contextMenu: "",
+    data: "",
+    dir: "",
+    draggable: true,
+    hidden: true,
+    id: "",
+    lang: "",
+    spellCheck: true,
+    style: null,
+    tabIndex: 1,
+    title: ""
+};
+exports.HTML_STANDARD_MEDIA_ATTRIBUTES = {
+    allowFullScreen: true,
+    allowTransparency: true,
+    async: true,
+    autoPlay: true,
+    capture: true,
+    controls: true,
+    coords: "",
+    crossOrigin: "",
+    kind: "",
+    label: "",
+    loop: true,
+    media: "",
+    mediaGroup: "",
+    muted: true,
+    poster: "",
+    preload: "",
+    src: "",
+    srcLang: "",
+    srcSet: "",
+    wmode: ""
+};
+exports.HTML_STANDARD_META_ATTRIBUTES = {
+    content: "",
+    httpEquiv: ""
+};
+exports.HTML_STANDARD_PRESENTATION_ATTRIBUTES = {
+    alt: "",
+    autoFocus: true,
+    cellPadding: "",
+    cellSpacing: "",
+    cols: 1,
+    colSpan: 1,
+    frameBorder: "",
+    headers: "",
+    height: "",
+    icon: "",
+    marginHeight: 1,
+    marginWidth: 1,
+    max: "",
+    maxLength: 1,
+    min: "",
+    minLength: 1,
+    rows: 1,
+    rowSpan: 1,
+    scope: "",
+    scoped: true,
+    selected: true,
+    shape: "",
+    size: 1,
+    span: 1,
+    srcDoc: "",
+    start: 1,
+    step: "",
+    width: ""
+};
+exports.HTML_RDFA_ATTRIBUTES = {
+    about: "",
+    datatype: "",
+    inlist: null,
+    prefix: "",
+    property: "",
+    resource: "",
+    typeof: "",
+    vocab: ""
+};
+exports.HTML_NON_STANDARD_ATTRIBUTES = {
+    autoCapitalize: "",
+    autoCorrect: "",
+    autoSave: "",
+    color: "",
+    itemProp: "",
+    itemScope: true,
+    itemType: "",
+    itemID: "",
+    itemRef: "",
+    results: 1,
+    security: "",
+    unselectable: true
+};
+exports.REACT_CLIPBOARD_DOM_ATTRIBUTES = {
+    onCopy: null,
+    onCut: null,
+    onPaste: null
+};
+exports.REACT_COMPOSE_DOM_ATTRIBUTES = {
+    onCompositionEnd: null,
+    onCompositionStart: null,
+    onCompositionUpdate: null
+};
+exports.REACT_FOCUS_DOM_ATTRIBUTES = {
+    onFocus: null,
+    onBlur: null
+};
+exports.REACT_FORM_DOM_ATTRIBUTES = {
+    onChange: null,
+    onInput: null,
+    onSubmit: null
+};
+exports.REACT_IMAGE_DOM_ATTRIBUTES = {
+    onLoad: null,
+    onError: null
+};
+exports.REACT_KEYBOARD_DOM_ATTRIBUTES = {
+    onKeyDown: null,
+    onKeyPress: null,
+    onKeyUp: null
+};
+exports.REACT_MEDIA_DOM_ATTRIBUTES = {
+    onAbort: null,
+    onCanPlay: null,
+    onCanPlayThrough: null,
+    onDurationChange: null,
+    onEmptied: null,
+    onEncrypted: null,
+    onEnded: null,
+    onLoadedData: null,
+    onLoadedMetadata: null,
+    onLoadStart: null,
+    onPause: null,
+    onPlay: null,
+    onPlaying: null,
+    onProgress: null,
+    onRateChange: null,
+    onSeeked: null,
+    onSeeking: null,
+    onStalled: null,
+    onSuspend: null,
+    onTimeUpdate: null,
+    onVolumeChange: null,
+    onWaiting: null
+};
+exports.REACT_BASIC_MOUSE_DOM_ATTRIBUTES = {
+    onClick: null,
+    onContextMenu: null,
+    onDoubleClick: null,
+    onMouseDown: null,
+    onMouseEnter: null,
+    onMouseLeave: null,
+    onMouseMove: null,
+    onMouseOut: null,
+    onMouseOver: null,
+    onMouseUp: null
+};
+exports.REACT_DRAG_DOM_ATTRIBUTES = {
+    onDrag: null,
+    onDragEnd: null,
+    onDragEnter: null,
+    onDragExit: null,
+    onDragLeave: null,
+    onDragOver: null,
+    onDragStart: null,
+    onDrop: null
+};
+exports.REACT_SELECT_DOM_ATTRIBUTES = {
+    onSelect: null
+};
+exports.REACT_TOUCH_DOM_ATTRIBUTES = {
+    onTouchCancel: null,
+    onTouchEnd: null,
+    onTouchMove: null,
+    onTouchStart: null
+};
+exports.REACT_SCROLL_DOM_ATTRIBUTES = {
+    onScroll: null
+};
+exports.REACT_WHEEL_DOM_ATTRIBUTES = {
+    onWheel: null
+};
+exports.REACT_ANIMATION_DOM_ATTRIBUTES = {
+    onAnimationStart: null,
+    onAnimationEnd: null,
+    onAnimationIteration: null
+};
+exports.REACT_TRANSITION_DOM_ATTRIBUTES = {
+    onTransitionEnd: null
+};
+exports.REACT_BASIC_DOM_ATTRIBUTES = {};
+// TODO tetaudf utiliser un decorator @AutoInit pour ne plus avoir à déclarer un objet avec des valeurs par défaut
+// TODO tetaudf ex : @AutoInit
+// TODO tetaudf      HTML_STANDARD_CONFIG_ATTRIBUTES: HTMLStandardConfigAttributes;
+var HtmlAttributes = /** @class */ (function () {
+    function HtmlAttributes() {
+    }
+    HtmlAttributes.HTML_STANDARD_CONFIG_ATTRIBUTES = exports.HTML_STANDARD_CONFIG_ATTRIBUTES;
+    HtmlAttributes.HTML_STANDARD_FORM_ATTRIBUTES = exports.HTML_STANDARD_FORM_ATTRIBUTES;
+    HtmlAttributes.HTML_STANDARD_GLOBAL_ATTRIBUTES = exports.HTML_STANDARD_GLOBAL_ATTRIBUTES;
+    HtmlAttributes.HTML_STANDARD_MEDIA_ATTRIBUTES = exports.HTML_STANDARD_MEDIA_ATTRIBUTES;
+    HtmlAttributes.HTML_STANDARD_META_ATTRIBUTES = exports.HTML_STANDARD_META_ATTRIBUTES;
+    HtmlAttributes.HTML_STANDARD_PRESENTATION_ATTRIBUTES = exports.HTML_STANDARD_PRESENTATION_ATTRIBUTES;
+    HtmlAttributes.HTML_RDFA_ATTRIBUTES = exports.HTML_RDFA_ATTRIBUTES;
+    HtmlAttributes.HTML_NON_STANDARD_ATTRIBUTES = exports.HTML_NON_STANDARD_ATTRIBUTES;
+    HtmlAttributes.REACT_CLIPBOARD_DOM_ATTRIBUTES = exports.REACT_CLIPBOARD_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_COMPOSE_DOM_ATTRIBUTES = exports.REACT_COMPOSE_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_FOCUS_DOM_ATTRIBUTES = exports.REACT_FOCUS_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_FORM_DOM_ATTRIBUTES = exports.REACT_FORM_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_IMAGE_DOM_ATTRIBUTES = exports.REACT_IMAGE_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_KEYBOARD_DOM_ATTRIBUTES = exports.REACT_KEYBOARD_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_MEDIA_DOM_ATTRIBUTES = exports.REACT_MEDIA_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_BASIC_MOUSE_DOM_ATTRIBUTES = exports.REACT_BASIC_MOUSE_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_DRAG_DOM_ATTRIBUTES = exports.REACT_DRAG_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_SELECT_DOM_ATTRIBUTES = exports.REACT_SELECT_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_TOUCH_DOM_ATTRIBUTES = exports.REACT_TOUCH_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_SCROLL_DOM_ATTRIBUTES = exports.REACT_SCROLL_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_WHEEL_DOM_ATTRIBUTES = exports.REACT_WHEEL_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_ANIMATION_DOM_ATTRIBUTES = exports.REACT_ANIMATION_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_TRANSITION_DOM_ATTRIBUTES = exports.REACT_TRANSITION_DOM_ATTRIBUTES;
+    HtmlAttributes.REACT_BASIC_DOM_ATTRIBUTES = exports.REACT_BASIC_DOM_ATTRIBUTES;
+    return HtmlAttributes;
+}());
+exports.HtmlAttributes = HtmlAttributes;
+;
+
+
+
+/***/ }),
+
+/***/ 356:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+var key_codes_1 = __webpack_require__(10);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-component.widget.tool-tip.tool-tip");
+/**
+ * Composant ToolTip
+ */
+var ToolTip = /** @class */ (function (_super) {
+    tslib_1.__extends(ToolTip, _super);
+    function ToolTip() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * @inheritDoc
+     */
+    ToolTip.prototype.render = function () {
+        var urlIcoTooltip = this.state.src || ToolTip.genUrlTheme(this.state.icoToolTip);
+        return (React.createElement("span", { onFocus: this.showTip, onMouseOver: this.showTip, onBlur: this.hideTip, onMouseLeave: this.hideTip, className: this.state.classSpan, "aria-haspopup": true, role: "tooltip" },
+            React.createElement("img", { id: this.state.idImg, alt: this.state.alt, src: urlIcoTooltip, className: this.state.classImg, tabIndex: 0 }),
+            React.createElement("span", { id: this.state.idSpan, className: "tooltip-label", role: "tooltip", "aria-hidden": "true", style: { display: "none" } }, this.state.alt)));
+    };
+    /**
+     * @inheritDoc
+     */
+    ToolTip.prototype.componentDidMount = function () {
+        document.addEventListener("keydown", this.handleKeyDown, false);
+    };
+    /**
+     * @inheritDoc
+     */
+    ToolTip.prototype.componentWillUnmount = function () {
+        document.removeEventListener("keydown", this.handleKeyDown, false);
+    };
+    /**
+     * Gestion des touches du clavier
+     * @param event
+     */
+    ToolTip.prototype.handleKeyDown = function (event) {
+        var keyCode = event.keyCode;
+        if (keyCode == key_codes_1.KeyCodes.ESCAPE) {
+            this.hideTip(event);
+        }
+    };
+    /**
+     * Fonction déclenchée lorsque le champ de saisie libre perd le focus
+     * @param event
+     */
+    ToolTip.prototype.hideTip = function (event) {
+        if (this.state.idSpan) {
+            document.getElementById(this.state.idSpan).setAttribute("aria-hidden", "true");
+            document.getElementById(this.state.idSpan).style.display = "none";
+        }
+    };
+    ToolTip.prototype.showTip = function (event) {
+        if (this.state.idSpan) {
+            document.getElementById(this.state.idSpan).setAttribute("aria-hidden", "false");
+            document.getElementById(this.state.idSpan).style.display = "inline";
+        }
+    };
+    ToolTip.defaultProps = {
+        classImg: "tooltip-image",
+        classSpan: "tooltip",
+        icoToolTip: "/img/tooltip/tooltip.svg"
+    };
+    return ToolTip;
+}(hornet_component_1.HornetComponent));
+exports.ToolTip = ToolTip;
+
+
+
+/***/ }),
+
+/***/ 357:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var abstract_field_1 = __webpack_require__(311);
+var auto_complete_selector_1 = __webpack_require__(363);
+var _ = __webpack_require__(6);
+var key_codes_1 = __webpack_require__(10);
+var auto_complete_state_1 = __webpack_require__(334);
+var datasource_master_1 = __webpack_require__(364);
+var abstract_field_datasource_1 = __webpack_require__(333);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.auto-complete-field");
+var FilterTextType;
+(function (FilterTextType) {
+    FilterTextType[FilterTextType["beginWith"] = 1] = "beginWith";
+    FilterTextType[FilterTextType["indexOf"] = 2] = "indexOf";
+})(FilterTextType = exports.FilterTextType || (exports.FilterTextType = {}));
+/**
+ * Composant d'auto-complétion.
+ * Les fonctions getCurrentValue et setCurrentValue s'appuient sur le champ caché contenant la valeur sélectionnée.
+ */
+var AutoCompleteField = /** @class */ (function (_super) {
+    tslib_1.__extends(AutoCompleteField, _super);
+    function AutoCompleteField(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        var ariaSelectorId = props.name + "_select";
+        //liste des choix possibles
+        _this.state.choices = [];
+        //item sélectionné
+        _this.state.selectedIndex = null;
+        //indique si la liste des choix est visible ou non
+        _this.state.shouldShowChoices = false;
+        //identifiant du selector
+        _this.state.ariaSelectorId = ariaSelectorId;
+        //loader
+        _this.state.isApiLoading = false;
+        if (_this.props.dataSource.results) {
+            //liste de tous les choix (non filtré par le texte)
+            _this.state.allChoices = _this.props.dataSource.results;
+        }
+        _this.autoCompleteState = new auto_complete_state_1.AutoCompleteState();
+        return _this;
+    }
+    /**
+     * Setter indiquant que l'API est en cours d'exécution
+     * @param value valeur à utiliser
+     * @param callback fonction de callback éventuelle
+     * @returns {AutoComplete}
+     */
+    AutoCompleteField.prototype.setIsApiLoading = function (value, callback) {
+        this.setState({ isApiLoading: value }, callback);
+        return this;
+    };
+    /**
+     * Setter des choix du composant
+     * @param value tableau de choix
+     * @param callback fonction de callback éventuelle
+     * @returns {AutoComplete}
+     */
+    AutoCompleteField.prototype.setChoices = function (value, callback) {
+        this.setState({ choices: value }, callback);
+        return this;
+    };
+    /**
+     * @inheritDoc
+     */
+    AutoCompleteField.prototype.componentDidMount = function () {
+        if (!hornet_js_utils_1.Utils.isServer) {
+            if (!_.isUndefined(this.props["var"])) {
+                logger.warn("The var props is only available in DEV");
+            }
+        }
+        this.mounted = true;
+        logger.trace("auto-complete componentDidMount");
+        this._throttledTriggerAction = _.throttle(this.triggerAction, this.state.delay);
+        this.props.dataSource.on("fetch", this.fetchEventCallback);
+        this.props.dataSource.on("add", this.addEventCallback);
+        this.props.dataSource.on("delete", this.setResultCallback);
+        this.props.dataSource.on("sort", this.setResultCallback);
+        this.props.dataSource.on("filter", this.filterEventCallback);
+        this.props.dataSource.on("init", this.initEventCallback);
+        this.props.dataSource.on("loadingData", this.displaySpinner);
+    };
+    /**
+     * @inheritDoc
+     */
+    AutoCompleteField.prototype.componentWillUnmount = function () {
+        _super.prototype.componentWillUnmount.call(this);
+        this.mounted = false;
+        this.props.dataSource.removeListener("fetch", this.fetchEventCallback);
+        this.props.dataSource.removeListener("add", this.addEventCallback);
+        this.props.dataSource.removeListener("filter", this.filterEventCallback);
+        this.props.dataSource.removeListener("init", this.initEventCallback);
+        this.props.dataSource.removeListener("delete", this.setResultCallback);
+        this.props.dataSource.removeListener("sort", this.setResultCallback);
+        this.props.dataSource.removeListener("loadingData", this.displaySpinner);
+    };
+    /**
+     * @inheritDoc
+     */
+    AutoCompleteField.prototype.componentWillUpdate = function (nextProps, nextState, nextContext) {
+        _super.prototype.componentWillUpdate.call(this, nextProps, nextState, nextContext);
+        if (this.state.delay != nextState.delay) {
+            /* Le délai d'appel de l'action a changé : on doit donc refaire ici l'encaspulation avec _.throttle */
+            this._throttledTriggerAction = _.throttle(this.triggerAction, nextState.delay);
+        }
+    };
+    /**
+     * @inheritDoc
+     */
+    AutoCompleteField.prototype.shouldComponentUpdate = function (nextProps, nextState, nextContext) {
+        if (this.state.shouldShowChoices != nextState.shouldShowChoices
+            || this.state.listDefaultValue !== nextState.listDefaultValue
+            || ((nextState.choices && !this.state.choices)
+                || (!nextState.choices && this.state.choices)
+                || (nextState.choices && this.state.choices.length != nextState.choices.length))
+            || !_.isEqual(nextState.choices, this.state.choices)
+            || (this.state.errors != nextState.errors)
+            || (this.state.readOnly != nextState.readOnly)
+            || (this.state.disabled != nextState.disabled)) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * Génère le rendu spécifique du champ
+     * @returns {any}
+     */
+    AutoCompleteField.prototype.renderWidget = function () {
+        logger.trace("auto-complete  render");
+        var shouldShow = this.shouldShowChoices();
+        var hasError = this.hasErrors() ? " has-error" : "";
+        var className = " autocomplete-content" + hasError;
+        if (this.state.className) {
+            className += " " + this.state.className;
+        }
+        var htmlProps = this.getHtmlProps();
+        htmlProps = _.assign(htmlProps, {
+            "onKeyDown": this.handleOnKeyDown,
+            "onFocus": this.handleOnFocus,
+            "onBlur": this.handleOnBlur,
+            "onDoubleClick": this.handleOnFocus,
+            "onClick": this.handleOnFocus,
+            "onChange": this.handleChangeTextInput,
+            "autoComplete": "off",
+            "aria-autocomplete": "list",
+            "aria-expanded": shouldShow,
+            "aria-owns": this.state.ariaSelectorId,
+            "aria-activedescendant": shouldShow ? this.state.ariaSelectorId + "_" + this.state.selectedIndex : undefined,
+            "id": this.state.id ? this.state.id : this.getFreeTypingFieldName(),
+            "type": "text",
+            "name": this.getFreeTypingFieldName(),
+            "className": className
+        });
+        /* Le champ caché contient l'identifiant de l'élément sélectionné. C'est cet identifiant qui est ensuite
+         utilisé par les actions. */
+        return (React.createElement("div", { className: "autocomplete-container" },
+            React.createElement("input", { type: "hidden", name: this.getValueFieldName(), ref: this.registerHiddenInput }),
+            React.createElement("input", tslib_1.__assign({}, htmlProps, { ref: this.registerTextInput, readOnly: !this.props.writable, "data-writable": this.props.writable })),
+            React.createElement(auto_complete_selector_1.AutoCompleteSelector, { ref: "selector", choices: this.state.choices, onOptionSelected: this.onListWidgetSelected, selectorId: this.state.ariaSelectorId, maxHeight: this.props.maxHeight, showComponent: shouldShow, choicesSelected: this.state.listDefaultValue, autoCompleteState: this.autoCompleteState, disabled: this.state.disabled || this.state.readOnly, noResultLabel: this.state.noResultLabel })));
+    };
+    /**
+     *
+     * @param result
+     */
+    AutoCompleteField.prototype.fetchEventCallback = function (result) {
+        this.choicesLoaderCallback(result);
+        //dans le cas writable, le composant n'a pas besoin de recharger la liste des choix
+        // elle est disponible directement
+        if (this.props.writable) {
+            if (!this.state.onListWidgetSelected) {
+                this.prepareChoices(true);
+            }
+            else {
+                this.prepareChoices(false);
+            }
+        }
+        this.state.onListWidgetSelected = false;
+    };
+    /**
+     * récupération des choix dans le datasource
+     * @param result
+     */
+    AutoCompleteField.prototype.addEventCallback = function (result) {
+        this.setResultCallback(result);
+    };
+    /**
+     * récupération des choix dans le datasource
+     * @param result
+     */
+    AutoCompleteField.prototype.setResultCallback = function (result) {
+        this.state.allChoices = this.props.dataSource.results;
+    };
+    /**
+     * récupération des choix possibles dans le datasource
+     * @param filtered
+     */
+    AutoCompleteField.prototype.filterEventCallback = function (filtered) {
+        this.state.allChoices = filtered;
+        this.choicesLoaderCallback(filtered);
+    };
+    /**
+     * récupération des choix à l'initialisation
+     * @param result
+     */
+    AutoCompleteField.prototype.initEventCallback = function (result) {
+        this.state.allChoices = result;
+    };
+    /**
+     * retourne le texte saisi
+     * @return {any} le texte actuellement saisi dans le champ de saisie libre
+     */
+    AutoCompleteField.prototype.getCurrentText = function () {
+        var text = "";
+        if (this.textInput) {
+            text = this.textInput.value;
+        }
+        return text;
+    };
+    /**
+     * Modifie la valeur du texte présent dans l'input
+     * @param value texte à mettre dans l'input
+     */
+    AutoCompleteField.prototype.setCurrentText = function (value) {
+        this.textInput.value = value;
+    };
+    /**
+     * Réinitialise le champs autocomplete
+     */
+    AutoCompleteField.prototype.resetField = function () {
+        this.resetSelectedValue();
+        this.resetSelectedText();
+        this.state.selectedIndex = -1;
+        return this;
+    };
+    /**
+     * Réinitialise la valeur de l'élément sélectionné contenu dans le champ caché
+     */
+    AutoCompleteField.prototype.resetSelectedValue = function () {
+        if (this.hiddenInput) {
+            this.hiddenInput.value = "";
+        }
+        this.autoCompleteState.choiceFocused = null;
+        this.state.selectedIndex = -1;
+    };
+    /**
+     * Réinitialise la valeur de l'élément sélectionné contenu dans le champ caché
+     */
+    AutoCompleteField.prototype.resetSelectedText = function () {
+        if (this.textInput) {
+            this.textInput.value = "";
+        }
+        if (this.refs.selector) {
+            this.refs.selector.setCurrentTypedText("");
+        }
+    };
+    /**
+     * Fonction appelée lors d'un appui de touche sur le champ de saisie libre
+     * @param e évènement
+     * @protected
+     */
+    AutoCompleteField.prototype.handleOnKeyDown = function (e) {
+        /* L'attribut DOM onKeyDown est éventuellement aussi renseigné sur le composant auto-complete */
+        if (this.state.onKeyDown) {
+            this.state.onKeyDown(event);
+        }
+        var key = e.keyCode;
+        var shouldShow = this.state.shouldShowChoices === true;
+        if (key == key_codes_1.KeyCodes.DOWN_ARROW) {
+            if (e.altKey) {
+                this.autoCompleteState.setFocusOn(this.state.selectedIndex, this.hiddenInput.value, null);
+                this.showChoices();
+            }
+            else {
+                this.navigateInChoices(1);
+                this.isUpdated = true;
+            }
+            e.preventDefault();
+        }
+        else if (key == key_codes_1.KeyCodes.UP_ARROW) {
+            if (e.altKey) {
+                this.hideChoices();
+            }
+            else {
+                this.navigateInChoices(-1);
+                this.isUpdated = true;
+            }
+            e.preventDefault();
+        }
+        else if (key == key_codes_1.KeyCodes.ESCAPE) {
+            //test si une valeur existait
+            if (this.hiddenInput.value) {
+                this.selectedChoice(this.hiddenInput.value);
+                this.selectCurrentIndex();
+            }
+            // On demande le masquage des choix
+            this.hideChoices();
+            e.preventDefault();
+        }
+        else if (key == key_codes_1.KeyCodes.ENTER) {
+            //valide un choix si on est sur un autocomplete simple et writable
+            //ne fait rien sinon (valide le formulaire)
+            if (this.state.shouldShowChoices && this.state.writable) {
+                e.preventDefault();
+                this.validateSelectedValue(shouldShow);
+            }
+        }
+        else if (key == key_codes_1.KeyCodes.SPACEBAR && !this.state.writable) {
+            //valide un choix si on est sur un autocomplete et non writable
+            if (this.state.shouldShowChoices) {
+                e.preventDefault();
+                this.validateSelectedValue(shouldShow);
+            }
+        }
+        else if (key == key_codes_1.KeyCodes.TAB && !e.shiftKey && this.state.shouldShowChoices) {
+            this.tabHandlerForValueChange(e, shouldShow);
+        }
+        else if (key == key_codes_1.KeyCodes.TAB && e.shiftKey) {
+            this.tabHandlerForValueChange(e, shouldShow);
+        }
+        else if (key == key_codes_1.KeyCodes.HOME) {
+            if (shouldShow) {
+                this.state.selectedIndex = null;
+                this.navigateInChoices(1);
+            }
+            else {
+                this.state.selectedIndex = 0;
+                this.selectCurrentIndex();
+                this.hideChoices();
+            }
+            this.isUpdated = true;
+            e.preventDefault();
+        }
+        else if (key == key_codes_1.KeyCodes.END) {
+            if (shouldShow) {
+                this.state.selectedIndex = null;
+                this.navigateInChoices(-1);
+            }
+            else {
+                this.state.selectedIndex = this.state.choices.length - 1;
+                this.selectCurrentIndex();
+                this.hideChoices();
+            }
+            this.isUpdated = true;
+            e.preventDefault();
+        }
+    };
+    /**
+     * gère la tabulation
+     * @param {__React.KeyboardEvent<HTMLElement>} e
+     * @param {boolean} shouldShow
+     * @param {boolean} preventDefault
+     */
+    AutoCompleteField.prototype.tabHandlerForValueChange = function (e, shouldShow) {
+        if (this.isUpdated) {
+            this.validateSelectedValue(shouldShow);
+            this.isUpdated = false;
+        }
+        else {
+            this.selectCurrentIndex();
+            this.hideChoices();
+        }
+    };
+    /**
+     * valide le choix sélectionné
+     * @param shouldShow indique si les résultats doivent être affichés
+     */
+    AutoCompleteField.prototype.validateSelectedValue = function (shouldShow) {
+        var _this = this;
+        if (shouldShow) {
+            // place le selectedIndex sur le choix
+            if (!this.state.selectedIndex) {
+                this.state.choices.map(function (element, index) {
+                    if (element.text == _this.getCurrentText()) {
+                        _this.state.selectedIndex = index;
+                    }
+                });
+            }
+            //choix sélectionné
+            var selection = (this.state.choices[this.state.selectedIndex] || this.state.allChoices[this.state.selectedIndex]);
+            if (selection != null) {
+                this.setCurrentValue(selection.value);
+                this.props.dataSource.select(selection);
+            }
+            else {
+                this.setCurrentValue(undefined);
+                this.props.dataSource.select(undefined);
+            }
+            this.selectCurrentIndex();
+            this.hideChoices();
+        }
+        else {
+            this.showChoices();
+        }
+    };
+    /**
+     * Gestion de l'évènement onFocus pour le champ de saisie libre.
+     * @param event
+     */
+    AutoCompleteField.prototype.handleOnFocus = function (event) {
+        var _this = this;
+        this.typedValueOnFocus = this.getCurrentText();
+        this.state.focused = true;
+        this.showChoices();
+        /* L'attribut DOM onBlur est éventuellement aussi renseigné sur le composant auto-complete */
+        if (this.state.onFocus) {
+            this.state.onFocus(event);
+        }
+        if (this.state.allChoices) {
+            if (this.isValidText(this.typedValueOnFocus) || !this.props.writable) {
+                logger.trace("auto-complete : prise en compte du texte présent au focus : ", this.typedValueOnFocus);
+                if (!this.props.dataSource.status) {
+                    this.props.dataSource.init();
+                }
+                else {
+                    if ((!this.props.writable) || this.state.choices.length == 0 && this.hiddenInput.value) {
+                        this.setChoices(this.state.allChoices, function () {
+                            if (_this.state.allChoices.length > 0) {
+                                var index = _.findIndex(_this.state.allChoices, { text: _this.typedValueOnFocus });
+                                _this.state.selectedIndex = index === undefined ? -1 : index;
+                                _this.showChoices();
+                                _this.changeSelectedChoiceWhenOneChoice(_this.typedValueOnFocus);
+                            }
+                        });
+                    }
+                }
+                //this._throttledTriggerAction(this.typedValueOnFocus);
+                this.changeSelectedChoiceWhenOneChoice(this.typedValueOnFocus);
+            }
+            else {
+                this.setChoices(this.state.allChoices, function () {
+                    if (_this.state.allChoices.length > 0) {
+                        _this.showChoices();
+                        _this.state.selectedIndex = -1;
+                        _this.autoCompleteState.setFocusOn(_this.state.selectedIndex, "", null);
+                    }
+                });
+            }
+        }
+        else {
+            this.showChoices();
+        }
+        if (!this.hiddenInput || this.hiddenInput.value.length == 0 || !this.textInput || this.textInput.value.length == 0) {
+            this.clearFilterData();
+            this.state.selectedIndex = -1;
+            this.autoCompleteState.setFocusOn(this.state.selectedIndex, "", null);
+        }
+        else {
+            this.state.selectedIndex = _.findIndex(this.state.allChoices, { text: this.typedValueOnFocus });
+            this.autoCompleteState.setFocusOn(this.state.selectedIndex, this.hiddenInput.value, null);
+        }
+    };
+    /**
+     * Fonction déclenchée lorsque le champ de saisie libre perd le focus
+     * @param event
+     */
+    AutoCompleteField.prototype.handleOnBlur = function (event) {
+        this.state.focused = false;
+        /* L'attribut DOM onBlur est éventuellement aussi renseigné sur ce composant auto-complete */
+        if (this.state.onBlur) {
+            this.state.onBlur(event);
+        }
+        var currentText = this.getCurrentText();
+        if (this.state.allChoices) {
+            this.state.allChoices.filter(function (choice) {
+                var res = false;
+                if (!choice.text) {
+                    res = choice.text.toLowerCase() === currentText.toLowerCase();
+                }
+                return res;
+            });
+        }
+        if (!this.hiddenInput || !this.hiddenInput.value || this.hiddenInput.value.length == 0) {
+            this.clearFilterData();
+            if (!this.state.isShiftTab)
+                this.props.dataSource.select(undefined);
+        }
+        else {
+            this.props.dataSource.select(_.find(this.state.allChoices, { value: this.hiddenInput.value }));
+        }
+        this.hideChoices();
+        this.isUpdated = false;
+    };
+    /**
+     * indique aux élément esclave qu'un filter a été fait sur le maitre si le datasource en est un
+     */
+    AutoCompleteField.prototype.clearFilterData = function () {
+        if (this.props.dataSource instanceof datasource_master_1.DataSourceMaster) {
+            this.props.dataSource.getSlaves().forEach(function (item) {
+                item.emit("filter", []);
+            });
+        }
+    };
+    /**
+     * Fonction déclenchée sur une modification du champ de saisie libre
+     * @param event
+     */
+    AutoCompleteField.prototype.handleChangeTextInput = function (event) {
+        var _this = this;
+        logger.trace("auto-complete handleChangeTextInput");
+        /* Le texte a changé donc on réinitialise la valeur */
+        this.resetSelectedValue();
+        this.state.selectedIndex = null;
+        /* L'attribut DOM onChange est éventuellement aussi renseigné sur le composant auto-complete */
+        if (this.state.onChange) {
+            this.state.onChange(event);
+        }
+        var newText = this.getCurrentText();
+        this.clearFilterData();
+        this.isUpdated = true;
+        if (this.refs.selector) {
+            this.refs.selector.setCurrentTypedText(newText);
+        }
+        if (this.isValidText(newText)) {
+            logger.trace("auto-complete : prise en compte du texte saisi : ", newText);
+            this._throttledTriggerAction(newText);
+        }
+        else {
+            this.hideChoices();
+        }
+        if (newText.length == 0) {
+            this.setChoices(this.state.allChoices, function () {
+                if (_this.state.allChoices.length > 0) {
+                    _this.showChoices();
+                }
+                else {
+                    _this.props.dataSource.select(null);
+                }
+            });
+        }
+    };
+    /**
+     * si il n'y a plus qu'un choix écrit dans sa totalité,
+     * valid ele choix
+     * @param {string} newText
+     */
+    AutoCompleteField.prototype.changeSelectedChoiceWhenOneChoice = function (newText) {
+        if (this.state.choices && this.state.choices[0] && this.state.choices.length === 1
+            && _.deburr(newText).toLowerCase() == _.deburr(this.state.choices[0].text).toLowerCase()) {
+            this.changeSelectedChoice(this.state.choices[0]);
+            this.props.dataSource.select(this.state.choices[0]);
+            this.autoCompleteState.setFocusOn(0, this.state.choices[0].value, 0);
+        }
+    };
+    /**
+     * change la valeur courrante
+     * @param value
+     * @returns {this}
+     */
+    AutoCompleteField.prototype.setCurrentValue = function (value) {
+        _super.prototype.setCurrentValue.call(this, value);
+        this.setState({ listDefaultValue: value });
+        return this;
+    };
+    /**
+     * Déclenche le chargement des éléments correspondant au texte saisi
+     * @param newText texte saisi
+     */
+    AutoCompleteField.prototype.triggerAction = function (newText) {
+        this.setIsApiLoading(true);
+        this.props.dataSource.fetch(true, newText, true);
+    };
+    /**
+     * Controle la longeur du text saisie avant de déclancher la recherche
+     * @param cnt : boolean
+     */
+    AutoCompleteField.prototype.isMaxElementNumberReached = function (cnt) {
+        return this.state.maxElements && cnt >= this.state.maxElements;
+    };
+    /**
+     * Charge la liste de choix dans le composant
+     */
+    AutoCompleteField.prototype.prepareChoices = function (display) {
+        var _this = this;
+        if (display === void 0) { display = true; }
+        var newChoices = [];
+        var cnt = 0;
+        if (this.state.choices) {
+            this.state.choices.map(function (choice) {
+                if (_this.findText(choice, _this.getCurrentText().toLowerCase()) && !_this.isMaxElementNumberReached(cnt)) {
+                    newChoices.push(choice);
+                    cnt++;
+                }
+            });
+        }
+        // mets a jour la liste des choix
+        this.setChoices(newChoices, function () {
+            if (newChoices.length > 0 && display) {
+                //si il n'y a plus qu'un choix on le valide
+                _this.changeSelectedChoiceWhenOneChoice(_this.getCurrentText());
+                _this.showChoices();
+            }
+            else {
+                _this.hiddenInput.value = "";
+                _this.props.dataSource.select(null);
+                _this.showChoices();
+            }
+        });
+    };
+    /**
+     * Fonction déclenchée une fois les éléments de choix obtenus par la fonction choicesLoader
+     * @param resultItems éléments obtenus. ceux-ci doivent contenir une propr
+     */
+    AutoCompleteField.prototype.choicesLoaderCallback = function (resultItems) {
+        this.setIsApiLoading(false);
+        this.setChoices(resultItems);
+    };
+    /**
+     * test si le choix choice commence par current
+     * @param choice
+     * @param current
+     * @returns {boolean}
+     */
+    AutoCompleteField.prototype.startsWithText = function (choice, current) {
+        var choiceText = choice ? choice["text"] ? choice["text"].toLowerCase() : null : null;
+        return _.startsWith(choiceText, current);
+    };
+    /**
+     * teste si le texte current est contenu dans le choix choice
+     * @param choice
+     * @param current
+     * @returns {boolean}
+     */
+    AutoCompleteField.prototype.indexOfText = function (choice, current) {
+        var choiceText = choice ? choice["text"] ? choice["text"].toLowerCase() : null : null;
+        if (choiceText && (choiceText.indexOf(current) >= 0)) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * indique si le texte current se trouve dans le choix
+     * @param choice
+     * @param current
+     * @returns {boolean}
+     */
+    AutoCompleteField.prototype.findText = function (choice, current) {
+        if (typeof this.props.filterText == "function") {
+            return this.props.filterText(choice, current);
+        }
+        else if (this.props.filterText == FilterTextType.beginWith) {
+            return this.startsWithText(choice, current);
+        }
+        else if (this.props.filterText == FilterTextType.indexOf) {
+            return this.indexOfText(choice, current);
+        }
+        return false;
+    };
+    /**
+     * Fonction appelée lorsque l'utilisateur a choisi un élément de la liste de choix.
+     * @param choice élément sélectionné
+     */
+    AutoCompleteField.prototype.changeSelectedChoice = function (choice) {
+        if (this.refs.selector) {
+            this.refs.selector.setCurrentTypedText("");
+        }
+        this.textInput.value = choice ? choice.text : "";
+        this.hiddenInput.value = choice ? choice.value : "";
+    };
+    /**
+     * Recupere l'index de l'element selectionné
+     * @param choice
+     */
+    AutoCompleteField.prototype.selectedChoice = function (choice) {
+        var indexSelected = null;
+        if (this.state.choices) {
+            this.state.choices.map(function (item, index) {
+                if (item.value == choice) {
+                    indexSelected = index;
+                }
+            });
+            this.setCurrentValue(choice);
+        }
+    };
+    /**
+     * Fonction appelée lorsque l'utilisateur clique sur un item de la liste des valeurs possibles
+     * @param event
+     */
+    AutoCompleteField.prototype.onListWidgetSelected = function (event, choice) {
+        if (choice) {
+            logger.trace("Selection click [", choice.value, "]:", choice.text);
+            var index = _.findIndex(this.state.choices, choice);
+            this.state.selectedIndex = index;
+            this.autoCompleteState.choiceFocused = index;
+            this.changeSelectedChoice(choice);
+            this.hiddenInput.value = choice.value;
+            this.selectedChoice(choice.value);
+            this.props.dataSource.select(choice);
+        }
+        this.state.onListWidgetSelected = true;
+        this.hideChoices();
+    };
+    /**
+     * Retourne true si le texte indiqué correspond aux critères de taille minimale
+     * @param text
+     * @returns {boolean}
+     * @protected
+     */
+    AutoCompleteField.prototype.isValidText = function (text) {
+        return (text != null && text.length >= this.state.minValueLength);
+    };
+    /**
+     * Navigue au sein de la liste de choix
+     * @param delta {number} indique de combien d'éléments on doit se déplacer par rapport à l'élément actuellement sélectionné
+     * @protected
+     */
+    AutoCompleteField.prototype.navigateInChoices = function (delta) {
+        var _this = this;
+        var newIndex = this.state.selectedIndex === null ? (delta === 1 ? 0 : delta) : this.state.selectedIndex + delta;
+        var choicesLength = this.state.choices ? this.state.choices.length : 0;
+        if (newIndex < 0) {
+            //On va à la fin
+            newIndex = choicesLength - 1;
+        }
+        else if (newIndex >= choicesLength) {
+            //On retourne au début
+            newIndex = 0;
+        }
+        // on valide le choix sur lequel on est
+        this.setState({ selectedIndex: newIndex }, function () {
+            _this.selectCurrentIndex();
+            if (!_this.state.shouldShowChoices) {
+                var selection = (_this.state.choices[_this.state.selectedIndex]);
+                if (selection != null) {
+                    _this.changeSelectedChoice(selection);
+                    _this.setCurrentValue(selection.value);
+                }
+            }
+            _this.autoCompleteState.setFocusOn(_this.state.selectedIndex, _this.hiddenInput.value, newIndex);
+        });
+        // On s'assure de l'affichage de la liste déroulante
+        if (this.state.shouldShowChoices) {
+            this.showChoices();
+        }
+    };
+    /**
+     * Selectionne l'élement actuellement en surbrillance dans la liste de choix
+     * @return boolean si une sélection a effectivement eu lieu
+     * @protected
+     */
+    AutoCompleteField.prototype.selectCurrentIndex = function () {
+        var selection = (this.state.choices || [])[this.state.selectedIndex];
+        if (selection != null) {
+            this.changeSelectedChoice(selection);
+            return true;
+        }
+        return false;
+    };
+    /**
+     * Demande l'affichage du composant de choix
+     * @public
+     */
+    AutoCompleteField.prototype.showChoices = function () {
+        if (this.state.shouldShowChoices !== true && this.state.focused) {
+            if (this.isValidText(this.textInput.value) || this.textInput.value.length == 0 || !this.props.writable) {
+                this.setState({ shouldShowChoices: true });
+            }
+        }
+    };
+    /**
+     * Demande le masquage du composant de choix
+     * @public
+     */
+    AutoCompleteField.prototype.hideChoices = function () {
+        if (this.state.shouldShowChoices !== false) {
+            this.setState({ shouldShowChoices: false });
+        }
+    };
+    /**
+     * @return {boolean} true si le composant de liste doit s'afficher
+     * @protected
+     */
+    AutoCompleteField.prototype.shouldShowChoices = function () {
+        return this.state.shouldShowChoices === true;
+    };
+    /**
+     * @return {string} le nom du champ caché contenant la valeur
+     */
+    AutoCompleteField.prototype.getValueFieldName = function () {
+        return this.state.name + "." + this.state.valueKey;
+    };
+    /**
+     * @return {string} le nom du champ de saisie libre
+     */
+    AutoCompleteField.prototype.getFreeTypingFieldName = function () {
+        return this.state.name + "." + this.state.labelKey;
+    };
+    /**
+     * Surcharge le rendu des erreurs de validation : le nom du champ à mettre en évidence est le champ de saisie libre
+     * @override
+     */
+    AutoCompleteField.prototype.renderErrors = function () {
+        var fieldErrorProps = {
+            errors: this.state.errors,
+            fieldName: this.getFreeTypingFieldName()
+        };
+        var basicFieldErrorProps = {
+            errors: this.state.errors,
+            fieldName: this.state.name
+        };
+        var Error = this.state.errorComponent;
+        return (React.createElement("div", null,
+            React.createElement(Error, tslib_1.__assign({}, fieldErrorProps)),
+            React.createElement(Error, tslib_1.__assign({}, basicFieldErrorProps))));
+    };
+    /**
+     * On enregistre également le champ contenant la valeur dans la classe parente DomAdapter, ce qui fait les liens
+     entre le formulaire, le champ HTML et le composant React.
+     * @param hiddenInput
+     */
+    AutoCompleteField.prototype.registerHiddenInput = function (hiddenInput) {
+        this.hiddenInput = hiddenInput;
+        this.registerHtmlElement(hiddenInput);
+    };
+    /**
+     *  Conserve la valeur du champs saisie
+     * @param textInput
+     */
+    AutoCompleteField.prototype.registerTextInput = function (textInput) {
+        this.textInput = textInput;
+    };
+    /** on mets le focus sur l'input */
+    AutoCompleteField.prototype.setFocus = function () {
+        this.state.focused = true;
+        this.textInput.focus();
+        return this;
+    };
+    /**
+     * teste si le composant a des erreurs
+     * @override
+     */
+    AutoCompleteField.prototype.hasErrors = function () {
+        var fieldErrors = null;
+        if (this.state.errors) {
+            fieldErrors = this.state.errors.filter(function (error) {
+                var name = this.state.name + "." + this.state.labelKey;
+                return (error.field == name || error.field == this.state.name);
+            }, this);
+        }
+        if (fieldErrors && (fieldErrors.length > 0)) {
+            return true;
+        }
+        return false;
+    };
+    AutoCompleteField.defaultProps = _.assign({
+        minValueLength: 1,
+        readOnly: false,
+        disabled: false,
+        delay: 1000,
+        valueKey: "value",
+        labelKey: "text",
+        maxHeight: null,
+        writable: true,
+        filterText: FilterTextType.indexOf
+    }, abstract_field_1.AbstractField.defaultProps);
+    return AutoCompleteField;
+}(abstract_field_datasource_1.AbstractFieldDatasource));
+exports.AutoCompleteField = AutoCompleteField;
+
+
+
+/***/ }),
+
+/***/ 358:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var abstract_field_1 = __webpack_require__(311);
+var _ = __webpack_require__(6);
+var classNames = __webpack_require__(9);
+var key_codes_1 = __webpack_require__(10);
+/**
+ * Champ de formulaire Hornet de type Checkbox
+ */
+var CheckBoxField = /** @class */ (function (_super) {
+    tslib_1.__extends(CheckBoxField, _super);
+    function CheckBoxField(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        if (props.readOnly) {
+            // permet de désactiver le click lorsqu'uniquement readOnly par défaut
+            _this.copyInitialPropsToState({ readOnly: true, disabled: true }, _this.state);
+        }
+        if (!_this.props.labelOnOff) {
+            _this.state.labelOnOff = {
+                "on": _this.i18n("form.checkbox.booleanOui"),
+                "off": _this.i18n("form.checkbox.booleanNon")
+            };
+        }
+        return _this;
+    }
+    /**
+     * Génère le rendu spécifique du champ
+     * @returns {any}
+     * @override
+     */
+    CheckBoxField.prototype.renderWidget = function () {
+        var cx = classNames(this.state.groupClass, "checkbox-container", {
+            "inline": this.state.inline == abstract_field_1.InlineStyle.ALL || this.state.inline == abstract_field_1.InlineStyle.FIELD,
+            "readonly": this.state.readOnly
+        });
+        var htmlProps = this.getHtmlProps();
+        if (this.state.currentChecked != null) {
+            _.assign(htmlProps, { "defaultChecked": this.state.currentChecked });
+        }
+        if (this.state.readOnly && !this.state.disabled) {
+            htmlProps.disabled = true;
+        }
+        var element;
+        if (this.state.readOnly) {
+            delete htmlProps["onChange"];
+        }
+        if (this.state.switch) {
+            element = this.renderSwitch(htmlProps);
+        }
+        else {
+            element = this.renderCheckbox(htmlProps);
+        }
+        return (React.createElement("div", { className: cx }, element));
+    };
+    /**
+     * Génère le rendu du champ en mode switch
+     * @returns {any}
+     */
+    CheckBoxField.prototype.renderSwitch = function (htmlProps) {
+        var _this = this;
+        var labelOn = this.state.labelOnOff.on;
+        var labelOff = this.state.labelOnOff.off;
+        return (React.createElement("div", { className: "switch-content" },
+            React.createElement("label", { className: "switch", onKeyDown: this.handleKeyDown },
+                React.createElement("input", tslib_1.__assign({ ref: function (elt) { return _this.registerHtmlElement(elt); }, type: "checkbox", className: "switch-input" }, htmlProps, { value: "true" })),
+                React.createElement("span", { "data-off": labelOff, "data-on": labelOn, className: "switch-label" }),
+                React.createElement("span", { className: "switch-handle" }))));
+    };
+    /**
+     * Génère le rendu du champ en mode checkbox
+     * @returns {any}
+     */
+    CheckBoxField.prototype.renderCheckbox = function (htmlProps) {
+        var _this = this;
+        var classNamesSpan = {
+            check: true,
+            readonly: this.state.readOnly
+        };
+        return (React.createElement("div", { className: "checkbox-container" },
+            React.createElement("label", { className: "checkbox-content", onKeyDown: this.handleKeyDown },
+                React.createElement("input", tslib_1.__assign({ ref: function (elt) { return _this.registerHtmlElement(elt); }, type: "checkbox" }, htmlProps, { value: "true" })),
+                React.createElement("span", { className: "checkbox-material" },
+                    React.createElement("span", { className: classNames(classNamesSpan) })))));
+    };
+    /**
+     * prise en compte de la navigation clavier pour les touches entrée et espace
+     * @param e
+     */
+    CheckBoxField.prototype.handleKeyDown = function (e) {
+        if (e.keyCode == key_codes_1.KeyCodes.ENTER) {
+            this.setCurrentChecked(!this.getCurrentValue());
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    };
+    CheckBoxField.defaultProps = _.assign(abstract_field_1.AbstractField.defaultProps, {
+        switch: false
+    });
+    return CheckBoxField;
+}(abstract_field_1.AbstractField));
+exports.CheckBoxField = CheckBoxField;
+
+
+
+/***/ }),
+
+/***/ 361:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var hornet_component_1 = __webpack_require__(3);
+var _ = __webpack_require__(6);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.form");
+/**
+ * Composant permettant de rendre un formulaire Hornet de manière standardisée
+ */
+var AbstractForm = /** @class */ (function (_super) {
+    tslib_1.__extends(AbstractForm, _super);
+    function AbstractForm(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    AbstractForm.prototype.setReadOnly = function (value, callback) {
+        this.setState({ readOnly: value }, callback);
+        /* Propage la propriété à tous les champs du groupe */
+        this.updateReadOnlyFields(value);
+        return this;
+    };
+    AbstractForm.prototype.setDisabled = function (value, callback) {
+        this.setState({ disabled: value }, callback);
+        /* Propage la propriété à tous les champs du groupe */
+        this.updateDisabledFields(value);
+        return this;
+    };
+    AbstractForm.prototype.componentDidMount = function () {
+        _super.prototype.componentDidMount.call(this);
+        this.propagateParentState();
+    };
+    AbstractForm.prototype.registerForm = function (formInstance) {
+        this.formElement = formInstance;
+        if (this.formElement) {
+            this.formElement["__component"] = this;
+        }
+    };
+    AbstractForm.prototype.registerFieldSet = function (fieldSetInstance) {
+        this.fieldSetElement = fieldSetInstance;
+        if (this.fieldSetElement) {
+            this.fieldSetElement["__component"] = this;
+        }
+    };
+    /**
+     * Met à jour la propriété readOnly sur chacun des champs enfants
+     * @param isReadOnly valeur à assigner à la propriété 'readOnly'
+     * @return cet objet
+     */
+    AbstractForm.prototype.updateReadOnlyFields = function (isReadOnly) {
+        var fields = this.extractFields();
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            if (field.props && field.props.writable && !isReadOnly) {
+                if (field.setState && (field && field.mounted)) {
+                    field.setState({ readOnly: isReadOnly });
+                }
+                else {
+                    field.setReadOnly(isReadOnly);
+                }
+            }
+            else if (field.getAttribute("data-writable") !== "false") {
+                field.setReadOnly(isReadOnly);
+            }
+            else {
+                field.setReadOnly(true);
+            }
+            return true;
+        });
+        return this;
+    };
+    /**
+     * Met à jour la propriété disabled sur chacun des champs enfants
+     * @param isDisabled valeur à assigner à la propriété 'disabled'
+     * @return cet objet
+     */
+    AbstractForm.prototype.updateDisabledFields = function (isDisabled) {
+        var fields = this.extractFields();
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            // if (field instanceof AbstractField) {
+            if (field.setState && (field && field.mounted)) {
+                field.setState({ disabled: isDisabled });
+            }
+            else {
+                field.setDisabled(isDisabled);
+            }
+            // }
+            return true;
+        });
+        return this;
+    };
+    /**
+     * Propage les propriétés devant être transmises aux champs enfants
+     */
+    AbstractForm.prototype.propagateParentState = function () {
+        var fields = this.extractFields();
+        Object.keys(fields).every(function (key) {
+            var field = fields[key];
+            if (this.state.readOnly == true) {
+                field.setReadOnly(this.state.readOnly);
+            }
+            if (this.state.disabled == true) {
+                field.setDisabled(this.state.disabled);
+            }
+            return true;
+        }, this);
+    };
+    /**
+     * Extrait les données du formulaire
+     * @param removeEmptyStrings indique si les champs ayant pour valeur une chaîne de caractères vide ne doivent pas
+     * être présents dans l'objet résultat.
+     * @returns {Object}
+     */
+    AbstractForm.prototype.extractData = function (removeEmptyStrings) {
+        if (removeEmptyStrings === void 0) { removeEmptyStrings = true; }
+        var data = {};
+        var fields = this.extractFields();
+        for (var name_1 in fields) {
+            var value = fields[name_1].getCurrentValue();
+            if (value != "" || !removeEmptyStrings) {
+                _.set(data, name_1, value);
+            }
+            else {
+                /* Le champ est vide : si son nom correspond à une arborescence d'objets, on s'assure tout de même
+                que l'objet parent existe */
+                var lastDotIndex = name_1.lastIndexOf(".");
+                if (lastDotIndex > 0) {
+                    var parentPath = name_1.substring(0, lastDotIndex);
+                    if (_.get(data, parentPath) == null) {
+                        _.set(data, parentPath, {});
+                    }
+                }
+            }
+        }
+        return data;
+    };
+    /** Valeur de propriétés par défaut */
+    AbstractForm.defaultProps = {
+        readOnly: false,
+        disabled: false
+    };
+    return AbstractForm;
+}(hornet_component_1.HornetComponent));
+exports.AbstractForm = AbstractForm;
+
+
+
+/***/ }),
+
+/***/ 362:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var _ = __webpack_require__(6);
+var abstract_field_1 = __webpack_require__(311);
+var key_codes_1 = __webpack_require__(10);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.upload-file-field");
+/**
+ * Composant champ de formulaire de type envoi de fichier
+ */
+var UploadFileField = /** @class */ (function (_super) {
+    tslib_1.__extends(UploadFileField, _super);
+    function UploadFileField(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.state.readOnlyFile = _this.state.defaultFile;
+        if (!_this.state.buttonLabel) {
+            _this.state.buttonLabel = _this.state.name;
+        }
+        _this.state.activeButtonLabel = _this.state.buttonLabel;
+        return _this;
+    }
+    UploadFileField.prototype.setReadOnlyFile = function (readOnlyFile, callback) {
+        this.setState({ readOnlyFile: readOnlyFile }, callback);
+        return this;
+    };
+    /**
+     * Gestion du changement de fichier sélectionné
+     * @param e évènement
+     */
+    UploadFileField.prototype.handleChange = function (e) {
+        var input = e.target;
+        if (input.files && input.files.length > 0) {
+            this.setState({ activeButtonLabel: this.i18n(this.state.i18nLabelKey, { "count": input.files.length }) });
+        }
+        else {
+            this.setState({ activeButtonLabel: this.i18n(this.state.i18nLabelKey, { "count": 0 }) });
+        }
+        /* Déclenchement de la fonction onChange éventuellement passée en propriété */
+        if (this.state.onChange) {
+            this.state.onChange(e);
+        }
+    };
+    /**
+     * @returns {any} les propriétés du fichier en consultation converties en attributs html data
+     */
+    UploadFileField.prototype.getDataFileProps = function () {
+        var dataProps = {};
+        if (this.state.defaultFile) {
+            dataProps["data-file-id"] = this.state.defaultFile.id;
+            dataProps["data-file-originalname"] = this.state.defaultFile.originalname;
+            dataProps["data-file-name"] = this.state.defaultFile.name;
+            dataProps["data-file-mime-type"] = this.state.defaultFile.mimeType;
+            dataProps["data-file-encoding"] = this.state.defaultFile.encoding;
+            dataProps["data-file-size"] = this.state.defaultFile.size;
+        }
+        return dataProps;
+    };
+    /**
+     * @override
+     */
+    UploadFileField.prototype.setCurrentValue = function (formData) {
+        //let value:any = _.get(formData, this.state.name);
+        if (!formData) {
+            this.handleDelete();
+        }
+        this.setState({
+            readOnlyFile: formData,
+            defaultFile: formData
+        });
+        return this;
+    };
+    UploadFileField.prototype.registerUploadFieldElement = function (elt) {
+        this.registerHtmlElement(elt);
+        this.inputFileElement = elt;
+    };
+    /**
+     * Génère le rendu spécifique du champ
+     * @returns {any}
+     */
+    UploadFileField.prototype.renderWidget = function () {
+        var _this = this;
+        logger.info("Rendu composant UploadFileField");
+        var preview = "";
+        if (this.props.renderPreviewFile) {
+            preview = this.props.renderPreviewFile(this.state.readOnlyFile);
+        }
+        /* On n'inclut pas les propriétés spécifiques ou celles dont on surcharge la valeur */
+        var htmlProps = _.omit(this.getHtmlProps(), ["defaultFile", "type", "onChange"]);
+        _.assign(htmlProps, { "className": htmlProps["className"] ? htmlProps["className"] + " uploadfile" : " uploadfile" });
+        _.assign(htmlProps, { "data-multiple-caption": this.state.fileSelectedLabel });
+        var cssDelete = (this.props.classNameDelete) ? "hornet-button hornet-button-right upload-delete-button " + this.props.classNameDelete : "hornet-button hornet-button-right upload-delete-button";
+        /* On ne peut assigner programmatiquement la valeur d'un champ de type fichier (problème de sécurité potentiel)
+         * on utilise donc ici les attributs data-* pour stocker les propriétés de l'éventuel fichier déjà sélectionné.
+         * Celles-ci seront ensuite récupérées lors de l'envoi du formulaire, si un autre fichier n'a pas été sélectionné.*/
+        var dataProps = this.getDataFileProps();
+        var inputFile = React.createElement("input", tslib_1.__assign({ ref: function (elt) {
+                _this.registerUploadFieldElement(elt);
+            }, type: "file", onChange: this.handleChange }, dataProps, htmlProps));
+        var labelProps = {
+            htmlFor: htmlProps["id"],
+            readOnly: htmlProps["readOnly"],
+            className: "upload-content"
+        };
+        var aProps = {
+            href: "#",
+            onClick: this.downloadButtonActionHandler,
+            onKeyDown: this.downloadButtonKeyDownHandler,
+            disabled: htmlProps["readOnly"],
+            "aria-haspopup": true
+        };
+        return (React.createElement("div", { className: "upload-container" },
+            inputFile,
+            React.createElement("label", tslib_1.__assign({}, labelProps),
+                React.createElement("a", tslib_1.__assign({}, aProps),
+                    React.createElement("span", { className: "upload-text" }, this.state.activeButtonLabel))),
+            (this.htmlElement) && this.htmlElement.files.length ?
+                React.createElement("button", { type: "button", className: cssDelete, onClick: this.handleDelete, "aria-label": this.i18n("uploadFile.labelSupprimer"), disabled: this.state.readOnly }, "X")
+                : "",
+            preview));
+    };
+    /* suppression du fichier sélectionné  dans le champs input */
+    UploadFileField.prototype.handleDelete = function () {
+        this.htmlElement.value = "";
+        this.setState({ defaultFile: null, activeButtonLabel: this.i18n(this.state.i18nLabelKey, { "count": 0 }) });
+    };
+    /**
+     * Déclenchement d'un click sur l'input file afin d'ouvrir la boite de dialogue
+     * d'upload de fichier
+     */
+    UploadFileField.prototype.downloadButtonActionHandler = function () {
+        this.inputFileElement.click();
+    };
+    /**
+     * Appel au gestionnaire d'action pour l'ouverture de la boite de dialogue
+     * uniquement sur presse des touches entrée et espace
+     * @param e
+     */
+    UploadFileField.prototype.downloadButtonKeyDownHandler = function (e) {
+        if (!(e.ctrlKey || e.shiftKey || e.altKey || e.metaKey)) {
+            var keyCode = e.keyCode;
+            if (keyCode == key_codes_1.KeyCodes.ENTER || keyCode == key_codes_1.KeyCodes.SPACEBAR) {
+                this.downloadButtonActionHandler();
+            }
+        }
+    };
+    UploadFileField.defaultProps = _.assign(abstract_field_1.AbstractField.defaultProps, {
+        fileSelectedLabel: UploadFileField.getI18n("uploadFile.selectedFile", { "count": 0 }),
+        i18nLabelKey: "uploadFile.selectedFile"
+    });
+    return UploadFileField;
+}(abstract_field_1.AbstractField));
+exports.UploadFileField = UploadFileField;
+
+
+
+/***/ }),
+
+/***/ 363:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var classNames = __webpack_require__(9);
+var _ = __webpack_require__(6);
+var hornet_component_1 = __webpack_require__(3);
+var checkbox_1 = __webpack_require__(319);
+var auto_complete_state_1 = __webpack_require__(334);
+var React = __webpack_require__(2);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.form.auto-complete-selector");
+/**
+ * Liste de choix de l'auto completion
+ */
+var AutoCompleteSelector = /** @class */ (function (_super) {
+    tslib_1.__extends(AutoCompleteSelector, _super);
+    function AutoCompleteSelector(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.noResultLabelDefault = AutoCompleteSelector.getI18n("form.autoCompleteField.noResultLabel");
+        _this.state.maxLengthItem = 0;
+        _this.props.autoCompleteState.on(auto_complete_state_1.AutoCompleteState.FOCUS_CHANGE_EVENT, _this.handleFocus);
+        _this.liElts = [];
+        _this.liReact = [];
+        _this.choicesSelected = [];
+        return _this;
+    }
+    AutoCompleteSelector.prototype.shouldComponentUpdate = function (nextProps, nextState, nextContext) {
+        _super.prototype.componentWillUpdate.call(this, nextProps, nextState, nextContext);
+        return true;
+    };
+    // Setters
+    AutoCompleteSelector.prototype.setChoices = function (value, callback) {
+        this.setState({ choices: value }, callback);
+        return this;
+    };
+    AutoCompleteSelector.prototype.setOnOptionSelected = function (value, callback) {
+        this.setState({ onOptionSelected: value }, callback);
+        return this;
+    };
+    AutoCompleteSelector.prototype.setCurrentTypedText = function (currentTypedText, callback) {
+        this.setState({ currentTypedText: currentTypedText }, callback);
+        return this;
+    };
+    AutoCompleteSelector.prototype.setCurrentIndex = function (value, callback) {
+        this.setState({ currentIndex: value }, callback);
+        return this;
+    };
+    AutoCompleteSelector.prototype.setSelectorId = function (value, callback) {
+        this.setState({ selectorId: value }, callback);
+        return this;
+    };
+    AutoCompleteSelector.prototype.setShowComponent = function (value, callback) {
+        this.setState({ showComponent: value }, callback);
+        return this;
+    };
+    /**
+     * Fonction appelée lors du click sur un élément de la liste
+     **/
+    AutoCompleteSelector.prototype.onListClick = function (event, choice) {
+        event.preventDefault();
+        this.state.onListClick = true;
+        return this.state.onOptionSelected(event, choice);
+    };
+    AutoCompleteSelector.prototype.onListClickMulti = function (event, index, choice) {
+        event.stopPropagation();
+        event.preventDefault();
+        if (event.button == 0) {
+            this.state.onListClick = true;
+            return this.state.onOptionSelected(event, choice);
+        }
+    };
+    /**
+     * Fonction appelée pour scroller de un item vers le bas
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.scrollDown = function (element, checkedElement) {
+        element.scrollTop += ((checkedElement.offsetTop + checkedElement.offsetHeight) - ((element.scrollTop ? element.scrollTop : 5) + element.offsetHeight)) + 5;
+    };
+    /**
+     * Fonction appelée pour scroller de un item vers le haut
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.scrollUp = function (element, checkedElement) {
+        element.scrollTop -= (((element.scrollTop ? element.scrollTop : 5) - checkedElement.offsetTop + 5));
+    };
+    /**
+     * Fonction appelée pour scroller au début de la liste
+     * @param {HTMLElement} element la liste déroulante
+     **/
+    AutoCompleteSelector.prototype.scrollToBegin = function (element) {
+        element.scrollTop = 0;
+    };
+    /**
+     * Fonction appelée pour scroller à la toute fin de la liste
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.scrollToEnd = function (element, checkedElement) {
+        element.scrollTop = element.offsetHeight - checkedElement.offsetHeight;
+    };
+    /**
+     * Fonction appelée tester si la position de l'élément est en amont dans la liste
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.isBefore = function (element, checkedElement) {
+        return (checkedElement.offsetTop < (element.scrollTop ? element.scrollTop : 5));
+    };
+    /**
+     * Fonction appelée tester si la position de l'élément est en aval dans la liste
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.isAfter = function (element, checkedElement) {
+        return (checkedElement.offsetTop + checkedElement.offsetHeight >= (element.scrollTop ? element.scrollTop : 5) + element.offsetHeight);
+    };
+    /**
+     * Fonction appelée la taille  de l'écart
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.hasBigGap = function (element, checkedElement) {
+        return Math.abs(checkedElement.offsetTop - (element.scrollTop ? element.scrollTop : 5)) > element.offsetHeight;
+    };
+    /**
+     * Fonction appelée pour position la liste directement sur l'élément
+     * @param {HTMLElement} element la liste déroulante
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.goToElement = function (element, checkedElement) {
+        element.scrollTop = checkedElement.offsetTop - 5;
+    };
+    /**
+     * Fonction appelée pour scroller vers un élément
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.scrollToElement = function (checkedElement) {
+        var element = document.getElementById(this.state.selectorId);
+        if (this.isBefore(element, checkedElement)) {
+            if (this.hasBigGap(element, checkedElement)) {
+                this.goToElement(element, checkedElement);
+            }
+            else {
+                this.scrollUp(element, checkedElement);
+            }
+        }
+        else if (this.isAfter(element, checkedElement)) {
+            if (this.hasBigGap(element, checkedElement)) {
+                this.goToElement(element, checkedElement);
+            }
+            else {
+                this.scrollDown(element, checkedElement);
+            }
+        }
+        this.setActive(checkedElement);
+    };
+    /**
+     * Fonction appelée pour déselectionner
+     **/
+    AutoCompleteSelector.prototype.cleanActived = function () {
+        var lastCheckedElement = document.querySelectorAll("#" + _.replace(this.state.selectorId, ".", "\\.") + " .autocomplete-item-active");
+        if (lastCheckedElement) {
+            _.forEach(lastCheckedElement, function (item) {
+                item.className = "autocomplete-item";
+            });
+        }
+    };
+    /**
+     * Fonction appelée pour activer un item
+     * @param {HTMLElement} checkedElement l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.setActive = function (checkedElement) {
+        this.cleanActived();
+        if (checkedElement) {
+            checkedElement.focus();
+            checkedElement.className = "autocomplete-item autocomplete-item-active";
+        }
+    };
+    /**
+     * Fonction appelée pour scroller vers un élément par son id
+     * @param {string} id l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.scrollToElementById = function (id) {
+        var checkedElement = document.getElementById(id);
+        this.scrollToElement(checkedElement);
+    };
+    /**
+     * Lorsque l'element selectionné change, on scroll vers celui-ci
+     */
+    AutoCompleteSelector.prototype.componentDidUpdate = function () {
+        this.cleanActived();
+        var element = document.getElementById(this.state.selectorId);
+        if (!this.state.onListClick) {
+            if (this.state.autoCompleteState.choiceFocused !== undefined) {
+                var idToScroll = this.state.selectorId + "_" + this.state.autoCompleteState.choiceFocused;
+                var checkedElement = document.getElementById(idToScroll);
+                this.setActive(checkedElement);
+                if (checkedElement) {
+                    checkedElement.className = "autocomplete-item autocomplete-item-active";
+                    this.scrollToElement(checkedElement);
+                }
+            }
+            else {
+                element.scrollTop = 5;
+            }
+        }
+        this.state.onListClick = false;
+    };
+    /**
+     * Retourne le rendu de la liste de choix
+     **/
+    AutoCompleteSelector.prototype.renderOptionList = function () {
+        var _this = this;
+        logger.trace("render AutoCompleteSelector option list");
+        var res = [];
+        if (this.state.choices) {
+            this.state.choices.forEach(function (choice, indexTab) {
+                if (choice) {
+                    var choiceTextFormatted = _.deburr(choice.text).toLowerCase();
+                    var currentTextFormatted = _.deburr(_this.state.currentTypedText).toLowerCase();
+                    var index = choiceTextFormatted.indexOf(currentTextFormatted);
+                    if (index === -1) {
+                        if (currentTextFormatted != "") {
+                            return null;
+                        }
+                        else {
+                            index = 0;
+                        } // Valeur saisie non présente
+                    }
+                    var classes = {
+                        "autocomplete-item": true,
+                    };
+                    var classList = classNames(classes);
+                    var checkboxChecked = false;
+                    res.push((React.createElement("li", { onMouseDown: !_this.props.readOnly && !_this.props.disabled ? function (event) { return _this.onListClick(event, choice); } : null, id: _this.state.selectorId + "_" + indexTab, className: classList, "aria-selected": _this.state.choicesSelected == choice.value, "data-real-value": choice.value, role: "option", key: "autocomplete-" + choice.text + "-" + choice.value, ref: function (liElt) {
+                            if (liElt != null)
+                                _this.liElts.push(liElt);
+                        } },
+                        choice.text ? choice.text.substring(0, index) : "",
+                        React.createElement("b", null, _this.state.currentTypedText),
+                        choice.text ? choice.text.substring(index + _this.state.currentTypedText.length) : "")));
+                }
+            });
+        }
+        return res;
+    };
+    /**
+     * indique un clic sur une checkbox
+     **/
+    AutoCompleteSelector.prototype.multiClick = function (event) {
+        this.state.onListClick = true;
+    };
+    /**
+     * Retourne le rendu de la liste de choix
+     **/
+    AutoCompleteSelector.prototype.renderOptionMultipleList = function () {
+        var _this = this;
+        logger.trace("render AutoCompleteSelector option multiple");
+        var res = [];
+        if (this.state.choices) {
+            this.state.choices.forEach(function (choice, indexTab) {
+                if (choice) {
+                    var choiceTextFormatted = _.deburr(choice.text).toLowerCase();
+                    var currentTextFormatted = _.deburr(_this.state.currentTypedText).toLowerCase();
+                    var index = choiceTextFormatted.indexOf(currentTextFormatted);
+                    if (index === -1)
+                        return null; // Valeur saisie non présente
+                    var classes = {
+                        "autocomplete-item": true,
+                        "autocomplete-item-active": _this.props.autoCompleteState.choiceFocused === indexTab
+                    };
+                    var checkboxChecked = false;
+                    if (_.indexOf(_this.props.choicesSelected, choice.value.toString()) > -1) {
+                        checkboxChecked = true;
+                    }
+                    var classList = classNames(classes);
+                    res.push((React.createElement("li", { onMouseDown: !_this.props.readOnly && !_this.props.disabled ? function (e) { _this.onListClickMulti(e, indexTab, choice); } : null, id: _this.state.selectorId + "_" + indexTab, onKeyDown: !_this.props.readOnly && !_this.props.disabled ? function (e) {
+                            _this.onListClickMulti(e, indexTab, choice);
+                        } : null, className: classList, "data-real-value": choice.value, role: "option", "aria-selected": checkboxChecked, key: "autocomplete-" + choice.text + "-" + choice.value, ref: function (liElt) {
+                            if (liElt != null)
+                                _this.liElts.push(liElt);
+                        } },
+                        React.createElement(checkbox_1.CheckBox, { id: "autocomplete-selector-checkbox-" + indexTab, key: "autocomplete-selector-checkbox-" + indexTab + "-" + checkboxChecked, checked: checkboxChecked, label: choice.text, onChange: function () { }, readOnly: _this.props.readOnly, disabled: _this.props.disabled }))));
+                }
+            });
+        }
+        return res;
+    };
+    /**
+     * @inheritDoc
+     */
+    AutoCompleteSelector.prototype.render = function () {
+        logger.trace("render AutoCompleteSelector");
+        this.liElts = [];
+        this.liReact = (this.props.isMultiple) ? this.renderOptionMultipleList() : this.renderOptionList();
+        // On construit le ul englobant
+        var classes = {
+            "autocomplete-selector": true,
+            "widget-positioned": true,
+            "autocomplete-selector-hidden": this.state.showComponent === false
+        };
+        var classList = classNames(classes);
+        var styleUl = {
+            "minWidth": "100%",
+            "maxHeight": this.props.maxHeight ? this.props.maxHeight + "px" : "none"
+        };
+        if (this.props.maxHeight) {
+            styleUl.overflow = "auto";
+        }
+        var classesContent = {
+            "autocomplete-content-selector": true
+        };
+        var no_result = (React.createElement("div", { style: { fontStyle: "italic" } }, this.state.noResultLabel ? this.state.noResultLabel : this.noResultLabelDefault));
+        var classContentList = classNames(classesContent);
+        return (React.createElement("div", { className: classList },
+            React.createElement("div", { className: classContentList },
+                React.createElement("ul", { className: "autocomplete-selector-list", role: "listbox", id: this.state.selectorId, style: styleUl, "aria-multiselectable": this.props.isMultiple }, this.liReact.length > 0 ? this.liReact : no_result))));
+    };
+    /**
+     * Fonction appelée pour scroller vers un élément
+     * @param {number} oldChoiceFocused l'ancien indice de l'élément sélectionné
+     * @param {number} newChoiceFocused l'indice de l'élément sélectionné
+     * @param {string} value l'élément sélectionné
+     * @param {number} index l'élément sélectionné
+     **/
+    AutoCompleteSelector.prototype.handleFocus = function (oldChoiceFocused, newChoiceFocused, value, index) {
+        if (value && value.length > 0) {
+            var elmt = document.querySelector("#" + _.replace(this.state.selectorId, ".", "\\.") + " [data-real-value='" + value + "']");
+            if (elmt) {
+                this.scrollToElement(elmt);
+                var _index = _.findIndex(this.liElts, elmt);
+                this.state.autoCompleteState.choiceFocused = _index;
+                this.setFocusElement(elmt);
+            }
+        }
+        else {
+            if (newChoiceFocused !== undefined && newChoiceFocused != null && newChoiceFocused >= 0 && this.liElts.length > 0) {
+                var elmt = this.liElts[newChoiceFocused];
+                if (elmt && this.props.isMultiple) {
+                    this.setFocusElement(elmt);
+                }
+                else {
+                    if (elmt && (elmt.getAttribute("data-real-value") === value)) {
+                        this.setFocusElement(elmt);
+                    }
+                }
+            }
+            else {
+                this.scrollToBegin(document.getElementById(this.state.selectorId));
+            }
+        }
+    };
+    /**
+     * Fonction appelée pour focus un item
+     * @param {HTMLElement} elmt l'élément sélectionné à focus
+     **/
+    AutoCompleteSelector.prototype.setFocusElement = function (elmt) {
+        this.scrollToElement(elmt);
+    };
+    AutoCompleteSelector.defaultProps = {
+        onOptionSelected: function (event, choice) {
+            event.preventDefault();
+        },
+        currentTypedText: "",
+        showComponent: true,
+        choices: [],
+        readOnly: false,
+        disabled: false
+    };
+    return AutoCompleteSelector;
+}(hornet_component_1.HornetComponent));
+exports.AutoCompleteSelector = AutoCompleteSelector;
+
+
+
+/***/ }),
+
+/***/ 364:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var datasource_1 = __webpack_require__(321);
+var _ = __webpack_require__(6);
+/*
+* @classdesc Classe représentant les datasources de type MASTER-SLAVE
+* @class
+*/
+var DataSourceMaster = /** @class */ (function (_super) {
+    tslib_1.__extends(DataSourceMaster, _super);
+    function DataSourceMaster(config, keysMap, options) {
+        var _this = _super.call(this, config, keysMap, options) || this;
+        _this.keysMap = keysMap;
+        _this.options = options;
+        _this._datasources = [];
+        return _this;
+    }
+    /***
+     * Ajout d'un datasource slave
+     * @param datasource esclave du master
+     * @return une promise du result modifié
+     */
+    DataSourceMaster.prototype.addSlave = function (datasource) {
+        this._datasources.push(datasource);
+    };
+    /***
+     * retirer un datasource slave
+     * @param datasource esclave du master
+     */
+    DataSourceMaster.prototype.removeDatasource = function (datasource) {
+        _.remove(this._datasources, datasource);
+    };
+    /***
+     * Retourne les datasources slaves du master
+     * @return slaves
+     */
+    DataSourceMaster.prototype.getSlaves = function () {
+        return this._datasources;
+    };
+    /***
+     * Permet de selectionner un element ou des elements du datasource et de déclencher le fetch sur les slaves.
+     * déclenche un evènement "select", si le datasource est de type Service un event fetch est lancé lorsque les données arrivées
+     * @param args correspond aux éléments à envoyer au fetch des datasources esclaves.
+     * @void
+     */
+    DataSourceMaster.prototype.select = function (args) {
+        _super.prototype.select.call(this, args);
+        if (this._datasources.length > 0) {
+            var isArrayDS_1 = this.isDataSourceArray;
+            _.map(this._datasources, function (item) {
+                item.fetch(isArrayDS_1 ? false : true, args);
+            });
+        }
+    };
+    return DataSourceMaster;
+}(datasource_1.DataSource));
+exports.DataSourceMaster = DataSourceMaster;
+
+
+
+/***/ }),
+
+/***/ 365:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var spinner_component_1 = __webpack_require__(126);
+var logger = hornet_js_utils_1.Utils.getLogger("hornet-js-react-components.widget.spinner.spinner-component-input");
+/**
+ * Composant affichant une image sur un champ type field
+ */
+var SpinnerComponentInput = /** @class */ (function (_super) {
+    tslib_1.__extends(SpinnerComponentInput, _super);
+    function SpinnerComponentInput(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    /**
+     * @inheritDoc
+     */
+    SpinnerComponentInput.prototype.render = function () {
+        return (React.createElement("div", { style: { "visibility": this.state.isVisible ? "visible" : "hidden" }, className: "component-spinner spinner-input spinner-loading" }));
+    };
+    return SpinnerComponentInput;
+}(spinner_component_1.SpinnerComponent));
+exports.SpinnerComponentInput = SpinnerComponentInput;
+
+
+
+/***/ }),
+
+/***/ 366:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var abstract_field_datasource_1 = __webpack_require__(333);
+var _ = __webpack_require__(6);
+var object_utils_1 = __webpack_require__(124);
+/**
+ * Composant liste déroulante
+ */
+var SelectField = /** @class */ (function (_super) {
+    tslib_1.__extends(SelectField, _super);
+    function SelectField(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        if (_this.state.dataSource && _this.state.data) {
+            throw new Error("Le SelectField " + _this.state.name + " possède une props dataSource et une props data");
+        }
+        return _this;
+    }
+    /**
+     * Génère le rendu spécifique du champ : une liste déroulante dont les éléments correspondent au tableau dataSource
+     * @returns {any}
+     */
+    SelectField.prototype.renderWidget = function () {
+        var _this = this;
+        var hasError = this.hasErrors() ? " has-error" : "";
+        var htmlProps = this.getHtmlProps();
+        _.assign(htmlProps, { "className": htmlProps["className"] ? htmlProps["className"] + " selectfield" + hasError : " selectfield" + hasError, value: this.state.currentValue });
+        var hasData = this.state.data && this.state.data.length > 0;
+        var hasDataSource = this.state.dataSource && this.state.dataSource.results && this.state.dataSource.results.length > 0;
+        if (this.state.currentValue == undefined) {
+            if (hasDataSource && this.state.items && Array.isArray(this.state.items)) {
+                htmlProps.value = this.state.items[0][this.state.valueKey];
+            }
+            else if (hasData) {
+                htmlProps.value = this.state.data[0][this.state.valueKey];
+            }
+        }
+        return (React.createElement("select", tslib_1.__assign({ onChange: function (e) { _this.handleChange(e); }, ref: function (elt) { return _this.registerHtmlElement(elt); } }, htmlProps),
+            hasDataSource ? this.renderOptionsDataSource() : null,
+            hasData ? this.state.data.map(this.renderOption) : null));
+    };
+    // Setters
+    SelectField.prototype.setData = function (data, cb) {
+        this.setState({ data: data }, cb);
+        return this;
+    };
+    SelectField.prototype.setValueKey = function (key, cb) {
+        this.setState({ valueKey: key }, cb);
+        return this;
+    };
+    SelectField.prototype.setLabelKey = function (key, cb) {
+        this.setState({ labelKey: key }, cb);
+        return this;
+    };
+    /**
+     * Override
+     * @param state
+     */
+    SelectField.prototype.processHtmlProps = function (state) {
+        _super.prototype.processHtmlProps.call(this, state);
+        if (state.readOnly === true) {
+            state.disabled = true;
+        }
+    };
+    /**
+     * Génère le rendu du selectField à partir d'un dataSource
+     * @returns {any}
+     */
+    SelectField.prototype.renderOptionsDataSource = function () {
+        if (this.state.items && this.state.items.length > 0) {
+            return this.state.items.map(this.renderOption);
+        }
+    };
+    /**
+     * Génère le rendu d'un radio bouton et son libellé
+     * @param choice choix sélectionnable
+     * @returns {any}
+     */
+    SelectField.prototype.renderOption = function (choice) {
+        var _value = object_utils_1.ObjectUtils.getSubObject(choice, this.state.valueKey);
+        var _label = object_utils_1.ObjectUtils.getSubObject(choice, this.state.labelKey);
+        var value = (_value != null && _value.toString) ? _value.toString() : "";
+        var label = (_label != null && _label.toString) ? _label.toString() : value;
+        var optionsProps = {
+            key: this.state.name + "-" + label + "-" + value,
+            value: value
+        };
+        return React.createElement("option", tslib_1.__assign({}, optionsProps), label);
+    };
+    /**
+     *
+     * @param value
+     */
+    SelectField.prototype.selectItemByValue = function (value) {
+        var hasDataSource = this.state.dataSource && this.state.dataSource.results && this.state.dataSource.results.length > 0;
+        if (hasDataSource) {
+            for (var index = 0; index < this.state.dataSource.results.length; index++) {
+                var element = this.state.dataSource.results[index];
+                if (element[this.state.valueKey] == value) {
+                    this.state.dataSource.select(element);
+                    break;
+                }
+            }
+        }
+    };
+    /**
+     * @override
+     */
+    SelectField.prototype.setCurrentValue = function (value) {
+        _super.prototype.setCurrentValue.call(this, value);
+        this.selectItemByValue(value);
+        return this;
+    };
+    /**
+     * @override
+     */
+    SelectField.prototype.handleChange = function (e) {
+        this.setCurrentValue(e.target.value);
+    };
+    SelectField.defaultProps = _.assign(_.cloneDeep(abstract_field_datasource_1.AbstractFieldDatasource.defaultProps), {
+        labelClass: "blocLabelUp",
+        valueKey: "value",
+        labelKey: "label"
+    });
+    return SelectField;
+}(abstract_field_datasource_1.AbstractFieldDatasource));
+exports.SelectField = SelectField;
+
+
+
+/***/ }),
+
+/***/ 375:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/***
+ * @classdesc Classe configuration pour les datasources de type Services
+ * @class
+ */
+var DataSourceConfig = /** @class */ (function () {
+    function DataSourceConfig(scope, methodName, fetchAttrName) {
+        this.scope = scope;
+        this.methodName = methodName;
+        this.fetchAttrName = fetchAttrName;
+    }
+    return DataSourceConfig;
+}());
+exports.DataSourceConfig = DataSourceConfig;
+
+
+
+/***/ }),
+
+/***/ 376:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * hornet-js-core - Ensemble des composants qui forment le coeur de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var Ajv = __webpack_require__(377);
+;
+;
+/**
+ * Contient tous les éléments nécessaires à une validation de données
+ */
+var DataValidator = /** @class */ (function () {
+    function DataValidator(schema, customValidators, options) {
+        if (options === void 0) { options = DataValidator.DEFAULT_VALIDATION_OPTIONS; }
+        this.schema = schema;
+        this.customValidators = customValidators;
+        this.options = options;
+    }
+    /**
+     * Exécute la validation
+     * @param data données à valider
+     * @return {IValidationResult} résultat de la validation
+     */
+    DataValidator.prototype.validate = function (data) {
+        var result = {
+            valid: true,
+            errors: []
+        };
+        if (this.schema) {
+            var ajvInstance = Ajv(this.options);
+            __webpack_require__(410)(ajvInstance);
+            result.valid = ajvInstance.validate(this.schema, data);
+            result.errors = ajvInstance.errors || [];
+        }
+        /* Prise en compte des valideurs customisés éventuels */
+        if (this.customValidators) {
+            for (var index in this.customValidators) {
+                if (this.customValidators[index] && (typeof this.customValidators[index] != "function")) {
+                    var customResult = this.customValidators[index].validate(data);
+                    if (!customResult.valid && customResult.errors) {
+                        result.errors = result.errors.concat(customResult.errors);
+                    }
+                    result.valid = result.valid && customResult.valid;
+                }
+            }
+        }
+        if (result.errors && Array.isArray(result.errors)) {
+            for (var index in result.errors) {
+                result.errors[index].dataPath = result.errors[index].dataPath.replace("'][", ".").replace("['", "").replace("]", "");
+            }
+        }
+        return result;
+    };
+    /**
+     * Transforme le schéma de validation indiqué en un schéma JSON-Schema valide. Dans le schéma passé en paramètre,
+     * le mot clé "required" peut-être spécifié par champ de type string.
+     * En sortie les noms champs obligatoires sont regroupés dans un tableau, conformément à la spécification JSON-Schema
+     * et le mot-clé "minLength" est utilisé pour les champs obligatoires.
+     * Exemple :
+     * {
+     *  "$schema": "http://json-schema.org/schema#",
+     *  "type": "object",
+     *  "properties": {
+     *      "champ1": {"type": "string", "required": true},
+     *      "champ2": {"type": "number"}
+     *  }
+     * }
+     *
+     * devient :
+     * {
+     *  "$schema": "http://json-schema.org/schema#",
+     *  "type": "object",
+     *  "properties": {
+     *      "champ1": {"type": "string", "minLength": 1},
+     *      "champ2": {"type": "number"}
+     *  },
+     *  "required": ["champ1"]
+     * }
+     *
+     * @param hornetSchema schéma de validation
+     * @return un schéma json-schema valide
+     */
+    DataValidator.transformRequiredStrings = function (hornetSchema) {
+        var resultSchema;
+        if (hornetSchema) {
+            resultSchema = _.cloneDeep(hornetSchema);
+            resultSchema.required = resultSchema.required || [];
+            // TODO à appliquer récursivement, chaque champ pouvant lui même être un objet
+            for (var fn in resultSchema.properties) {
+                var field = resultSchema.properties[fn];
+                if (field.required === true && field.type == "string") {
+                    field.minLength = 1;
+                    if (resultSchema.required.indexOf(fn) == -1) {
+                        resultSchema.required.push(fn);
+                    }
+                    delete field.required;
+                }
+            }
+            /* Aucune propriété n'est requise : on supprime dans ce cas la propriété required pour être compatible avec ajv */
+            if (resultSchema.required.length == 0) {
+                delete resultSchema.required;
+            }
+        }
+        return resultSchema;
+    };
+    /**
+     * Options de validation ajv par défaut, utilisables côté client et serveur (les dates sont supposées être des
+     * chaînes de caractères au format ISO 8601)
+     */
+    DataValidator.DEFAULT_VALIDATION_OPTIONS = {
+        /* Activation des mots clé json-schema v5 (https://github.com/json-schema/json-schema/wiki/v5-Proposals) */
+        v5: true,
+        /* Valide tous les champs : ne s'arrête pas à la première erreur */
+        allErrors: true,
+        /* Convertit les chaînes de caractères vers le type indiqué dans le schéma de validation */
+        coerceTypes: true,
+        /* Prend en compte les valeurs par défaut éventuellement présentes dans le schéma */
+        useDefaults: true,
+        /* Mode de validation complet : impacte les formats date, time, date-time, uri, email, et hostname.
+        En mode 'full', les champs de format "email' sont validés en appliquant la RFC 5322. */
+        format: "full"
+    };
+    return DataValidator;
+}());
+exports.DataValidator = DataValidator;
+
+
+
+/***/ }),
+
+/***/ 377:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var compileSchema = __webpack_require__(378)
+  , resolve = __webpack_require__(322)
+  , Cache = __webpack_require__(381)
+  , SchemaObject = __webpack_require__(335)
+  , stableStringify = __webpack_require__(336)
+  , formats = __webpack_require__(382)
+  , rules = __webpack_require__(383)
+  , $dataMetaSchema = __webpack_require__(404)
+  , util = __webpack_require__(312);
+
+module.exports = Ajv;
+
+Ajv.prototype.validate = validate;
+Ajv.prototype.compile = compile;
+Ajv.prototype.addSchema = addSchema;
+Ajv.prototype.addMetaSchema = addMetaSchema;
+Ajv.prototype.validateSchema = validateSchema;
+Ajv.prototype.getSchema = getSchema;
+Ajv.prototype.removeSchema = removeSchema;
+Ajv.prototype.addFormat = addFormat;
+Ajv.prototype.errorsText = errorsText;
+
+Ajv.prototype._addSchema = _addSchema;
+Ajv.prototype._compile = _compile;
+
+Ajv.prototype.compileAsync = __webpack_require__(405);
+var customKeyword = __webpack_require__(406);
+Ajv.prototype.addKeyword = customKeyword.add;
+Ajv.prototype.getKeyword = customKeyword.get;
+Ajv.prototype.removeKeyword = customKeyword.remove;
+
+var errorClasses = __webpack_require__(324);
+Ajv.ValidationError = errorClasses.Validation;
+Ajv.MissingRefError = errorClasses.MissingRef;
+Ajv.$dataMetaSchema = $dataMetaSchema;
+
+var META_SCHEMA_ID = 'http://json-schema.org/draft-07/schema';
+
+var META_IGNORE_OPTIONS = [ 'removeAdditional', 'useDefaults', 'coerceTypes' ];
+var META_SUPPORT_DATA = ['/properties'];
+
+/**
+ * Creates validator instance.
+ * Usage: `Ajv(opts)`
+ * @param {Object} opts optional options
+ * @return {Object} ajv instance
+ */
+function Ajv(opts) {
+  if (!(this instanceof Ajv)) return new Ajv(opts);
+  opts = this._opts = util.copy(opts) || {};
+  setLogger(this);
+  this._schemas = {};
+  this._refs = {};
+  this._fragments = {};
+  this._formats = formats(opts.format);
+  var schemaUriFormat = this._schemaUriFormat = this._formats['uri-reference'];
+  this._schemaUriFormatFunc = function (str) { return schemaUriFormat.test(str); };
+
+  this._cache = opts.cache || new Cache;
+  this._loadingSchemas = {};
+  this._compilations = [];
+  this.RULES = rules();
+  this._getId = chooseGetId(opts);
+
+  opts.loopRequired = opts.loopRequired || Infinity;
+  if (opts.errorDataPath == 'property') opts._errorDataPathProperty = true;
+  if (opts.serialize === undefined) opts.serialize = stableStringify;
+  this._metaOpts = getMetaSchemaOptions(this);
+
+  if (opts.formats) addInitialFormats(this);
+  addDraft6MetaSchema(this);
+  if (typeof opts.meta == 'object') this.addMetaSchema(opts.meta);
+  addInitialSchemas(this);
+}
+
+
+
+/**
+ * Validate data using schema
+ * Schema will be compiled and cached (using serialized JSON as key. [fast-json-stable-stringify](https://github.com/epoberezkin/fast-json-stable-stringify) is used to serialize.
+ * @this   Ajv
+ * @param  {String|Object} schemaKeyRef key, ref or schema object
+ * @param  {Any} data to be validated
+ * @return {Boolean} validation result. Errors from the last validation will be available in `ajv.errors` (and also in compiled schema: `schema.errors`).
+ */
+function validate(schemaKeyRef, data) {
+  var v;
+  if (typeof schemaKeyRef == 'string') {
+    v = this.getSchema(schemaKeyRef);
+    if (!v) throw new Error('no schema with key or ref "' + schemaKeyRef + '"');
+  } else {
+    var schemaObj = this._addSchema(schemaKeyRef);
+    v = schemaObj.validate || this._compile(schemaObj);
+  }
+
+  var valid = v(data);
+  if (v.$async !== true) this.errors = v.errors;
+  return valid;
+}
+
+
+/**
+ * Create validating function for passed schema.
+ * @this   Ajv
+ * @param  {Object} schema schema object
+ * @param  {Boolean} _meta true if schema is a meta-schema. Used internally to compile meta schemas of custom keywords.
+ * @return {Function} validating function
+ */
+function compile(schema, _meta) {
+  var schemaObj = this._addSchema(schema, undefined, _meta);
+  return schemaObj.validate || this._compile(schemaObj);
+}
+
+
+/**
+ * Adds schema to the instance.
+ * @this   Ajv
+ * @param {Object|Array} schema schema or array of schemas. If array is passed, `key` and other parameters will be ignored.
+ * @param {String} key Optional schema key. Can be passed to `validate` method instead of schema object or id/ref. One schema per instance can have empty `id` and `key`.
+ * @param {Boolean} _skipValidation true to skip schema validation. Used internally, option validateSchema should be used instead.
+ * @param {Boolean} _meta true if schema is a meta-schema. Used internally, addMetaSchema should be used instead.
+ * @return {Ajv} this for method chaining
+ */
+function addSchema(schema, key, _skipValidation, _meta) {
+  if (Array.isArray(schema)){
+    for (var i=0; i<schema.length; i++) this.addSchema(schema[i], undefined, _skipValidation, _meta);
+    return this;
+  }
+  var id = this._getId(schema);
+  if (id !== undefined && typeof id != 'string')
+    throw new Error('schema id must be string');
+  key = resolve.normalizeId(key || id);
+  checkUnique(this, key);
+  this._schemas[key] = this._addSchema(schema, _skipValidation, _meta, true);
+  return this;
+}
+
+
+/**
+ * Add schema that will be used to validate other schemas
+ * options in META_IGNORE_OPTIONS are alway set to false
+ * @this   Ajv
+ * @param {Object} schema schema object
+ * @param {String} key optional schema key
+ * @param {Boolean} skipValidation true to skip schema validation, can be used to override validateSchema option for meta-schema
+ * @return {Ajv} this for method chaining
+ */
+function addMetaSchema(schema, key, skipValidation) {
+  this.addSchema(schema, key, skipValidation, true);
+  return this;
+}
+
+
+/**
+ * Validate schema
+ * @this   Ajv
+ * @param {Object} schema schema to validate
+ * @param {Boolean} throwOrLogError pass true to throw (or log) an error if invalid
+ * @return {Boolean} true if schema is valid
+ */
+function validateSchema(schema, throwOrLogError) {
+  var $schema = schema.$schema;
+  if ($schema !== undefined && typeof $schema != 'string')
+    throw new Error('$schema must be a string');
+  $schema = $schema || this._opts.defaultMeta || defaultMeta(this);
+  if (!$schema) {
+    this.logger.warn('meta-schema not available');
+    this.errors = null;
+    return true;
+  }
+  var currentUriFormat = this._formats.uri;
+  this._formats.uri = typeof currentUriFormat == 'function'
+                      ? this._schemaUriFormatFunc
+                      : this._schemaUriFormat;
+  var valid;
+  try { valid = this.validate($schema, schema); }
+  finally { this._formats.uri = currentUriFormat; }
+  if (!valid && throwOrLogError) {
+    var message = 'schema is invalid: ' + this.errorsText();
+    if (this._opts.validateSchema == 'log') this.logger.error(message);
+    else throw new Error(message);
+  }
+  return valid;
+}
+
+
+function defaultMeta(self) {
+  var meta = self._opts.meta;
+  self._opts.defaultMeta = typeof meta == 'object'
+                            ? self._getId(meta) || meta
+                            : self.getSchema(META_SCHEMA_ID)
+                              ? META_SCHEMA_ID
+                              : undefined;
+  return self._opts.defaultMeta;
+}
+
+
+/**
+ * Get compiled schema from the instance by `key` or `ref`.
+ * @this   Ajv
+ * @param  {String} keyRef `key` that was passed to `addSchema` or full schema reference (`schema.id` or resolved id).
+ * @return {Function} schema validating function (with property `schema`).
+ */
+function getSchema(keyRef) {
+  var schemaObj = _getSchemaObj(this, keyRef);
+  switch (typeof schemaObj) {
+    case 'object': return schemaObj.validate || this._compile(schemaObj);
+    case 'string': return this.getSchema(schemaObj);
+    case 'undefined': return _getSchemaFragment(this, keyRef);
+  }
+}
+
+
+function _getSchemaFragment(self, ref) {
+  var res = resolve.schema.call(self, { schema: {} }, ref);
+  if (res) {
+    var schema = res.schema
+      , root = res.root
+      , baseId = res.baseId;
+    var v = compileSchema.call(self, schema, root, undefined, baseId);
+    self._fragments[ref] = new SchemaObject({
+      ref: ref,
+      fragment: true,
+      schema: schema,
+      root: root,
+      baseId: baseId,
+      validate: v
+    });
+    return v;
+  }
+}
+
+
+function _getSchemaObj(self, keyRef) {
+  keyRef = resolve.normalizeId(keyRef);
+  return self._schemas[keyRef] || self._refs[keyRef] || self._fragments[keyRef];
+}
+
+
+/**
+ * Remove cached schema(s).
+ * If no parameter is passed all schemas but meta-schemas are removed.
+ * If RegExp is passed all schemas with key/id matching pattern but meta-schemas are removed.
+ * Even if schema is referenced by other schemas it still can be removed as other schemas have local references.
+ * @this   Ajv
+ * @param  {String|Object|RegExp} schemaKeyRef key, ref, pattern to match key/ref or schema object
+ * @return {Ajv} this for method chaining
+ */
+function removeSchema(schemaKeyRef) {
+  if (schemaKeyRef instanceof RegExp) {
+    _removeAllSchemas(this, this._schemas, schemaKeyRef);
+    _removeAllSchemas(this, this._refs, schemaKeyRef);
+    return this;
+  }
+  switch (typeof schemaKeyRef) {
+    case 'undefined':
+      _removeAllSchemas(this, this._schemas);
+      _removeAllSchemas(this, this._refs);
+      this._cache.clear();
+      return this;
+    case 'string':
+      var schemaObj = _getSchemaObj(this, schemaKeyRef);
+      if (schemaObj) this._cache.del(schemaObj.cacheKey);
+      delete this._schemas[schemaKeyRef];
+      delete this._refs[schemaKeyRef];
+      return this;
+    case 'object':
+      var serialize = this._opts.serialize;
+      var cacheKey = serialize ? serialize(schemaKeyRef) : schemaKeyRef;
+      this._cache.del(cacheKey);
+      var id = this._getId(schemaKeyRef);
+      if (id) {
+        id = resolve.normalizeId(id);
+        delete this._schemas[id];
+        delete this._refs[id];
+      }
+  }
+  return this;
+}
+
+
+function _removeAllSchemas(self, schemas, regex) {
+  for (var keyRef in schemas) {
+    var schemaObj = schemas[keyRef];
+    if (!schemaObj.meta && (!regex || regex.test(keyRef))) {
+      self._cache.del(schemaObj.cacheKey);
+      delete schemas[keyRef];
+    }
+  }
+}
+
+
+/* @this   Ajv */
+function _addSchema(schema, skipValidation, meta, shouldAddSchema) {
+  if (typeof schema != 'object' && typeof schema != 'boolean')
+    throw new Error('schema should be object or boolean');
+  var serialize = this._opts.serialize;
+  var cacheKey = serialize ? serialize(schema) : schema;
+  var cached = this._cache.get(cacheKey);
+  if (cached) return cached;
+
+  shouldAddSchema = shouldAddSchema || this._opts.addUsedSchema !== false;
+
+  var id = resolve.normalizeId(this._getId(schema));
+  if (id && shouldAddSchema) checkUnique(this, id);
+
+  var willValidate = this._opts.validateSchema !== false && !skipValidation;
+  var recursiveMeta;
+  if (willValidate && !(recursiveMeta = id && id == resolve.normalizeId(schema.$schema)))
+    this.validateSchema(schema, true);
+
+  var localRefs = resolve.ids.call(this, schema);
+
+  var schemaObj = new SchemaObject({
+    id: id,
+    schema: schema,
+    localRefs: localRefs,
+    cacheKey: cacheKey,
+    meta: meta
+  });
+
+  if (id[0] != '#' && shouldAddSchema) this._refs[id] = schemaObj;
+  this._cache.put(cacheKey, schemaObj);
+
+  if (willValidate && recursiveMeta) this.validateSchema(schema, true);
+
+  return schemaObj;
+}
+
+
+/* @this   Ajv */
+function _compile(schemaObj, root) {
+  if (schemaObj.compiling) {
+    schemaObj.validate = callValidate;
+    callValidate.schema = schemaObj.schema;
+    callValidate.errors = null;
+    callValidate.root = root ? root : callValidate;
+    if (schemaObj.schema.$async === true)
+      callValidate.$async = true;
+    return callValidate;
+  }
+  schemaObj.compiling = true;
+
+  var currentOpts;
+  if (schemaObj.meta) {
+    currentOpts = this._opts;
+    this._opts = this._metaOpts;
+  }
+
+  var v;
+  try { v = compileSchema.call(this, schemaObj.schema, root, schemaObj.localRefs); }
+  finally {
+    schemaObj.compiling = false;
+    if (schemaObj.meta) this._opts = currentOpts;
+  }
+
+  schemaObj.validate = v;
+  schemaObj.refs = v.refs;
+  schemaObj.refVal = v.refVal;
+  schemaObj.root = v.root;
+  return v;
+
+
+  function callValidate() {
+    var _validate = schemaObj.validate;
+    var result = _validate.apply(null, arguments);
+    callValidate.errors = _validate.errors;
+    return result;
+  }
+}
+
+
+function chooseGetId(opts) {
+  switch (opts.schemaId) {
+    case 'auto': return _get$IdOrId;
+    case 'id': return _getId;
+    default: return _get$Id;
+  }
+}
+
+/* @this   Ajv */
+function _getId(schema) {
+  if (schema.$id) this.logger.warn('schema $id ignored', schema.$id);
+  return schema.id;
+}
+
+/* @this   Ajv */
+function _get$Id(schema) {
+  if (schema.id) this.logger.warn('schema id ignored', schema.id);
+  return schema.$id;
+}
+
+
+function _get$IdOrId(schema) {
+  if (schema.$id && schema.id && schema.$id != schema.id)
+    throw new Error('schema $id is different from id');
+  return schema.$id || schema.id;
+}
+
+
+/**
+ * Convert array of error message objects to string
+ * @this   Ajv
+ * @param  {Array<Object>} errors optional array of validation errors, if not passed errors from the instance are used.
+ * @param  {Object} options optional options with properties `separator` and `dataVar`.
+ * @return {String} human readable string with all errors descriptions
+ */
+function errorsText(errors, options) {
+  errors = errors || this.errors;
+  if (!errors) return 'No errors';
+  options = options || {};
+  var separator = options.separator === undefined ? ', ' : options.separator;
+  var dataVar = options.dataVar === undefined ? 'data' : options.dataVar;
+
+  var text = '';
+  for (var i=0; i<errors.length; i++) {
+    var e = errors[i];
+    if (e) text += dataVar + e.dataPath + ' ' + e.message + separator;
+  }
+  return text.slice(0, -separator.length);
+}
+
+
+/**
+ * Add custom format
+ * @this   Ajv
+ * @param {String} name format name
+ * @param {String|RegExp|Function} format string is converted to RegExp; function should return boolean (true when valid)
+ * @return {Ajv} this for method chaining
+ */
+function addFormat(name, format) {
+  if (typeof format == 'string') format = new RegExp(format);
+  this._formats[name] = format;
+  return this;
+}
+
+
+function addDraft6MetaSchema(self) {
+  var $dataSchema;
+  if (self._opts.$data) {
+    $dataSchema = __webpack_require__(408);
+    self.addMetaSchema($dataSchema, $dataSchema.$id, true);
+  }
+  if (self._opts.meta === false) return;
+  var metaSchema = __webpack_require__(409);
+  if (self._opts.$data) metaSchema = $dataMetaSchema(metaSchema, META_SUPPORT_DATA);
+  self.addMetaSchema(metaSchema, META_SCHEMA_ID, true);
+  self._refs['http://json-schema.org/schema'] = META_SCHEMA_ID;
+}
+
+
+function addInitialSchemas(self) {
+  var optsSchemas = self._opts.schemas;
+  if (!optsSchemas) return;
+  if (Array.isArray(optsSchemas)) self.addSchema(optsSchemas);
+  else for (var key in optsSchemas) self.addSchema(optsSchemas[key], key);
+}
+
+
+function addInitialFormats(self) {
+  for (var name in self._opts.formats) {
+    var format = self._opts.formats[name];
+    self.addFormat(name, format);
+  }
+}
+
+
+function checkUnique(self, id) {
+  if (self._schemas[id] || self._refs[id])
+    throw new Error('schema with key or id "' + id + '" already exists');
+}
+
+
+function getMetaSchemaOptions(self) {
+  var metaOpts = util.copy(self._opts);
+  for (var i=0; i<META_IGNORE_OPTIONS.length; i++)
+    delete metaOpts[META_IGNORE_OPTIONS[i]];
+  return metaOpts;
+}
+
+
+function setLogger(self) {
+  var logger = self._opts.logger;
+  if (logger === false) {
+    self.logger = {log: noop, warn: noop, error: noop};
+  } else {
+    if (logger === undefined) logger = console;
+    if (!(typeof logger == 'object' && logger.log && logger.warn && logger.error))
+      throw new Error('logger must implement log, warn and error methods');
+    self.logger = logger;
+  }
+}
+
+
+function noop() {}
+
+
+/***/ }),
+
+/***/ 378:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var resolve = __webpack_require__(322)
+  , util = __webpack_require__(312)
+  , errorClasses = __webpack_require__(324)
+  , stableStringify = __webpack_require__(336);
+
+var validateGenerator = __webpack_require__(337);
+
+/**
+ * Functions below are used inside compiled validations function
+ */
+
+var ucs2length = util.ucs2length;
+var equal = __webpack_require__(323);
+
+// this error is thrown by async schemas to return validation errors via exception
+var ValidationError = errorClasses.Validation;
+
+module.exports = compile;
+
+
+/**
+ * Compiles schema to validation function
+ * @this   Ajv
+ * @param  {Object} schema schema object
+ * @param  {Object} root object with information about the root schema for this schema
+ * @param  {Object} localRefs the hash of local references inside the schema (created by resolve.id), used for inline resolution
+ * @param  {String} baseId base ID for IDs in the schema
+ * @return {Function} validation function
+ */
+function compile(schema, root, localRefs, baseId) {
+  /* jshint validthis: true, evil: true */
+  /* eslint no-shadow: 0 */
+  var self = this
+    , opts = this._opts
+    , refVal = [ undefined ]
+    , refs = {}
+    , patterns = []
+    , patternsHash = {}
+    , defaults = []
+    , defaultsHash = {}
+    , customRules = [];
+
+  root = root || { schema: schema, refVal: refVal, refs: refs };
+
+  var c = checkCompiling.call(this, schema, root, baseId);
+  var compilation = this._compilations[c.index];
+  if (c.compiling) return (compilation.callValidate = callValidate);
+
+  var formats = this._formats;
+  var RULES = this.RULES;
+
+  try {
+    var v = localCompile(schema, root, localRefs, baseId);
+    compilation.validate = v;
+    var cv = compilation.callValidate;
+    if (cv) {
+      cv.schema = v.schema;
+      cv.errors = null;
+      cv.refs = v.refs;
+      cv.refVal = v.refVal;
+      cv.root = v.root;
+      cv.$async = v.$async;
+      if (opts.sourceCode) cv.source = v.source;
+    }
+    return v;
+  } finally {
+    endCompiling.call(this, schema, root, baseId);
+  }
+
+  function callValidate() {
+    var validate = compilation.validate;
+    var result = validate.apply(null, arguments);
+    callValidate.errors = validate.errors;
+    return result;
+  }
+
+  function localCompile(_schema, _root, localRefs, baseId) {
+    var isRoot = !_root || (_root && _root.schema == _schema);
+    if (_root.schema != root.schema)
+      return compile.call(self, _schema, _root, localRefs, baseId);
+
+    var $async = _schema.$async === true;
+
+    var sourceCode = validateGenerator({
+      isTop: true,
+      schema: _schema,
+      isRoot: isRoot,
+      baseId: baseId,
+      root: _root,
+      schemaPath: '',
+      errSchemaPath: '#',
+      errorPath: '""',
+      MissingRefError: errorClasses.MissingRef,
+      RULES: RULES,
+      validate: validateGenerator,
+      util: util,
+      resolve: resolve,
+      resolveRef: resolveRef,
+      usePattern: usePattern,
+      useDefault: useDefault,
+      useCustomRule: useCustomRule,
+      opts: opts,
+      formats: formats,
+      logger: self.logger,
+      self: self
+    });
+
+    sourceCode = vars(refVal, refValCode) + vars(patterns, patternCode)
+                   + vars(defaults, defaultCode) + vars(customRules, customRuleCode)
+                   + sourceCode;
+
+    if (opts.processCode) sourceCode = opts.processCode(sourceCode);
+    // console.log('\n\n\n *** \n', JSON.stringify(sourceCode));
+    var validate;
+    try {
+      var makeValidate = new Function(
+        'self',
+        'RULES',
+        'formats',
+        'root',
+        'refVal',
+        'defaults',
+        'customRules',
+        'equal',
+        'ucs2length',
+        'ValidationError',
+        sourceCode
+      );
+
+      validate = makeValidate(
+        self,
+        RULES,
+        formats,
+        root,
+        refVal,
+        defaults,
+        customRules,
+        equal,
+        ucs2length,
+        ValidationError
+      );
+
+      refVal[0] = validate;
+    } catch(e) {
+      self.logger.error('Error compiling schema, function code:', sourceCode);
+      throw e;
+    }
+
+    validate.schema = _schema;
+    validate.errors = null;
+    validate.refs = refs;
+    validate.refVal = refVal;
+    validate.root = isRoot ? validate : _root;
+    if ($async) validate.$async = true;
+    if (opts.sourceCode === true) {
+      validate.source = {
+        code: sourceCode,
+        patterns: patterns,
+        defaults: defaults
+      };
+    }
+
+    return validate;
+  }
+
+  function resolveRef(baseId, ref, isRoot) {
+    ref = resolve.url(baseId, ref);
+    var refIndex = refs[ref];
+    var _refVal, refCode;
+    if (refIndex !== undefined) {
+      _refVal = refVal[refIndex];
+      refCode = 'refVal[' + refIndex + ']';
+      return resolvedRef(_refVal, refCode);
+    }
+    if (!isRoot && root.refs) {
+      var rootRefId = root.refs[ref];
+      if (rootRefId !== undefined) {
+        _refVal = root.refVal[rootRefId];
+        refCode = addLocalRef(ref, _refVal);
+        return resolvedRef(_refVal, refCode);
+      }
+    }
+
+    refCode = addLocalRef(ref);
+    var v = resolve.call(self, localCompile, root, ref);
+    if (v === undefined) {
+      var localSchema = localRefs && localRefs[ref];
+      if (localSchema) {
+        v = resolve.inlineRef(localSchema, opts.inlineRefs)
+            ? localSchema
+            : compile.call(self, localSchema, root, localRefs, baseId);
+      }
+    }
+
+    if (v === undefined) {
+      removeLocalRef(ref);
+    } else {
+      replaceLocalRef(ref, v);
+      return resolvedRef(v, refCode);
+    }
+  }
+
+  function addLocalRef(ref, v) {
+    var refId = refVal.length;
+    refVal[refId] = v;
+    refs[ref] = refId;
+    return 'refVal' + refId;
+  }
+
+  function removeLocalRef(ref) {
+    delete refs[ref];
+  }
+
+  function replaceLocalRef(ref, v) {
+    var refId = refs[ref];
+    refVal[refId] = v;
+  }
+
+  function resolvedRef(refVal, code) {
+    return typeof refVal == 'object' || typeof refVal == 'boolean'
+            ? { code: code, schema: refVal, inline: true }
+            : { code: code, $async: refVal && !!refVal.$async };
+  }
+
+  function usePattern(regexStr) {
+    var index = patternsHash[regexStr];
+    if (index === undefined) {
+      index = patternsHash[regexStr] = patterns.length;
+      patterns[index] = regexStr;
+    }
+    return 'pattern' + index;
+  }
+
+  function useDefault(value) {
+    switch (typeof value) {
+      case 'boolean':
+      case 'number':
+        return '' + value;
+      case 'string':
+        return util.toQuotedString(value);
+      case 'object':
+        if (value === null) return 'null';
+        var valueStr = stableStringify(value);
+        var index = defaultsHash[valueStr];
+        if (index === undefined) {
+          index = defaultsHash[valueStr] = defaults.length;
+          defaults[index] = value;
+        }
+        return 'default' + index;
+    }
+  }
+
+  function useCustomRule(rule, schema, parentSchema, it) {
+    var validateSchema = rule.definition.validateSchema;
+    if (validateSchema && self._opts.validateSchema !== false) {
+      var valid = validateSchema(schema);
+      if (!valid) {
+        var message = 'keyword schema is invalid: ' + self.errorsText(validateSchema.errors);
+        if (self._opts.validateSchema == 'log') self.logger.error(message);
+        else throw new Error(message);
+      }
+    }
+
+    var compile = rule.definition.compile
+      , inline = rule.definition.inline
+      , macro = rule.definition.macro;
+
+    var validate;
+    if (compile) {
+      validate = compile.call(self, schema, parentSchema, it);
+    } else if (macro) {
+      validate = macro.call(self, schema, parentSchema, it);
+      if (opts.validateSchema !== false) self.validateSchema(validate, true);
+    } else if (inline) {
+      validate = inline.call(self, it, rule.keyword, schema, parentSchema);
+    } else {
+      validate = rule.definition.validate;
+      if (!validate) return;
+    }
+
+    if (validate === undefined)
+      throw new Error('custom keyword "' + rule.keyword + '"failed to compile');
+
+    var index = customRules.length;
+    customRules[index] = validate;
+
+    return {
+      code: 'customRule' + index,
+      validate: validate
+    };
+  }
+}
+
+
+/**
+ * Checks if the schema is currently compiled
+ * @this   Ajv
+ * @param  {Object} schema schema to compile
+ * @param  {Object} root root object
+ * @param  {String} baseId base schema ID
+ * @return {Object} object with properties "index" (compilation index) and "compiling" (boolean)
+ */
+function checkCompiling(schema, root, baseId) {
+  /* jshint validthis: true */
+  var index = compIndex.call(this, schema, root, baseId);
+  if (index >= 0) return { index: index, compiling: true };
+  index = this._compilations.length;
+  this._compilations[index] = {
+    schema: schema,
+    root: root,
+    baseId: baseId
+  };
+  return { index: index, compiling: false };
+}
+
+
+/**
+ * Removes the schema from the currently compiled list
+ * @this   Ajv
+ * @param  {Object} schema schema to compile
+ * @param  {Object} root root object
+ * @param  {String} baseId base schema ID
+ */
+function endCompiling(schema, root, baseId) {
+  /* jshint validthis: true */
+  var i = compIndex.call(this, schema, root, baseId);
+  if (i >= 0) this._compilations.splice(i, 1);
+}
+
+
+/**
+ * Index of schema compilation in the currently compiled list
+ * @this   Ajv
+ * @param  {Object} schema schema to compile
+ * @param  {Object} root root object
+ * @param  {String} baseId base schema ID
+ * @return {Integer} compilation index
+ */
+function compIndex(schema, root, baseId) {
+  /* jshint validthis: true */
+  for (var i=0; i<this._compilations.length; i++) {
+    var c = this._compilations[i];
+    if (c.schema == schema && c.root == root && c.baseId == baseId) return i;
+  }
+  return -1;
+}
+
+
+function patternCode(i, patterns) {
+  return 'var pattern' + i + ' = new RegExp(' + util.toQuotedString(patterns[i]) + ');';
+}
+
+
+function defaultCode(i) {
+  return 'var default' + i + ' = defaults[' + i + '];';
+}
+
+
+function refValCode(i, refVal) {
+  return refVal[i] === undefined ? '' : 'var refVal' + i + ' = refVal[' + i + '];';
+}
+
+
+function customRuleCode(i) {
+  return 'var customRule' + i + ' = customRules[' + i + '];';
+}
+
+
+function vars(arr, statement) {
+  if (!arr.length) return '';
+  var code = '';
+  for (var i=0; i<arr.length; i++)
+    code += statement(i, arr);
+  return code;
+}
+
+
+/***/ }),
+
+/***/ 379:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://mathiasbynens.be/notes/javascript-encoding
+// https://github.com/bestiejs/punycode.js - punycode.ucs2.decode
+module.exports = function ucs2length(str) {
+  var length = 0
+    , len = str.length
+    , pos = 0
+    , value;
+  while (pos < len) {
+    length++;
+    value = str.charCodeAt(pos++);
+    if (value >= 0xD800 && value <= 0xDBFF && pos < len) {
+      // high surrogate, and there is a next character
+      value = str.charCodeAt(pos);
+      if ((value & 0xFC00) == 0xDC00) pos++; // low surrogate
+    }
+  }
+  return length;
+};
+
+
+/***/ }),
+
+/***/ 380:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var traverse = module.exports = function (schema, opts, cb) {
+  if (typeof opts == 'function') {
+    cb = opts;
+    opts = {};
+  }
+  _traverse(opts, cb, schema, '', schema);
+};
+
+
+traverse.keywords = {
+  additionalItems: true,
+  items: true,
+  contains: true,
+  additionalProperties: true,
+  propertyNames: true,
+  not: true
+};
+
+traverse.arrayKeywords = {
+  items: true,
+  allOf: true,
+  anyOf: true,
+  oneOf: true
+};
+
+traverse.propsKeywords = {
+  definitions: true,
+  properties: true,
+  patternProperties: true,
+  dependencies: true
+};
+
+traverse.skipKeywords = {
+  enum: true,
+  const: true,
+  required: true,
+  maximum: true,
+  minimum: true,
+  exclusiveMaximum: true,
+  exclusiveMinimum: true,
+  multipleOf: true,
+  maxLength: true,
+  minLength: true,
+  pattern: true,
+  format: true,
+  maxItems: true,
+  minItems: true,
+  uniqueItems: true,
+  maxProperties: true,
+  minProperties: true
+};
+
+
+function _traverse(opts, cb, schema, jsonPtr, rootSchema, parentJsonPtr, parentKeyword, parentSchema, keyIndex) {
+  if (schema && typeof schema == 'object' && !Array.isArray(schema)) {
+    cb(schema, jsonPtr, rootSchema, parentJsonPtr, parentKeyword, parentSchema, keyIndex);
+    for (var key in schema) {
+      var sch = schema[key];
+      if (Array.isArray(sch)) {
+        if (key in traverse.arrayKeywords) {
+          for (var i=0; i<sch.length; i++)
+            _traverse(opts, cb, sch[i], jsonPtr + '/' + key + '/' + i, rootSchema, jsonPtr, key, schema, i);
+        }
+      } else if (key in traverse.propsKeywords) {
+        if (sch && typeof sch == 'object') {
+          for (var prop in sch)
+            _traverse(opts, cb, sch[prop], jsonPtr + '/' + key + '/' + escapeJsonPtr(prop), rootSchema, jsonPtr, key, schema, prop);
+        }
+      } else if (key in traverse.keywords || (opts.allKeys && !(key in traverse.skipKeywords))) {
+        _traverse(opts, cb, sch, jsonPtr + '/' + key, rootSchema, jsonPtr, key, schema);
+      }
+    }
+  }
+}
+
+
+function escapeJsonPtr(str) {
+  return str.replace(/~/g, '~0').replace(/\//g, '~1');
+}
+
+
+/***/ }),
+
+/***/ 381:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+
+var Cache = module.exports = function Cache() {
+  this._cache = {};
+};
+
+
+Cache.prototype.put = function Cache_put(key, value) {
+  this._cache[key] = value;
+};
+
+
+Cache.prototype.get = function Cache_get(key) {
+  return this._cache[key];
+};
+
+
+Cache.prototype.del = function Cache_del(key) {
+  delete this._cache[key];
+};
+
+
+Cache.prototype.clear = function Cache_clear() {
+  this._cache = {};
+};
+
+
+/***/ }),
+
+/***/ 382:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var util = __webpack_require__(312);
+
+var DATE = /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
+var DAYS = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+var TIME = /^(\d\d):(\d\d):(\d\d)(\.\d+)?(z|[+-]\d\d:\d\d)?$/i;
+var HOSTNAME = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[-0-9a-z]{0,61}[0-9a-z])?)*$/i;
+var URI = /^(?:[a-z][a-z0-9+\-.]*:)(?:\/?\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:]|%[0-9a-f]{2})*@)?(?:\[(?:(?:(?:(?:[0-9a-f]{1,4}:){6}|::(?:[0-9a-f]{1,4}:){5}|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::)(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?))|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|[Vv][0-9a-f]+\.[a-z0-9\-._~!$&'()*+,;=:]+)\]|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)|(?:[a-z0-9\-._~!$&'()*+,;=]|%[0-9a-f]{2})*)(?::\d*)?(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*|\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*)?|(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'()*+,;=:@]|%[0-9a-f]{2})*)*)(?:\?(?:[a-z0-9\-._~!$&'()*+,;=:@/?]|%[0-9a-f]{2})*)?(?:#(?:[a-z0-9\-._~!$&'()*+,;=:@/?]|%[0-9a-f]{2})*)?$/i;
+var URIREF = /^(?:[a-z][a-z0-9+\-.]*:)?(?:\/?\/(?:(?:[a-z0-9\-._~!$&'()*+,;=:]|%[0-9a-f]{2})*@)?(?:\[(?:(?:(?:(?:[0-9a-f]{1,4}:){6}|::(?:[0-9a-f]{1,4}:){5}|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::)(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?))|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|[Vv][0-9a-f]+\.[a-z0-9\-._~!$&'()*+,;=:]+)\]|(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)|(?:[a-z0-9\-._~!$&'"()*+,;=]|%[0-9a-f]{2})*)(?::\d*)?(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*|\/(?:(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*)?|(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})+(?:\/(?:[a-z0-9\-._~!$&'"()*+,;=:@]|%[0-9a-f]{2})*)*)?(?:\?(?:[a-z0-9\-._~!$&'"()*+,;=:@/?]|%[0-9a-f]{2})*)?(?:#(?:[a-z0-9\-._~!$&'"()*+,;=:@/?]|%[0-9a-f]{2})*)?$/i;
+// uri-template: https://tools.ietf.org/html/rfc6570
+var URITEMPLATE = /^(?:(?:[^\x00-\x20"'<>%\\^`{|}]|%[0-9a-f]{2})|\{[+#./;?&=,!@|]?(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?(?:,(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?)*\})*$/i;
+// For the source: https://gist.github.com/dperini/729294
+// For test cases: https://mathiasbynens.be/demo/url-regex
+// @todo Delete current URL in favour of the commented out URL rule when this issue is fixed https://github.com/eslint/eslint/issues/7983.
+// var URL = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u{00a1}-\u{ffff}0-9]+-?)*[a-z\u{00a1}-\u{ffff}0-9]+)(?:\.(?:[a-z\u{00a1}-\u{ffff}0-9]+-?)*[a-z\u{00a1}-\u{ffff}0-9]+)*(?:\.(?:[a-z\u{00a1}-\u{ffff}]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/iu;
+var URL = /^(?:(?:http[s\u017F]?|ftp):\/\/)(?:(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+(?::(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?@)?(?:(?!10(?:\.[0-9]{1,3}){3})(?!127(?:\.[0-9]{1,3}){3})(?!169\.254(?:\.[0-9]{1,3}){2})(?!192\.168(?:\.[0-9]{1,3}){2})(?!172\.(?:1[6-9]|2[0-9]|3[01])(?:\.[0-9]{1,3}){2})(?:[1-9][0-9]?|1[0-9][0-9]|2[01][0-9]|22[0-3])(?:\.(?:1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])){2}(?:\.(?:[1-9][0-9]?|1[0-9][0-9]|2[0-4][0-9]|25[0-4]))|(?:(?:(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+-?)*(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)(?:\.(?:(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+-?)*(?:[0-9KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)*(?:\.(?:(?:[KSa-z\xA1-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]){2,})))(?::[0-9]{2,5})?(?:\/(?:[\0-\x08\x0E-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFEFE\uFF00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?$/i;
+var UUID = /^(?:urn:uuid:)?[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
+var JSON_POINTER = /^(?:\/(?:[^~/]|~0|~1)*)*$/;
+var JSON_POINTER_URI_FRAGMENT = /^#(?:\/(?:[a-z0-9_\-.!$&'()*+,;:=@]|%[0-9a-f]{2}|~0|~1)*)*$/i;
+var RELATIVE_JSON_POINTER = /^(?:0|[1-9][0-9]*)(?:#|(?:\/(?:[^~/]|~0|~1)*)*)$/;
+
+
+module.exports = formats;
+
+function formats(mode) {
+  mode = mode == 'full' ? 'full' : 'fast';
+  return util.copy(formats[mode]);
+}
+
+
+formats.fast = {
+  // date: http://tools.ietf.org/html/rfc3339#section-5.6
+  date: /^\d\d\d\d-[0-1]\d-[0-3]\d$/,
+  // date-time: http://tools.ietf.org/html/rfc3339#section-5.6
+  time: /^(?:[0-2]\d:[0-5]\d:[0-5]\d|23:59:60)(?:\.\d+)?(?:z|[+-]\d\d:\d\d)?$/i,
+  'date-time': /^\d\d\d\d-[0-1]\d-[0-3]\d[t\s](?:[0-2]\d:[0-5]\d:[0-5]\d|23:59:60)(?:\.\d+)?(?:z|[+-]\d\d:\d\d)$/i,
+  // uri: https://github.com/mafintosh/is-my-json-valid/blob/master/formats.js
+  uri: /^(?:[a-z][a-z0-9+-.]*:)(?:\/?\/)?[^\s]*$/i,
+  'uri-reference': /^(?:(?:[a-z][a-z0-9+-.]*:)?\/?\/)?(?:[^\\\s#][^\s#]*)?(?:#[^\\\s]*)?$/i,
+  'uri-template': URITEMPLATE,
+  url: URL,
+  // email (sources from jsen validator):
+  // http://stackoverflow.com/questions/201323/using-a-regular-expression-to-validate-an-email-address#answer-8829363
+  // http://www.w3.org/TR/html5/forms.html#valid-e-mail-address (search for 'willful violation')
+  email: /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/i,
+  hostname: HOSTNAME,
+  // optimized https://www.safaribooksonline.com/library/view/regular-expressions-cookbook/9780596802837/ch07s16.html
+  ipv4: /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/,
+  // optimized http://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+  ipv6: /^\s*(?:(?:(?:[0-9a-f]{1,4}:){7}(?:[0-9a-f]{1,4}|:))|(?:(?:[0-9a-f]{1,4}:){6}(?::[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){5}(?:(?:(?::[0-9a-f]{1,4}){1,2})|:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){4}(?:(?:(?::[0-9a-f]{1,4}){1,3})|(?:(?::[0-9a-f]{1,4})?:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){3}(?:(?:(?::[0-9a-f]{1,4}){1,4})|(?:(?::[0-9a-f]{1,4}){0,2}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){2}(?:(?:(?::[0-9a-f]{1,4}){1,5})|(?:(?::[0-9a-f]{1,4}){0,3}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){1}(?:(?:(?::[0-9a-f]{1,4}){1,6})|(?:(?::[0-9a-f]{1,4}){0,4}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?::(?:(?:(?::[0-9a-f]{1,4}){1,7})|(?:(?::[0-9a-f]{1,4}){0,5}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(?:%.+)?\s*$/i,
+  regex: regex,
+  // uuid: http://tools.ietf.org/html/rfc4122
+  uuid: UUID,
+  // JSON-pointer: https://tools.ietf.org/html/rfc6901
+  // uri fragment: https://tools.ietf.org/html/rfc3986#appendix-A
+  'json-pointer': JSON_POINTER,
+  'json-pointer-uri-fragment': JSON_POINTER_URI_FRAGMENT,
+  // relative JSON-pointer: http://tools.ietf.org/html/draft-luff-relative-json-pointer-00
+  'relative-json-pointer': RELATIVE_JSON_POINTER
+};
+
+
+formats.full = {
+  date: date,
+  time: time,
+  'date-time': date_time,
+  uri: uri,
+  'uri-reference': URIREF,
+  'uri-template': URITEMPLATE,
+  url: URL,
+  email: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&''*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i,
+  hostname: hostname,
+  ipv4: /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/,
+  ipv6: /^\s*(?:(?:(?:[0-9a-f]{1,4}:){7}(?:[0-9a-f]{1,4}|:))|(?:(?:[0-9a-f]{1,4}:){6}(?::[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){5}(?:(?:(?::[0-9a-f]{1,4}){1,2})|:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(?:(?:[0-9a-f]{1,4}:){4}(?:(?:(?::[0-9a-f]{1,4}){1,3})|(?:(?::[0-9a-f]{1,4})?:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){3}(?:(?:(?::[0-9a-f]{1,4}){1,4})|(?:(?::[0-9a-f]{1,4}){0,2}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){2}(?:(?:(?::[0-9a-f]{1,4}){1,5})|(?:(?::[0-9a-f]{1,4}){0,3}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?:(?:[0-9a-f]{1,4}:){1}(?:(?:(?::[0-9a-f]{1,4}){1,6})|(?:(?::[0-9a-f]{1,4}){0,4}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(?::(?:(?:(?::[0-9a-f]{1,4}){1,7})|(?:(?::[0-9a-f]{1,4}){0,5}:(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(?:%.+)?\s*$/i,
+  regex: regex,
+  uuid: UUID,
+  'json-pointer': JSON_POINTER,
+  'json-pointer-uri-fragment': JSON_POINTER_URI_FRAGMENT,
+  'relative-json-pointer': RELATIVE_JSON_POINTER
+};
+
+
+function isLeapYear(year) {
+  // https://tools.ietf.org/html/rfc3339#appendix-C
+  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+}
+
+
+function date(str) {
+  // full-date from http://tools.ietf.org/html/rfc3339#section-5.6
+  var matches = str.match(DATE);
+  if (!matches) return false;
+
+  var year = +matches[1];
+  var month = +matches[2];
+  var day = +matches[3];
+
+  return month >= 1 && month <= 12 && day >= 1 &&
+          day <= (month == 2 && isLeapYear(year) ? 29 : DAYS[month]);
+}
+
+
+function time(str, full) {
+  var matches = str.match(TIME);
+  if (!matches) return false;
+
+  var hour = matches[1];
+  var minute = matches[2];
+  var second = matches[3];
+  var timeZone = matches[5];
+  return ((hour <= 23 && minute <= 59 && second <= 59) ||
+          (hour == 23 && minute == 59 && second == 60)) &&
+         (!full || timeZone);
+}
+
+
+var DATE_TIME_SEPARATOR = /t|\s/i;
+function date_time(str) {
+  // http://tools.ietf.org/html/rfc3339#section-5.6
+  var dateTime = str.split(DATE_TIME_SEPARATOR);
+  return dateTime.length == 2 && date(dateTime[0]) && time(dateTime[1], true);
+}
+
+
+function hostname(str) {
+  // https://tools.ietf.org/html/rfc1034#section-3.5
+  // https://tools.ietf.org/html/rfc1123#section-2
+  return str.length <= 255 && HOSTNAME.test(str);
+}
+
+
+var NOT_URI_FRAGMENT = /\/|:/;
+function uri(str) {
+  // http://jmrware.com/articles/2009/uri_regexp/URI_regex.html + optional protocol + required "."
+  return NOT_URI_FRAGMENT.test(str) && URI.test(str);
+}
+
+
+var Z_ANCHOR = /[^\\]\\Z/;
+function regex(str) {
+  if (Z_ANCHOR.test(str)) return false;
+  try {
+    new RegExp(str);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+
+/***/ }),
+
+/***/ 383:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ruleModules = __webpack_require__(384)
+  , toHash = __webpack_require__(312).toHash;
+
+module.exports = function rules() {
+  var RULES = [
+    { type: 'number',
+      rules: [ { 'maximum': ['exclusiveMaximum'] },
+               { 'minimum': ['exclusiveMinimum'] }, 'multipleOf', 'format'] },
+    { type: 'string',
+      rules: [ 'maxLength', 'minLength', 'pattern', 'format' ] },
+    { type: 'array',
+      rules: [ 'maxItems', 'minItems', 'items', 'contains', 'uniqueItems' ] },
+    { type: 'object',
+      rules: [ 'maxProperties', 'minProperties', 'required', 'dependencies', 'propertyNames',
+               { 'properties': ['additionalProperties', 'patternProperties'] } ] },
+    { rules: [ '$ref', 'const', 'enum', 'not', 'anyOf', 'oneOf', 'allOf', 'if' ] }
+  ];
+
+  var ALL = [ 'type', '$comment' ];
+  var KEYWORDS = [
+    '$schema', '$id', 'id', '$data', 'title',
+    'description', 'default', 'definitions',
+    'examples', 'readOnly', 'writeOnly',
+    'contentMediaType', 'contentEncoding',
+    'additionalItems', 'then', 'else'
+  ];
+  var TYPES = [ 'number', 'integer', 'string', 'array', 'object', 'boolean', 'null' ];
+  RULES.all = toHash(ALL);
+  RULES.types = toHash(TYPES);
+
+  RULES.forEach(function (group) {
+    group.rules = group.rules.map(function (keyword) {
+      var implKeywords;
+      if (typeof keyword == 'object') {
+        var key = Object.keys(keyword)[0];
+        implKeywords = keyword[key];
+        keyword = key;
+        implKeywords.forEach(function (k) {
+          ALL.push(k);
+          RULES.all[k] = true;
+        });
+      }
+      ALL.push(keyword);
+      var rule = RULES.all[keyword] = {
+        keyword: keyword,
+        code: ruleModules[keyword],
+        implements: implKeywords
+      };
+      return rule;
+    });
+
+    RULES.all.$comment = {
+      keyword: '$comment',
+      code: ruleModules.$comment
+    };
+
+    if (group.type) RULES.types[group.type] = group;
+  });
+
+  RULES.keywords = toHash(ALL.concat(KEYWORDS));
+  RULES.custom = {};
+
+  return RULES;
+};
+
+
+/***/ }),
+
+/***/ 384:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//all requires must be explicit because browserify won't work with dynamic requires
+module.exports = {
+  '$ref': __webpack_require__(385),
+  allOf: __webpack_require__(386),
+  anyOf: __webpack_require__(387),
+  '$comment': __webpack_require__(388),
+  const: __webpack_require__(389),
+  contains: __webpack_require__(390),
+  dependencies: __webpack_require__(391),
+  'enum': __webpack_require__(392),
+  format: __webpack_require__(393),
+  'if': __webpack_require__(394),
+  items: __webpack_require__(395),
+  maximum: __webpack_require__(338),
+  minimum: __webpack_require__(338),
+  maxItems: __webpack_require__(339),
+  minItems: __webpack_require__(339),
+  maxLength: __webpack_require__(340),
+  minLength: __webpack_require__(340),
+  maxProperties: __webpack_require__(341),
+  minProperties: __webpack_require__(341),
+  multipleOf: __webpack_require__(396),
+  not: __webpack_require__(397),
+  oneOf: __webpack_require__(398),
+  pattern: __webpack_require__(399),
+  properties: __webpack_require__(400),
+  propertyNames: __webpack_require__(401),
+  required: __webpack_require__(402),
+  uniqueItems: __webpack_require__(403),
+  validate: __webpack_require__(337)
+};
+
+
+/***/ }),
+
+/***/ 385:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_ref(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $async, $refCode;
+  if ($schema == '#' || $schema == '#/') {
+    if (it.isRoot) {
+      $async = it.async;
+      $refCode = 'validate';
+    } else {
+      $async = it.root.schema.$async === true;
+      $refCode = 'root.refVal[0]';
+    }
+  } else {
+    var $refVal = it.resolveRef(it.baseId, $schema, it.isRoot);
+    if ($refVal === undefined) {
+      var $message = it.MissingRefError.message(it.baseId, $schema);
+      if (it.opts.missingRefs == 'fail') {
+        it.logger.error($message);
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ('$ref') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { ref: \'' + (it.util.escapeQuotes($schema)) + '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'can\\\'t resolve reference ' + (it.util.escapeQuotes($schema)) + '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: ' + (it.util.toQuotedString($schema)) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+        if ($breakOnError) {
+          out += ' if (false) { ';
+        }
+      } else if (it.opts.missingRefs == 'ignore') {
+        it.logger.warn($message);
+        if ($breakOnError) {
+          out += ' if (true) { ';
+        }
+      } else {
+        throw new it.MissingRefError(it.baseId, $schema, $message);
+      }
+    } else if ($refVal.inline) {
+      var $it = it.util.copy(it);
+      $it.level++;
+      var $nextValid = 'valid' + $it.level;
+      $it.schema = $refVal.schema;
+      $it.schemaPath = '';
+      $it.errSchemaPath = $schema;
+      var $code = it.validate($it).replace(/validate\.schema/g, $refVal.code);
+      out += ' ' + ($code) + ' ';
+      if ($breakOnError) {
+        out += ' if (' + ($nextValid) + ') { ';
+      }
+    } else {
+      $async = $refVal.$async === true || (it.async && $refVal.$async !== false);
+      $refCode = $refVal.code;
+    }
+  }
+  if ($refCode) {
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = '';
+    if (it.opts.passContext) {
+      out += ' ' + ($refCode) + '.call(this, ';
+    } else {
+      out += ' ' + ($refCode) + '( ';
+    }
+    out += ' ' + ($data) + ', (dataPath || \'\')';
+    if (it.errorPath != '""') {
+      out += ' + ' + (it.errorPath);
+    }
+    var $parentData = $dataLvl ? 'data' + (($dataLvl - 1) || '') : 'parentData',
+      $parentDataProperty = $dataLvl ? it.dataPathArr[$dataLvl] : 'parentDataProperty';
+    out += ' , ' + ($parentData) + ' , ' + ($parentDataProperty) + ', rootData)  ';
+    var __callValidate = out;
+    out = $$outStack.pop();
+    if ($async) {
+      if (!it.async) throw new Error('async schema referenced by sync schema');
+      if ($breakOnError) {
+        out += ' var ' + ($valid) + '; ';
+      }
+      out += ' try { await ' + (__callValidate) + '; ';
+      if ($breakOnError) {
+        out += ' ' + ($valid) + ' = true; ';
+      }
+      out += ' } catch (e) { if (!(e instanceof ValidationError)) throw e; if (vErrors === null) vErrors = e.errors; else vErrors = vErrors.concat(e.errors); errors = vErrors.length; ';
+      if ($breakOnError) {
+        out += ' ' + ($valid) + ' = false; ';
+      }
+      out += ' } ';
+      if ($breakOnError) {
+        out += ' if (' + ($valid) + ') { ';
+      }
+    } else {
+      out += ' if (!' + (__callValidate) + ') { if (vErrors === null) vErrors = ' + ($refCode) + '.errors; else vErrors = vErrors.concat(' + ($refCode) + '.errors); errors = vErrors.length; } ';
+      if ($breakOnError) {
+        out += ' else { ';
+      }
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 386:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_allOf(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $currentBaseId = $it.baseId,
+    $allSchemasEmpty = true;
+  var arr1 = $schema;
+  if (arr1) {
+    var $sch, $i = -1,
+      l1 = arr1.length - 1;
+    while ($i < l1) {
+      $sch = arr1[$i += 1];
+      if (it.util.schemaHasRules($sch, it.RULES.all)) {
+        $allSchemasEmpty = false;
+        $it.schema = $sch;
+        $it.schemaPath = $schemaPath + '[' + $i + ']';
+        $it.errSchemaPath = $errSchemaPath + '/' + $i;
+        out += '  ' + (it.validate($it)) + ' ';
+        $it.baseId = $currentBaseId;
+        if ($breakOnError) {
+          out += ' if (' + ($nextValid) + ') { ';
+          $closingBraces += '}';
+        }
+      }
+    }
+  }
+  if ($breakOnError) {
+    if ($allSchemasEmpty) {
+      out += ' if (true) { ';
+    } else {
+      out += ' ' + ($closingBraces.slice(0, -1)) + ' ';
+    }
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 387:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_anyOf(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $noEmptySchema = $schema.every(function($sch) {
+    return it.util.schemaHasRules($sch, it.RULES.all);
+  });
+  if ($noEmptySchema) {
+    var $currentBaseId = $it.baseId;
+    out += ' var ' + ($errs) + ' = errors; var ' + ($valid) + ' = false;  ';
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    var arr1 = $schema;
+    if (arr1) {
+      var $sch, $i = -1,
+        l1 = arr1.length - 1;
+      while ($i < l1) {
+        $sch = arr1[$i += 1];
+        $it.schema = $sch;
+        $it.schemaPath = $schemaPath + '[' + $i + ']';
+        $it.errSchemaPath = $errSchemaPath + '/' + $i;
+        out += '  ' + (it.validate($it)) + ' ';
+        $it.baseId = $currentBaseId;
+        out += ' ' + ($valid) + ' = ' + ($valid) + ' || ' + ($nextValid) + '; if (!' + ($valid) + ') { ';
+        $closingBraces += '}';
+      }
+    }
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    out += ' ' + ($closingBraces) + ' if (!' + ($valid) + ') {   var err =   '; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('anyOf') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should match some schema in anyOf\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError(vErrors); ';
+      } else {
+        out += ' validate.errors = vErrors; return false; ';
+      }
+    }
+    out += ' } else {  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; } ';
+    if (it.opts.allErrors) {
+      out += ' } ';
+    }
+    out = it.util.cleanUpCode(out);
+  } else {
+    if ($breakOnError) {
+      out += ' if (true) { ';
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 388:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_comment(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $schema = it.schema[$keyword];
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $comment = it.util.toQuotedString($schema);
+  if (it.opts.$comment === true) {
+    out += ' console.log(' + ($comment) + ');';
+  } else if (typeof it.opts.$comment == 'function') {
+    out += ' self._opts.$comment(' + ($comment) + ', ' + (it.util.toQuotedString($errSchemaPath)) + ', validate.root.schema);';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 389:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_const(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  if (!$isData) {
+    out += ' var schema' + ($lvl) + ' = validate.schema' + ($schemaPath) + ';';
+  }
+  out += 'var ' + ($valid) + ' = equal(' + ($data) + ', schema' + ($lvl) + '); if (!' + ($valid) + ') {   ';
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('const') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should be equal to constant\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += ' }';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_contains(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $idx = 'i' + $lvl,
+    $dataNxt = $it.dataLevel = it.dataLevel + 1,
+    $nextData = 'data' + $dataNxt,
+    $currentBaseId = it.baseId,
+    $nonEmptySchema = it.util.schemaHasRules($schema, it.RULES.all);
+  out += 'var ' + ($errs) + ' = errors;var ' + ($valid) + ';';
+  if ($nonEmptySchema) {
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    $it.schema = $schema;
+    $it.schemaPath = $schemaPath;
+    $it.errSchemaPath = $errSchemaPath;
+    out += ' var ' + ($nextValid) + ' = false; for (var ' + ($idx) + ' = 0; ' + ($idx) + ' < ' + ($data) + '.length; ' + ($idx) + '++) { ';
+    $it.errorPath = it.util.getPathExpr(it.errorPath, $idx, it.opts.jsonPointers, true);
+    var $passData = $data + '[' + $idx + ']';
+    $it.dataPathArr[$dataNxt] = $idx;
+    var $code = it.validate($it);
+    $it.baseId = $currentBaseId;
+    if (it.util.varOccurences($code, $nextData) < 2) {
+      out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+    } else {
+      out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+    }
+    out += ' if (' + ($nextValid) + ') break; }  ';
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    out += ' ' + ($closingBraces) + ' if (!' + ($nextValid) + ') {';
+  } else {
+    out += ' if (' + ($data) + '.length == 0) {';
+  }
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('contains') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should contain a valid item\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += ' } else { ';
+  if ($nonEmptySchema) {
+    out += '  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; } ';
+  }
+  if (it.opts.allErrors) {
+    out += ' } ';
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 391:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_dependencies(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $schemaDeps = {},
+    $propertyDeps = {},
+    $ownProperties = it.opts.ownProperties;
+  for ($property in $schema) {
+    var $sch = $schema[$property];
+    var $deps = Array.isArray($sch) ? $propertyDeps : $schemaDeps;
+    $deps[$property] = $sch;
+  }
+  out += 'var ' + ($errs) + ' = errors;';
+  var $currentErrorPath = it.errorPath;
+  out += 'var missing' + ($lvl) + ';';
+  for (var $property in $propertyDeps) {
+    $deps = $propertyDeps[$property];
+    if ($deps.length) {
+      out += ' if ( ' + ($data) + (it.util.getProperty($property)) + ' !== undefined ';
+      if ($ownProperties) {
+        out += ' && Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($property)) + '\') ';
+      }
+      if ($breakOnError) {
+        out += ' && ( ';
+        var arr1 = $deps;
+        if (arr1) {
+          var $propertyKey, $i = -1,
+            l1 = arr1.length - 1;
+          while ($i < l1) {
+            $propertyKey = arr1[$i += 1];
+            if ($i) {
+              out += ' || ';
+            }
+            var $prop = it.util.getProperty($propertyKey),
+              $useData = $data + $prop;
+            out += ' ( ( ' + ($useData) + ' === undefined ';
+            if ($ownProperties) {
+              out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+            }
+            out += ') && (missing' + ($lvl) + ' = ' + (it.util.toQuotedString(it.opts.jsonPointers ? $propertyKey : $prop)) + ') ) ';
+          }
+        }
+        out += ')) {  ';
+        var $propertyPath = 'missing' + $lvl,
+          $missingProperty = '\' + ' + $propertyPath + ' + \'';
+        if (it.opts._errorDataPathProperty) {
+          it.errorPath = it.opts.jsonPointers ? it.util.getPathExpr($currentErrorPath, $propertyPath, true) : $currentErrorPath + ' + ' + $propertyPath;
+        }
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ('dependencies') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { property: \'' + (it.util.escapeQuotes($property)) + '\', missingProperty: \'' + ($missingProperty) + '\', depsCount: ' + ($deps.length) + ', deps: \'' + (it.util.escapeQuotes($deps.length == 1 ? $deps[0] : $deps.join(", "))) + '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'should have ';
+            if ($deps.length == 1) {
+              out += 'property ' + (it.util.escapeQuotes($deps[0]));
+            } else {
+              out += 'properties ' + (it.util.escapeQuotes($deps.join(", ")));
+            }
+            out += ' when property ' + (it.util.escapeQuotes($property)) + ' is present\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+      } else {
+        out += ' ) { ';
+        var arr2 = $deps;
+        if (arr2) {
+          var $propertyKey, i2 = -1,
+            l2 = arr2.length - 1;
+          while (i2 < l2) {
+            $propertyKey = arr2[i2 += 1];
+            var $prop = it.util.getProperty($propertyKey),
+              $missingProperty = it.util.escapeQuotes($propertyKey),
+              $useData = $data + $prop;
+            if (it.opts._errorDataPathProperty) {
+              it.errorPath = it.util.getPath($currentErrorPath, $propertyKey, it.opts.jsonPointers);
+            }
+            out += ' if ( ' + ($useData) + ' === undefined ';
+            if ($ownProperties) {
+              out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+            }
+            out += ') {  var err =   '; /* istanbul ignore else */
+            if (it.createErrors !== false) {
+              out += ' { keyword: \'' + ('dependencies') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { property: \'' + (it.util.escapeQuotes($property)) + '\', missingProperty: \'' + ($missingProperty) + '\', depsCount: ' + ($deps.length) + ', deps: \'' + (it.util.escapeQuotes($deps.length == 1 ? $deps[0] : $deps.join(", "))) + '\' } ';
+              if (it.opts.messages !== false) {
+                out += ' , message: \'should have ';
+                if ($deps.length == 1) {
+                  out += 'property ' + (it.util.escapeQuotes($deps[0]));
+                } else {
+                  out += 'properties ' + (it.util.escapeQuotes($deps.join(", ")));
+                }
+                out += ' when property ' + (it.util.escapeQuotes($property)) + ' is present\' ';
+              }
+              if (it.opts.verbose) {
+                out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+              }
+              out += ' } ';
+            } else {
+              out += ' {} ';
+            }
+            out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } ';
+          }
+        }
+      }
+      out += ' }   ';
+      if ($breakOnError) {
+        $closingBraces += '}';
+        out += ' else { ';
+      }
+    }
+  }
+  it.errorPath = $currentErrorPath;
+  var $currentBaseId = $it.baseId;
+  for (var $property in $schemaDeps) {
+    var $sch = $schemaDeps[$property];
+    if (it.util.schemaHasRules($sch, it.RULES.all)) {
+      out += ' ' + ($nextValid) + ' = true; if ( ' + ($data) + (it.util.getProperty($property)) + ' !== undefined ';
+      if ($ownProperties) {
+        out += ' && Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($property)) + '\') ';
+      }
+      out += ') { ';
+      $it.schema = $sch;
+      $it.schemaPath = $schemaPath + it.util.getProperty($property);
+      $it.errSchemaPath = $errSchemaPath + '/' + it.util.escapeFragment($property);
+      out += '  ' + (it.validate($it)) + ' ';
+      $it.baseId = $currentBaseId;
+      out += ' }  ';
+      if ($breakOnError) {
+        out += ' if (' + ($nextValid) + ') { ';
+        $closingBraces += '}';
+      }
+    }
+  }
+  if ($breakOnError) {
+    out += '   ' + ($closingBraces) + ' if (' + ($errs) + ' == errors) {';
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 392:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_enum(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $i = 'i' + $lvl,
+    $vSchema = 'schema' + $lvl;
+  if (!$isData) {
+    out += ' var ' + ($vSchema) + ' = validate.schema' + ($schemaPath) + ';';
+  }
+  out += 'var ' + ($valid) + ';';
+  if ($isData) {
+    out += ' if (schema' + ($lvl) + ' === undefined) ' + ($valid) + ' = true; else if (!Array.isArray(schema' + ($lvl) + ')) ' + ($valid) + ' = false; else {';
+  }
+  out += '' + ($valid) + ' = false;for (var ' + ($i) + '=0; ' + ($i) + '<' + ($vSchema) + '.length; ' + ($i) + '++) if (equal(' + ($data) + ', ' + ($vSchema) + '[' + ($i) + '])) { ' + ($valid) + ' = true; break; }';
+  if ($isData) {
+    out += '  }  ';
+  }
+  out += ' if (!' + ($valid) + ') {   ';
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('enum') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { allowedValues: schema' + ($lvl) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should be equal to one of the allowed values\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += ' }';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 393:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_format(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  if (it.opts.format === false) {
+    if ($breakOnError) {
+      out += ' if (true) { ';
+    }
+    return out;
+  }
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $unknownFormats = it.opts.unknownFormats,
+    $allowUnknown = Array.isArray($unknownFormats);
+  if ($isData) {
+    var $format = 'format' + $lvl,
+      $isObject = 'isObject' + $lvl,
+      $formatType = 'formatType' + $lvl;
+    out += ' var ' + ($format) + ' = formats[' + ($schemaValue) + ']; var ' + ($isObject) + ' = typeof ' + ($format) + ' == \'object\' && !(' + ($format) + ' instanceof RegExp) && ' + ($format) + '.validate; var ' + ($formatType) + ' = ' + ($isObject) + ' && ' + ($format) + '.type || \'string\'; if (' + ($isObject) + ') { ';
+    if (it.async) {
+      out += ' var async' + ($lvl) + ' = ' + ($format) + '.async; ';
+    }
+    out += ' ' + ($format) + ' = ' + ($format) + '.validate; } if (  ';
+    if ($isData) {
+      out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'string\') || ';
+    }
+    out += ' (';
+    if ($unknownFormats != 'ignore') {
+      out += ' (' + ($schemaValue) + ' && !' + ($format) + ' ';
+      if ($allowUnknown) {
+        out += ' && self._opts.unknownFormats.indexOf(' + ($schemaValue) + ') == -1 ';
+      }
+      out += ') || ';
+    }
+    out += ' (' + ($format) + ' && ' + ($formatType) + ' == \'' + ($ruleType) + '\' && !(typeof ' + ($format) + ' == \'function\' ? ';
+    if (it.async) {
+      out += ' (async' + ($lvl) + ' ? await ' + ($format) + '(' + ($data) + ') : ' + ($format) + '(' + ($data) + ')) ';
+    } else {
+      out += ' ' + ($format) + '(' + ($data) + ') ';
+    }
+    out += ' : ' + ($format) + '.test(' + ($data) + '))))) {';
+  } else {
+    var $format = it.formats[$schema];
+    if (!$format) {
+      if ($unknownFormats == 'ignore') {
+        it.logger.warn('unknown format "' + $schema + '" ignored in schema at path "' + it.errSchemaPath + '"');
+        if ($breakOnError) {
+          out += ' if (true) { ';
+        }
+        return out;
+      } else if ($allowUnknown && $unknownFormats.indexOf($schema) >= 0) {
+        if ($breakOnError) {
+          out += ' if (true) { ';
+        }
+        return out;
+      } else {
+        throw new Error('unknown format "' + $schema + '" is used in schema at path "' + it.errSchemaPath + '"');
+      }
+    }
+    var $isObject = typeof $format == 'object' && !($format instanceof RegExp) && $format.validate;
+    var $formatType = $isObject && $format.type || 'string';
+    if ($isObject) {
+      var $async = $format.async === true;
+      $format = $format.validate;
+    }
+    if ($formatType != $ruleType) {
+      if ($breakOnError) {
+        out += ' if (true) { ';
+      }
+      return out;
+    }
+    if ($async) {
+      if (!it.async) throw new Error('async format in sync schema');
+      var $formatRef = 'formats' + it.util.getProperty($schema) + '.validate';
+      out += ' if (!(await ' + ($formatRef) + '(' + ($data) + '))) { ';
+    } else {
+      out += ' if (! ';
+      var $formatRef = 'formats' + it.util.getProperty($schema);
+      if ($isObject) $formatRef += '.validate';
+      if (typeof $format == 'function') {
+        out += ' ' + ($formatRef) + '(' + ($data) + ') ';
+      } else {
+        out += ' ' + ($formatRef) + '.test(' + ($data) + ') ';
+      }
+      out += ') { ';
+    }
+  }
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('format') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { format:  ';
+    if ($isData) {
+      out += '' + ($schemaValue);
+    } else {
+      out += '' + (it.util.toQuotedString($schema));
+    }
+    out += '  } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should match format "';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + (it.util.escapeQuotes($schema));
+      }
+      out += '"\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + (it.util.toQuotedString($schema));
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += ' } ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 394:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_if(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $thenSch = it.schema['then'],
+    $elseSch = it.schema['else'],
+    $thenPresent = $thenSch !== undefined && it.util.schemaHasRules($thenSch, it.RULES.all),
+    $elsePresent = $elseSch !== undefined && it.util.schemaHasRules($elseSch, it.RULES.all),
+    $currentBaseId = $it.baseId;
+  if ($thenPresent || $elsePresent) {
+    var $ifClause;
+    $it.createErrors = false;
+    $it.schema = $schema;
+    $it.schemaPath = $schemaPath;
+    $it.errSchemaPath = $errSchemaPath;
+    out += ' var ' + ($errs) + ' = errors; var ' + ($valid) + ' = true;  ';
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    out += '  ' + (it.validate($it)) + ' ';
+    $it.baseId = $currentBaseId;
+    $it.createErrors = true;
+    out += '  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; }  ';
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    if ($thenPresent) {
+      out += ' if (' + ($nextValid) + ') {  ';
+      $it.schema = it.schema['then'];
+      $it.schemaPath = it.schemaPath + '.then';
+      $it.errSchemaPath = it.errSchemaPath + '/then';
+      out += '  ' + (it.validate($it)) + ' ';
+      $it.baseId = $currentBaseId;
+      out += ' ' + ($valid) + ' = ' + ($nextValid) + '; ';
+      if ($thenPresent && $elsePresent) {
+        $ifClause = 'ifClause' + $lvl;
+        out += ' var ' + ($ifClause) + ' = \'then\'; ';
+      } else {
+        $ifClause = '\'then\'';
+      }
+      out += ' } ';
+      if ($elsePresent) {
+        out += ' else { ';
+      }
+    } else {
+      out += ' if (!' + ($nextValid) + ') { ';
+    }
+    if ($elsePresent) {
+      $it.schema = it.schema['else'];
+      $it.schemaPath = it.schemaPath + '.else';
+      $it.errSchemaPath = it.errSchemaPath + '/else';
+      out += '  ' + (it.validate($it)) + ' ';
+      $it.baseId = $currentBaseId;
+      out += ' ' + ($valid) + ' = ' + ($nextValid) + '; ';
+      if ($thenPresent && $elsePresent) {
+        $ifClause = 'ifClause' + $lvl;
+        out += ' var ' + ($ifClause) + ' = \'else\'; ';
+      } else {
+        $ifClause = '\'else\'';
+      }
+      out += ' } ';
+    }
+    out += ' if (!' + ($valid) + ') {   var err =   '; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('if') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { failingKeyword: ' + ($ifClause) + ' } ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should match "\' + ' + ($ifClause) + ' + \'" schema\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError(vErrors); ';
+      } else {
+        out += ' validate.errors = vErrors; return false; ';
+      }
+    }
+    out += ' }   ';
+    if ($breakOnError) {
+      out += ' else { ';
+    }
+    out = it.util.cleanUpCode(out);
+  } else {
+    if ($breakOnError) {
+      out += ' if (true) { ';
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 395:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_items(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $idx = 'i' + $lvl,
+    $dataNxt = $it.dataLevel = it.dataLevel + 1,
+    $nextData = 'data' + $dataNxt,
+    $currentBaseId = it.baseId;
+  out += 'var ' + ($errs) + ' = errors;var ' + ($valid) + ';';
+  if (Array.isArray($schema)) {
+    var $additionalItems = it.schema.additionalItems;
+    if ($additionalItems === false) {
+      out += ' ' + ($valid) + ' = ' + ($data) + '.length <= ' + ($schema.length) + '; ';
+      var $currErrSchemaPath = $errSchemaPath;
+      $errSchemaPath = it.errSchemaPath + '/additionalItems';
+      out += '  if (!' + ($valid) + ') {   ';
+      var $$outStack = $$outStack || [];
+      $$outStack.push(out);
+      out = ''; /* istanbul ignore else */
+      if (it.createErrors !== false) {
+        out += ' { keyword: \'' + ('additionalItems') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { limit: ' + ($schema.length) + ' } ';
+        if (it.opts.messages !== false) {
+          out += ' , message: \'should NOT have more than ' + ($schema.length) + ' items\' ';
+        }
+        if (it.opts.verbose) {
+          out += ' , schema: false , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+        }
+        out += ' } ';
+      } else {
+        out += ' {} ';
+      }
+      var __err = out;
+      out = $$outStack.pop();
+      if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+        if (it.async) {
+          out += ' throw new ValidationError([' + (__err) + ']); ';
+        } else {
+          out += ' validate.errors = [' + (__err) + ']; return false; ';
+        }
+      } else {
+        out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+      }
+      out += ' } ';
+      $errSchemaPath = $currErrSchemaPath;
+      if ($breakOnError) {
+        $closingBraces += '}';
+        out += ' else { ';
+      }
+    }
+    var arr1 = $schema;
+    if (arr1) {
+      var $sch, $i = -1,
+        l1 = arr1.length - 1;
+      while ($i < l1) {
+        $sch = arr1[$i += 1];
+        if (it.util.schemaHasRules($sch, it.RULES.all)) {
+          out += ' ' + ($nextValid) + ' = true; if (' + ($data) + '.length > ' + ($i) + ') { ';
+          var $passData = $data + '[' + $i + ']';
+          $it.schema = $sch;
+          $it.schemaPath = $schemaPath + '[' + $i + ']';
+          $it.errSchemaPath = $errSchemaPath + '/' + $i;
+          $it.errorPath = it.util.getPathExpr(it.errorPath, $i, it.opts.jsonPointers, true);
+          $it.dataPathArr[$dataNxt] = $i;
+          var $code = it.validate($it);
+          $it.baseId = $currentBaseId;
+          if (it.util.varOccurences($code, $nextData) < 2) {
+            out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+          } else {
+            out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+          }
+          out += ' }  ';
+          if ($breakOnError) {
+            out += ' if (' + ($nextValid) + ') { ';
+            $closingBraces += '}';
+          }
+        }
+      }
+    }
+    if (typeof $additionalItems == 'object' && it.util.schemaHasRules($additionalItems, it.RULES.all)) {
+      $it.schema = $additionalItems;
+      $it.schemaPath = it.schemaPath + '.additionalItems';
+      $it.errSchemaPath = it.errSchemaPath + '/additionalItems';
+      out += ' ' + ($nextValid) + ' = true; if (' + ($data) + '.length > ' + ($schema.length) + ') {  for (var ' + ($idx) + ' = ' + ($schema.length) + '; ' + ($idx) + ' < ' + ($data) + '.length; ' + ($idx) + '++) { ';
+      $it.errorPath = it.util.getPathExpr(it.errorPath, $idx, it.opts.jsonPointers, true);
+      var $passData = $data + '[' + $idx + ']';
+      $it.dataPathArr[$dataNxt] = $idx;
+      var $code = it.validate($it);
+      $it.baseId = $currentBaseId;
+      if (it.util.varOccurences($code, $nextData) < 2) {
+        out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+      } else {
+        out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+      }
+      if ($breakOnError) {
+        out += ' if (!' + ($nextValid) + ') break; ';
+      }
+      out += ' } }  ';
+      if ($breakOnError) {
+        out += ' if (' + ($nextValid) + ') { ';
+        $closingBraces += '}';
+      }
+    }
+  } else if (it.util.schemaHasRules($schema, it.RULES.all)) {
+    $it.schema = $schema;
+    $it.schemaPath = $schemaPath;
+    $it.errSchemaPath = $errSchemaPath;
+    out += '  for (var ' + ($idx) + ' = ' + (0) + '; ' + ($idx) + ' < ' + ($data) + '.length; ' + ($idx) + '++) { ';
+    $it.errorPath = it.util.getPathExpr(it.errorPath, $idx, it.opts.jsonPointers, true);
+    var $passData = $data + '[' + $idx + ']';
+    $it.dataPathArr[$dataNxt] = $idx;
+    var $code = it.validate($it);
+    $it.baseId = $currentBaseId;
+    if (it.util.varOccurences($code, $nextData) < 2) {
+      out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+    } else {
+      out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+    }
+    if ($breakOnError) {
+      out += ' if (!' + ($nextValid) + ') break; ';
+    }
+    out += ' }';
+  }
+  if ($breakOnError) {
+    out += ' ' + ($closingBraces) + ' if (' + ($errs) + ' == errors) {';
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 396:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_multipleOf(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  out += 'var division' + ($lvl) + ';if (';
+  if ($isData) {
+    out += ' ' + ($schemaValue) + ' !== undefined && ( typeof ' + ($schemaValue) + ' != \'number\' || ';
+  }
+  out += ' (division' + ($lvl) + ' = ' + ($data) + ' / ' + ($schemaValue) + ', ';
+  if (it.opts.multipleOfPrecision) {
+    out += ' Math.abs(Math.round(division' + ($lvl) + ') - division' + ($lvl) + ') > 1e-' + (it.opts.multipleOfPrecision) + ' ';
+  } else {
+    out += ' division' + ($lvl) + ' !== parseInt(division' + ($lvl) + ') ';
+  }
+  out += ' ) ';
+  if ($isData) {
+    out += '  )  ';
+  }
+  out += ' ) {   ';
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('multipleOf') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { multipleOf: ' + ($schemaValue) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should be multiple of ';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue);
+      } else {
+        out += '' + ($schemaValue) + '\'';
+      }
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + ($schema);
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '} ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 397:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_not(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  if (it.util.schemaHasRules($schema, it.RULES.all)) {
+    $it.schema = $schema;
+    $it.schemaPath = $schemaPath;
+    $it.errSchemaPath = $errSchemaPath;
+    out += ' var ' + ($errs) + ' = errors;  ';
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    $it.createErrors = false;
+    var $allErrorsOption;
+    if ($it.opts.allErrors) {
+      $allErrorsOption = $it.opts.allErrors;
+      $it.opts.allErrors = false;
+    }
+    out += ' ' + (it.validate($it)) + ' ';
+    $it.createErrors = true;
+    if ($allErrorsOption) $it.opts.allErrors = $allErrorsOption;
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    out += ' if (' + ($nextValid) + ') {   ';
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = ''; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('not') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should NOT be valid\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    var __err = out;
+    out = $$outStack.pop();
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError([' + (__err) + ']); ';
+      } else {
+        out += ' validate.errors = [' + (__err) + ']; return false; ';
+      }
+    } else {
+      out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    }
+    out += ' } else {  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; } ';
+    if (it.opts.allErrors) {
+      out += ' } ';
+    }
+  } else {
+    out += '  var err =   '; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('not') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should NOT be valid\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    if ($breakOnError) {
+      out += ' if (false) { ';
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 398:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_oneOf(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $currentBaseId = $it.baseId,
+    $prevValid = 'prevValid' + $lvl,
+    $passingSchemas = 'passingSchemas' + $lvl;
+  out += 'var ' + ($errs) + ' = errors , ' + ($prevValid) + ' = false , ' + ($valid) + ' = false , ' + ($passingSchemas) + ' = null; ';
+  var $wasComposite = it.compositeRule;
+  it.compositeRule = $it.compositeRule = true;
+  var arr1 = $schema;
+  if (arr1) {
+    var $sch, $i = -1,
+      l1 = arr1.length - 1;
+    while ($i < l1) {
+      $sch = arr1[$i += 1];
+      if (it.util.schemaHasRules($sch, it.RULES.all)) {
+        $it.schema = $sch;
+        $it.schemaPath = $schemaPath + '[' + $i + ']';
+        $it.errSchemaPath = $errSchemaPath + '/' + $i;
+        out += '  ' + (it.validate($it)) + ' ';
+        $it.baseId = $currentBaseId;
+      } else {
+        out += ' var ' + ($nextValid) + ' = true; ';
+      }
+      if ($i) {
+        out += ' if (' + ($nextValid) + ' && ' + ($prevValid) + ') { ' + ($valid) + ' = false; ' + ($passingSchemas) + ' = [' + ($passingSchemas) + ', ' + ($i) + ']; } else { ';
+        $closingBraces += '}';
+      }
+      out += ' if (' + ($nextValid) + ') { ' + ($valid) + ' = ' + ($prevValid) + ' = true; ' + ($passingSchemas) + ' = ' + ($i) + '; }';
+    }
+  }
+  it.compositeRule = $it.compositeRule = $wasComposite;
+  out += '' + ($closingBraces) + 'if (!' + ($valid) + ') {   var err =   '; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('oneOf') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { passingSchemas: ' + ($passingSchemas) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should match exactly one schema in oneOf\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError(vErrors); ';
+    } else {
+      out += ' validate.errors = vErrors; return false; ';
+    }
+  }
+  out += '} else {  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; }';
+  if (it.opts.allErrors) {
+    out += ' } ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 399:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_pattern(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $regexp = $isData ? '(new RegExp(' + $schemaValue + '))' : it.usePattern($schema);
+  out += 'if ( ';
+  if ($isData) {
+    out += ' (' + ($schemaValue) + ' !== undefined && typeof ' + ($schemaValue) + ' != \'string\') || ';
+  }
+  out += ' !' + ($regexp) + '.test(' + ($data) + ') ) {   ';
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ('pattern') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { pattern:  ';
+    if ($isData) {
+      out += '' + ($schemaValue);
+    } else {
+      out += '' + (it.util.toQuotedString($schema));
+    }
+    out += '  } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should match pattern "';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + (it.util.escapeQuotes($schema));
+      }
+      out += '"\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + (it.util.toQuotedString($schema));
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '} ';
+  if ($breakOnError) {
+    out += ' else { ';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 400:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_properties(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $key = 'key' + $lvl,
+    $idx = 'idx' + $lvl,
+    $dataNxt = $it.dataLevel = it.dataLevel + 1,
+    $nextData = 'data' + $dataNxt,
+    $dataProperties = 'dataProperties' + $lvl;
+  var $schemaKeys = Object.keys($schema || {}),
+    $pProperties = it.schema.patternProperties || {},
+    $pPropertyKeys = Object.keys($pProperties),
+    $aProperties = it.schema.additionalProperties,
+    $someProperties = $schemaKeys.length || $pPropertyKeys.length,
+    $noAdditional = $aProperties === false,
+    $additionalIsSchema = typeof $aProperties == 'object' && Object.keys($aProperties).length,
+    $removeAdditional = it.opts.removeAdditional,
+    $checkAdditional = $noAdditional || $additionalIsSchema || $removeAdditional,
+    $ownProperties = it.opts.ownProperties,
+    $currentBaseId = it.baseId;
+  var $required = it.schema.required;
+  if ($required && !(it.opts.v5 && $required.$data) && $required.length < it.opts.loopRequired) var $requiredHash = it.util.toHash($required);
+  out += 'var ' + ($errs) + ' = errors;var ' + ($nextValid) + ' = true;';
+  if ($ownProperties) {
+    out += ' var ' + ($dataProperties) + ' = undefined;';
+  }
+  if ($checkAdditional) {
+    if ($ownProperties) {
+      out += ' ' + ($dataProperties) + ' = ' + ($dataProperties) + ' || Object.keys(' + ($data) + '); for (var ' + ($idx) + '=0; ' + ($idx) + '<' + ($dataProperties) + '.length; ' + ($idx) + '++) { var ' + ($key) + ' = ' + ($dataProperties) + '[' + ($idx) + ']; ';
+    } else {
+      out += ' for (var ' + ($key) + ' in ' + ($data) + ') { ';
+    }
+    if ($someProperties) {
+      out += ' var isAdditional' + ($lvl) + ' = !(false ';
+      if ($schemaKeys.length) {
+        if ($schemaKeys.length > 5) {
+          out += ' || validate.schema' + ($schemaPath) + '[' + ($key) + '] ';
+        } else {
+          var arr1 = $schemaKeys;
+          if (arr1) {
+            var $propertyKey, i1 = -1,
+              l1 = arr1.length - 1;
+            while (i1 < l1) {
+              $propertyKey = arr1[i1 += 1];
+              out += ' || ' + ($key) + ' == ' + (it.util.toQuotedString($propertyKey)) + ' ';
+            }
+          }
+        }
+      }
+      if ($pPropertyKeys.length) {
+        var arr2 = $pPropertyKeys;
+        if (arr2) {
+          var $pProperty, $i = -1,
+            l2 = arr2.length - 1;
+          while ($i < l2) {
+            $pProperty = arr2[$i += 1];
+            out += ' || ' + (it.usePattern($pProperty)) + '.test(' + ($key) + ') ';
+          }
+        }
+      }
+      out += ' ); if (isAdditional' + ($lvl) + ') { ';
+    }
+    if ($removeAdditional == 'all') {
+      out += ' delete ' + ($data) + '[' + ($key) + ']; ';
+    } else {
+      var $currentErrorPath = it.errorPath;
+      var $additionalProperty = '\' + ' + $key + ' + \'';
+      if (it.opts._errorDataPathProperty) {
+        it.errorPath = it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers);
+      }
+      if ($noAdditional) {
+        if ($removeAdditional) {
+          out += ' delete ' + ($data) + '[' + ($key) + ']; ';
+        } else {
+          out += ' ' + ($nextValid) + ' = false; ';
+          var $currErrSchemaPath = $errSchemaPath;
+          $errSchemaPath = it.errSchemaPath + '/additionalProperties';
+          var $$outStack = $$outStack || [];
+          $$outStack.push(out);
+          out = ''; /* istanbul ignore else */
+          if (it.createErrors !== false) {
+            out += ' { keyword: \'' + ('additionalProperties') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { additionalProperty: \'' + ($additionalProperty) + '\' } ';
+            if (it.opts.messages !== false) {
+              out += ' , message: \'';
+              if (it.opts._errorDataPathProperty) {
+                out += 'is an invalid additional property';
+              } else {
+                out += 'should NOT have additional properties';
+              }
+              out += '\' ';
+            }
+            if (it.opts.verbose) {
+              out += ' , schema: false , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+            }
+            out += ' } ';
+          } else {
+            out += ' {} ';
+          }
+          var __err = out;
+          out = $$outStack.pop();
+          if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+            if (it.async) {
+              out += ' throw new ValidationError([' + (__err) + ']); ';
+            } else {
+              out += ' validate.errors = [' + (__err) + ']; return false; ';
+            }
+          } else {
+            out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+          }
+          $errSchemaPath = $currErrSchemaPath;
+          if ($breakOnError) {
+            out += ' break; ';
+          }
+        }
+      } else if ($additionalIsSchema) {
+        if ($removeAdditional == 'failing') {
+          out += ' var ' + ($errs) + ' = errors;  ';
+          var $wasComposite = it.compositeRule;
+          it.compositeRule = $it.compositeRule = true;
+          $it.schema = $aProperties;
+          $it.schemaPath = it.schemaPath + '.additionalProperties';
+          $it.errSchemaPath = it.errSchemaPath + '/additionalProperties';
+          $it.errorPath = it.opts._errorDataPathProperty ? it.errorPath : it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers);
+          var $passData = $data + '[' + $key + ']';
+          $it.dataPathArr[$dataNxt] = $key;
+          var $code = it.validate($it);
+          $it.baseId = $currentBaseId;
+          if (it.util.varOccurences($code, $nextData) < 2) {
+            out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+          } else {
+            out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+          }
+          out += ' if (!' + ($nextValid) + ') { errors = ' + ($errs) + '; if (validate.errors !== null) { if (errors) validate.errors.length = errors; else validate.errors = null; } delete ' + ($data) + '[' + ($key) + ']; }  ';
+          it.compositeRule = $it.compositeRule = $wasComposite;
+        } else {
+          $it.schema = $aProperties;
+          $it.schemaPath = it.schemaPath + '.additionalProperties';
+          $it.errSchemaPath = it.errSchemaPath + '/additionalProperties';
+          $it.errorPath = it.opts._errorDataPathProperty ? it.errorPath : it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers);
+          var $passData = $data + '[' + $key + ']';
+          $it.dataPathArr[$dataNxt] = $key;
+          var $code = it.validate($it);
+          $it.baseId = $currentBaseId;
+          if (it.util.varOccurences($code, $nextData) < 2) {
+            out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+          } else {
+            out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+          }
+          if ($breakOnError) {
+            out += ' if (!' + ($nextValid) + ') break; ';
+          }
+        }
+      }
+      it.errorPath = $currentErrorPath;
+    }
+    if ($someProperties) {
+      out += ' } ';
+    }
+    out += ' }  ';
+    if ($breakOnError) {
+      out += ' if (' + ($nextValid) + ') { ';
+      $closingBraces += '}';
+    }
+  }
+  var $useDefaults = it.opts.useDefaults && !it.compositeRule;
+  if ($schemaKeys.length) {
+    var arr3 = $schemaKeys;
+    if (arr3) {
+      var $propertyKey, i3 = -1,
+        l3 = arr3.length - 1;
+      while (i3 < l3) {
+        $propertyKey = arr3[i3 += 1];
+        var $sch = $schema[$propertyKey];
+        if (it.util.schemaHasRules($sch, it.RULES.all)) {
+          var $prop = it.util.getProperty($propertyKey),
+            $passData = $data + $prop,
+            $hasDefault = $useDefaults && $sch.default !== undefined;
+          $it.schema = $sch;
+          $it.schemaPath = $schemaPath + $prop;
+          $it.errSchemaPath = $errSchemaPath + '/' + it.util.escapeFragment($propertyKey);
+          $it.errorPath = it.util.getPath(it.errorPath, $propertyKey, it.opts.jsonPointers);
+          $it.dataPathArr[$dataNxt] = it.util.toQuotedString($propertyKey);
+          var $code = it.validate($it);
+          $it.baseId = $currentBaseId;
+          if (it.util.varOccurences($code, $nextData) < 2) {
+            $code = it.util.varReplace($code, $nextData, $passData);
+            var $useData = $passData;
+          } else {
+            var $useData = $nextData;
+            out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ';
+          }
+          if ($hasDefault) {
+            out += ' ' + ($code) + ' ';
+          } else {
+            if ($requiredHash && $requiredHash[$propertyKey]) {
+              out += ' if ( ' + ($useData) + ' === undefined ';
+              if ($ownProperties) {
+                out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+              }
+              out += ') { ' + ($nextValid) + ' = false; ';
+              var $currentErrorPath = it.errorPath,
+                $currErrSchemaPath = $errSchemaPath,
+                $missingProperty = it.util.escapeQuotes($propertyKey);
+              if (it.opts._errorDataPathProperty) {
+                it.errorPath = it.util.getPath($currentErrorPath, $propertyKey, it.opts.jsonPointers);
+              }
+              $errSchemaPath = it.errSchemaPath + '/required';
+              var $$outStack = $$outStack || [];
+              $$outStack.push(out);
+              out = ''; /* istanbul ignore else */
+              if (it.createErrors !== false) {
+                out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+                if (it.opts.messages !== false) {
+                  out += ' , message: \'';
+                  if (it.opts._errorDataPathProperty) {
+                    out += 'is a required property';
+                  } else {
+                    out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+                  }
+                  out += '\' ';
+                }
+                if (it.opts.verbose) {
+                  out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+                }
+                out += ' } ';
+              } else {
+                out += ' {} ';
+              }
+              var __err = out;
+              out = $$outStack.pop();
+              if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+                if (it.async) {
+                  out += ' throw new ValidationError([' + (__err) + ']); ';
+                } else {
+                  out += ' validate.errors = [' + (__err) + ']; return false; ';
+                }
+              } else {
+                out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+              }
+              $errSchemaPath = $currErrSchemaPath;
+              it.errorPath = $currentErrorPath;
+              out += ' } else { ';
+            } else {
+              if ($breakOnError) {
+                out += ' if ( ' + ($useData) + ' === undefined ';
+                if ($ownProperties) {
+                  out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+                }
+                out += ') { ' + ($nextValid) + ' = true; } else { ';
+              } else {
+                out += ' if (' + ($useData) + ' !== undefined ';
+                if ($ownProperties) {
+                  out += ' &&   Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+                }
+                out += ' ) { ';
+              }
+            }
+            out += ' ' + ($code) + ' } ';
+          }
+        }
+        if ($breakOnError) {
+          out += ' if (' + ($nextValid) + ') { ';
+          $closingBraces += '}';
+        }
+      }
+    }
+  }
+  if ($pPropertyKeys.length) {
+    var arr4 = $pPropertyKeys;
+    if (arr4) {
+      var $pProperty, i4 = -1,
+        l4 = arr4.length - 1;
+      while (i4 < l4) {
+        $pProperty = arr4[i4 += 1];
+        var $sch = $pProperties[$pProperty];
+        if (it.util.schemaHasRules($sch, it.RULES.all)) {
+          $it.schema = $sch;
+          $it.schemaPath = it.schemaPath + '.patternProperties' + it.util.getProperty($pProperty);
+          $it.errSchemaPath = it.errSchemaPath + '/patternProperties/' + it.util.escapeFragment($pProperty);
+          if ($ownProperties) {
+            out += ' ' + ($dataProperties) + ' = ' + ($dataProperties) + ' || Object.keys(' + ($data) + '); for (var ' + ($idx) + '=0; ' + ($idx) + '<' + ($dataProperties) + '.length; ' + ($idx) + '++) { var ' + ($key) + ' = ' + ($dataProperties) + '[' + ($idx) + ']; ';
+          } else {
+            out += ' for (var ' + ($key) + ' in ' + ($data) + ') { ';
+          }
+          out += ' if (' + (it.usePattern($pProperty)) + '.test(' + ($key) + ')) { ';
+          $it.errorPath = it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers);
+          var $passData = $data + '[' + $key + ']';
+          $it.dataPathArr[$dataNxt] = $key;
+          var $code = it.validate($it);
+          $it.baseId = $currentBaseId;
+          if (it.util.varOccurences($code, $nextData) < 2) {
+            out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+          } else {
+            out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+          }
+          if ($breakOnError) {
+            out += ' if (!' + ($nextValid) + ') break; ';
+          }
+          out += ' } ';
+          if ($breakOnError) {
+            out += ' else ' + ($nextValid) + ' = true; ';
+          }
+          out += ' }  ';
+          if ($breakOnError) {
+            out += ' if (' + ($nextValid) + ') { ';
+            $closingBraces += '}';
+          }
+        }
+      }
+    }
+  }
+  if ($breakOnError) {
+    out += ' ' + ($closingBraces) + ' if (' + ($errs) + ' == errors) {';
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 401:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_propertyNames(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  if (it.util.schemaHasRules($schema, it.RULES.all)) {
+    $it.schema = $schema;
+    $it.schemaPath = $schemaPath;
+    $it.errSchemaPath = $errSchemaPath;
+    var $key = 'key' + $lvl,
+      $idx = 'idx' + $lvl,
+      $i = 'i' + $lvl,
+      $invalidName = '\' + ' + $key + ' + \'',
+      $dataNxt = $it.dataLevel = it.dataLevel + 1,
+      $nextData = 'data' + $dataNxt,
+      $dataProperties = 'dataProperties' + $lvl,
+      $ownProperties = it.opts.ownProperties,
+      $currentBaseId = it.baseId;
+    out += ' var ' + ($errs) + ' = errors; ';
+    if ($ownProperties) {
+      out += ' var ' + ($dataProperties) + ' = undefined; ';
+    }
+    if ($ownProperties) {
+      out += ' ' + ($dataProperties) + ' = ' + ($dataProperties) + ' || Object.keys(' + ($data) + '); for (var ' + ($idx) + '=0; ' + ($idx) + '<' + ($dataProperties) + '.length; ' + ($idx) + '++) { var ' + ($key) + ' = ' + ($dataProperties) + '[' + ($idx) + ']; ';
+    } else {
+      out += ' for (var ' + ($key) + ' in ' + ($data) + ') { ';
+    }
+    out += ' var startErrs' + ($lvl) + ' = errors; ';
+    var $passData = $key;
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    var $code = it.validate($it);
+    $it.baseId = $currentBaseId;
+    if (it.util.varOccurences($code, $nextData) < 2) {
+      out += ' ' + (it.util.varReplace($code, $nextData, $passData)) + ' ';
+    } else {
+      out += ' var ' + ($nextData) + ' = ' + ($passData) + '; ' + ($code) + ' ';
+    }
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    out += ' if (!' + ($nextValid) + ') { for (var ' + ($i) + '=startErrs' + ($lvl) + '; ' + ($i) + '<errors; ' + ($i) + '++) { vErrors[' + ($i) + '].propertyName = ' + ($key) + '; }   var err =   '; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('propertyNames') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { propertyName: \'' + ($invalidName) + '\' } ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'property name \\\'' + ($invalidName) + '\\\' is invalid\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError(vErrors); ';
+      } else {
+        out += ' validate.errors = vErrors; return false; ';
+      }
+    }
+    if ($breakOnError) {
+      out += ' break; ';
+    }
+    out += ' } }';
+  }
+  if ($breakOnError) {
+    out += ' ' + ($closingBraces) + ' if (' + ($errs) + ' == errors) {';
+  }
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 402:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_required(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $vSchema = 'schema' + $lvl;
+  if (!$isData) {
+    if ($schema.length < it.opts.loopRequired && it.schema.properties && Object.keys(it.schema.properties).length) {
+      var $required = [];
+      var arr1 = $schema;
+      if (arr1) {
+        var $property, i1 = -1,
+          l1 = arr1.length - 1;
+        while (i1 < l1) {
+          $property = arr1[i1 += 1];
+          var $propertySch = it.schema.properties[$property];
+          if (!($propertySch && it.util.schemaHasRules($propertySch, it.RULES.all))) {
+            $required[$required.length] = $property;
+          }
+        }
+      }
+    } else {
+      var $required = $schema;
+    }
+  }
+  if ($isData || $required.length) {
+    var $currentErrorPath = it.errorPath,
+      $loopRequired = $isData || $required.length >= it.opts.loopRequired,
+      $ownProperties = it.opts.ownProperties;
+    if ($breakOnError) {
+      out += ' var missing' + ($lvl) + '; ';
+      if ($loopRequired) {
+        if (!$isData) {
+          out += ' var ' + ($vSchema) + ' = validate.schema' + ($schemaPath) + '; ';
+        }
+        var $i = 'i' + $lvl,
+          $propertyPath = 'schema' + $lvl + '[' + $i + ']',
+          $missingProperty = '\' + ' + $propertyPath + ' + \'';
+        if (it.opts._errorDataPathProperty) {
+          it.errorPath = it.util.getPathExpr($currentErrorPath, $propertyPath, it.opts.jsonPointers);
+        }
+        out += ' var ' + ($valid) + ' = true; ';
+        if ($isData) {
+          out += ' if (schema' + ($lvl) + ' === undefined) ' + ($valid) + ' = true; else if (!Array.isArray(schema' + ($lvl) + ')) ' + ($valid) + ' = false; else {';
+        }
+        out += ' for (var ' + ($i) + ' = 0; ' + ($i) + ' < ' + ($vSchema) + '.length; ' + ($i) + '++) { ' + ($valid) + ' = ' + ($data) + '[' + ($vSchema) + '[' + ($i) + ']] !== undefined ';
+        if ($ownProperties) {
+          out += ' &&   Object.prototype.hasOwnProperty.call(' + ($data) + ', ' + ($vSchema) + '[' + ($i) + ']) ';
+        }
+        out += '; if (!' + ($valid) + ') break; } ';
+        if ($isData) {
+          out += '  }  ';
+        }
+        out += '  if (!' + ($valid) + ') {   ';
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'';
+            if (it.opts._errorDataPathProperty) {
+              out += 'is a required property';
+            } else {
+              out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+            }
+            out += '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+        out += ' } else { ';
+      } else {
+        out += ' if ( ';
+        var arr2 = $required;
+        if (arr2) {
+          var $propertyKey, $i = -1,
+            l2 = arr2.length - 1;
+          while ($i < l2) {
+            $propertyKey = arr2[$i += 1];
+            if ($i) {
+              out += ' || ';
+            }
+            var $prop = it.util.getProperty($propertyKey),
+              $useData = $data + $prop;
+            out += ' ( ( ' + ($useData) + ' === undefined ';
+            if ($ownProperties) {
+              out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+            }
+            out += ') && (missing' + ($lvl) + ' = ' + (it.util.toQuotedString(it.opts.jsonPointers ? $propertyKey : $prop)) + ') ) ';
+          }
+        }
+        out += ') {  ';
+        var $propertyPath = 'missing' + $lvl,
+          $missingProperty = '\' + ' + $propertyPath + ' + \'';
+        if (it.opts._errorDataPathProperty) {
+          it.errorPath = it.opts.jsonPointers ? it.util.getPathExpr($currentErrorPath, $propertyPath, true) : $currentErrorPath + ' + ' + $propertyPath;
+        }
+        var $$outStack = $$outStack || [];
+        $$outStack.push(out);
+        out = ''; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'';
+            if (it.opts._errorDataPathProperty) {
+              out += 'is a required property';
+            } else {
+              out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+            }
+            out += '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        var __err = out;
+        out = $$outStack.pop();
+        if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+          if (it.async) {
+            out += ' throw new ValidationError([' + (__err) + ']); ';
+          } else {
+            out += ' validate.errors = [' + (__err) + ']; return false; ';
+          }
+        } else {
+          out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+        }
+        out += ' } else { ';
+      }
+    } else {
+      if ($loopRequired) {
+        if (!$isData) {
+          out += ' var ' + ($vSchema) + ' = validate.schema' + ($schemaPath) + '; ';
+        }
+        var $i = 'i' + $lvl,
+          $propertyPath = 'schema' + $lvl + '[' + $i + ']',
+          $missingProperty = '\' + ' + $propertyPath + ' + \'';
+        if (it.opts._errorDataPathProperty) {
+          it.errorPath = it.util.getPathExpr($currentErrorPath, $propertyPath, it.opts.jsonPointers);
+        }
+        if ($isData) {
+          out += ' if (' + ($vSchema) + ' && !Array.isArray(' + ($vSchema) + ')) {  var err =   '; /* istanbul ignore else */
+          if (it.createErrors !== false) {
+            out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+            if (it.opts.messages !== false) {
+              out += ' , message: \'';
+              if (it.opts._errorDataPathProperty) {
+                out += 'is a required property';
+              } else {
+                out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+              }
+              out += '\' ';
+            }
+            if (it.opts.verbose) {
+              out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+            }
+            out += ' } ';
+          } else {
+            out += ' {} ';
+          }
+          out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } else if (' + ($vSchema) + ' !== undefined) { ';
+        }
+        out += ' for (var ' + ($i) + ' = 0; ' + ($i) + ' < ' + ($vSchema) + '.length; ' + ($i) + '++) { if (' + ($data) + '[' + ($vSchema) + '[' + ($i) + ']] === undefined ';
+        if ($ownProperties) {
+          out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', ' + ($vSchema) + '[' + ($i) + ']) ';
+        }
+        out += ') {  var err =   '; /* istanbul ignore else */
+        if (it.createErrors !== false) {
+          out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+          if (it.opts.messages !== false) {
+            out += ' , message: \'';
+            if (it.opts._errorDataPathProperty) {
+              out += 'is a required property';
+            } else {
+              out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+            }
+            out += '\' ';
+          }
+          if (it.opts.verbose) {
+            out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+          }
+          out += ' } ';
+        } else {
+          out += ' {} ';
+        }
+        out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } } ';
+        if ($isData) {
+          out += '  }  ';
+        }
+      } else {
+        var arr3 = $required;
+        if (arr3) {
+          var $propertyKey, i3 = -1,
+            l3 = arr3.length - 1;
+          while (i3 < l3) {
+            $propertyKey = arr3[i3 += 1];
+            var $prop = it.util.getProperty($propertyKey),
+              $missingProperty = it.util.escapeQuotes($propertyKey),
+              $useData = $data + $prop;
+            if (it.opts._errorDataPathProperty) {
+              it.errorPath = it.util.getPath($currentErrorPath, $propertyKey, it.opts.jsonPointers);
+            }
+            out += ' if ( ' + ($useData) + ' === undefined ';
+            if ($ownProperties) {
+              out += ' || ! Object.prototype.hasOwnProperty.call(' + ($data) + ', \'' + (it.util.escapeQuotes($propertyKey)) + '\') ';
+            }
+            out += ') {  var err =   '; /* istanbul ignore else */
+            if (it.createErrors !== false) {
+              out += ' { keyword: \'' + ('required') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingProperty: \'' + ($missingProperty) + '\' } ';
+              if (it.opts.messages !== false) {
+                out += ' , message: \'';
+                if (it.opts._errorDataPathProperty) {
+                  out += 'is a required property';
+                } else {
+                  out += 'should have required property \\\'' + ($missingProperty) + '\\\'';
+                }
+                out += '\' ';
+              }
+              if (it.opts.verbose) {
+                out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+              }
+              out += ' } ';
+            } else {
+              out += ' {} ';
+            }
+            out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } ';
+          }
+        }
+      }
+    }
+    it.errorPath = $currentErrorPath;
+  } else if ($breakOnError) {
+    out += ' if (true) {';
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 403:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_uniqueItems(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  if (($schema || $isData) && it.opts.uniqueItems !== false) {
+    if ($isData) {
+      out += ' var ' + ($valid) + '; if (' + ($schemaValue) + ' === false || ' + ($schemaValue) + ' === undefined) ' + ($valid) + ' = true; else if (typeof ' + ($schemaValue) + ' != \'boolean\') ' + ($valid) + ' = false; else { ';
+    }
+    out += ' var i = ' + ($data) + '.length , ' + ($valid) + ' = true , j; if (i > 1) { ';
+    var $itemType = it.schema.items && it.schema.items.type;
+    if (!$itemType || $itemType == 'object' || $itemType == 'array') {
+      out += ' outer: for (;i--;) { for (j = i; j--;) { if (equal(' + ($data) + '[i], ' + ($data) + '[j])) { ' + ($valid) + ' = false; break outer; } } } ';
+    } else {
+      out += ' var itemIndices = {}, item; for (;i--;) { var item = ' + ($data) + '[i]; if (typeof item != \'' + ($itemType) + '\') continue; if (itemIndices[item] !== undefined) { ' + ($valid) + ' = false; j = itemIndices[item]; break; } itemIndices[item] = i; } ';
+    }
+    out += ' } ';
+    if ($isData) {
+      out += '  }  ';
+    }
+    out += ' if (!' + ($valid) + ') {   ';
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = ''; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ('uniqueItems') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { i: i, j: j } ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should NOT have duplicate items (items ## \' + j + \' and \' + i + \' are identical)\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema:  ';
+        if ($isData) {
+          out += 'validate.schema' + ($schemaPath);
+        } else {
+          out += '' + ($schema);
+        }
+        out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    var __err = out;
+    out = $$outStack.pop();
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError([' + (__err) + ']); ';
+      } else {
+        out += ' validate.errors = [' + (__err) + ']; return false; ';
+      }
+    } else {
+      out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    }
+    out += ' } ';
+    if ($breakOnError) {
+      out += ' else { ';
+    }
+  } else {
+    if ($breakOnError) {
+      out += ' if (true) { ';
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 404:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var KEYWORDS = [
+  'multipleOf',
+  'maximum',
+  'exclusiveMaximum',
+  'minimum',
+  'exclusiveMinimum',
+  'maxLength',
+  'minLength',
+  'pattern',
+  'additionalItems',
+  'maxItems',
+  'minItems',
+  'uniqueItems',
+  'maxProperties',
+  'minProperties',
+  'required',
+  'additionalProperties',
+  'enum',
+  'format',
+  'const'
+];
+
+module.exports = function (metaSchema, keywordsJsonPointers) {
+  for (var i=0; i<keywordsJsonPointers.length; i++) {
+    metaSchema = JSON.parse(JSON.stringify(metaSchema));
+    var segments = keywordsJsonPointers[i].split('/');
+    var keywords = metaSchema;
+    var j;
+    for (j=1; j<segments.length; j++)
+      keywords = keywords[segments[j]];
+
+    for (j=0; j<KEYWORDS.length; j++) {
+      var key = KEYWORDS[j];
+      var schema = keywords[key];
+      if (schema) {
+        keywords[key] = {
+          anyOf: [
+            schema,
+            { $ref: 'https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/data.json#' }
+          ]
+        };
+      }
+    }
+  }
+
+  return metaSchema;
+};
+
+
+/***/ }),
+
+/***/ 405:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var MissingRefError = __webpack_require__(324).MissingRef;
+
+module.exports = compileAsync;
+
+
+/**
+ * Creates validating function for passed schema with asynchronous loading of missing schemas.
+ * `loadSchema` option should be a function that accepts schema uri and returns promise that resolves with the schema.
+ * @this  Ajv
+ * @param {Object}   schema schema object
+ * @param {Boolean}  meta optional true to compile meta-schema; this parameter can be skipped
+ * @param {Function} callback an optional node-style callback, it is called with 2 parameters: error (or null) and validating function.
+ * @return {Promise} promise that resolves with a validating function.
+ */
+function compileAsync(schema, meta, callback) {
+  /* eslint no-shadow: 0 */
+  /* global Promise */
+  /* jshint validthis: true */
+  var self = this;
+  if (typeof this._opts.loadSchema != 'function')
+    throw new Error('options.loadSchema should be a function');
+
+  if (typeof meta == 'function') {
+    callback = meta;
+    meta = undefined;
+  }
+
+  var p = loadMetaSchemaOf(schema).then(function () {
+    var schemaObj = self._addSchema(schema, undefined, meta);
+    return schemaObj.validate || _compileAsync(schemaObj);
+  });
+
+  if (callback) {
+    p.then(
+      function(v) { callback(null, v); },
+      callback
+    );
+  }
+
+  return p;
+
+
+  function loadMetaSchemaOf(sch) {
+    var $schema = sch.$schema;
+    return $schema && !self.getSchema($schema)
+            ? compileAsync.call(self, { $ref: $schema }, true)
+            : Promise.resolve();
+  }
+
+
+  function _compileAsync(schemaObj) {
+    try { return self._compile(schemaObj); }
+    catch(e) {
+      if (e instanceof MissingRefError) return loadMissingSchema(e);
+      throw e;
+    }
+
+
+    function loadMissingSchema(e) {
+      var ref = e.missingSchema;
+      if (added(ref)) throw new Error('Schema ' + ref + ' is loaded but ' + e.missingRef + ' cannot be resolved');
+
+      var schemaPromise = self._loadingSchemas[ref];
+      if (!schemaPromise) {
+        schemaPromise = self._loadingSchemas[ref] = self._opts.loadSchema(ref);
+        schemaPromise.then(removePromise, removePromise);
+      }
+
+      return schemaPromise.then(function (sch) {
+        if (!added(ref)) {
+          return loadMetaSchemaOf(sch).then(function () {
+            if (!added(ref)) self.addSchema(sch, ref, undefined, meta);
+          });
+        }
+      }).then(function() {
+        return _compileAsync(schemaObj);
+      });
+
+      function removePromise() {
+        delete self._loadingSchemas[ref];
+      }
+
+      function added(ref) {
+        return self._refs[ref] || self._schemas[ref];
+      }
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var IDENTIFIER = /^[a-z_$][a-z0-9_$-]*$/i;
+var customRuleCode = __webpack_require__(407);
+
+module.exports = {
+  add: addKeyword,
+  get: getKeyword,
+  remove: removeKeyword
+};
+
+/**
+ * Define custom keyword
+ * @this  Ajv
+ * @param {String} keyword custom keyword, should be unique (including different from all standard, custom and macro keywords).
+ * @param {Object} definition keyword definition object with properties `type` (type(s) which the keyword applies to), `validate` or `compile`.
+ * @return {Ajv} this for method chaining
+ */
+function addKeyword(keyword, definition) {
+  /* jshint validthis: true */
+  /* eslint no-shadow: 0 */
+  var RULES = this.RULES;
+
+  if (RULES.keywords[keyword])
+    throw new Error('Keyword ' + keyword + ' is already defined');
+
+  if (!IDENTIFIER.test(keyword))
+    throw new Error('Keyword ' + keyword + ' is not a valid identifier');
+
+  if (definition) {
+    if (definition.macro && definition.valid !== undefined)
+      throw new Error('"valid" option cannot be used with macro keywords');
+
+    var dataType = definition.type;
+    if (Array.isArray(dataType)) {
+      var i, len = dataType.length;
+      for (i=0; i<len; i++) checkDataType(dataType[i]);
+      for (i=0; i<len; i++) _addRule(keyword, dataType[i], definition);
+    } else {
+      if (dataType) checkDataType(dataType);
+      _addRule(keyword, dataType, definition);
+    }
+
+    var $data = definition.$data === true && this._opts.$data;
+    if ($data && !definition.validate)
+      throw new Error('$data support: "validate" function is not defined');
+
+    var metaSchema = definition.metaSchema;
+    if (metaSchema) {
+      if ($data) {
+        metaSchema = {
+          anyOf: [
+            metaSchema,
+            { '$ref': 'https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/data.json#' }
+          ]
+        };
+      }
+      definition.validateSchema = this.compile(metaSchema, true);
+    }
+  }
+
+  RULES.keywords[keyword] = RULES.all[keyword] = true;
+
+
+  function _addRule(keyword, dataType, definition) {
+    var ruleGroup;
+    for (var i=0; i<RULES.length; i++) {
+      var rg = RULES[i];
+      if (rg.type == dataType) {
+        ruleGroup = rg;
+        break;
+      }
+    }
+
+    if (!ruleGroup) {
+      ruleGroup = { type: dataType, rules: [] };
+      RULES.push(ruleGroup);
+    }
+
+    var rule = {
+      keyword: keyword,
+      definition: definition,
+      custom: true,
+      code: customRuleCode,
+      implements: definition.implements
+    };
+    ruleGroup.rules.push(rule);
+    RULES.custom[keyword] = rule;
+  }
+
+
+  function checkDataType(dataType) {
+    if (!RULES.types[dataType]) throw new Error('Unknown type ' + dataType);
+  }
+
+  return this;
+}
+
+
+/**
+ * Get keyword
+ * @this  Ajv
+ * @param {String} keyword pre-defined or custom keyword.
+ * @return {Object|Boolean} custom keyword definition, `true` if it is a predefined keyword, `false` otherwise.
+ */
+function getKeyword(keyword) {
+  /* jshint validthis: true */
+  var rule = this.RULES.custom[keyword];
+  return rule ? rule.definition : this.RULES.keywords[keyword] || false;
+}
+
+
+/**
+ * Remove keyword
+ * @this  Ajv
+ * @param {String} keyword pre-defined or custom keyword.
+ * @return {Ajv} this for method chaining
+ */
+function removeKeyword(keyword) {
+  /* jshint validthis: true */
+  var RULES = this.RULES;
+  delete RULES.keywords[keyword];
+  delete RULES.all[keyword];
+  delete RULES.custom[keyword];
+  for (var i=0; i<RULES.length; i++) {
+    var rules = RULES[i].rules;
+    for (var j=0; j<rules.length; j++) {
+      if (rules[j].keyword == keyword) {
+        rules.splice(j, 1);
+        break;
+      }
+    }
+  }
+  return this;
+}
+
+
+/***/ }),
+
+/***/ 407:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_custom(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  var $rule = this,
+    $definition = 'definition' + $lvl,
+    $rDef = $rule.definition,
+    $closingBraces = '';
+  var $compile, $inline, $macro, $ruleValidate, $validateCode;
+  if ($isData && $rDef.$data) {
+    $validateCode = 'keywordValidate' + $lvl;
+    var $validateSchema = $rDef.validateSchema;
+    out += ' var ' + ($definition) + ' = RULES.custom[\'' + ($keyword) + '\'].definition; var ' + ($validateCode) + ' = ' + ($definition) + '.validate;';
+  } else {
+    $ruleValidate = it.useCustomRule($rule, $schema, it.schema, it);
+    if (!$ruleValidate) return;
+    $schemaValue = 'validate.schema' + $schemaPath;
+    $validateCode = $ruleValidate.code;
+    $compile = $rDef.compile;
+    $inline = $rDef.inline;
+    $macro = $rDef.macro;
+  }
+  var $ruleErrs = $validateCode + '.errors',
+    $i = 'i' + $lvl,
+    $ruleErr = 'ruleErr' + $lvl,
+    $asyncKeyword = $rDef.async;
+  if ($asyncKeyword && !it.async) throw new Error('async keyword in sync schema');
+  if (!($inline || $macro)) {
+    out += '' + ($ruleErrs) + ' = null;';
+  }
+  out += 'var ' + ($errs) + ' = errors;var ' + ($valid) + ';';
+  if ($isData && $rDef.$data) {
+    $closingBraces += '}';
+    out += ' if (' + ($schemaValue) + ' === undefined) { ' + ($valid) + ' = true; } else { ';
+    if ($validateSchema) {
+      $closingBraces += '}';
+      out += ' ' + ($valid) + ' = ' + ($definition) + '.validateSchema(' + ($schemaValue) + '); if (' + ($valid) + ') { ';
+    }
+  }
+  if ($inline) {
+    if ($rDef.statements) {
+      out += ' ' + ($ruleValidate.validate) + ' ';
+    } else {
+      out += ' ' + ($valid) + ' = ' + ($ruleValidate.validate) + '; ';
+    }
+  } else if ($macro) {
+    var $it = it.util.copy(it);
+    var $closingBraces = '';
+    $it.level++;
+    var $nextValid = 'valid' + $it.level;
+    $it.schema = $ruleValidate.validate;
+    $it.schemaPath = '';
+    var $wasComposite = it.compositeRule;
+    it.compositeRule = $it.compositeRule = true;
+    var $code = it.validate($it).replace(/validate\.schema/g, $validateCode);
+    it.compositeRule = $it.compositeRule = $wasComposite;
+    out += ' ' + ($code);
+  } else {
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = '';
+    out += '  ' + ($validateCode) + '.call( ';
+    if (it.opts.passContext) {
+      out += 'this';
+    } else {
+      out += 'self';
+    }
+    if ($compile || $rDef.schema === false) {
+      out += ' , ' + ($data) + ' ';
+    } else {
+      out += ' , ' + ($schemaValue) + ' , ' + ($data) + ' , validate.schema' + (it.schemaPath) + ' ';
+    }
+    out += ' , (dataPath || \'\')';
+    if (it.errorPath != '""') {
+      out += ' + ' + (it.errorPath);
+    }
+    var $parentData = $dataLvl ? 'data' + (($dataLvl - 1) || '') : 'parentData',
+      $parentDataProperty = $dataLvl ? it.dataPathArr[$dataLvl] : 'parentDataProperty';
+    out += ' , ' + ($parentData) + ' , ' + ($parentDataProperty) + ' , rootData )  ';
+    var def_callRuleValidate = out;
+    out = $$outStack.pop();
+    if ($rDef.errors === false) {
+      out += ' ' + ($valid) + ' = ';
+      if ($asyncKeyword) {
+        out += 'await ';
+      }
+      out += '' + (def_callRuleValidate) + '; ';
+    } else {
+      if ($asyncKeyword) {
+        $ruleErrs = 'customErrors' + $lvl;
+        out += ' var ' + ($ruleErrs) + ' = null; try { ' + ($valid) + ' = await ' + (def_callRuleValidate) + '; } catch (e) { ' + ($valid) + ' = false; if (e instanceof ValidationError) ' + ($ruleErrs) + ' = e.errors; else throw e; } ';
+      } else {
+        out += ' ' + ($ruleErrs) + ' = null; ' + ($valid) + ' = ' + (def_callRuleValidate) + '; ';
+      }
+    }
+  }
+  if ($rDef.modifying) {
+    out += ' if (' + ($parentData) + ') ' + ($data) + ' = ' + ($parentData) + '[' + ($parentDataProperty) + '];';
+  }
+  out += '' + ($closingBraces);
+  if ($rDef.valid) {
+    if ($breakOnError) {
+      out += ' if (true) { ';
+    }
+  } else {
+    out += ' if ( ';
+    if ($rDef.valid === undefined) {
+      out += ' !';
+      if ($macro) {
+        out += '' + ($nextValid);
+      } else {
+        out += '' + ($valid);
+      }
+    } else {
+      out += ' ' + (!$rDef.valid) + ' ';
+    }
+    out += ') { ';
+    $errorKeyword = $rule.keyword;
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = '';
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = ''; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ($errorKeyword || 'custom') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { keyword: \'' + ($rule.keyword) + '\' } ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'should pass "' + ($rule.keyword) + '" keyword validation\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    var __err = out;
+    out = $$outStack.pop();
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError([' + (__err) + ']); ';
+      } else {
+        out += ' validate.errors = [' + (__err) + ']; return false; ';
+      }
+    } else {
+      out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    }
+    var def_customError = out;
+    out = $$outStack.pop();
+    if ($inline) {
+      if ($rDef.errors) {
+        if ($rDef.errors != 'full') {
+          out += '  for (var ' + ($i) + '=' + ($errs) + '; ' + ($i) + '<errors; ' + ($i) + '++) { var ' + ($ruleErr) + ' = vErrors[' + ($i) + ']; if (' + ($ruleErr) + '.dataPath === undefined) ' + ($ruleErr) + '.dataPath = (dataPath || \'\') + ' + (it.errorPath) + '; if (' + ($ruleErr) + '.schemaPath === undefined) { ' + ($ruleErr) + '.schemaPath = "' + ($errSchemaPath) + '"; } ';
+          if (it.opts.verbose) {
+            out += ' ' + ($ruleErr) + '.schema = ' + ($schemaValue) + '; ' + ($ruleErr) + '.data = ' + ($data) + '; ';
+          }
+          out += ' } ';
+        }
+      } else {
+        if ($rDef.errors === false) {
+          out += ' ' + (def_customError) + ' ';
+        } else {
+          out += ' if (' + ($errs) + ' == errors) { ' + (def_customError) + ' } else {  for (var ' + ($i) + '=' + ($errs) + '; ' + ($i) + '<errors; ' + ($i) + '++) { var ' + ($ruleErr) + ' = vErrors[' + ($i) + ']; if (' + ($ruleErr) + '.dataPath === undefined) ' + ($ruleErr) + '.dataPath = (dataPath || \'\') + ' + (it.errorPath) + '; if (' + ($ruleErr) + '.schemaPath === undefined) { ' + ($ruleErr) + '.schemaPath = "' + ($errSchemaPath) + '"; } ';
+          if (it.opts.verbose) {
+            out += ' ' + ($ruleErr) + '.schema = ' + ($schemaValue) + '; ' + ($ruleErr) + '.data = ' + ($data) + '; ';
+          }
+          out += ' } } ';
+        }
+      }
+    } else if ($macro) {
+      out += '   var err =   '; /* istanbul ignore else */
+      if (it.createErrors !== false) {
+        out += ' { keyword: \'' + ($errorKeyword || 'custom') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { keyword: \'' + ($rule.keyword) + '\' } ';
+        if (it.opts.messages !== false) {
+          out += ' , message: \'should pass "' + ($rule.keyword) + '" keyword validation\' ';
+        }
+        if (it.opts.verbose) {
+          out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+        }
+        out += ' } ';
+      } else {
+        out += ' {} ';
+      }
+      out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+      if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+        if (it.async) {
+          out += ' throw new ValidationError(vErrors); ';
+        } else {
+          out += ' validate.errors = vErrors; return false; ';
+        }
+      }
+    } else {
+      if ($rDef.errors === false) {
+        out += ' ' + (def_customError) + ' ';
+      } else {
+        out += ' if (Array.isArray(' + ($ruleErrs) + ')) { if (vErrors === null) vErrors = ' + ($ruleErrs) + '; else vErrors = vErrors.concat(' + ($ruleErrs) + '); errors = vErrors.length;  for (var ' + ($i) + '=' + ($errs) + '; ' + ($i) + '<errors; ' + ($i) + '++) { var ' + ($ruleErr) + ' = vErrors[' + ($i) + ']; if (' + ($ruleErr) + '.dataPath === undefined) ' + ($ruleErr) + '.dataPath = (dataPath || \'\') + ' + (it.errorPath) + ';  ' + ($ruleErr) + '.schemaPath = "' + ($errSchemaPath) + '";  ';
+        if (it.opts.verbose) {
+          out += ' ' + ($ruleErr) + '.schema = ' + ($schemaValue) + '; ' + ($ruleErr) + '.data = ' + ($data) + '; ';
+        }
+        out += ' } } else { ' + (def_customError) + ' } ';
+      }
+    }
+    out += ' } ';
+    if ($breakOnError) {
+      out += ' else { ';
+    }
+  }
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 408:
+/***/ (function(module, exports) {
+
+module.exports = {
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/data.json#",
+	"description": "Meta-schema for $data reference (JSON Schema extension proposal)",
+	"type": "object",
+	"required": [
+		"$data"
+	],
+	"properties": {
+		"$data": {
+			"type": "string",
+			"anyOf": [
+				{
+					"format": "relative-json-pointer"
+				},
+				{
+					"format": "json-pointer"
+				}
+			]
+		}
+	},
+	"additionalProperties": false
+};
+
+/***/ }),
+
+/***/ 409:
+/***/ (function(module, exports) {
+
+module.exports = {
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://json-schema.org/draft-07/schema#",
+	"title": "Core schema meta-schema",
+	"definitions": {
+		"schemaArray": {
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "#"
+			}
+		},
+		"nonNegativeInteger": {
+			"type": "integer",
+			"minimum": 0
+		},
+		"nonNegativeIntegerDefault0": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/nonNegativeInteger"
+				},
+				{
+					"default": 0
+				}
+			]
+		},
+		"simpleTypes": {
+			"enum": [
+				"array",
+				"boolean",
+				"integer",
+				"null",
+				"number",
+				"object",
+				"string"
+			]
+		},
+		"stringArray": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"uniqueItems": true,
+			"default": []
+		}
+	},
+	"type": [
+		"object",
+		"boolean"
+	],
+	"properties": {
+		"$id": {
+			"type": "string",
+			"format": "uri-reference"
+		},
+		"$schema": {
+			"type": "string",
+			"format": "uri"
+		},
+		"$ref": {
+			"type": "string",
+			"format": "uri-reference"
+		},
+		"$comment": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"default": true,
+		"readOnly": {
+			"type": "boolean",
+			"default": false
+		},
+		"examples": {
+			"type": "array",
+			"items": true
+		},
+		"multipleOf": {
+			"type": "number",
+			"exclusiveMinimum": 0
+		},
+		"maximum": {
+			"type": "number"
+		},
+		"exclusiveMaximum": {
+			"type": "number"
+		},
+		"minimum": {
+			"type": "number"
+		},
+		"exclusiveMinimum": {
+			"type": "number"
+		},
+		"maxLength": {
+			"$ref": "#/definitions/nonNegativeInteger"
+		},
+		"minLength": {
+			"$ref": "#/definitions/nonNegativeIntegerDefault0"
+		},
+		"pattern": {
+			"type": "string",
+			"format": "regex"
+		},
+		"additionalItems": {
+			"$ref": "#"
+		},
+		"items": {
+			"anyOf": [
+				{
+					"$ref": "#"
+				},
+				{
+					"$ref": "#/definitions/schemaArray"
+				}
+			],
+			"default": true
+		},
+		"maxItems": {
+			"$ref": "#/definitions/nonNegativeInteger"
+		},
+		"minItems": {
+			"$ref": "#/definitions/nonNegativeIntegerDefault0"
+		},
+		"uniqueItems": {
+			"type": "boolean",
+			"default": false
+		},
+		"contains": {
+			"$ref": "#"
+		},
+		"maxProperties": {
+			"$ref": "#/definitions/nonNegativeInteger"
+		},
+		"minProperties": {
+			"$ref": "#/definitions/nonNegativeIntegerDefault0"
+		},
+		"required": {
+			"$ref": "#/definitions/stringArray"
+		},
+		"additionalProperties": {
+			"$ref": "#"
+		},
+		"definitions": {
+			"type": "object",
+			"additionalProperties": {
+				"$ref": "#"
+			},
+			"default": {}
+		},
+		"properties": {
+			"type": "object",
+			"additionalProperties": {
+				"$ref": "#"
+			},
+			"default": {}
+		},
+		"patternProperties": {
+			"type": "object",
+			"additionalProperties": {
+				"$ref": "#"
+			},
+			"propertyNames": {
+				"format": "regex"
+			},
+			"default": {}
+		},
+		"dependencies": {
+			"type": "object",
+			"additionalProperties": {
+				"anyOf": [
+					{
+						"$ref": "#"
+					},
+					{
+						"$ref": "#/definitions/stringArray"
+					}
+				]
+			}
+		},
+		"propertyNames": {
+			"$ref": "#"
+		},
+		"const": true,
+		"enum": {
+			"type": "array",
+			"items": true,
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"type": {
+			"anyOf": [
+				{
+					"$ref": "#/definitions/simpleTypes"
+				},
+				{
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/simpleTypes"
+					},
+					"minItems": 1,
+					"uniqueItems": true
+				}
+			]
+		},
+		"format": {
+			"type": "string"
+		},
+		"contentMediaType": {
+			"type": "string"
+		},
+		"contentEncoding": {
+			"type": "string"
+		},
+		"if": {
+			"$ref": "#"
+		},
+		"then": {
+			"$ref": "#"
+		},
+		"else": {
+			"$ref": "#"
+		},
+		"allOf": {
+			"$ref": "#/definitions/schemaArray"
+		},
+		"anyOf": {
+			"$ref": "#/definitions/schemaArray"
+		},
+		"oneOf": {
+			"$ref": "#/definitions/schemaArray"
+		},
+		"not": {
+			"$ref": "#"
+		}
+	},
+	"default": true
+};
+
+/***/ }),
+
+/***/ 410:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var KEYWORDS = __webpack_require__(411);
+
+module.exports = defineKeywords;
+
+
+/**
+ * Defines one or several keywords in ajv instance
+ * @param  {Ajv} ajv validator instance
+ * @param  {String|Array<String>|undefined} keyword keyword(s) to define
+ * @return {Ajv} ajv instance (for chaining)
+ */
+function defineKeywords(ajv, keyword) {
+  if (Array.isArray(keyword)) {
+    for (var i=0; i<keyword.length; i++)
+      get(keyword[i])(ajv);
+    return ajv;
+  }
+  if (keyword) {
+    get(keyword)(ajv);
+    return ajv;
+  }
+  for (keyword in KEYWORDS) get(keyword)(ajv);
+  return ajv;
+}
+
+
+defineKeywords.get = get;
+
+function get(keyword) {
+  var defFunc = KEYWORDS[keyword];
+  if (!defFunc) throw new Error('Unknown keyword ' + keyword);
+  return defFunc;
+}
+
+
+/***/ }),
+
+/***/ 411:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  'instanceof': __webpack_require__(412),
+  range: __webpack_require__(413),
+  regexp: __webpack_require__(414),
+  'typeof': __webpack_require__(415),
+  dynamicDefaults: __webpack_require__(416),
+  prohibited: __webpack_require__(417),
+  uniqueItemProperties: __webpack_require__(418),
+  deepProperties: __webpack_require__(419),
+  deepRequired: __webpack_require__(420),
+  formatMinimum: __webpack_require__(421),
+  formatMaximum: __webpack_require__(423),
+  patternRequired: __webpack_require__(424),
+  'switch': __webpack_require__(426),
+  select: __webpack_require__(428)
+};
+
+
+/***/ }),
+
+/***/ 412:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+
+var CONSTRUCTORS = {
+  Object: Object,
+  Array: Array,
+  Function: Function,
+  Number: Number,
+  String: String,
+  Date: Date,
+  RegExp: RegExp
+};
+
+module.exports = function defFunc(ajv) {
+  /* istanbul ignore else */
+  if (typeof Buffer != 'undefined')
+    CONSTRUCTORS.Buffer = Buffer;
+
+  /* istanbul ignore else */
+  if (typeof Promise != 'undefined')
+    CONSTRUCTORS.Promise = Promise;
+
+  defFunc.definition = {
+    compile: function (schema) {
+      if (typeof schema == 'string') {
+        var Constructor = getConstructor(schema);
+        return function (data) {
+          return data instanceof Constructor;
+        };
+      }
+
+      var constructors = schema.map(getConstructor);
+      return function (data) {
+        for (var i=0; i<constructors.length; i++)
+          if (data instanceof constructors[i]) return true;
+        return false;
+      };
+    },
+    CONSTRUCTORS: CONSTRUCTORS,
+    metaSchema: {
+      anyOf: [
+        { type: 'string' },
+        {
+          type: 'array',
+          items: { type: 'string' }
+        }
+      ]
+    }
+  };
+
+  ajv.addKeyword('instanceof', defFunc.definition);
+  return ajv;
+
+  function getConstructor(c) {
+    var Constructor = CONSTRUCTORS[c];
+    if (Constructor) return Constructor;
+    throw new Error('invalid "instanceof" keyword value ' + c);
+  }
+};
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15).Buffer))
+
+/***/ }),
+
+/***/ 413:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'number',
+    macro: function (schema, parentSchema) {
+      var min = schema[0]
+        , max = schema[1]
+        , exclusive = parentSchema.exclusiveRange;
+
+      validateRangeSchema(min, max, exclusive);
+
+      return exclusive === true
+              ? {exclusiveMinimum: min, exclusiveMaximum: max}
+              : {minimum: min, maximum: max};
+    },
+    metaSchema: {
+      type: 'array',
+      minItems: 2,
+      maxItems: 2,
+      items: { type: 'number' }
+    }
+  };
+
+  ajv.addKeyword('range', defFunc.definition);
+  ajv.addKeyword('exclusiveRange');
+  return ajv;
+
+  function validateRangeSchema(min, max, exclusive) {
+    if (exclusive !== undefined && typeof exclusive != 'boolean')
+      throw new Error('Invalid schema for exclusiveRange keyword, should be boolean');
+
+    if (min > max || (exclusive && min == max))
+      throw new Error('There are no numbers in range');
+  }
+};
+
+
+/***/ }),
+
+/***/ 414:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'string',
+    inline: function (it, keyword, schema) {
+      return getRegExp() + '.test(data' + (it.dataLevel || '') + ')';
+
+      function getRegExp() {
+        try {
+          if (typeof schema == 'object')
+            return new RegExp(schema.pattern, schema.flags);
+
+          var rx = schema.match(/^\/(.*)\/([gimy]*)$/);
+          if (rx) return new RegExp(rx[1], rx[2]);
+          throw new Error('cannot parse string into RegExp');
+        } catch(e) {
+          console.error('regular expression', schema, 'is invalid');
+          throw e;
+        }
+      }
+    },
+    metaSchema: {
+      type: ['string', 'object'],
+      properties: {
+        pattern: { type: 'string' },
+        flags: { type: 'string' }
+      },
+      required: ['pattern'],
+      additionalProperties: false
+    }
+  };
+
+  ajv.addKeyword('regexp', defFunc.definition);
+  return ajv;
+};
+
+
+/***/ }),
+
+/***/ 415:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var KNOWN_TYPES = ['undefined', 'string', 'number', 'object', 'function', 'boolean', 'symbol'];
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    inline: function (it, keyword, schema) {
+      var data = 'data' + (it.dataLevel || '');
+      if (typeof schema == 'string') return 'typeof ' + data + ' == "' + schema + '"';
+      schema = 'validate.schema' + it.schemaPath + '.' + keyword;
+      return schema + '.indexOf(typeof ' + data + ') >= 0';
+    },
+    metaSchema: {
+      anyOf: [
+        {
+          type: 'string',
+          enum: KNOWN_TYPES
+        },
+        {
+          type: 'array',
+          items: {
+            type: 'string',
+            enum: KNOWN_TYPES
+          }
+        }
+      ]
+    }
+  };
+
+  ajv.addKeyword('typeof', defFunc.definition);
+  return ajv;
+};
+
+
+/***/ }),
+
+/***/ 416:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var sequences = {};
+
+var DEFAULTS = {
+  timestamp: function() { return Date.now(); },
+  datetime: function() { return (new Date).toISOString(); },
+  date: function() { return (new Date).toISOString().slice(0, 10); },
+  time: function() { return (new Date).toISOString().slice(11); },
+  random: function() { return Math.random(); },
+  randomint: function (args) {
+    var limit = args && args.max || 2;
+    return function() { return Math.floor(Math.random() * limit); };
+  },
+  seq: function (args) {
+    var name = args && args.name || '';
+    sequences[name] = sequences[name] || 0;
+    return function() { return sequences[name]++; };
+  }
+};
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    compile: function (schema, parentSchema, it) {
+      var funcs = {};
+
+      for (var key in schema) {
+        var d = schema[key];
+        var func = getDefault(typeof d == 'string' ? d : d.func);
+        funcs[key] = func.length ? func(d.args) : func;
+      }
+
+      return it.opts.useDefaults && !it.compositeRule
+              ? assignDefaults
+              : noop;
+
+      function assignDefaults(data) {
+        for (var prop in schema)
+          if (data[prop] === undefined) data[prop] = funcs[prop]();
+        return true;
+      }
+
+      function noop() { return true; }
+    },
+    DEFAULTS: DEFAULTS,
+    metaSchema: {
+      type: 'object',
+      additionalProperties: {
+        type: ['string', 'object'],
+        additionalProperties: false,
+        required: ['func', 'args'],
+        properties: {
+          func: { type: 'string' },
+          args: { type: 'object' }
+        }
+      }
+    }
+  };
+
+  ajv.addKeyword('dynamicDefaults', defFunc.definition);
+  return ajv;
+
+  function getDefault(d) {
+    var def = DEFAULTS[d];
+    if (def) return def;
+    throw new Error('invalid "dynamicDefaults" keyword property value: ' + d);
+  }
+};
+
+
+/***/ }),
+
+/***/ 417:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'object',
+    macro: function (schema) {
+      if (schema.length == 0) return {};
+      if (schema.length == 1) return { not: { required: schema } };
+      var schemas = schema.map(function (prop) {
+        return { required: [prop] };
+      });
+      return { not: { anyOf: schemas } };
+    },
+    metaSchema: {
+      type: 'array',
+      items: {
+        type: 'string'
+      }
+    }
+  };
+
+  ajv.addKeyword('prohibited', defFunc.definition);
+  return ajv;
+};
+
+
+
+/***/ }),
+
+/***/ 418:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'array',
+    compile: function(keys, parentSchema, it) {
+      var equal = it.util.equal;
+      return function(data) {
+        if (data.length > 1) {
+          for (var k=0; k < keys.length; k++) {
+            var key = keys[k];
+            for (var i = data.length; i--;) {
+              if (typeof data[i] != 'object') continue;
+              for (var j = i; j--;) {
+                if (typeof data[j] == 'object' && equal(data[i][key], data[j][key]))
+                  return false;
+              }
+            }
+          }
+        }
+        return true;
+      };
+    },
+    metaSchema: {
+      type: 'array',
+      items: {type: 'string'}
+    }
+  };
+
+  ajv.addKeyword('uniqueItemProperties', defFunc.definition);
+  return ajv;
+};
+
+
+/***/ }),
+
+/***/ 419:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var util = __webpack_require__(325);
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'object',
+    macro: function (schema) {
+      var schemas = [];
+      for (var pointer in schema)
+        schemas.push(getSchema(pointer, schema[pointer]));
+      return { 'allOf': schemas };
+    },
+    metaSchema: {
+      type: 'object',
+      propertyNames: {
+        type: 'string',
+        format: 'json-pointer'
+      },
+      additionalProperties: util.metaSchemaRef(ajv)
+    }
+  };
+
+  ajv.addKeyword('deepProperties', defFunc.definition);
+  return ajv;
+};
+
+
+function getSchema(jsonPointer, schema) {
+  var segments = jsonPointer.split('/');
+  var rootSchema = {};
+  var pointerSchema = rootSchema;
+  for (var i=1; i<segments.length; i++) {
+    var segment = segments[i];
+    var isLast = i == segments.length - 1;
+    segment = unescapeJsonPointer(segment);
+    var properties = pointerSchema.properties = {};
+    var items = undefined;
+    if (/[0-9]+/.test(segment)) {
+      var count = +segment;
+      items = pointerSchema.items = [];
+      while (count--) items.push({});
+    }
+    pointerSchema = isLast ? schema : {};
+    properties[segment] = pointerSchema;
+    if (items) items.push(pointerSchema);
+  }
+  return rootSchema;
+}
+
+
+function unescapeJsonPointer(str) {
+  return str.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
+
+/***/ }),
+
+/***/ 420:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'object',
+    inline: function (it, keyword, schema) {
+      var expr = '';
+      for (var i=0; i<schema.length; i++) {
+        if (i) expr += ' && ';
+        expr += '(' + getData(schema[i], it.dataLevel) + ' !== undefined)';
+      }
+      return expr;
+    },
+    metaSchema: {
+      type: 'array',
+      items: {
+        type: 'string',
+        format: 'json-pointer'
+      }
+    }
+  };
+
+  ajv.addKeyword('deepRequired', defFunc.definition);
+  return ajv;
+};
+
+
+function getData(jsonPointer, lvl) {
+  var data = 'data' + (lvl || '');
+  if (!jsonPointer) return data;
+
+  var expr = data;
+  var segments = jsonPointer.split('/');
+  for (var i=1; i<segments.length; i++) {
+    var segment = segments[i];
+    data += getProperty(unescapeJsonPointer(segment));
+    expr += ' && ' + data;
+  }
+  return expr;
+}
+
+
+var IDENTIFIER = /^[a-z$_][a-z$_0-9]*$/i;
+var INTEGER = /^[0-9]+$/;
+var SINGLE_QUOTE = /'|\\/g;
+function getProperty(key) {
+  return INTEGER.test(key)
+          ? '[' + key + ']'
+          : IDENTIFIER.test(key)
+            ? '.' + key
+            : "['" + key.replace(SINGLE_QUOTE, '\\$&') + "']";
+}
+
+
+function unescapeJsonPointer(str) {
+  return str.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
+
+/***/ }),
+
+/***/ 421:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(342)('Minimum');
+
+
+/***/ }),
+
+/***/ 422:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate__formatLimit(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $errorKeyword;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  out += 'var ' + ($valid) + ' = undefined;';
+  if (it.opts.format === false) {
+    out += ' ' + ($valid) + ' = true; ';
+    return out;
+  }
+  var $schemaFormat = it.schema.format,
+    $isDataFormat = it.opts.$data && $schemaFormat.$data,
+    $closingBraces = '';
+  if ($isDataFormat) {
+    var $schemaValueFormat = it.util.getData($schemaFormat.$data, $dataLvl, it.dataPathArr),
+      $format = 'format' + $lvl,
+      $compare = 'compare' + $lvl;
+    out += ' var ' + ($format) + ' = formats[' + ($schemaValueFormat) + '] , ' + ($compare) + ' = ' + ($format) + ' && ' + ($format) + '.compare;';
+  } else {
+    var $format = it.formats[$schemaFormat];
+    if (!($format && $format.compare)) {
+      out += '  ' + ($valid) + ' = true; ';
+      return out;
+    }
+    var $compare = 'formats' + it.util.getProperty($schemaFormat) + '.compare';
+  }
+  var $isMax = $keyword == 'formatMaximum',
+    $exclusiveKeyword = 'formatExclusive' + ($isMax ? 'Maximum' : 'Minimum'),
+    $schemaExcl = it.schema[$exclusiveKeyword],
+    $isDataExcl = it.opts.$data && $schemaExcl && $schemaExcl.$data,
+    $op = $isMax ? '<' : '>',
+    $result = 'result' + $lvl;
+  var $isData = it.opts.$data && $schema && $schema.$data,
+    $schemaValue;
+  if ($isData) {
+    out += ' var schema' + ($lvl) + ' = ' + (it.util.getData($schema.$data, $dataLvl, it.dataPathArr)) + '; ';
+    $schemaValue = 'schema' + $lvl;
+  } else {
+    $schemaValue = $schema;
+  }
+  if ($isDataExcl) {
+    var $schemaValueExcl = it.util.getData($schemaExcl.$data, $dataLvl, it.dataPathArr),
+      $exclusive = 'exclusive' + $lvl,
+      $opExpr = 'op' + $lvl,
+      $opStr = '\' + ' + $opExpr + ' + \'';
+    out += ' var schemaExcl' + ($lvl) + ' = ' + ($schemaValueExcl) + '; ';
+    $schemaValueExcl = 'schemaExcl' + $lvl;
+    out += ' if (typeof ' + ($schemaValueExcl) + ' != \'boolean\' && ' + ($schemaValueExcl) + ' !== undefined) { ' + ($valid) + ' = false; ';
+    var $errorKeyword = $exclusiveKeyword;
+    var $$outStack = $$outStack || [];
+    $$outStack.push(out);
+    out = ''; /* istanbul ignore else */
+    if (it.createErrors !== false) {
+      out += ' { keyword: \'' + ($errorKeyword || '_formatExclusiveLimit') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: {} ';
+      if (it.opts.messages !== false) {
+        out += ' , message: \'' + ($exclusiveKeyword) + ' should be boolean\' ';
+      }
+      if (it.opts.verbose) {
+        out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+      }
+      out += ' } ';
+    } else {
+      out += ' {} ';
+    }
+    var __err = out;
+    out = $$outStack.pop();
+    if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+      if (it.async) {
+        out += ' throw new ValidationError([' + (__err) + ']); ';
+      } else {
+        out += ' validate.errors = [' + (__err) + ']; return false; ';
+      }
+    } else {
+      out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+    }
+    out += ' }  ';
+    if ($breakOnError) {
+      $closingBraces += '}';
+      out += ' else { ';
+    }
+    if ($isData) {
+      out += ' if (' + ($schemaValue) + ' === undefined) ' + ($valid) + ' = true; else if (typeof ' + ($schemaValue) + ' != \'string\') ' + ($valid) + ' = false; else { ';
+      $closingBraces += '}';
+    }
+    if ($isDataFormat) {
+      out += ' if (!' + ($compare) + ') ' + ($valid) + ' = true; else { ';
+      $closingBraces += '}';
+    }
+    out += ' var ' + ($result) + ' = ' + ($compare) + '(' + ($data) + ',  ';
+    if ($isData) {
+      out += '' + ($schemaValue);
+    } else {
+      out += '' + (it.util.toQuotedString($schema));
+    }
+    out += ' ); if (' + ($result) + ' === undefined) ' + ($valid) + ' = false; var ' + ($exclusive) + ' = ' + ($schemaValueExcl) + ' === true; if (' + ($valid) + ' === undefined) { ' + ($valid) + ' = ' + ($exclusive) + ' ? ' + ($result) + ' ' + ($op) + ' 0 : ' + ($result) + ' ' + ($op) + '= 0; } if (!' + ($valid) + ') var op' + ($lvl) + ' = ' + ($exclusive) + ' ? \'' + ($op) + '\' : \'' + ($op) + '=\';';
+  } else {
+    var $exclusive = $schemaExcl === true,
+      $opStr = $op;
+    if (!$exclusive) $opStr += '=';
+    var $opExpr = '\'' + $opStr + '\'';
+    if ($isData) {
+      out += ' if (' + ($schemaValue) + ' === undefined) ' + ($valid) + ' = true; else if (typeof ' + ($schemaValue) + ' != \'string\') ' + ($valid) + ' = false; else { ';
+      $closingBraces += '}';
+    }
+    if ($isDataFormat) {
+      out += ' if (!' + ($compare) + ') ' + ($valid) + ' = true; else { ';
+      $closingBraces += '}';
+    }
+    out += ' var ' + ($result) + ' = ' + ($compare) + '(' + ($data) + ',  ';
+    if ($isData) {
+      out += '' + ($schemaValue);
+    } else {
+      out += '' + (it.util.toQuotedString($schema));
+    }
+    out += ' ); if (' + ($result) + ' === undefined) ' + ($valid) + ' = false; if (' + ($valid) + ' === undefined) ' + ($valid) + ' = ' + ($result) + ' ' + ($op);
+    if (!$exclusive) {
+      out += '=';
+    }
+    out += ' 0;';
+  }
+  out += '' + ($closingBraces) + 'if (!' + ($valid) + ') { ';
+  var $errorKeyword = $keyword;
+  var $$outStack = $$outStack || [];
+  $$outStack.push(out);
+  out = ''; /* istanbul ignore else */
+  if (it.createErrors !== false) {
+    out += ' { keyword: \'' + ($errorKeyword || '_formatLimit') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { comparison: ' + ($opExpr) + ', limit:  ';
+    if ($isData) {
+      out += '' + ($schemaValue);
+    } else {
+      out += '' + (it.util.toQuotedString($schema));
+    }
+    out += ' , exclusive: ' + ($exclusive) + ' } ';
+    if (it.opts.messages !== false) {
+      out += ' , message: \'should be ' + ($opStr) + ' "';
+      if ($isData) {
+        out += '\' + ' + ($schemaValue) + ' + \'';
+      } else {
+        out += '' + (it.util.escapeQuotes($schema));
+      }
+      out += '"\' ';
+    }
+    if (it.opts.verbose) {
+      out += ' , schema:  ';
+      if ($isData) {
+        out += 'validate.schema' + ($schemaPath);
+      } else {
+        out += '' + (it.util.toQuotedString($schema));
+      }
+      out += '         , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+    }
+    out += ' } ';
+  } else {
+    out += ' {} ';
+  }
+  var __err = out;
+  out = $$outStack.pop();
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+    if (it.async) {
+      out += ' throw new ValidationError([' + (__err) + ']); ';
+    } else {
+      out += ' validate.errors = [' + (__err) + ']; return false; ';
+    }
+  } else {
+    out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+  }
+  out += '}';
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 423:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(342)('Maximum');
+
+
+/***/ }),
+
+/***/ 424:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function defFunc(ajv) {
+  defFunc.definition = {
+    type: 'object',
+    inline: __webpack_require__(425),
+    statements: true,
+    errors: 'full',
+    metaSchema: {
+      type: 'array',
+      items: {
+        type: 'string',
+        format: 'regex'
+      },
+      uniqueItems: true
+    }
+  };
+
+  ajv.addKeyword('patternRequired', defFunc.definition);
+  return ajv;
+};
+
+
+/***/ }),
+
+/***/ 425:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_patternRequired(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $key = 'key' + $lvl,
+    $idx = 'idx' + $lvl,
+    $matched = 'patternMatched' + $lvl,
+    $dataProperties = 'dataProperties' + $lvl,
+    $closingBraces = '',
+    $ownProperties = it.opts.ownProperties;
+  out += 'var ' + ($valid) + ' = true;';
+  if ($ownProperties) {
+    out += ' var ' + ($dataProperties) + ' = undefined;';
+  }
+  var arr1 = $schema;
+  if (arr1) {
+    var $pProperty, i1 = -1,
+      l1 = arr1.length - 1;
+    while (i1 < l1) {
+      $pProperty = arr1[i1 += 1];
+      out += ' var ' + ($matched) + ' = false;  ';
+      if ($ownProperties) {
+        out += ' ' + ($dataProperties) + ' = ' + ($dataProperties) + ' || Object.keys(' + ($data) + '); for (var ' + ($idx) + '=0; ' + ($idx) + '<' + ($dataProperties) + '.length; ' + ($idx) + '++) { var ' + ($key) + ' = ' + ($dataProperties) + '[' + ($idx) + ']; ';
+      } else {
+        out += ' for (var ' + ($key) + ' in ' + ($data) + ') { ';
+      }
+      out += ' ' + ($matched) + ' = ' + (it.usePattern($pProperty)) + '.test(' + ($key) + '); if (' + ($matched) + ') break; } ';
+      var $missingPattern = it.util.escapeQuotes($pProperty);
+      out += ' if (!' + ($matched) + ') { ' + ($valid) + ' = false;  var err =   '; /* istanbul ignore else */
+      if (it.createErrors !== false) {
+        out += ' { keyword: \'' + ('patternRequired') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { missingPattern: \'' + ($missingPattern) + '\' } ';
+        if (it.opts.messages !== false) {
+          out += ' , message: \'should have property matching pattern \\\'' + ($missingPattern) + '\\\'\' ';
+        }
+        if (it.opts.verbose) {
+          out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+        }
+        out += ' } ';
+      } else {
+        out += ' {} ';
+      }
+      out += ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; }   ';
+      if ($breakOnError) {
+        $closingBraces += '}';
+        out += ' else { ';
+      }
+    }
+  }
+  out += '' + ($closingBraces);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 426:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var util = __webpack_require__(325);
+
+module.exports = function defFunc(ajv) {
+  if (ajv.RULES.keywords.switch && ajv.RULES.keywords.if) return;
+
+  var metaSchemaRef = util.metaSchemaRef(ajv);
+
+  defFunc.definition = {
+    inline: __webpack_require__(427),
+    statements: true,
+    errors: 'full',
+    metaSchema: {
+      type: 'array',
+      items: {
+        required: [ 'then' ],
+        properties: {
+          'if': metaSchemaRef,
+          'then': {
+            anyOf: [
+              { type: 'boolean' },
+              metaSchemaRef
+            ]
+          },
+          'continue': { type: 'boolean' }
+        },
+        additionalProperties: false,
+        dependencies: {
+          'continue': [ 'if' ]
+        }
+      }
+    }
+  };
+
+  ajv.addKeyword('switch', defFunc.definition);
+  return ajv;
+};
+
+
+/***/ }),
+
+/***/ 427:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function generate_switch(it, $keyword, $ruleType) {
+  var out = ' ';
+  var $lvl = it.level;
+  var $dataLvl = it.dataLevel;
+  var $schema = it.schema[$keyword];
+  var $schemaPath = it.schemaPath + it.util.getProperty($keyword);
+  var $errSchemaPath = it.errSchemaPath + '/' + $keyword;
+  var $breakOnError = !it.opts.allErrors;
+  var $data = 'data' + ($dataLvl || '');
+  var $valid = 'valid' + $lvl;
+  var $errs = 'errs__' + $lvl;
+  var $it = it.util.copy(it);
+  var $closingBraces = '';
+  $it.level++;
+  var $nextValid = 'valid' + $it.level;
+  var $ifPassed = 'ifPassed' + it.level,
+    $currentBaseId = $it.baseId,
+    $shouldContinue;
+  out += 'var ' + ($ifPassed) + ';';
+  var arr1 = $schema;
+  if (arr1) {
+    var $sch, $caseIndex = -1,
+      l1 = arr1.length - 1;
+    while ($caseIndex < l1) {
+      $sch = arr1[$caseIndex += 1];
+      if ($caseIndex && !$shouldContinue) {
+        out += ' if (!' + ($ifPassed) + ') { ';
+        $closingBraces += '}';
+      }
+      if ($sch.if && it.util.schemaHasRules($sch.if, it.RULES.all)) {
+        out += ' var ' + ($errs) + ' = errors;   ';
+        var $wasComposite = it.compositeRule;
+        it.compositeRule = $it.compositeRule = true;
+        $it.createErrors = false;
+        $it.schema = $sch.if;
+        $it.schemaPath = $schemaPath + '[' + $caseIndex + '].if';
+        $it.errSchemaPath = $errSchemaPath + '/' + $caseIndex + '/if';
+        out += '  ' + (it.validate($it)) + ' ';
+        $it.baseId = $currentBaseId;
+        $it.createErrors = true;
+        it.compositeRule = $it.compositeRule = $wasComposite;
+        out += ' ' + ($ifPassed) + ' = ' + ($nextValid) + '; if (' + ($ifPassed) + ') {  ';
+        if (typeof $sch.then == 'boolean') {
+          if ($sch.then === false) {
+            var $$outStack = $$outStack || [];
+            $$outStack.push(out);
+            out = ''; /* istanbul ignore else */
+            if (it.createErrors !== false) {
+              out += ' { keyword: \'' + ('switch') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { caseIndex: ' + ($caseIndex) + ' } ';
+              if (it.opts.messages !== false) {
+                out += ' , message: \'should pass "switch" keyword validation\' ';
+              }
+              if (it.opts.verbose) {
+                out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+              }
+              out += ' } ';
+            } else {
+              out += ' {} ';
+            }
+            var __err = out;
+            out = $$outStack.pop();
+            if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+              if (it.async) {
+                out += ' throw new ValidationError([' + (__err) + ']); ';
+              } else {
+                out += ' validate.errors = [' + (__err) + ']; return false; ';
+              }
+            } else {
+              out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+            }
+          }
+          out += ' var ' + ($nextValid) + ' = ' + ($sch.then) + '; ';
+        } else {
+          $it.schema = $sch.then;
+          $it.schemaPath = $schemaPath + '[' + $caseIndex + '].then';
+          $it.errSchemaPath = $errSchemaPath + '/' + $caseIndex + '/then';
+          out += '  ' + (it.validate($it)) + ' ';
+          $it.baseId = $currentBaseId;
+        }
+        out += '  } else {  errors = ' + ($errs) + '; if (vErrors !== null) { if (' + ($errs) + ') vErrors.length = ' + ($errs) + '; else vErrors = null; } } ';
+      } else {
+        out += ' ' + ($ifPassed) + ' = true;  ';
+        if (typeof $sch.then == 'boolean') {
+          if ($sch.then === false) {
+            var $$outStack = $$outStack || [];
+            $$outStack.push(out);
+            out = ''; /* istanbul ignore else */
+            if (it.createErrors !== false) {
+              out += ' { keyword: \'' + ('switch') + '\' , dataPath: (dataPath || \'\') + ' + (it.errorPath) + ' , schemaPath: ' + (it.util.toQuotedString($errSchemaPath)) + ' , params: { caseIndex: ' + ($caseIndex) + ' } ';
+              if (it.opts.messages !== false) {
+                out += ' , message: \'should pass "switch" keyword validation\' ';
+              }
+              if (it.opts.verbose) {
+                out += ' , schema: validate.schema' + ($schemaPath) + ' , parentSchema: validate.schema' + (it.schemaPath) + ' , data: ' + ($data) + ' ';
+              }
+              out += ' } ';
+            } else {
+              out += ' {} ';
+            }
+            var __err = out;
+            out = $$outStack.pop();
+            if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
+              if (it.async) {
+                out += ' throw new ValidationError([' + (__err) + ']); ';
+              } else {
+                out += ' validate.errors = [' + (__err) + ']; return false; ';
+              }
+            } else {
+              out += ' var err = ' + (__err) + ';  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ';
+            }
+          }
+          out += ' var ' + ($nextValid) + ' = ' + ($sch.then) + '; ';
+        } else {
+          $it.schema = $sch.then;
+          $it.schemaPath = $schemaPath + '[' + $caseIndex + '].then';
+          $it.errSchemaPath = $errSchemaPath + '/' + $caseIndex + '/then';
+          out += '  ' + (it.validate($it)) + ' ';
+          $it.baseId = $currentBaseId;
+        }
+      }
+      $shouldContinue = $sch.continue
+    }
+  }
+  out += '' + ($closingBraces) + 'var ' + ($valid) + ' = ' + ($nextValid) + '; ';
+  out = it.util.cleanUpCode(out);
+  return out;
+}
+
+
+/***/ }),
+
+/***/ 428:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var util = __webpack_require__(325);
+
+module.exports = function defFunc(ajv) {
+  if (!ajv._opts.$data) {
+    console.warn('keyword select requires $data option');
+    return ajv;
+  }
+  var metaSchemaRef = util.metaSchemaRef(ajv);
+  var compiledCaseSchemas = [];
+
+  defFunc.definition = {
+    validate: function v(schema, data, parentSchema) {
+      if (parentSchema.selectCases === undefined)
+        throw new Error('keyword "selectCases" is absent');
+      var compiled = getCompiledSchemas(parentSchema, false);
+      var validate = compiled.cases[schema];
+      if (validate === undefined) validate = compiled.default;
+      if (typeof validate == 'boolean') return validate;
+      var valid = validate(data);
+      if (!valid) v.errors = validate.errors;
+      return valid;
+    },
+    $data: true,
+    metaSchema: { type: ['string', 'number', 'boolean', 'null'] }
+  };
+
+  ajv.addKeyword('select', defFunc.definition);
+  ajv.addKeyword('selectCases', {
+    compile: function (schemas, parentSchema) {
+      var compiled = getCompiledSchemas(parentSchema);
+      for (var value in schemas)
+        compiled.cases[value] = compileOrBoolean(schemas[value]);
+      return function() { return true; };
+    },
+    valid: true,
+    metaSchema: {
+      type: 'object',
+      additionalProperties: metaSchemaRef
+    }
+  });
+  ajv.addKeyword('selectDefault', {
+    compile: function (schema, parentSchema) {
+      var compiled = getCompiledSchemas(parentSchema);
+      compiled.default = compileOrBoolean(schema);
+      return function() { return true; };
+    },
+    valid: true,
+    metaSchema: metaSchemaRef
+  });
+  return ajv;
+
+
+  function getCompiledSchemas(parentSchema, create) {
+    var compiled;
+    compiledCaseSchemas.some(function (c) {
+      if (c.parentSchema === parentSchema) {
+        compiled = c;
+        return true;
+      }
+    });
+    if (!compiled && create !== false) {
+      compiled = {
+        parentSchema: parentSchema,
+        cases: {},
+        default: true
+      };
+      compiledCaseSchemas.push(compiled);
+    }
+    return compiled;
+  }
+
+  function compileOrBoolean(schema) {
+    return typeof schema == 'boolean'
+            ? schema
+            : ajv.compile(schema);
+  }
+};
+
+
+/***/ }),
+
+/***/ 432:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+/**
+ * Ligne de formulaire
+ */
+var Row = /** @class */ (function (_super) {
+    tslib_1.__extends(Row, _super);
+    /**
+     * Construit une instance de Row
+     * @param props propriétés
+     * @param context contexte
+     */
+    function Row(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    // Setters
+    /**
+     * Initialise la ou les classe(s) CSS de ce composant
+     * @param className nom(s) de classe(s) CSS
+     * @param callback fonction à appeler éventuellemnt
+     * @returns {Row} ce composant
+     */
+    Row.prototype.setClassName = function (className, callback) {
+        this.setState({ className: className }, callback);
+        return this;
+    };
+    /**
+     * @returns {number} le diviseur de fraction à utiliser pour les noeuds enfants
+     */
+    Row.prototype.getPureChildFraction = function () {
+        var fraction = 0;
+        React.Children.forEach(this.state.children, function (child) {
+            var childSpan = 1;
+            if (child && child.props) {
+                if (child.props.groupClass) {
+                    var classTab = child.props.groupClass.split("-");
+                    (classTab.length && (classTab.length - 1) && !isNaN(classTab[classTab.length - 1])) ?
+                        childSpan = classTab[classTab.length - 1] : 1;
+                }
+                fraction += Number(childSpan);
+            }
+        });
+        return fraction;
+    };
+    /**
+     * @inheritDoc
+     */
+    Row.prototype.render = function () {
+        /* Affecte automatiquement la classe pure css aux noeuds enfants qui n'en ont pas */
+        var fraction = this.getPureChildFraction();
+        var className = "has-gutter " + this.state.className;
+        if (fraction != 1) {
+            className += "-" + fraction;
+        }
+        return (React.createElement("div", { className: className }, React.Children.map(this.state.children, function (child, i) {
+            if (child && child.props && child.props.name) {
+                // définition des props des champs de formulaire enfants
+                var childPropsSetByParent = {
+                    groupClass: child.props.groupClass || ""
+                };
+                return React.cloneElement(child, childPropsSetByParent);
+            }
+            else {
+                return child;
+            }
+        })));
+    };
+    /** Propriétés par défaut */
+    Row.defaultProps = {
+        className: "grid"
+    };
+    return Row;
+}(hornet_component_1.HornetComponent));
+exports.Row = Row;
+
+
+
+/***/ }),
+
+/***/ 468:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var abstract_field_1 = __webpack_require__(311);
+var _ = __webpack_require__(6);
+var picto_1 = __webpack_require__(123);
+var classNames = __webpack_require__(9);
+var event_1 = __webpack_require__(330);
+var hornet_event_1 = __webpack_require__(7);
+var alert_1 = __webpack_require__(469);
+var TextAreaField = /** @class */ (function (_super) {
+    tslib_1.__extends(TextAreaField, _super);
+    function TextAreaField() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.errorShowed = false;
+        return _this;
+    }
+    /**
+     * @inheritDoc
+     */
+    TextAreaField.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+        return this.state.valued != nextState.valued || this.state.currentValue != nextState.currentValue || this.state.errors != nextState.errors;
+        ;
+    };
+    /**
+     * @inheritDoc
+     */
+    TextAreaField.prototype.componentDidMount = function () {
+        this.setClientHeight();
+    };
+    /**
+     * Génère le rendu spécifique du champ
+     * @returns {any}
+     * @override
+     */
+    TextAreaField.prototype.renderWidget = function () {
+        var _this = this;
+        var htmlProps = this.getHtmlProps();
+        var hasError = this.hasErrors() ? " has-error" : "";
+        _.assign(htmlProps, { "className": htmlProps["className"] ? htmlProps["className"] + hasError : hasError });
+        return (React.createElement("div", { className: "textarea-container" },
+            this.state.displayCharNumber ? React.createElement("div", { className: "textarea-character-value", ref: function (elt) {
+                    _this.refChar = elt;
+                } }) : null,
+            React.createElement("textarea", tslib_1.__assign({ onChange: this.valueChange, ref: function (elt) {
+                    _this.registerHtmlElement(elt);
+                    _this.element = elt;
+                } }, htmlProps), this.state.currentValue),
+            this.state.resettable && this.state.valued && !this.state.readOnly && !this.state.disabled ? this.renderResetButton() :
+                React.createElement("div", null),
+            React.createElement(alert_1.Alert, { ref: "alert", message: "", onClickClose: this.closeAlert })));
+    };
+    /**
+     * rendu html du bouton reset
+     * @returns {any}
+     */
+    TextAreaField.prototype.renderResetButton = function () {
+        var htmlProps = _.cloneDeep(this.getHtmlProps());
+        var hidden = htmlProps["type"] == "hidden";
+        var classList = {
+            "input-reset textarea-reset": true,
+            "input-reset-hidden": (!this.isValued() || hidden)
+        };
+        var aProps = {};
+        if (this.isValued()) {
+            aProps["onClick"] = this.resetValue;
+        }
+        return (React.createElement("span", { className: classNames(classList), role: "button", "aria-hidden": !this.state.valued, id: this.props.id || this.props.name + "ResetButton" },
+            React.createElement("a", tslib_1.__assign({}, aProps),
+                React.createElement("img", { src: picto_1.Picto.grey.close, alt: "reset" }))));
+    };
+    /**
+     * règle la taille du textarea en fonction du texte présent à l'intérieur de celui ci
+     * @param event
+     */
+    TextAreaField.prototype.setClientHeight = function (event) {
+        if (this.props.extendable) {
+            var text = event ? event.target.value : this.element.textContent;
+            if (text !== undefined && text !== null) {
+                var height = (text.split("\n").length + 1) * 25;
+                var finalHeight = this.props.maxLength && this.props.maxLength < this.state.height ? this.props.maxLength : height;
+                this.element.style.height = finalHeight + "px";
+                this.element.height = finalHeight;
+                // recalcul de la hauteur à l'aide de la taille du scroll
+                var elem = document.getElementById(this.element.id);
+                var elemheight = elem.height;
+                //cas de lapparition du scroll
+                while (elemheight < this.element.scrollHeight) {
+                    elemheight = elemheight + 25;
+                }
+                var elemFinalHeight = this.props.maxLength && this.props.maxLength < this.state.height ? this.props.maxLength : elemheight;
+                elem.style.height = elemFinalHeight + "px";
+                elem.height = elemFinalHeight;
+            }
+        }
+    };
+    /**
+     * Calcule si le champs à une valeur ou non
+     * @param event
+     */
+    TextAreaField.prototype.valueChange = function (event) {
+        if (this.state.extendable) {
+            this.setClientHeight(event);
+        }
+        // mise à jour du texte d'affichage du nombre de caractère
+        var value = event.target.value;
+        if (value !== 0) {
+            this.refChar.innerHTML = this.props.charLabel ?
+                this.props.charLabel.replace('{count}', value.length) :
+                this.i18n("textarea.charLabel", { count: value.length });
+        }
+        else {
+            this.refChar.innerHTML = "";
+        }
+        //affichage de l'alerte indiquant que le nombre de caractère est dépassé
+        if (this.props.maxChar && value.length > this.props.maxChar && !this.errorShowed) {
+            if (this.props.showAlert) {
+                //affichage de l'alerte
+                var message = this.props.alertMessage ?
+                    this.props.alertMessage.replace('{count}', value.length).replace('{maxChar}', this.props.maxChar.toString()) :
+                    this.i18n("textarea.alertMessage", { count: value.length, maxChar: this.props.maxChar });
+                var title = this.props.alertTitle ?
+                    this.props.alertTitle.replace('{count}', value.length).replace('{maxChar}', this.props.maxChar.toString()) :
+                    this.i18n("textarea.alertTitle", { count: value.length, maxChar: this.props.maxChar });
+                this.showAlert(message, title);
+            }
+            this.refChar.className = this.refChar.className.replace(" textarea-too-many-char", "");
+            this.refChar.className += " textarea-too-many-char";
+        }
+        if (value.length <= this.props.maxChar && this.errorShowed) {
+            this.errorShowed = false;
+            this.refChar.className = this.refChar.className.replace(" textarea-too-many-char", "");
+        }
+        if (event.target.value && !this.state.valued) {
+            this.setState({ valued: true, currentValue: value });
+        }
+        else if (!event.target.value && this.state.valued) {
+            this.setState({ valued: false });
+        }
+    };
+    /**
+     * Surcharge de la méthode
+     * @param value
+     * @returns {InputField}
+     */
+    TextAreaField.prototype.setCurrentValue = function (value) {
+        _super.prototype.setCurrentValue.call(this, value);
+        this.setState({ valued: (value !== "" && value), currentValue: value });
+        return this;
+    };
+    /**
+     * teste si le champs n'est pas vide
+     * @returns {boolean|any}
+     */
+    TextAreaField.prototype.isValued = function () {
+        return this.state.valued || this.props.value;
+    };
+    /**
+     * Permet de rendre à null la valeur du champ
+     */
+    TextAreaField.prototype.resetValue = function () {
+        var _this = this;
+        if (this.htmlElement && this.htmlElement.onchange) {
+            this.htmlElement.onchange();
+        }
+        this.refChar.innerHTML = "";
+        this.htmlElement.value = "";
+        hornet_event_1.fireHornetEvent(event_1.VALUE_CHANGED_EVENT.withData(this.htmlElement));
+        this.setState({ valued: false }, function () {
+            _this.setClientHeight();
+        });
+    };
+    /**
+     * Méthode déclenchant la fermeture de l'alerte
+     */
+    TextAreaField.prototype.closeAlert = function () {
+        this.errorShowed = true;
+        this.refs.alert.close();
+    };
+    /***
+     * Déclenche l'affichage de l'alerte
+     * @param message
+     * @param title
+     * @param {Function} fct fonction exécutée sur la validation
+     */
+    TextAreaField.prototype.showAlert = function (message, title) {
+        var _this = this;
+        this.refs.alert.setMessage(message);
+        this.refs.alert.setTitle(title);
+        this.refs.alert.setOnClickOk(function () {
+            _this.closeAlert();
+        }).open();
+    };
+    TextAreaField.defaultProps = _.assign(_.cloneDeep(abstract_field_1.AbstractField.defaultProps), {
+        rows: 6,
+        resettable: true,
+        displayCharNumber: true,
+        extendable: true,
+        showAlert: true
+    });
+    return TextAreaField;
+}(abstract_field_1.AbstractField));
+exports.TextAreaField = TextAreaField;
+
+
+
+/***/ }),
+
+/***/ 469:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * hornet-js-react-components - Ensemble des composants web React de base de hornet-js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/hornet-js.git
+ * @license CECILL-2.1
+ */
+var React = __webpack_require__(2);
+var hornet_component_1 = __webpack_require__(3);
+var button_1 = __webpack_require__(317);
+var modal_1 = __webpack_require__(127);
+var notification_1 = __webpack_require__(43);
+var Alert = /** @class */ (function (_super) {
+    tslib_1.__extends(Alert, _super);
+    function Alert(props, context) {
+        return _super.call(this, props, context) || this;
+    }
+    Alert.prototype.setTitle = function (title, cb) {
+        this.setState({ title: title }, cb);
+        return this;
+    };
+    Alert.prototype.setMessage = function (message, cb) {
+        this.setState({ message: message }, cb);
+        return this;
+    };
+    Alert.prototype.setOnClickOk = function (onClickOk, cb) {
+        this.setState({ onClickOk: onClickOk }, cb);
+        return this;
+    };
+    Alert.prototype.setOnClickCancel = function (onClickCancel, cb) {
+        this.setState({ onClickCancel: onClickCancel }, cb);
+        return this;
+    };
+    Alert.prototype.setOnClickClose = function (onClickClose, cb) {
+        this.setState({ onClickClose: onClickClose }, cb);
+        return this;
+    };
+    Alert.prototype.open = function (cb) {
+        this.setState({ isVisible: true }, cb);
+        return this;
+    };
+    Alert.prototype.close = function (cb) {
+        this.setState({ isVisible: false }, cb);
+        return this;
+    };
+    /**
+     * @inheritDoc
+     */
+    Alert.prototype.render = function () {
+        if (!this.state.isVisible)
+            return null;
+        var notificationId = this.state.notificationId || "nAlert";
+        return (React.createElement(modal_1.Modal, { alert: true, isVisible: true, onClickClose: this.state.onClickClose, underlayClickExits: this.state.underlayClickExits, escapeKeyExits: this.state.escapeKeyExits, title: this.state.title, dialogId: this.state.dialogId },
+            React.createElement(notification_1.Notification, { id: notificationId }),
+            React.createElement("div", { className: "widget-alert-body", "aria-labelledby": "dialogue-title" }, this.state.message),
+            React.createElement("div", { className: "widget-dialogue-footer" }, this.renderButtons())));
+    };
+    /**
+     * Renvoie le/les buttons
+     * @returns {any}
+     */
+    Alert.prototype.renderButtons = function () {
+        return (React.createElement("div", { className: "txtcenter" },
+            React.createElement(button_1.Button, tslib_1.__assign({}, this.configOKButton()))));
+    };
+    /**
+     * Configuration du bouton OK
+     * @returns {{type: string, id: string, name: string, value: string, className: string, label: (boolean|string), onClick: (*|defaultFunction)}}
+     */
+    Alert.prototype.configOKButton = function () {
+        return {
+            type: "button",
+            id: "alertOK",
+            name: "action:validMessage",
+            value: "Valider",
+            className: "hornet-button hornet-alert-button-ok",
+            label: this.getValid(),
+            title: this.getValidTitle(),
+            onClick: this.state.onClickOk
+        };
+    };
+    /**
+     * Extrait le libelle valid passé dans les propriétés du composant ou indique un libellé par défaut
+     * @returns Titre
+     * @protected
+     */
+    Alert.prototype.getValid = function () {
+        return this.state.valid || this.i18n("form.valid");
+    };
+    /**
+     * Extrait le libelle valid passé dans les propriétés du composant ou indique un libellé par défaut
+     * @returns Titre
+     * @protected
+     */
+    Alert.prototype.getValidTitle = function () {
+        return this.state.validTitle || this.i18n("form.validTitle");
+    };
+    Alert.defaultProps = {
+        isVisible: false,
+        underlayClickExits: false,
+        escapeKeyExits: true
+    };
+    return Alert;
+}(hornet_component_1.HornetComponent));
+exports.Alert = Alert;
+
+
+
+/***/ }),
+
+/***/ 711:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * applitutoriel-js-common - Application tutoriel utilisant le Framework hornet
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/applitutoriel-modules.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var React = __webpack_require__(2);
+var hornet_page_1 = __webpack_require__(14);
+var form_1 = __webpack_require__(347);
+var row_1 = __webpack_require__(432);
+var input_field_1 = __webpack_require__(343);
+var textarea_field_1 = __webpack_require__(468);
+var notification_1 = __webpack_require__(43);
+var notification_manager_1 = __webpack_require__(122);
+var button_1 = __webpack_require__(317);
+var buttons_area_1 = __webpack_require__(329);
+var schema = __webpack_require__(712);
+var logger = hornet_js_utils_1.Utils.getLogger("applitutoriel.views.cnt.gen-cnt-page");
+var ContactPage = /** @class */ (function (_super) {
+    tslib_1.__extends(ContactPage, _super);
+    function ContactPage(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.formI18n = _this.i18n("contactPage.form");
+        return _this;
+    }
+    /**
+     * Alimente le tableau de liste des secteurs.
+     * @override
+     */
+    ContactPage.prototype.prepareClient = function () {
+    };
+    /**
+     * Déclenche le submit du formulaire de contact
+     * @param data
+     */
+    ContactPage.prototype.onSubmit = function (data) {
+        var _this = this;
+        this.getService().envoyer(data).then(function (result) {
+            if (!result.errors) {
+                notification_manager_1.NotificationManager.notify(null, "contactForm", null, notification_manager_1.Notifications.makeSingleNotification("", _this.i18n("info.message.IN-GE-CNT-01")));
+            }
+            else {
+                var errors = new notification_manager_1.Notifications();
+                var notif = new notification_manager_1.NotificationType();
+                notif.id = result.errors.reportId;
+                notif.text = result.errors.message;
+                errors.addNotification(notif);
+                notification_manager_1.NotificationManager.notify(null, "contactForm", errors, null);
+            }
+        });
+    };
+    /**
+     * @inheritDoc
+     */
+    ContactPage.prototype.render = function () {
+        return (React.createElement("div", null,
+            React.createElement("h2", null, this.i18n("contactPage.title")),
+            React.createElement(notification_1.Notification, { id: "notif" }),
+            React.createElement(form_1.Form, { id: "contactForm", schema: schema, formMessages: this.formI18n, onSubmit: this.onSubmit },
+                React.createElement(row_1.Row, { className: "row" },
+                    React.createElement(input_field_1.InputField, { name: "nom", label: this.formI18n.fields.nom.label, required: true })),
+                React.createElement(row_1.Row, null,
+                    React.createElement(input_field_1.InputField, { name: "prenom", label: this.formI18n.fields.prenom.label, required: true })),
+                React.createElement(row_1.Row, null,
+                    React.createElement(input_field_1.InputField, { name: "mail", label: this.formI18n.fields.mail.label, required: true })),
+                React.createElement(row_1.Row, null,
+                    React.createElement(textarea_field_1.TextAreaField, { name: "message", label: this.formI18n.fields.message.label, required: true, cols: 60, rows: 6 })),
+                React.createElement(buttons_area_1.ButtonsArea, null,
+                    React.createElement(button_1.Button, { type: "submit", id: "envoi", name: "action:envoi", value: "Valider", className: "hornet-button", label: this.i18n("form.valid"), title: this.i18n("contactPage.form.validTitle") })))));
+    };
+    return ContactPage;
+}(hornet_page_1.HornetPage));
+exports.ContactPage = ContactPage;
+
+
+
+/***/ }),
+
+/***/ 712:
+/***/ (function(module, exports) {
+
+module.exports = {
+	"$schema": "http://json-schema.org/schema#",
+	"title": "Contact",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"nom": {
+			"description": "Nom expéditeur",
+			"type": "string",
+			"maxLength": 50,
+			"required": true
+		},
+		"prenom": {
+			"description": "Prénom expéditeur",
+			"type": "string",
+			"maxLength": 50,
+			"required": true
+		},
+		"mail": {
+			"description": "Mail expéditeur",
+			"type": "string",
+			"format": "email",
+			"required": true
+		},
+		"message": {
+			"description": "message expéditeur",
+			"type": "string",
+			"maxLength": 50000,
+			"required": true
+		}
+	}
+};
+
+/***/ }),
+
+/***/ 713:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conformément aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = __webpack_require__(0);
+/**
+ * applitutoriel-js - Application tutoriel utilisant le Framework hornet
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.1.1
+ * @link git+https://github.com/diplomatiegouvfr/applitutoriel-modules.git
+ * @license CECILL-2.1
+ */
+var hornet_js_utils_1 = __webpack_require__(1);
+var service_request_1 = __webpack_require__(13);
+var urls_1 = __webpack_require__(20);
+var logger = hornet_js_utils_1.Utils.getLogger("applitutoriel.services.gen.contact-service-page");
+/**
+ * Implementation des services pour les contacts
+ * @class
+ * @implements {ContactService}
+ * @extends {ServiceApi}
+ */
+var ContactServiceImpl = /** @class */ (function (_super) {
+    tslib_1.__extends(ContactServiceImpl, _super);
+    function ContactServiceImpl() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * Envoie d'un message sur contacts
+     * @param {object} data message à envoyer
+     */
+    ContactServiceImpl.prototype.envoyer = function (data) {
+        logger.trace("SERVICES - send : ", data);
+        return this.fetch({
+            method: "post",
+            url: this.buildUrl(urls_1.URL_CONTACT + urls_1.URL_CONTACT_ENVOYER),
+            data: data
+        });
+    };
+    return ContactServiceImpl;
+}(service_request_1.ServiceRequest));
+exports.ContactServiceImpl = ContactServiceImpl;
+
+
+
+/***/ })
+
+});
 //# sourceMappingURL=4.js.map

@@ -1,4 +1,49 @@
-# hornet-theme-intranet-5.1.0
+# hornet-themes-intranet-5.1.1
+
+-	EVOL[s117] - Composant Aller au contenu
+-	FIX: Correction positionnement de la croix dans le calendarField
+-	FIX(S109): Retour accessbilité - Indicateur colonne triable par underline
+-	EVOL:[s118] Suppression picto
+-	EVOL:[s118] Picto: enrichir la classe avec les pictos de CROCUS (lot 2)
+-	FIX: accessibilité - dropdown
+-	EVOL:[s118] Picto: enrichir la class avec les picto de CROCUS (lot 1)
+-	FIX: accessibilité - correction de la couleur bleu en légèrement plus foncée pour le contraste
+-	EVOL[s310]: Calendar: augmenter taille Picto (comme dans BFR)
+-	EVOl[S70]: Menu: revoir le style du menuItem
+-	FIX: Correction clique afficher/masquer sur la notification de session
+-	EVOL[s92]: NOTIFICATION: ajouter croix suppression + hide/show button
+-	[EVO] RGAA3 - Secteurs-liste - 3.1.4 - dropdown - revert
+-	[EVO] RGAA3 - Secteurs-liste - 3.1.4 - dropdown[]
+-	EVOL[ s92 ] : NOTIFICATION: ajouter croix suppression + hide/show button
+-	EVOL[ s92 ] : NOTIFICATION: ajouter croix suppression + hide/show button
+-	EVOL[s69] - mise en place composant Notification de déconnexion imminente
+-	EVOL[S85-259]: textarea: ajout de l'affichage du nombre de caractère et de l'autosizing
+-	FIX[ s83 ]: TABLE: séléction cellule: pourvoir sélectionner lorsqu'on effectue un double clic
+-	EVOL[S34-238]: ajout de la suppression et de l'ajout d'onglet
+-	FIX: correction focus/hover sur les icones du tableau
+-	FIX[ s78 ]: DropDown moreActions: documentation + MaJ showroom
+-	FIX[ s78 ]: DropDown moreActions: documentation + MaJ showroom
+-	FIX:move du builder
+-	FIX: [M0065968]: correction du style du dropdown
+-	FIX[S15-100]: correction de l'autocomplete
+-	FIX[S15-100]: correction style dropdown
+-	FIX[S15-100]: correction message d'erreur
+-	FIX[S15-100]: correction style bouton calendrier
+-	FIX[S15-100]: correction style pour css desactivé
+-	FIX[S15-100]: 6.5.1 : correction intitulé dans les liens toggle column
+-	FIX[S15-100]: Liens 6.5.1 : ajout intitulé de lien dans les tabs
+-	FIX[S15-100]: 10.7.3
+-	FIX[s15] correction audit liste partenaire
+-	FIX[S15-100]: correction du style des dropdowns
+-	FIX[s15] mode degradé sur les cases à cocher
+-	FIX: redimmentionnement des pictos d'export
+-	FIX:Correction token sonar
+-	Update Jenkinsfile
+-	Evol[Table: pouvoir masquer le thead - s:98 ]: Ajouter propriété React sur le Table afin de pouvoir masquer le Thead d'un Table
+-	FIX[S22-97]: checkbox/switch: suppression padding-bottom
+
+
+# hornet-themes-intranet-5.1.0
 
 212453	-	correctif checkbox en readonly: ajout class + style
 212428	-	Placement des croix, zone des boutons d'action
