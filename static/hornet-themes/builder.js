@@ -70,7 +70,7 @@
  */
 
 /**
- * hornet-themes-intranet - Thème Hornet.js
+ * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @version v5.1.0
@@ -82,7 +82,7 @@ module.exports = {
     type: "theme",
 
     gulpTasks: function (gulp, project, conf, helper) {
-        conf.themeName = "hornet-themes-intranet";
+        conf.themeName = "hornet-themes";
 
         conf.cssSources = {
             src: [

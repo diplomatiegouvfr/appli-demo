@@ -1,14 +1,14 @@
 {
-  "name": "hornet-themes-intranet",
-  "version": "5.1.1-20180305.193318-67",
+  "name": "hornet-themes",
+  "version": "5.1.1",
   "license": "CECILL-2.1",
   "description": "Thème Hornet.js",
   "bugs": {
-    "url": "https://github.com/diplomatiegouvfr/hornet-themes-intranet/issues"
+    "url": "https://github.com/diplomatiegouvfr/hornet-themes/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diplomatiegouvfr/hornet-themes-intranet.git"
+    "url": "git+https://github.com/diplomatiegouvfr/hornet-themes.git"
   },
   "appDependencies": {
     "knacss": "6.0.7"

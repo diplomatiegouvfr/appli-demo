@@ -1,4 +1,4 @@
-# hornet-themes-intranet-5.1.1
+# hornet-themes-5.1.1
 
 -	EVOL[s117] - Composant Aller au contenu
 -	FIX: Correction positionnement de la croix dans le calendarField
@@ -43,7 +43,7 @@
 -	FIX[S22-97]: checkbox/switch: suppression padding-bottom
 
 
-# hornet-themes-intranet-5.1.0
+# hornet-themes-5.1.0
 
 212453	-	correctif checkbox en readonly: ajout class + style
 212428	-	Placement des croix, zone des boutons d'action

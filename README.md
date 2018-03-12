@@ -1,6 +1,6 @@
 # applitutoriel-online
 
-Il s'agit d'un packaging full spa de l'application TUTORIEL, basée sur HornetJs 5.1.0 avec des services page bouchonnés afin de fonctionner sans avoir un back office.
+Il s'agit d'un packaging full spa de l'application TUTORIEL, basée sur HornetJs 5.1.1 avec des services page bouchonnés afin de fonctionner sans avoir un back office.
 
 
 __Cas fonctionnels__
