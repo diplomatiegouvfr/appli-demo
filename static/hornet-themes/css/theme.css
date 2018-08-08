@@ -2031,35 +2031,44 @@ ul.is-unstyled, ul.unstyled {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.label-container{
+.label-container {
     margin-bottom: 0.5em;
 }
 
-
-.abstractfield-container{
+.abstractfield-container {
     margin-bottom: 1.250em;
     min-width: 15.469em;
 }
 
-.abstractfield-container.inline > * {
+.abstractfield-container.inline>* {
     display: inline-block;
     vertical-align: top;
     margin-right: 1.125em;
 }
 
+
 /*.abstractfield-container.inline > div {*/
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-    /*margin-right: 1.125em;*/
+
+
+/*display: inline-block;*/
+
+
+/*vertical-align: top;*/
+
+
+/*margin-right: 1.125em;*/
+
+
 /*}*/
 
 .abstractfield-field-content {
@@ -2068,19 +2077,24 @@ ul.is-unstyled, ul.unstyled {
 
 @media (max-width: 600px) {
     .abstractfield-container {
-        width:100%;
+        width: 100%;
     }
 }
 
 label {
     cursor: default;
 }
+
 @media (max-width: 405px) {
-    .abstractfield-field-content{
+    .abstractfield-field-content {
         /*margin-right: 0.8em;*/
     }
 }
 
+.abstractfield-container .label{
+    word-wrap: break-word;
+    word-break: break-all;
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -2152,11 +2166,12 @@ label {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -2169,21 +2184,19 @@ label {
     display: none;
 }
 
-.visible {
+.visible {}
 
-}
-
-.errors-content{
+.errors-content {
     color: #e6151d;
     font-style: italic;
     font-family: NotoSansUI-Regular;
 }
 
-.accordion-header{
+.accordion-header {
     outline: none;
 }
 
-.accordion-label{
+.accordion-label {
     overflow: hidden;
 }
 
@@ -2261,11 +2274,12 @@ label {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -2348,11 +2362,12 @@ label {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -2361,18 +2376,18 @@ button.button-info-accessibilite-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    apperance: none;
+    appearance: none;
     display: inline-block;
     position: absolute;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    right: 3px;
+    right: 0.1875em;
     position: absolute;
 }
 
 button.button-info-accessibilite-button img {
-    width: 15px;
+    width: 1em
 }
 
 .button-info-accessibilite {
@@ -2380,7 +2395,7 @@ button.button-info-accessibilite-button img {
 }
 
 .datatable-header-menu button.button-info-accessibilite-button img {
-    width: 24px;
+    width: 1.5em;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -2453,22 +2468,24 @@ button.button-info-accessibilite-button img {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-
 .autocomplete-selector-hidden {
-    display:none;
+    display: none;
 }
-.autocomplete-selector-list{
+
+.autocomplete-selector-list {
     z-index: 1;
 }
+
 .autocomplete-selector .autocomplete-selector-list {
     list-style: outside none none;
     margin: 0;
@@ -2478,8 +2495,7 @@ button.button-info-accessibilite-button img {
     border: 1px solid #afafaf;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.58);
     padding: 0.5em 0.5em 0.5em 0.5em;
-    position : absolute;
-
+    position: absolute;
 }
 
 .autocomplete-item label {
@@ -2489,37 +2505,32 @@ button.button-info-accessibilite-button img {
     vertical-align: text-top;
 }
 
-
-
 .autocomplete-item label:focus {
     background: rebeccapurple;
 }
 
-.autocomplete-item .checkbox-content{
+.autocomplete-item .checkbox-content {
     /*padding: 0.5em 0 0.5em 1em;*/
     margin-right: 1em;
     margin-left: 0.5em;
     width: 100%;
-    display:block;
-    margin-top:0;
+    display: block;
+    margin-top: 0;
 }
-
 
 .autocomplete-item .checkbox-content.checkbox-content label {
-    display : block;
+    display: block;
 }
 
-
-.autocomplete-item .checkbox-content .checkbox-material{
+.autocomplete-item .checkbox-content .checkbox-material {
     margin-right: 0.925em;
 }
 
-.autocomplete-content-selector{
-    border:none;
-    position:relative;
-    height:0;
+.autocomplete-content-selector {
+    border: none;
+    position: relative;
+    height: 0;
 }
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -2591,31 +2602,32 @@ button.button-info-accessibilite-button img {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.autocomplete-content{
-    width:100%;
-    height:2.653em;
-
+.autocomplete-content {
+    width: 100%;
+    height: 2.653em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     border: 1px solid #AEAEAE;
     min-width: 15.469em;
-    position : relative;
+    position: relative;
 }
 
 .autocomplete-container input {
-    padding: 0.5em 3em 0.5em 1em;
+    padding: 0.5em 5em 0.5em 1em;
 }
-.autocomplete-content.has-error{
+
+.autocomplete-content.has-error {
     background-color: #fed8da;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -2623,9 +2635,11 @@ button.button-info-accessibilite-button img {
     border: 1px solid #e6151d;
 }
 
-.autocomplete-item:focus, .autocomplete-item:hover, .autocomplete-item-active {
+.autocomplete-item:focus,
+.autocomplete-item:hover,
+.autocomplete-item-active {
     background-color: #4D90FE;
-    color:white;
+    color: white;
 }
 
 .autocomplete-selector.widget-positioned {
@@ -2636,9 +2650,8 @@ button.button-info-accessibilite-button img {
     background: url('../img/autocomplete/icon_fleche_liste_close.svg');
     background-position: calc(100% - 6px) 50%;
     background-repeat: no-repeat;
-    background-size: 43px;
+    background-size: 2.6875em;
     background-color: white;
-
 }
 
 .autocomplete-content[disabled] {
@@ -2660,17 +2673,36 @@ button.button-info-accessibilite-button img {
     display: flex;
     flex-flow: row wrap;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size: 11px;
+    font-size: 0.6875em;
     font-weight: 600;
-    height: 22px;
+    height: 1.375em;
     justify-content: center;
     position: relative;
-    left: -11px;
-    top: 12px;
-    width: 22px;
+    left: -0.6875em;
+    top: 0.75em;
+    width: 1.375em;
     z-index: 1;
     overflow: hidden;
-    margin-top: -22px;
+    margin-top: -1.375em    ;
+}
+
+.autocomplete-reset{
+    margin: 0.75em -1.5em !important;
+    right: 3em;
+    bottom: 0.1em;
+    position: relative !important;
+}
+
+.input-reset a:focus {
+    outline-width: 0;
+    color: #000;
+}
+
+.input-reset a:focus img {
+    background-color: rgba(158, 158, 158, 0.2);
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0px 0px 0px 1px #0061ff;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -2748,7 +2780,7 @@ button.button-info-accessibilite-button img {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -2796,7 +2828,7 @@ ul.fil-ariane {
 
 .fil-ariane-parent {
     margin-right: 0.2em;
-    color: #7b7b7b;
+    color: #747474;
 }
 
 .fil-ariane-strong {
@@ -2893,18 +2925,19 @@ ul.fil-ariane {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.button-area{
-    margin-left:auto;
-    margin-right:auto;
+.button-area {
+    margin-left: auto;
+    margin-right: auto;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -2977,11 +3010,12 @@ ul.fil-ariane {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -3003,13 +3037,12 @@ button.hornet-button {
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.26);
 }
 
-
 @media (max-width: 543px) {
     button.hornet-button {
-        width:100%;
+        width: 100%;
     }
-
 }
+
 .hornet-button-right {
     position: absolute;
     bottom: 0;
@@ -3018,6 +3051,7 @@ button.hornet-button {
     min-width: 2.653em !important;
     height: 2.653em;
 }
+
 a.hornet-button {
     padding: 0.3em;
     background: #03476e;
@@ -3028,7 +3062,8 @@ a.hornet-button {
     color: #FFF;
     font-family: NotoSansUI-Bold;
     /*margin-right: 1.5em;*/
-    min-width: 4vh ;/*15.469em;*/
+    min-width: 4vh;
+    /*15.469em;*/
     margin-bottom: 0.5em;
     padding-right: 1em;
     padding-left: 1em;
@@ -3042,24 +3077,24 @@ a.hornet-button {
     outline: none !important;
 }
 
-.hornet-button:hover {
+button.toggler:hover, button.toggler:focus, .hornet-button:hover, .hornet-button:focus {
     background: rgba(3, 71, 110, 0.92);
+    outline: #f99a05 solid 2px;
 }
 
 
-.ripple-effect{
+.ripple-effect {
     position: absolute;
     border-radius: 50%;
     width: 34px;
     height: 34px;
     background: #ffffff;
-    overflow:hidden;
+    overflow: hidden;
     animation: ripple-animation 1.5s;
     max-height: 34px;
-    max-width:34px;
-    outline:none;
+    max-width: 34px;
+    outline: none;
 }
-
 
 @keyframes ripple-animation {
     from {
@@ -3072,7 +3107,7 @@ a.hornet-button {
     }
 }
 
-.hornet-button{
+.hornet-button {
     overflow: hidden;
     position: relative;
 }
@@ -3152,7 +3187,7 @@ a.hornet-button {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -3212,8 +3247,6 @@ table>tbody>tr>td {
     margin-bottom: 0.25em;
     height: 2.563em;
     width: 2.563em;
-
-
 }
 
 .rc-calendar-panel {
@@ -3295,7 +3328,7 @@ table>tbody>tr>td {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -3333,8 +3366,8 @@ table>tbody>tr>td {
 .language-arrow-down {
     background: transparent url("../img/dropdown/ic_keyboard_arrow_down_white_24px.svg") no-repeat scroll left top;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 1.5em;
+    width: 1.5em;
     vertical-align: middle;
 }
 
@@ -3344,7 +3377,7 @@ table>tbody>tr>td {
     width: 10em;
     height: auto;
     top: 2.188em;
-    . dropdown-language . ulLang right: - 5 px;
+    right: - 5 px;
     z-index: 2;
     background: #fff;
     box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.45);
@@ -3472,16 +3505,29 @@ table>tbody>tr>td {
  *
  */
 
+
 /**
- * hornet-themes - Thème Hornet.js
+ * hornet-themes-intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
+.chars-counter {
+    position: relative;
+    height: 1em;
+    font-style: italic;
+    color: #666666;
+    min-width: 1em;
+    float: right;
+    margin-bottom :0.75em
+}
 
+.chars-counter-too-many-char {
+    color: #d60000;
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -3558,7 +3604,87 @@ table>tbody>tr>td {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
+ * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
+ * @license CECILL-2.1
+ */
+/**
+ * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * Ce logiciel est un programme informatique servant à faciliter la création
+ * d'applications Web conforémement aux référentiels généraux français : RGI, RGS et RGAA
+ * <p/>
+ * Ce logiciel est régi par la licence CeCILL soumise au droit français et
+ * respectant les principes de diffusion des logiciels libres. Vous pouvez
+ * utiliser, modifier et/ou redistribuer ce programme sous les conditions
+ * de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA
+ * sur le site "http://www.cecill.info".
+ * <p/>
+ * En contrepartie de l'accessibilité au code source et des droits de copie,
+ * de modification et de redistribution accordés par cette licence, il n'est
+ * offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+ * seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+ * titulaire des droits patrimoniaux et les concédants successifs.
+ * <p/>
+ * A cet égard  l'attention de l'utilisateur est attirée sur les risques
+ * associés au chargement,  à l'utilisation,  à la modification et/ou au
+ * développement et à la reproduction du logiciel par l'utilisateur étant
+ * donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+ * manipuler et qui le réserve donc à des développeurs et des professionnels
+ * avertis possédant  des  connaissances  informatiques approfondies.  Les
+ * utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+ * logiciel à leurs besoins dans des conditions permettant d'assurer la
+ * sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+ * à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
+ * <p/>
+ * Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
+ * pris connaissance de la licence CeCILL, et que vous en avez accepté les
+ * termes.
+ * <p/>
+ * <p/>
+ * Copyright or © or Copr. Ministry for Europe and Foreign Affairs (2017)
+ * <p/>
+ * pole-architecture.dga-dsi-psi@diplomatie.gouv.fr
+ * <p/>
+ * This software is a computer program whose purpose is to facilitate creation of
+ * web application in accordance with french general repositories : RGI, RGS and RGAA.
+ * <p/>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use,
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * "http://www.cecill.info".
+ * <p/>
+ * As a counterpart to the access to the source code and  rights to copy,
+ * modify and redistribute granted by the license, users are provided only
+ * with a limited warranty  and the software's author,  the holder of the
+ * economic rights,  and the successive licensors  have only  limited
+ * liability.
+ * <p/>
+ * In this respect, the user's attention is drawn to the risks associated
+ * with loading,  using,  modifying and/or developing or reproducing the
+ * software by the user in light of its specific status of free software,
+ * that may mean  that it is complicated to manipulate,  and  that  also
+ * therefore means  that it is reserved for developers  and  experienced
+ * professionals having in-depth computer knowledge. Users are therefore
+ * encouraged to load and test the software's suitability as regards their
+ * requirements in conditions enabling the security of their systems and/or
+ * data to be ensured and,  more generally, to use and operate it in the
+ * same conditions as regards security.
+ * <p/>
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
+ */
+
+
+/**
+ * hornet-themes - Thème Hornet.js
+ *
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -3589,8 +3715,8 @@ table>tbody>tr>td {
 .more-actions {
     background: transparent url(../img/picto/white/more_vert_white.svg) no-repeat scroll left top;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 1.5em;
+    width: 1.5em;
     vertical-align: middle;
 }
 
@@ -3636,7 +3762,7 @@ table>tbody>tr>td {
     height: 1em;
     z-index: 0;
     transform: rotate(45deg);
-    box-shadow: -1px -1px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -0.0625em -0.0625em 0.0625em 0em rgba(0, 0, 0, 0.25);
 }
 
 
@@ -3658,7 +3784,7 @@ table>tbody>tr>td {
     width: 1em;
     height: 1em;
     transform: rotate(45deg);
-    box-shadow: -1px -1px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -0.0625em -0.0625em 0.0625em 0em rgba(0, 0, 0, 0.25);
 }
 
 
@@ -3671,6 +3797,7 @@ table>tbody>tr>td {
 
 
 /* Arrow pour TR*/
+
 .arrow.position-top-right {
     content: '';
     position: absolute;
@@ -3680,7 +3807,7 @@ table>tbody>tr>td {
     height: 1em;
     z-index: 0;
     transform: rotate(45deg);
-    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.0625em 0.0625em 0.0625em 0em rgba(0, 0, 0, 0.25);
 }
 
 
@@ -3704,14 +3831,14 @@ table>tbody>tr>td {
     height: 1em;
     z-index: 0;
     transform: rotate(45deg);
-    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.0625em 0.0625em 0.0625em 0em rgba(0, 0, 0, 0.25);
 }
 
 .dropdown-list {
     margin-top: 0em;
     list-style: none;
     opacity: 1;
-    min-width: 136px;
+    min-width: 8.5em;
     padding: 0;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.45);
     background-color: white;
@@ -3721,21 +3848,21 @@ table>tbody>tr>td {
     align-items: center;
     cursor: pointer;
     display: inline-flex;
-    height: 48px;
+    height: 3em;
     line-height: inherit;
     position: relative;
     background: #ffffff;
     color: #000000;
     width: 100%;
-    padding: 0px 26px 0px 16px;
+    padding: 0em 2.9em 0em 1em;
     white-space: nowrap;
 }
 
 .dropdown-list li>a.checked {
     color: #0579be;
     background-color: #e2eff7;
-    border-left: 4px solid #0579be;
-    padding: 0px 26px 0px 12px !important;
+    border-left: 0.25em solid #0579be;
+    padding: 0em 2.9em 0em 0.75em !important;
 }
 
 .dropdown-list li>a.checked:hover {
@@ -3746,12 +3873,17 @@ table>tbody>tr>td {
 .dropdown-list li>div:hover {
     color: #000;
     background-color: #e2eff7;
-    border-left: 4px solid #0579be;
-    padding: 0px 26px 0px 12px;
+    border-left: 0.25em solid #0579be;
+    padding: 0em 2.9em 0em 0.75em;
 }
 
 .dropdown-list li a:focus {
-    outline: #4D90FE solid 1px;
+    outline: #4D90FE solid 0.0625em;
+}
+
+.datatable-pagination-content .dropdown-list li a:focus {
+    margin-bottom:0.1em;
+    margin-top:0.1em
 }
 
 .caret-down,
@@ -3762,10 +3894,10 @@ table>tbody>tr>td {
 }
 
 .caret-down {
-    background: transparent url("../img/dropdown/ic_keyboard_arrow_down_black_24px.svg") no-repeat scroll left top;
+    background: transparent url("../img/dropdown/ic_keyboard_arrow_down_black_24px.svg") no-repeat scroll center center;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 1.5em;
+    width: 1.5em;
     vertical-align: middle;
 }
 
@@ -3781,15 +3913,14 @@ table>tbody>tr>td {
 .ico-table-settings-white {
     height: 1.5em;
     width: 1.5em;
-    background: transparent url("../img/picto/white/ico_settings.svg");
+    background: transparent url("../img/picto/white/ico_settings.svg") no-repeat;
     cursor: pointer;
     display: block;
 }
 
 .imgItem {
-    padding-right: 10px;
-    width: 26px;
-    height: 26px
+    padding-right: 0.625em;
+    height: 1.625em
 }
 
 .toggle-column-item-content {
@@ -3799,12 +3930,12 @@ table>tbody>tr>td {
     align-items: center;
     cursor: pointer;
     display: inline-flex;
-    height: 48px;
+    height: 3em;
     line-height: inherit;
     position: relative;
     background: #ffffff;
     color: #000000;
-    padding: 0px 26px 0px 16px;
+    padding: 0em 2.9em 0em 1em;
     white-space: nowrap;
 }
 
@@ -3819,7 +3950,7 @@ table>tbody>tr>td {
 }
 
 .toggle-column-item-checkbox .checkbox-content .checkbox-material:before {
-    height: 3px;
+    height: 0.1875em;
 }
 
 div#table-settingscontent ul.dropdown-list li a {
@@ -3831,6 +3962,7 @@ div#table-settingscontent ul.dropdown-list li a {
     display: inline-block;
     cursor: pointer;
     width: 100%;
+    margin: 0;
 }
 
 .datatable-header-title:focus {
@@ -3911,19 +4043,19 @@ span.dropdown-hidden-label {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.accordion{
+.accordion {
     margin: 1.875em 0;
 }
-
 
 .accordion-header {
     list-style-type: none;
@@ -3935,22 +4067,21 @@ span.dropdown-hidden-label {
     -o-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-
 .accordion-label {
     cursor: pointer;
-    width:100%;
+    width: 100%;
     text-align: left;
-    transition:  all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
     line-height: 3.125em;
     display: block;
     padding-left: 1em;
-    color : #024056;
+    color: #024056;
     font-family: NotoSansUI-Bold;
     min-height: 3.125em;
 }
 
-
-.accordion-label:focus, .accordion-label:hover {
+.accordion-label:focus,
+.accordion-label:hover {
     background: #d2dde4;
     overflow: hidden;
 }
@@ -3983,17 +4114,14 @@ span.dropdown-hidden-label {
 
 .accordion-arrow-close {
     background-image: url("../img/accordion/icon_fleche_expand_close.svg");
-
 }
 
 .accordion-arrow-open {
     background-image: url("../img/accordion/icon_fleche_expand_open.svg");
-
 }
 
-
-.accordion-content{
-    padding: 0.3em  1.875em 01.875em;
+.accordion-content {
+    padding: 0.3em 1.875em 01.875em;
 }
 
 li.accordion-header.accordion-selected {
@@ -4010,11 +4138,7 @@ li.accordion-header.accordion-selected {
     opacity: 1;
     height: auto;
     padding: 0 1em 0.5em 1em;
-
 }
-
-
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -4086,16 +4210,17 @@ li.accordion-header.accordion-selected {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.fielderror-content{
+.fielderror-content {
     color: #e6151d;
     font-style: italic;
 }
@@ -4170,28 +4295,28 @@ li.accordion-header.accordion-selected {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.fieldset{
-    margin : 0 0 1.875em;
+.fieldset {
+    margin: 0 0 1.875em;
     padding: 0em;
-
 }
 
-.fieldset-legend{
+.fieldset-legend {
     color: #03476e;
     padding-bottom: 0.3em;
     text-transform: uppercase;
 }
 
-.fieldset-content{
+.fieldset-content {
     box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
     padding-top: 0.5em;
 }
@@ -4266,11 +4391,12 @@ li.accordion-header.accordion-selected {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -4287,7 +4413,8 @@ footer {
     padding-bottom: 1em;
 }
 
-footer, footer a {
+footer,
+footer a {
     color: #FFF
 }
 
@@ -4315,25 +4442,26 @@ ul.footer-links li:last-child:after {
 }
 
 @media (max-width: 405px) {
-
     #footer-container {
         padding-top: 1em;
         padding-bottom: 1em;
     }
-    ul.footer-links li{
+    ul.footer-links li {
         float: none;
         padding-left: 0em;
     }
     ul.footer-links li:after {
         content: " ";
     }
-    footer .fr.mrl, footer .fl.mll{
+    footer .fr.mrl,
+    footer .fl.mll {
         margin-right: 0;
         margin-left: 0;
         float: left;
         padding-left: 0;
     }
 }
+
 
 /*@media (min-width: 406px) {
     ul.footer-links li:after {
@@ -4349,13 +4477,13 @@ ul.footer-links li:last-child:after {
 }*/
 
 @media screen and (min-width: 406px) and (max-width: 675px) {
-    ul.footer-links li{
+    ul.footer-links li {
         padding-left: 0.3em;
     }
-    ul.footer-links li:first-child{
+    ul.footer-links li:first-child {
         padding-left: 0;
     }
-    footer .fr.mrl{
+    footer .fr.mrl {
         margin-right: 0;
         margin-left: 3rem;
         float: left;
@@ -4437,7 +4565,7 @@ ul.footer-links li:last-child:after {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -4453,7 +4581,7 @@ ul.footer-links li:last-child:after {
 
 .form-soustitre {
     color: #0579be;
-    font-size: 17px;
+    font-size: 1.0625em;
     padding-top: 0.875em;
 }
 
@@ -4492,13 +4620,14 @@ checkbox
 ****/
 
 .checkbox-container {
-    padding: 0px 20px;
+    padding: 0em 1.25em;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 
 label.checkbox-content {
     cursor: pointer;
+    margin-top: .7em;
 }
 
 .checkbox-content input[type=checkbox] {
@@ -4516,18 +4645,18 @@ label.checkbox-content {
 .checkbox-content .checkbox-material {
     vertical-align: middle;
     position: relative;
-    top: 3px;
+    top: 0.1875em;
 }
 
 .checkbox-content .checkbox-material .check {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 0.125em;
     overflow: hidden;
     z-index: 1;
-    padding: 2px 0 0 2px;
+    padding: 0.125em 0 0 0.125em;
     background-color: white;
 }
 
@@ -4537,10 +4666,10 @@ label.checkbox-content input:focus+.checkbox-material .check {
 
 .checkbox-content .checkbox-material:before {
     position: absolute;
-    left: 8px;
-    top: 2px;
+    left: 0.5em;
+    top: 0.125em;
     content: "";
-    width: 4px;
+    width: 0.25em;
     border-radius: 100%;
     z-index: 1;
     opacity: 0;
@@ -4553,8 +4682,8 @@ label.checkbox-content input:focus+.checkbox-material .check {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     display: block;
-    margin-top: -4px;
-    margin-left: 6px;
+    margin-top: -0.25em;
+    margin-left: 0.375em;
     width: 0;
     height: 0;
     box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
@@ -4568,7 +4697,7 @@ label.checkbox-content input:focus+.checkbox-material .check {
 }
 
 .checkbox-content input[type=checkbox]:not(:checked)+.checkbox-material .check {
-    border: 2px solid;
+    border: 1px solid;
 }
 
 .checkbox-content input[type=checkbox]:disabled:checked+.checkbox-material .check {
@@ -4576,7 +4705,7 @@ label.checkbox-content input:focus+.checkbox-material .check {
 }
 
 .checkbox-material .check.readonly {
-    /*background-color: #7a7a7a;*/
+    background-color: rgb(235, 235, 228);
     color: #7a7a7a;
     cursor: default;
 }
@@ -4586,7 +4715,7 @@ label.checkbox-content input:focus+.checkbox-material .check {
 }
 
 .checkbox-content input[type=checkbox]:checked+.checkbox-material .check:before {
-    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+    box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em;
     -webkit-animation: checkbox-on 0.3s forwards ease-out;
     animation: checkbox-on 0.3s forwards ease-out;
 }
@@ -4622,99 +4751,104 @@ label.checkbox-content input:focus+.checkbox-material .check {
     transform: rotate(-45deg);
 }
 
+.checkbox-content input[type=checkbox]:not(:checked)+.checkbox-material .check.has-error {
+    border-color:#e6151d;
+    background-color: #fed8da;
+}
+
 @-webkit-keyframes checkbox-on {
     0% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 0.9375em 0.125em 0 0.6875em;
     }
     50% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em 0.125em 0 0.6875em;
     }
     100% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em;
     }
 }
 
 @keyframes checkbox-on {
     0% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 0.9375em 0.125em 0 0.6875em;
     }
     50% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em 0.125em 0 0.6875em;
     }
     100% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em;
     }
 }
 
 @-webkit-keyframes checkbox-off {
     0% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em, 0 0 0 0 inset;
     }
     25% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em, 0 0 0 0 inset;
     }
     50% {
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
-        margin-top: -4px;
-        margin-left: 6px;
-        width: 0px;
-        height: 0px;
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px, 0 0 0 0 inset;
+        margin-top: -0.25em;
+        margin-left: 0.375em;
+        width: 0em;
+        height: 0em;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 0.9375em 0.125em 0 0.6875em, 0 0 0 0 inset;
     }
     51% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-        margin-top: -2px;
-        margin-left: -2px;
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 10px inset;
+        margin-top: -0.125em;
+        margin-left: -0.125em;
+        width: 1.25em;
+        height: 1.25em;
+        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0em 0em 0 0.625em inset;
     }
     100% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-        margin-top: -2px;
-        margin-left: -2px;
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 0px inset;
+        margin-top: -0.125em;
+        margin-left: -0.125em;
+        width: 1.25em;
+        height: 1.25em;
+        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0em 0em 0 0em inset;
     }
 }
 
 @keyframes checkbox-off {
     0% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em, 0 0 0 0 inset;
     }
     25% {
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 1.25em -10.125em 0 0.6875em, 0 0 0 0 inset;
     }
     50% {
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
-        margin-top: -4px;
-        margin-left: 6px;
-        width: 0px;
-        height: 0px;
-        box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px, 0 0 0 0 inset;
+        margin-top: -0.25em;
+        margin-left: 0.375em;
+        width: 0em;
+        height: 0em;
+        box-shadow: 0 0 0 0.625em, 0.625em -0.625em 0 0.625em, 2em 0em 0 1.25em, 0em 2em 0 1.25em, -0.3125em 0.3125em 0 0.625em, 0.9375em 0.125em 0 0.6875em, 0 0 0 0 inset;
     }
     51% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-        margin-top: -2px;
-        margin-left: -2px;
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 10px inset;
+        margin-top: -0.125em;
+        margin-left: -0.125em;
+        width: 1.25em;
+        height: 1.25em;
+        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0em 0em 0 0.625em inset;
     }
     100% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-        margin-top: -2px;
-        margin-left: -2px;
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 0px inset;
+        margin-top: -0.125em;
+        margin-left: -0.125em;
+        width: 1.25em;
+        height: 1.25em;
+        box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0em 0em 0 0em inset;
     }
 }
 
@@ -4773,16 +4907,34 @@ label.checkbox-content input:focus+.checkbox-material .check {
 }
 
 .checkbox-container.inline {
-    padding-top: 0px;
+    padding-top: 0em;
 }
 
 .checkbox-container.inline div.checkbox-container {
-    padding-top: 0px;
+    padding-top: 0em;
 }
 
 .switch-input:focus+.switch-label {
     box-shadow: 0 0 0 1.5pt #4D90FE;
     outline: none;
+}
+
+.grid-2.fraction>.abstractfield-container>.label-row-inline {
+    word-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    max-width: 75%;
+    width: 75%;
+}
+
+.grid-3.fraction>.abstractfield-container>.label-row-inline {
+    word-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    max-width: 63%;
+    width: 63%;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -4860,7 +5012,7 @@ label.checkbox-content input:focus+.checkbox-material .check {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -4926,7 +5078,6 @@ a.header-link:focus {
 
 #header-container.sticky .menu-content {
     top: 3em;
-    /*margin-left: -1.62em;*/
 }
 
 #header-container.sticky .menu-main-conteneur {
@@ -5007,7 +5158,6 @@ a.header-link:focus {
         display: none;
     }
     #header-container.sticky .profil-label {
-        /*visibility: hidden;*/
         display: none;
     }
     #header-container.sticky .dropdown-button {
@@ -5017,7 +5167,6 @@ a.header-link:focus {
         margin-left: 0.75em;
     }
     #header-container.sticky #banner .userlang>div {
-        /*display: block;*/
         line-height: 2.188em;
     }
     #header-container.sticky #banner .userlang {
@@ -5113,7 +5262,7 @@ a.header-link:focus {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -5136,6 +5285,11 @@ button.button-action:focus {
 
 .svg-content {
     margin: 0 auto
+}
+
+.picto-svg.button-action img {
+    width: 1.5em;
+    height: 1.5em;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -5213,7 +5367,7 @@ button.button-action:focus {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -5328,7 +5482,7 @@ button.button-action:focus {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -5344,7 +5498,8 @@ button.button-action:focus {
     min-width: 15.469em;
 }
 
-input[type="text"]:focus, input[type="text"]:hover {
+input[type="text"]:focus,
+input[type="text"]:hover {
     outline: #4D90FE solid 1px;
 }
 
@@ -5388,7 +5543,7 @@ input.center {
 .input-reset,
 .calendar-container .input-reset {
     position: absolute;
-    margin: 7px -40px;
+    margin: 0.4375em -2.5em;
     cursor: pointer;
     opacity: 1;
     visibility: visible;
@@ -5398,6 +5553,11 @@ input.center {
     transition: opacity 500ms linear, visibility 0s linear;
     border: none;
     outline: none;
+
+}
+.input-reset img {
+    width:1.5em;
+    height:1.5em;
 }
 
 .input-reset a:hover img {
@@ -5420,7 +5580,7 @@ input.center {
 }
 
 .calendar-container .input-reset {
-    margin: 13px -40px;
+    margin: 0.8125em -2.5em;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -5493,11 +5653,12 @@ input.center {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -5509,6 +5670,8 @@ input.center {
 
 .larger-screen img {
     vertical-align: top;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .larger-screen:hover {
@@ -5516,11 +5679,9 @@ input.center {
 }
 
 @media (max-width: 1200px) {
-
     .larger-screen {
         display: none !important;
     }
-
     #header-container.sticky #banner .dropdown-container.language .dropdown-button {
         line-height: 3em;
     }
@@ -5636,11 +5797,12 @@ input.center {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -5723,7 +5885,8 @@ input.center {
     background: none;
 }
 
-#menu-main button.toggler.is-active span::before, #menu-main button.toggler.is-active span::after {
+#menu-main button.toggler.is-active span::before,
+#menu-main button.toggler.is-active span::after {
     -webkit-transition-delay: 0s, .3s;
     transition-delay: 0s, .3s;
 }
@@ -5750,33 +5913,27 @@ input.center {
 }
 
 .menu-content {
-    position: absolute;
     background: #FFF;
     top: 6.2em;
     box-shadow: 3px 2px 10px -3px rgba(0, 0, 0, 0.2), -3px 2px 10px -3px rgba(0, 0, 0, 0.2);
-    /*max-width: 1200px;*/
-    /*margin-left: -31px;*/
     margin-left: -1.62em;
     z-index: 3;
     overflow-y: auto;
     max-height: 90%;
     min-width: 1200px;
     width: 100%;
-    position:fixed;
+    position: fixed;
 }
 
-.menuEmpty{
-        width:0;
+.menuEmpty {
+    width: 0;
 }
 
 @media screen and (max-width: 1200px) {
     .menu-content {
-        position: absolute;
         background: #FFF;
         top: 6.2em;
         box-shadow: 3px 2px 10px -3px rgba(0, 0, 0, 0.2), -3px 2px 10px -3px rgba(0, 0, 0, 0.2);
-        /*max-width: 1200px;*/
-        /*margin-left: -31px;*/
         margin-left: -1.62em;
         z-index: 3;
         overflow-y: auto;
@@ -5784,7 +5941,7 @@ input.center {
         min-width: 100%;
         position: fixed;
     }
-    .menuEmpty{
+    .menuEmpty {
         width: 42px;
     }
 }
@@ -5796,9 +5953,6 @@ input.center {
     left: 0;
     background-color: #000;
     opacity: 0.6;
-    /*-webkit-transition: opacity 0.5s;*/
-    /*transition: opacity 0.5s;*/
-    /*margin-top: 0.9em;*/
     z-index: 2;
 }
 
@@ -5834,15 +5988,18 @@ li.sub-nav-item.is-active a span.menulink-title {
     color: white;
 }
 
-li.nav-item.is-active a:hover span.menulink-title, li.nav-item.is-active a:focus span.menulink-title {
+li.nav-item.is-active a:hover span.menulink-title,
+li.nav-item.is-active a:focus span.menulink-title {
     color: white;
 }
 
-li.sub-nav-item.is-active a:hover span.menulink-title, li.sub-nav-item.is-active a:focus span.menulink-title {
+li.sub-nav-item.is-active a:hover span.menulink-title,
+li.sub-nav-item.is-active a:focus span.menulink-title {
     color: white;
 }
 
-li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.is-active li.sub-nav-item a span.menulink-title:focus {
+li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover,
+li.nav-item.is-active li.sub-nav-item a span.menulink-title:focus {
     color: white;
 }
 
@@ -5873,23 +6030,18 @@ li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.i
         margin: inherit;
         padding: 0em 0em 0em 1em;
     }
-
     .menulink-title {
         margin: 0.7em 0;
     }
-
     li.nav-item.masked li.sub-nav-item {
         display: none;
     }
-
     li.sub-nav-item.masked li.nav-item {
         display: none;
     }
-
     li.sub-nav-item.masked li.sub-nav-item {
         display: none;
     }
-
     ul.nav li.sub-nav-item a.having-sub-nav span:after {
         position: relative;
         left: 1em;
@@ -5901,7 +6053,6 @@ li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.i
         border-top: 0.15em solid black;
         transform: rotate(-45deg);
     }
-
     ul.nav li.sub-nav-item.masked a.having-sub-nav span:after {
         position: relative;
         left: 1em;
@@ -5914,7 +6065,6 @@ li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.i
         border-top: 0.15em solid black;
         transform: rotate(135deg);
     }
-
     ul.nav li.nav-item a.having-sub-nav span:after {
         position: relative;
         left: 1em;
@@ -5926,7 +6076,6 @@ li.nav-item.is-active li.sub-nav-item a span.menulink-title:hover, li.nav-item.i
         border-top: 0.15em solid black;
         transform: rotate(-45deg);
     }
-
     ul.nav li.nav-item.masked a.having-sub-nav span:after {
         position: relative;
         left: 1em;
@@ -5971,7 +6120,8 @@ ul.nav li.sub-nav-item a {
     margin-bottom: 0.1em;
 }
 
-ul.nav li.sub-nav-item a:hover, ul.nav li.sub-nav-item a:focus {
+ul.nav li.sub-nav-item a:hover,
+ul.nav li.sub-nav-item a:focus {
     font-family: NotoSansUI-Regular;
     font-size: 1.125em;
     color: #232425;
@@ -5981,12 +6131,14 @@ li.nav-item.is-active {
     background-color: #0579be;
 }
 
-.nav-item.is-active a:focus, .nav-item.is-active a:hover {
+.nav-item.is-active a:focus,
+.nav-item.is-active a:hover {
     outline: none;
     border-left: 4px solid white;
 }
 
-.nav-item:not(.is-active) a:focus, .nav-item:not(.is-active) a:hover {
+.nav-item:not(.is-active) a:focus,
+.nav-item:not(.is-active) a:hover {
     outline: none;
     border-left: 4px solid #0579be;
 }
@@ -6018,19 +6170,19 @@ li.sub-nav-item ul {
     margin: 0.7em 0;
 }
 
-#menu-main.vertical    li.nav-item.masked li.sub-nav-item {
+#menu-main.vertical li.nav-item.masked li.sub-nav-item {
     display: none;
 }
 
-#menu-main.vertical   li.sub-nav-item.masked li.nav-item {
+#menu-main.vertical li.sub-nav-item.masked li.nav-item {
     display: none;
 }
 
-#menu-main.vertical  li.sub-nav-item.masked li.sub-nav-item {
+#menu-main.vertical li.sub-nav-item.masked li.sub-nav-item {
     display: none;
 }
 
-#menu-main.vertical   ul.nav li.sub-nav-item a.having-sub-nav span:after {
+#menu-main.vertical ul.nav li.sub-nav-item a.having-sub-nav span:after {
     position: relative;
     left: 1em;
     content: "";
@@ -6042,7 +6194,7 @@ li.sub-nav-item ul {
     transform: rotate(-45deg);
 }
 
-#menu-main.vertical   ul.nav li.sub-nav-item.masked a.having-sub-nav span:after {
+#menu-main.vertical ul.nav li.sub-nav-item.masked a.having-sub-nav span:after {
     position: relative;
     left: 1em;
     bottom: 0.15em;
@@ -6055,7 +6207,7 @@ li.sub-nav-item ul {
     transform: rotate(135deg);
 }
 
-#menu-main.vertical  ul.nav li.nav-item a.having-sub-nav span:after {
+#menu-main.vertical ul.nav li.nav-item a.having-sub-nav span:after {
     position: relative;
     left: 1em;
     content: "";
@@ -6067,7 +6219,7 @@ li.sub-nav-item ul {
     transform: rotate(-45deg);
 }
 
-#menu-main.vertical   ul.nav li.nav-item.masked a.having-sub-nav span:after {
+#menu-main.vertical ul.nav li.nav-item.masked a.having-sub-nav span:after {
     position: relative;
     left: 1em;
     bottom: 0.15em;
@@ -6079,7 +6231,6 @@ li.sub-nav-item ul {
     border-top: 0.15em solid black;
     transform: rotate(135deg);
 }
-    
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -6151,11 +6302,12 @@ li.sub-nav-item ul {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -6165,44 +6317,47 @@ li.sub-nav-item ul {
 }
 
 .widget-dialogue-header {
-    padding: 0 10px;
+    padding: 0 0.625em;
     font-size: 120%;
     line-height: 2;
     color: #fff;
     background-color: #03476e;
     box-sizing: border-box;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0 0.3125em 0.625em rgba(0, 0, 0, 0.2);
+    border: 0.0625em solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
 }
 
 .dialogue-border-reset {
     box-shadow: none !important;
     border: none !important;
-
 }
 
-.widget-dialogue-title {
-
+.widget-dialogue-title h1 {
+    font-size:0.9em;
 }
+
 
 .widget-dialogue-close {
     position: absolute;
-    top: 2px;
-    right: 1px;
+    top: 0.125em;
+    right: 0.0625em;
 }
 
 .widget-dialogue-body {
     box-sizing: border-box;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.3125em 0.625em rgba(0, 0, 0, 0.2);
     background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0px 0px 5px 5px;
+    border: 0.0625em solid rgba(0, 0, 0, 0.2);
+    border-radius: 0em 0em 0.3125em 0.3125em;
     outline: 0;
     position: relative;
     line-height: 1.428571429;
     padding: 0.5em;
     max-height: 30em;
+}
+#dialogue-body-content h1 {
+    color:#024056
 }
 
 .content-modal-body {
@@ -6215,9 +6370,8 @@ li.sub-nav-item ul {
     overflow-y: auto;
 }
 
-
 .widget-dialogue-footer {
-    padding: 3px;
+    padding: 0.1875em;
     text-align: right;
 }
 
@@ -6239,7 +6393,7 @@ li.sub-nav-item ul {
 .widget-spinner-content {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 200%;
-    padding-bottom: 20px;
+    padding-bottom: 1.25em;
 }
 
 .react-draggable-cursor {
@@ -6247,26 +6401,25 @@ li.sub-nav-item ul {
 }
 
 .react-draggable {
-    -webkit-transform:translate(-50%, -50%);
-    transform:translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .hornet-button.hornet-dialogue-croix {
     margin-right: 0em;
 }
 
-.widget-shortcuts-content{
+.widget-shortcuts-content {
     padding-right: 1em;
 }
 
-div[role=alertdialog]{
-    z-index:5;
+div[role=alertdialog] {
+    z-index: 5;
 }
 
 .dialog-content-alert {
     position: absolute !important;
 }
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -6338,11 +6491,12 @@ div[role=alertdialog]{
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -6356,27 +6510,26 @@ div[role=alertdialog]{
     background-size: contain;
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
     #nf-img {
         height: 9em;
     }
 }
 
-div#nfe-page{
-    text-align:center;
-    padding-top:5%;
+div#nfe-page {
+    text-align: center;
+    padding-top: 5%;
 }
 
-.nfe-title{
-    font-size:1.25em;
+.nfe-title {
+    font-size: 1.25em;
     font-family: NotoSansUI-Bold;
-    color:black;
+    color: black;
 }
 
 a.hornet-button.nfe-button {
     margin-left: 1.5em;
 }
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -6453,7 +6606,7 @@ a.hornet-button.nfe-button {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -6621,10 +6774,10 @@ a.hornet-button.nfe-button {
     border: none;
     background: url("../img/notification/icon_fleche_expand_open.svg") transparent;
     background-repeat: no-repeat;
-    height: 26px;
-    width: 26px;
+    height: 1.625em;
+    width: 1.625em;
     float: right;
-    font-size: 0px;
+    font-size: 1em;
     cursor: pointer;
 }
 
@@ -6632,10 +6785,10 @@ a.hornet-button.nfe-button {
     border: none;
     background: url("../img/notification/icon_fleche_expand_close.svg") transparent;
     background-repeat: no-repeat;
-    height: 26px;
-    width: 26px;
+    height: 1.625em;
+    width: 1.625em;
     float: right;
-    font-size: 0px;
+    font-size: 1em;
     cursor: pointer;
 }
 
@@ -6649,10 +6802,9 @@ a.hornet-button.nfe-button {
     border: none;
     background: url("../img/notification/ico_notification_close.svg") transparent;
     background-repeat: no-repeat;
-    height: 26px;
-    width: 26px;
+    height: 1.625em;
+    width: 1.625em;
     float: right;
-    font-size: 0px;
     cursor: pointer;
 }
 
@@ -6680,7 +6832,7 @@ a.hornet-button.nfe-button {
     width: 0;
     opacity: 0;
     height: 0;
-    font-size: 0;
+    font-size: 1em;
 }
 
 .notification-timeout .notification-session-message div {
@@ -6688,6 +6840,56 @@ a.hornet-button.nfe-button {
 }
 
 .notification-timeout .notification-session-message div a {
+    cursor: pointer;
+}
+
+.notification-idp-timeout {
+    position: fixed;
+    right: 41%;
+    top: 7.5em;
+    line-height: 2em;
+    background: white;
+    padding: 0.5em;
+    color: #2e586e;
+    font-family: roboto;
+    box-shadow: 0 0.3em 0.3em rgba(0, 0, 0, 0.45);
+    background-color: #f5f5f5;
+    width: 20em;
+    font-size: 1em;
+}
+
+.notification-idp-expanded {
+    -webkit-transition: width 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
+    opacity: 1;
+    padding-top: 0.5em;
+}
+
+.notification-idp-reduced {
+    width: 0;
+    opacity: 0;
+    height: 0;
+    font-size: 0;
+}
+
+.notification-idp-timeout .notification-session-idp-button {
+    width: 100%;
+    text-align: end;
+    position: absolute;
+    right: 0.1em;
+    top: 0.1em;
+}
+
+.notification-idp-timeout .notification-session-idp-button img {
+    height: 1.5em;
+}
+
+.notification-timeout-idp .notification-session-message div {
+    line-height: 1.2em
+}
+
+.notification-timeout-idp .notification-session-message div a {
     cursor: pointer;
 }
 
@@ -6771,11 +6973,12 @@ a.hornet-button.nfe-button {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -6863,7 +7066,7 @@ ul.pap ul {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -6898,6 +7101,11 @@ ul.pap ul {
     border: 0.160em solid #AEAEAE;
     border-radius: 50%;
     background-color: #fff;
+}
+
+.radio-label .outer.has-error {
+    border-color:#e6151d;
+    background-color: #fed8da;
 }
 
 .radio-label input:checked~.outer {
@@ -6996,11 +7204,12 @@ li.radio-inline label {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -7008,114 +7217,138 @@ li.radio-inline label {
 .rc-calendar {
     box-sizing: border-box;
 }
+
 .rc-calendar * {
     box-sizing: border-box;
 }
+
 .rc-calendar-hidden {
     display: none;
 }
+
 .rc-calendar-input-wrap {
     position: relative;
-    padding: 6px;
-    border-bottom: 1px solid #e9e9e9;
+    padding: 0.375em;
+    border-bottom: 0.0625em solid #e9e9e9;
 }
+
 .rc-calendar-input-wrap:after {
     content: '';
     clear: both;
 }
+
 .rc-calendar-date-input-wrap {
     overflow: hidden;
 }
+
 .rc-calendar-time-picker {
     position: absolute;
     width: 100%;
-    top: 34px;
+    top: 2.125em;
     background-color: white;
-    height: 217px;
+    height: 13.5625em;
 }
+
 .rc-calendar-time-picker-panel {
     width: 100%;
     position: relative;
 }
+
 .rc-calendar-time-picker-panel .rc-time-picker-panel-input-wrap {
     display: none;
 }
+
 .rc-calendar-time-picker-panel .rc-time-picker-panel-inner {
     border: none;
     box-shadow: none;
 }
+
 .rc-calendar-time-picker-panel .rc-time-picker-panel-select {
-    width: 84px;
+    width: 5.25em;
 }
+
 .rc-calendar-time-picker-panel .rc-time-picker-panel-select ul {
-    max-height: 217px;
+    max-height: 13.5625em;
 }
+
 .rc-calendar-time-picker-panel .rc-time-picker-panel-select li {
     text-align: center;
     padding: 0;
 }
+
 .rc-calendar-time-picker-wrap {
     float: left;
     width: 100%;
 }
+
 .rc-calendar-time-picker-wrap .rc-time-picker {
     width: 100%;
 }
+
 .rc-calendar-time-picker-wrap .rc-time-picker-input {
     padding: 0;
-    border: 1px solid transparent;
+    border: 0.0625em solid transparent;
     outline: 0;
-    height: 22px;
+    height: 1.375em;
 }
+
 .rc-calendar-time-picker-wrap .rc-time-picker-icon {
     display: none;
 }
+
 .rc-calendar-input {
-    border: 1px solid transparent;
+    border: 0.0625em solid transparent;
     width: 100%;
     color: #666;
     cursor: text;
     line-height: 1.5;
     outline: 0;
-    height: 22px;
+    height: 1.375em;
 }
+
 .rc-calendar-input-invalid {
     border-color: red;
 }
+
 .rc-calendar-clear-btn {
     z-index: 2;
     position: absolute;
-    right: 6px;
+    right: 0.375em;
     cursor: pointer;
     overflow: hidden;
-    width: 20px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
     text-align: center;
-    line-height: 20px;
-    top: 6px;
+    line-height: 1.25em;
+    top: 0.375em;
     margin: 0;
 }
+
 .rc-calendar-clear-btn:after {
     content: "x";
-    font-size: 12px;
+    font-size: 0.9em;
     color: #aaa;
     display: inline-block;
     line-height: 1;
-    width: 20px;
+    width: 1.25em;
     transition: color 0.3s ease;
 }
+
 .rc-calendar-clear-btn:hover:after {
     color: #666;
 }
+
 .rc-calendar-picker {
     position: absolute;
-    left: -9999px;
-    top: -9999px;
+    left: -9990.5625em;
+    top: -9990.5625em;
     z-index: 3;
 }
+
 .rc-calendar-picker-hidden {
     display: none;
 }
+
 .rc-calendar-picker-slide-up-enter {
     -webkit-animation-duration: .3s;
     animation-duration: .3s;
@@ -7130,6 +7363,7 @@ li.radio-inline label {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
+
 .rc-calendar-picker-slide-up-appear {
     -webkit-animation-duration: .3s;
     animation-duration: .3s;
@@ -7144,6 +7378,7 @@ li.radio-inline label {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
+
 .rc-calendar-picker-slide-up-leave {
     -webkit-animation-duration: .3s;
     animation-duration: .3s;
@@ -7158,6 +7393,7 @@ li.radio-inline label {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
+
 .rc-calendar-picker-slide-up-enter.rc-calendar-picker-slide-up-enter-active.rc-calendar-picker-placement-bottomLeft,
 .rc-calendar-picker-slide-up-enter.rc-calendar-picker-slide-up-enter-active.rc-calendar-picker-placement-bottomRight,
 .rc-calendar-picker-slide-up-appear.rc-calendar-picker-slide-up-appear-active.rc-calendar-picker-placement-bottomLeft,
@@ -7167,15 +7403,17 @@ li.radio-inline label {
     -webkit-animation-play-state: running;
     animation-play-state: running;
 }
+
 .rc-calendar-picker-slide-up-enter.rc-calendar-picker-slide-up-enter-active.rc-calendar-picker-placement-topLeft,
 .rc-calendar-picker-slide-up-enter.rc-calendar-picker-slide-up-enter-active.rc-calendar-picker-placement-topRight,
 .rc-calendar-picker-slide-up-appear.rc-calendar-picker-slide-up-appear-active.rc-calendar-picker-placement-topLeft,
-.rc-calendar-picker-slide-up-appear.rc-calendar-picker-slide-up-appear-active.rc-calendar-picker-placement-topRight {
+.rc-calendar-picker-slide-up-appear.rc-calendar-picker-slide-up-appear-active.rc-caloutline: noneendar-picker-placement-topRight {
     -webkit-animation-name: rcDropdownSlideDownIn;
     animation-name: rcDropdownSlideDownIn;
     -webkit-animation-play-state: running;
     animation-play-state: running;
 }
+
 .rc-calendar-picker-slide-up-leave.rc-calendar-picker-slide-up-leave-active.rc-calendar-picker-placement-bottomLeft,
 .rc-calendar-picker-slide-up-leave.rc-calendar-picker-slide-up-leave-active.rc-calendar-picker-placement-bottomRight {
     -webkit-animation-name: rcDropdownSlideUpOut;
@@ -7183,6 +7421,7 @@ li.radio-inline label {
     -webkit-animation-play-state: running;
     animation-play-state: running;
 }
+
 .rc-calendar-picker-slide-up-leave.rc-calendar-picker-slide-up-leave-active.rc-calendar-picker-placement-topLeft,
 .rc-calendar-picker-slide-up-leave.rc-calendar-picker-slide-up-leave-active.rc-calendar-picker-placement-topRight {
     -webkit-animation-name: rcDropdownSlideDownOut;
@@ -7190,6 +7429,7 @@ li.radio-inline label {
     -webkit-animation-play-state: running;
     animation-play-state: running;
 }
+
 @-webkit-keyframes rcDropdownSlideUpIn {
     0% {
         opacity: 0;
@@ -7206,6 +7446,7 @@ li.radio-inline label {
         transform: scaleY(1);
     }
 }
+
 @keyframes rcDropdownSlideUpIn {
     0% {
         opacity: 0;
@@ -7222,6 +7463,7 @@ li.radio-inline label {
         transform: scaleY(1);
     }
 }
+
 @-webkit-keyframes rcDropdownSlideUpOut {
     0% {
         opacity: 1;
@@ -7238,6 +7480,7 @@ li.radio-inline label {
         transform: scaleY(0);
     }
 }
+
 @keyframes rcDropdownSlideUpOut {
     0% {
         opacity: 1;
@@ -7254,6 +7497,7 @@ li.radio-inline label {
         transform: scaleY(0);
     }
 }
+
 @-webkit-keyframes rcDropdownSlideDownIn {
     0% {
         opacity: 0;
@@ -7270,6 +7514,7 @@ li.radio-inline label {
         transform: scaleY(1);
     }
 }
+
 @keyframes rcDropdownSlideDownIn {
     0% {
         opacity: 0;
@@ -7286,6 +7531,7 @@ li.radio-inline label {
         transform: scaleY(1);
     }
 }
+
 @-webkit-keyframes rcDropdownSlideDownOut {
     0% {
         opacity: 1;
@@ -7302,6 +7548,7 @@ li.radio-inline label {
         transform: scaleY(0);
     }
 }
+
 @keyframes rcDropdownSlideDownOut {
     0% {
         opacity: 1;
@@ -7318,85 +7565,99 @@ li.radio-inline label {
         transform: scaleY(0);
     }
 }
+
 .rc-calendar {
     position: relative;
     outline: none;
     font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
-    width: 253px;
+    width: 17.813em;
     list-style: none;
-    font-size: 12px;
+    font-size: 0.9em;
     text-align: left;
     background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 0 1px 5px #ccc;
+    border-radius: 0.1875em;
+    box-shadow: 0 0.0625em 0.3125em #ccc;
     background-clip: padding-box;
-    border: 1px solid #ccc;
-    line-height: 1.5;
+    border: 0.0625em solid #ccc;
+    line-height: 2em;
 }
+
 .rc-calendar-date-panel,
 .rc-calendar-panel {
     position: relative;
     outline: none;
 }
+
 .rc-calendar-week-number {
-    width: 286px;
+    width: 17.875em;
 }
+
 .rc-calendar-week-number-cell {
     text-align: center;
 }
+
 .rc-calendar-header {
-    padding: 0 10px;
-    height: 34px;
-    line-height: 30px;
+    padding: 0 0.625em;
+    height: 2.125em;
+    line-height: 1.875em;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
 }
-.rc-calendar-header > a {
+
+.rc-calendar-header>a {
     font-weight: bold;
     display: inline-block;
-    padding: 0px 5px;
-    line-height: 34px;
+    padding: 0em 0.3125em;
+    line-height: 2.125em;
     text-align: center;
-    width: 30px;
+    width: 1.875em;
 }
-.rc-calendar-header > a:hover {
+
+.rc-calendar-header>a:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-header .rc-calendar-prev-month-btn {
     position: absolute;
-    left: 25px;
+    left: 1.5625em;
 }
+
 .rc-calendar-header .rc-calendar-prev-month-btn:after {
     content: '‹';
 }
+
 .rc-calendar-header .rc-calendar-next-month-btn {
     position: absolute;
-    right: 25px;
+    right: 1.5625em;
 }
+
 .rc-calendar-header .rc-calendar-next-month-btn:after {
     content: '›';
 }
+
 .rc-calendar-year-select,
 .rc-calendar-month-select,
 .rc-calendar-day-select {
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.9em;
     font-weight: bold;
     color: #666;
-    padding: 0 8px;
-    line-height: 34px;
+    padding: 0 0.5em;
+    line-height: 2.125em;
 }
+
 .rc-calendar-year-select:hover,
 .rc-calendar-month-select:hover,
 .rc-calendar-day-select:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-prev-month-btn,
 .rc-calendar-next-month-btn,
 .rc-calendar-prev-year-btn,
@@ -7406,94 +7667,114 @@ li.radio-inline label {
     cursor: pointer;
     color: #999;
     font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif", sans-serif;
-    padding: 0 5px;
-    font-size: 16px;
+    padding: 0 0.3125em;
+    font-size: 1em;
     display: inline-block;
-    line-height: 34px;
+    line-height: 2.125em;
 }
+
 .rc-calendar-prev-month-btn:hover,
 .rc-calendar-next-month-btn:hover,
 .rc-calendar-prev-year-btn:hover,
 .rc-calendar-next-year-btn:hover {
     color: #0579be;
 }
+
 .rc-calendar-next-year-btn {
     right: 0;
 }
+
 .rc-calendar-next-year-btn:after {
     content: '»';
 }
+
 .rc-calendar-prev-year-btn {
     left: 0;
 }
+
 .rc-calendar-prev-year-btn:after {
     content: '«';
 }
+
 .rc-calendar-body {
-    padding: 9px 10px 10px;
-    height: 217px;
+    padding: 0.5625em 0.625em 0.625em;
+    height: 13.5625em;
 }
+
 .rc-calendar table {
     border-collapse: collapse;
     max-width: 100%;
     background-color: transparent;
     width: 100%;
 }
+
 .rc-calendar table,
 .rc-calendar td,
 .rc-calendar th,
 .rc-calendar td {
     border: none;
 }
+
 .rc-calendar-table {
     border-spacing: 0;
     margin-bottom: 0;
 }
+
 .rc-calendar-column-header {
-    line-height: 18px;
-    padding: 6px 0;
-    width: 33px;
+    line-height: 1.125em;
+    padding: 0.375em 0;
+    width: 2.0625em;
     text-align: center;
 }
+
 .rc-calendar-column-header .rc-calendar-column-header-inner {
     display: block;
     font-weight: normal;
 }
+
 .rc-calendar-week-number-header .rc-calendar-column-header-inner {
     display: none;
 }
+
 .rc-calendar-cell {
-    padding: 1px 0;
+    padding: 0.0625em 0;
 }
+
 .rc-calendar-date {
     display: block;
     margin: 0 auto;
     color: #666;
-    border-radius: 4px 4px;
-    width: 26px;
-    height: 26px;
+    border-radius: 0.25em 0.25em;
+    width: 1.625em;
+    height: 1.625em;
     padding: 0;
     background: transparent;
-    line-height: 26px;
+    line-height: 1.625em;
     text-align: center;
 }
+
 .rc-calendar-date:hover {
     background: #ebfaff;
     cursor: pointer;
 }
+
 .rc-calendar-selected-day .rc-calendar-date {
     background: #d9f4fe;
 }
+
 .rc-calendar-selected-date .rc-calendar-date {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-selected-date .rc-calendar-date:hover {
     background: #0579be;
 }
+
 .rc-calendar-today .rc-calendar-date {
-    border: 1px solid #0579be;
+    border: 0.0625em solid #0579be;
 }
+
 .rc-calendar-disabled-cell .rc-calendar-date {
     cursor: not-allowed;
     color: #bcbcbc;
@@ -7501,50 +7782,63 @@ li.radio-inline label {
     border-radius: 0;
     width: auto;
 }
+
 .rc-calendar-disabled-cell .rc-calendar-date:hover {
     background: #f3f3f3;
 }
+
 .rc-calendar-disabled-cell-first-of-row .rc-calendar-date {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
 }
+
 .rc-calendar-disabled-cell-last-of-row .rc-calendar-date {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
 }
+
 .rc-calendar-last-month-cell .rc-calendar-date,
 .rc-calendar-next-month-btn-day .rc-calendar-date {
     color: #bbb;
 }
+
 .rc-calendar-footer {
-    border-top: 1px solid #ccc;
-    padding: 10px 0;
+    border-top: 0.0625em solid #ccc;
+    padding: 0.625em 0;
     text-align: center;
     position: relative;
 }
+
 .rc-calendar-footer .rc-time-picker {
-    width: 90px;
+    width: 5.625em;
 }
+
 .rc-calendar-footer .rc-time-picker-input {
-    height: 24px;
+    height: 20.25em;
 }
+
 .rc-calendar-footer-show-ok {
     text-align: right;
 }
+
 .rc-calendar-footer-show-ok .rc-calendar-footer-btn {
-    padding-right: 12px;
+    padding-right: 0.75em;
 }
+
 .rc-calendar-footer-show-ok .rc-calendar-time-picker-btn {
     margin-left: 0;
-    padding: 0 12px;
+    padding: 0 0.75em;
 }
+
 .rc-calendar-footer-show-ok .rc-calendar-today-btn {
     float: left;
-    padding-left: 12px;
+    padding-left: 0.75em;
 }
+
 .rc-calendar-footer-btn {
-    margin-top: 2px;
+    margin-top: 0.125em;
 }
+
 .rc-calendar-footer-btn:after {
     content: 'x';
     height: 0;
@@ -7552,9 +7846,11 @@ li.radio-inline label {
     overflow: hidden;
     clear: both;
 }
+
 .rc-calendar-time-picker-btn {
-    margin-left: 10px;
+    margin-left: 0.625em;
 }
+
 .rc-calendar-today-btn,
 .rc-calendar-ok-btn,
 .rc-calendar-time-picker-btn {
@@ -7562,47 +7858,55 @@ li.radio-inline label {
     text-align: center;
     color: #f46830;
 }
+
 .rc-calendar-today-btn:hover,
 .rc-calendar-ok-btn:hover,
 .rc-calendar-time-picker-btn:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-today-btn-disabled,
 .rc-calendar-ok-btn-disabled,
 .rc-calendar-time-picker-btn-disabled {
     color: #bbb;
 }
+
 .rc-calendar-today-btn-disabled:hover,
 .rc-calendar-ok-btn-disabled:hover,
 .rc-calendar-time-picker-btn-disabled:hover {
     color: #bbb;
 }
+
 .rc-calendar-today-btn {
-    padding-left: 10px;
+    padding-left: 0.625em;
 }
+
 .rc-calendar-time-input {
-    height: 25px;
+    height: 20.3125em;
     position: relative;
     display: inline-block;
     margin: 0 0;
-    padding: 4px 10px;
-    border-radius: 6px 6px;
-    border: 1px solid #d9d9d9;
+    padding: 0.25em 0.625em;
+    border-radius: 0.375em 0.375em;
+    border: 0.0625em solid #d9d9d9;
     background-color: #ffffff;
     color: #666;
     line-height: 1.5;
     -webkit-transform: border 0.3s cubic-bezier(0.35, 0, 0.25, 1), background 0.3s cubic-bezier(0.35, 0, 0.25, 1), box-shadow 0.3s cubic-bezier(0.35, 0, 0.25, 1);
     transform: border 0.3s cubic-bezier(0.35, 0, 0.25, 1), background 0.3s cubic-bezier(0.35, 0, 0.25, 1), box-shadow 0.3s cubic-bezier(0.35, 0, 0.25, 1);
-    width: 40px;
+    width: 2.5em;
 }
+
 .rc-calendar-time-input:hover {
     border-color: #0579be;
 }
+
 .rc-calendar-time-input:focus {
     border-color: #0579be;
-    box-shadow: 0 0 3px #0579be;
+    box-shadow: 0 0 0.1875em #0579be;
 }
+
 .rc-calendar-time-panel {
     left: 0;
     top: 0;
@@ -7613,61 +7917,71 @@ li.radio-inline label {
     position: absolute;
     outline: none;
 }
+
 .rc-calendar-time-panel-header {
-    padding: 0 10px;
-    height: 34px;
-    line-height: 34px;
+    padding: 0 0.625em;
+    height: 2.125em;
+    line-height: 2.125em;
     position: relative;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
 }
+
 .rc-calendar-time-panel-body {
-    padding: 9px 10px 10px;
+    padding: 0.5625em 0.625em 0.625em;
 }
+
 .rc-calendar-time-panel-title {
-    width: 180px;
+    width: 11.25em;
     font-weight: bold;
     display: inline-block;
-    padding: 4px 5px;
+    padding: 0.25em 0.3125em;
     text-align: center;
-    height: 30px;
-    line-height: 22px;
-    border-radius: 4px;
+    height: 1.875em;
+    line-height: 20.125em;
+    border-radius: 0.25em;
 }
+
 .rc-calendar-time-panel-table {
     table-layout: fixed;
     width: 100%;
-    height: 255px;
+    height: 15.9375em;
     border-collapse: separate;
 }
+
 .rc-calendar-time-panel-cell {
     text-align: center;
-    height: 42px;
+    height: 40.125em;
     vertical-align: middle;
 }
+
 .rc-calendar-time-panel-time {
-    line-height: 26px;
+    line-height: 1.625em;
     display: block;
-    border-radius: 4px;
-    width: 26px;
+    border-radius: 0.25em;
+    width: 1.625em;
     margin: 0 auto;
 }
+
 .rc-calendar-time-panel-time:hover {
     background: #ebfaff;
     cursor: pointer;
 }
+
 .rc-calendar-time-panel-selected-cell .rc-calendar-time-panel-time {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-time-panel-selected-cell .rc-calendar-time-panel-time:hover {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-month-panel {
     left: 0;
     top: 0;
@@ -7678,40 +7992,47 @@ li.radio-inline label {
     position: absolute;
     outline: none;
 }
+
 .rc-calendar-month-panel-hidden {
     display: none;
 }
+
 .rc-calendar-month-panel-header {
-    padding: 0 10px;
-    height: 34px;
-    line-height: 30px;
+    padding: 0 0.625em;
+    height: 2.125em;
+    line-height: 1.875em;
     position: relative;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
 }
-.rc-calendar-month-panel-header > a {
+
+.rc-calendar-month-panel-header>a {
     font-weight: bold;
     display: inline-block;
-    padding: 4px 5px;
+    padding: 0.25em 0.3125em;
     text-align: center;
-    width: 30px;
+    width: 1.875em;
 }
-.rc-calendar-month-panel-header > a:hover {
+
+.rc-calendar-month-panel-header>a:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-month-panel-prev-year-btn,
 .rc-calendar-month-panel-next-year-btn {
     position: absolute;
     top: 0;
 }
+
 .rc-calendar-month-panel-next-year-btn:after {
     content: '»';
 }
+
 .rc-calendar-month-panel-prev-year-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7719,15 +8040,19 @@ li.radio-inline label {
     user-select: none;
     left: 0;
 }
+
 .rc-calendar-month-panel-prev-year-btn:after {
     content: '«';
 }
+
 .rc-calendar-month-panel .rc-calendar-month-panel-year-select {
-    width: 180px;
+    width: 11.25em;
 }
+
 .rc-calendar-month-panel-year-select-arrow {
     display: none;
 }
+
 .rc-calendar-month-panel-next-year-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7735,49 +8060,59 @@ li.radio-inline label {
     user-select: none;
     right: 0;
 }
+
 .rc-calendar-month-panel-body {
-    padding: 9px 10px 10px;
+    padding: 0.5625em 0.625em 0.625em;
 }
+
 .rc-calendar-month-panel-table {
     table-layout: fixed;
     width: 100%;
-    height: 255px;
+    height: 15.9375em;
     border-collapse: separate;
 }
+
 .rc-calendar-month-panel-cell {
     text-align: center;
 }
+
 .rc-calendar-month-panel-cell .rc-calendar-month-panel-month {
     display: block;
-    width: 46px;
+    width: 2.875em;
     margin: 0 auto;
     color: #666;
-    border-radius: 4px 4px;
-    height: 36px;
+    border-radius: 0.25em 0.25em;
+    height: 2.25em;
     padding: 0;
     background: transparent;
-    line-height: 36px;
+    line-height: 2.25em;
     text-align: center;
 }
+
 .rc-calendar-month-panel-cell .rc-calendar-month-panel-month:hover {
     background: #ebfaff;
     cursor: pointer;
 }
+
 .rc-calendar-month-panel-cell-disabled .rc-calendar-month-panel-month {
     color: #bfbfbf;
 }
+
 .rc-calendar-month-panel-cell-disabled .rc-calendar-month-panel-month:hover {
     background: white;
     cursor: not-allowed;
 }
+
 .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month:hover {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-year-panel {
     left: 0;
     top: 0;
@@ -7788,40 +8123,47 @@ li.radio-inline label {
     position: absolute;
     outline: none;
 }
+
 .rc-calendar-year-panel-hidden {
     display: none;
 }
+
 .rc-calendar-year-panel-header {
-    padding: 0 10px;
-    height: 34px;
-    line-height: 30px;
+    padding: 0 0.625em;
+    height: 2.125em;
+    line-height: 1.875em;
     position: relative;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
 }
-.rc-calendar-year-panel-header > a {
+
+.rc-calendar-year-panel-header>a {
     font-weight: bold;
     display: inline-block;
-    padding: 4px 5px;
+    padding: 0.25em 0.3125em;
     text-align: center;
-    width: 30px;
+    width: 1.875em;
 }
-.rc-calendar-year-panel-header > a:hover {
+
+.rc-calendar-year-panel-header>a:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-year-panel-prev-decade-btn,
 .rc-calendar-year-panel-next-decade-btn {
     position: absolute;
     top: 0;
 }
+
 .rc-calendar-year-panel-next-decade-btn:after {
     content: '»';
 }
+
 .rc-calendar-year-panel-prev-decade-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7829,15 +8171,19 @@ li.radio-inline label {
     user-select: none;
     left: 0;
 }
+
 .rc-calendar-year-panel-prev-decade-btn:after {
     content: '«';
 }
+
 .rc-calendar-year-panel .rc-calendar-year-panel-decade-select {
-    width: 180px;
+    width: 11.25em;
 }
+
 .rc-calendar-year-panel-decade-select-arrow {
     display: none;
 }
+
 .rc-calendar-year-panel-next-decade-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7845,42 +8191,50 @@ li.radio-inline label {
     user-select: none;
     right: 0;
 }
+
 .rc-calendar-year-panel-body {
-    padding: 9px 10px 10px;
+    padding: 0.5625em 0.625em 0.625em;
 }
+
 .rc-calendar-year-panel-table {
     table-layout: fixed;
     width: 100%;
-    height: 255px;
+    height: 15.9375em;
     border-collapse: separate;
 }
+
 .rc-calendar-year-panel-cell {
     text-align: center;
 }
+
 .rc-calendar-year-panel-year {
     display: block;
-    width: 46px;
+    width: 2.875em;
     margin: 0 auto;
     color: #666;
-    border-radius: 4px 4px;
-    height: 36px;
+    border-radius: 0.25em 0.25em;
+    height: 2.25em;
     padding: 0;
     background: transparent;
-    line-height: 36px;
+    line-height: 2.25em;
     text-align: center;
 }
+
 .rc-calendar-year-panel-year:hover {
     background: #ebfaff;
     cursor: pointer;
 }
+
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year:hover {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-year-panel-last-decade-cell .rc-calendar-year-panel-year,
 .rc-calendar-year-panel-next-decade-cell .rc-calendar-year-panel-year {
     -moz-user-select: none;
@@ -7889,6 +8243,7 @@ li.radio-inline label {
     -webkit-user-select: none;
     color: rgba(0, 0, 0, 0.25);
 }
+
 .rc-calendar-decade-panel {
     left: 0;
     top: 0;
@@ -7899,40 +8254,47 @@ li.radio-inline label {
     position: absolute;
     outline: none;
 }
+
 .rc-calendar-decade-panel-hidden {
     display: none;
 }
+
 .rc-calendar-decade-panel-header {
-    padding: 0 10px;
-    height: 34px;
-    line-height: 34px;
+    padding: 0 0.625em;
+    height: 2.125em;
+    line-height: 2.125em;
     position: relative;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
 }
-.rc-calendar-decade-panel-header > a {
+
+.rc-calendar-decade-panel-header>a {
     font-weight: bold;
     display: inline-block;
-    padding: 1px 5px;
+    padding: 0.0625em 0.3125em;
     text-align: center;
-    width: 30px;
+    width: 1.875em;
 }
-.rc-calendar-decade-panel-header > a:hover {
+
+.rc-calendar-decade-panel-header>a:hover {
     cursor: pointer;
     color: #0579be;
 }
+
 .rc-calendar-decade-panel-prev-century-btn,
 .rc-calendar-decade-panel-next-century-btn {
     position: absolute;
     top: 0;
 }
+
 .rc-calendar-decade-panel-next-century-btn:after {
     content: '»';
 }
+
 .rc-calendar-decade-panel-prev-century-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7940,9 +8302,11 @@ li.radio-inline label {
     user-select: none;
     left: 0;
 }
+
 .rc-calendar-decade-panel-prev-century-btn:after {
     content: '«';
 }
+
 .rc-calendar-decade-panel-next-century-btn {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -7950,41 +8314,49 @@ li.radio-inline label {
     user-select: none;
     right: 0;
 }
+
 .rc-calendar-decade-panel-body {
-    padding: 9px 10px 10px;
+    padding: 0.5625em 0.625em 0.625em;
 }
+
 .rc-calendar-decade-panel-table {
     table-layout: fixed;
     width: 100%;
-    height: 255px;
+    height: 15.9375em;
     border-collapse: separate;
 }
+
 .rc-calendar-decade-panel-cell {
     text-align: center;
 }
+
 .rc-calendar-decade-panel-decade {
     display: block;
     margin: 0 auto;
     color: #666;
-    border-radius: 4px 4px;
-    height: 36px;
+    border-radius: 0.25em 0.25em;
+    height: 2.25em;
     padding: 0;
     background: transparent;
-    line-height: 36px;
+    line-height: 2.25em;
     text-align: center;
 }
+
 .rc-calendar-decade-panel-decade:hover {
     background: #ebfaff;
     cursor: pointer;
 }
+
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade:hover {
     background: #0579be;
     color: #fff;
 }
+
 .rc-calendar-decade-panel-last-century-cell .rc-calendar-decade-panel-decade,
 .rc-calendar-decade-panel-next-century-cell .rc-calendar-decade-panel-decade {
     -moz-user-select: none;
@@ -7993,42 +8365,53 @@ li.radio-inline label {
     -webkit-user-select: none;
     color: rgba(0, 0, 0, 0.25);
 }
+
 .rc-calendar-range {
-    width: 502px;
+    width: 500.125em;
     overflow: hidden;
 }
+
 .rc-calendar-range-part {
-    width: 250px;
+    width: 15.625em;
     position: relative;
 }
+
 .rc-calendar-range-part .rc-calendar-time-picker {
-    top: 69px;
+    top: 60.5625em;
 }
+
 .rc-calendar-range-part .rc-calendar-time-picker-panel-select {
-    width: 77px;
+    width: 4.8125em;
 }
+
 .rc-calendar-range-left {
     float: left;
 }
+
 .rc-calendar-range-left .rc-calendar-time-picker-panel-select:last-child {
-    border-right: 1px solid #e9e9e9;
+    border-right: 0.0625em solid #e9e9e9;
 }
+
 .rc-calendar-range-right {
     float: right;
 }
+
 .rc-calendar-range-right .rc-calendar-time-picker-panel {
-    left: 21px;
+    left: 20.0625em;
 }
+
 .rc-calendar-range-right .rc-calendar-time-picker-panel-select:first-child {
-    border-left: 1px solid #e9e9e9;
+    border-left: 0.0625em solid #e9e9e9;
 }
+
 .rc-calendar-range-middle {
     position: absolute;
-    margin-left: -10px;
+    margin-left: -0.625em;
     text-align: center;
-    height: 35px;
-    line-height: 35px;
+    height: 30.3125em;
+    line-height: 30.3125em;
 }
+
 .rc-calendar-range .rc-calendar-date-panel::after {
     content: ".";
     display: block;
@@ -8036,148 +8419,181 @@ li.radio-inline label {
     clear: both;
     visibility: hidden;
 }
+
 .rc-calendar-range .rc-calendar-input-wrap {
-    height: 35px;
+    height: 30.3125em;
 }
+
 .rc-calendar-range .rc-calendar-input,
 .rc-calendar-range .rc-time-picker-input {
-    padding: 1px 7px;
-    height: 22px;
+    padding: 0.0625em 0.4375em;
+    height: 20.125em;
 }
+
 .rc-calendar-range .rc-calendar-body,
 .rc-calendar-range .rc-calendar-decade-panel-body,
 .rc-calendar-range .rc-calendar-year-panel-body,
 .rc-calendar-range .rc-calendar-month-panel-body {
-    border-bottom: 1px solid #e9e9e9;
+    border-bottom: 0.0625em solid #e9e9e9;
 }
+
 .rc-calendar-range.rc-calendar-week-number {
-    width: 574px;
+    width: 570.25em;
 }
+
 .rc-calendar-range.rc-calendar-week-number .rc-calendar-range-part {
-    width: 286px;
+    width: 280.375em;
 }
+
 .rc-calendar-range.rc-calendar-week-number .rc-calendar-range-part .rc-calendar-time-picker {
-    top: 69px;
+    top: 60.5625em;
 }
+
 .rc-calendar-range.rc-calendar-week-number .rc-calendar-range-part .rc-calendar-time-picker-panel-select {
-    width: 89px;
+    width: 80.5625em;
 }
+
 .rc-calendar-range.rc-calendar-week-number .rc-calendar-range-right .rc-calendar-time-picker-panel {
-    left: 36px;
+    left: 2.25em;
 }
+
 .rc-calendar-range .rc-calendar-year-panel,
 .rc-calendar-range .rc-calendar-month-panel {
-    top: 35px;
+    top: 30.3125em;
 }
+
 .rc-calendar-range .rc-calendar-month-panel .rc-calendar-year-panel {
     top: 0;
 }
+
 .rc-calendar-range .rc-calendar-decade-panel-table,
 .rc-calendar-range .rc-calendar-year-panel-table,
 .rc-calendar-range .rc-calendar-month-panel-table {
-    height: 198px;
+    height: 12.375em;
 }
+
 .rc-calendar-range .rc-calendar-in-range-cell {
     background: #ebf4f8;
     border-radius: 0;
 }
+
 .rc-calendar-range-bottom {
     text-align: right;
 }
+
 .rc-calendar-range .rc-calendar-footer {
     border-top: none;
     padding: 0;
 }
+
 .rc-calendar-range .rc-calendar-footer-btn {
-    padding: 10px 12px 10px 0;
+    padding: 0.625em 0.75em 0.625em 0;
 }
+
 .rc-calendar-range .rc-calendar-ok-btn {
     position: static;
 }
+
 .rc-calendar-range .rc-calendar-today-btn {
     float: left;
 }
+
 .rc-calendar-full {
-    width: 275px;
+    width: 270.3125em;
 }
+
 .rc-calendar-full-header {
-    padding: 5px 10px;
+    padding: 0.3125em 0.625em;
     text-align: center;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc;
     overflow: hidden;
 }
+
 .rc-calendar-full-header-month-select,
 .rc-calendar-full-header-year-select {
-    width: 70px;
+    width: 4.375em;
     float: right;
-    margin-right: 5px;
+    margin-right: 0.3125em;
 }
+
 .rc-calendar-full-header-switcher {
     float: right;
     display: inline-block;
 }
+
 .rc-calendar-full-header-switcher-normal:hover {
     border-color: #0579be;
-    box-shadow: 0 0 2px rgba(45, 183, 245, 0.8);
+    box-shadow: 0 0 0.125em rgba(45, 183, 245, 0.8);
     cursor: pointer;
 }
+
 .rc-calendar-full-header-switcher-focus {
     border-color: #0579be;
     background-color: #0579be;
     color: #fff;
 }
-.rc-calendar-full-header-switcher > span {
+
+.rc-calendar-full-header-switcher>span {
     float: left;
-    height: 28px;
-    line-height: 24px;
-    border: 1px solid #d9d9d9;
-    padding: 0 10px;
+    height: 1.75em;
+    line-height: 20.25em;
+    border: 0.0625em solid #d9d9d9;
+    padding: 0 0.625em;
     color: #666;
 }
-.rc-calendar-full-header-switcher > span:first-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+
+.rc-calendar-full-header-switcher>span:first-child {
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
     border-right: none;
 }
-.rc-calendar-full-header-switcher > span:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+
+.rc-calendar-full-header-switcher>span:last-child {
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
     border-left: none;
 }
+
 .rc-calendar-fullscreen {
     width: auto;
 }
+
 .rc-calendar-fullscreen .rc-calendar-full-header {
     border-bottom: none;
 }
+
 .rc-calendar-fullscreen .rc-calendar-column-header {
     text-align: right;
-    padding-right: 12px;
+    padding-right: 0.75em;
 }
+
 .rc-calendar-fullscreen .rc-calendar-cell {
     padding: 0;
 }
+
 .rc-calendar-fullscreen .rc-calendar-cell .rc-calendar-date,
 .rc-calendar-fullscreen .rc-calendar-month-panel-cell .rc-calendar-month-panel-month {
     display: block;
-    height: 116px;
+    height: 11em;
     width: auto;
     border-radius: 0;
-    margin: 0 4px;
+    margin: 0 0.25em;
     border: none;
-    border-top: 2px solid #eee;
+    border-top: 0.125em solid #eee;
     text-align: right;
-    padding-right: 8px;
+    padding-right: 0.5em;
 }
+
 .rc-calendar-fullscreen .rc-calendar-selected-day .rc-calendar-date,
 .rc-calendar-fullscreen .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
     background-color: #ebfaff;
     color: #666;
 }
+
 .rc-calendar-fullscreen .rc-calendar-today .rc-calendar-date,
 .rc-calendar-fullscreen .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
     border-top-color: #0579be;
@@ -8259,7 +8675,7 @@ li.radio-inline label {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -8404,30 +8820,33 @@ select:focus {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.loader-page, .spinner-loading {
+.loader-page,
+.spinner-loading {
     width: 100%;
     position: absolute;
     overflow: hidden;
     background-color: #eee;
-    height: 4px;
+    height: 0.25em;
 }
 
-.loader-page:before, .spinner-loading:before {
+.loader-page:before,
+.spinner-loading:before {
     display: block;
     position: absolute;
     content: "";
-    left: -200px;
-    width: 200px;
-    height: 4px;
+    left: -12.5em;
+    width: 12.5em;
+    height: 0.25em;
     background-color: #00d468;
     animation: loadingPage 2s linear infinite;
 }
@@ -8440,24 +8859,38 @@ select:focus {
     right: 0;
     left: 0;
     opacity: 0.1;
-    z-index: 4;
-    pointer-events: none;
+    z-index: 6000;
+}
+
+@media (pointer: coarse) {
+    .loader-overlay {
+        pointer-events: none;
+    }
 }
 
 @keyframes loadingPage {
     from {
-        left: -200px;
+        left: -12.5em;
         width: 30%;
     }
-    50% { width: 30%; }
-    70% { width: 70%; }
-    80% { left: 50%; }
-    95% { left: 120%; }
-    to { left: 100%; }
+    50% {
+        width: 30%;
+    }
+    70% {
+        width: 70%;
+    }
+    80% {
+        left: 50%;
+    }
+    95% {
+        left: 120%;
+    }
+    to {
+        left: 100%;
+    }
 }
 
-
-.component-spinner{
+.component-spinner {
     position: absolute;
     background-color: black;
     width: 100%;
@@ -8465,25 +8898,24 @@ select:focus {
     opacity: 0.5;
     text-align: center;
 }
-.component-spinner img{
+
+.component-spinner img {
     position: absolute;
-    top : 50%;
-    left : 50%;
-    margin-top : -20px;
-    margin-left : -20px;
-    display : block;
-    width : 40px;
+    top: 50%;
+    left: 50%;
+    margin-top: -1.25em;
+    margin-left: -1.25em;
+    display: block;
+    width: 2.5em;
 }
+
 .component-spinner div {
     position: relative;
     opacity: 1;
     color: white;
     top: 50%;
-    margin-top: -40px;
+    margin-top: -2.5em;
 }
-
-
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -8555,11 +8987,12 @@ select:focus {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -8567,11 +9000,11 @@ select:focus {
 .switch {
     position: relative;
     display: block;
-    width: 58px;
-    height: 23px;
-    padding: 3px;
-    margin: 0 10px 10px 0;
-    border-radius: 11px;
+    width: 3.625em;
+    height: 1.4375em;
+    padding: 0.1875em;
+    margin: 0 0.625em 0.625em 0;
+    border-radius: 0.6875em;
     cursor: pointer;
     box-sizing: content-box;
     font-weight: bold;
@@ -8589,14 +9022,15 @@ select:focus {
     position: relative;
     display: block;
     height: inherit;
-    font-size: 12px;
+    font-size: 0.75em;
     text-transform: uppercase;
     background: #87cffa;
     border-radius: inherit;
     box-sizing: content-box;
 }
 
-.switch-label:before, .switch-label:after {
+.switch-label:before,
+.switch-label:after {
     position: absolute;
     top: 50%;
     margin-top: -.5em;
@@ -8610,40 +9044,40 @@ select:focus {
 
 .switch-label:before {
     content: attr(data-off);
-    right: 7px;
+    right: 0.4375em;
     color: #454545;
 }
 
 .switch-label:after {
     content: attr(data-on);
-    left: 7px;
+    left: 0.4375em;
     color: #FFFFFF;
     opacity: 0;
 }
 
-.switch-input:checked ~ .switch-label {
+.switch-input:checked~.switch-label {
     background: #0579be;
 }
 
-.switch-input:checked ~ .switch-label:before {
+.switch-input:checked~.switch-label:before {
     opacity: 0;
 }
 
-.switch-input:checked ~ .switch-label:after {
+.switch-input:checked~.switch-label:after {
     opacity: 1;
 }
 
-.switch-input:disabled ~ .switch-label {
+.switch-input:disabled~.switch-label {
     background: #AEAEAE;
     cursor: default;
 }
 
 .switch-handle {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 13px;
-    height: 13px;
+    top: 0.5em;
+    left: 0.5em;
+    width: 0.8125em;
+    height: 0.8125em;
     border-radius: 100%;
     background-color: #ffffff;
 }
@@ -8653,18 +9087,21 @@ select:focus {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -6px 0 0 -6px;
-    width: 12px;
-    border-radius: 6px;
+    margin: -0.375em 0 0 -0.375em;
+    width: 0.75em;
+    border-radius: 0.375em;
 }
 
-.switch-input:checked ~ .switch-handle {
-    left: 45px;
+.switch-input:checked~.switch-handle {
+    left: 2.75em;
 }
+
 
 /* Transition
 ========================== */
-.switch-label, .switch-handle {
+
+.switch-label,
+.switch-handle {
     transition: All 0.3s ease;
     -webkit-transition: All 0.3s ease;
     -moz-transition: All 0.3s ease;
@@ -8730,11 +9167,11 @@ select:focus {
  * software by the user in light of its specific status of free software,
  * that may mean  that it is complicated to manipulate,  and  that  also
  * therefore means  that it is reserved for developers  and  experienced
- * professionals having in-depth computer knowledge. Users are therefore
- * encouraged to load and test the software's suitability as regards their
- * requirements in conditions enabling the security of their systems and/or
- * data to be ensured and,  more generally, to use and operate it in the
- * same conditions as regards security.
+ * professionals having in-depth copxmputer knowledge. Users are therefore
+ * encouraged to load and test the pxsoftware's suitability as regards their
+ * requirements in conditions enablpxing the security of their systems and/or
+ * data to be ensured and,  more gepxnerally, to use and operate it in the
+ * same conditions as regards securpxity.
  * <p/>
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
@@ -8746,7 +9183,7 @@ select:focus {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -8757,8 +9194,8 @@ select:focus {
 
 .datatable-content {
     background-color: #ffffff;
-    border-radius: 0 0 6px 6px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 0.375em 0.375em;
+    box-shadow: 0 0.0625em 0.375em rgba(0, 0, 0, 0.12), 0 0.0625em 0.25em rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.87);
     /*font-family: Roboto,sans-serif;*/
@@ -8767,13 +9204,17 @@ select:focus {
     overflow-x: auto;
 }
 
+.datatable-data .autocomplete-selector {
+    position: absolute;
+}
+
 .datatable-header-title {
     background-color: #0579be;
     box-sizing: border-box;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.40);
+    box-shadow: 0 0.0625em 0.375em rgba(0, 0, 0, 0.12), 0 0.0625em 0.25em rgba(0, 0, 0, 0.40);
     display: flex;
-    padding: 0 10px 0 24px;
-    border-radius: 6px 6px 0 0;
+    padding: 0 0.625em 0 1.5em;
+    border-radius: 0.375em 0.375em 0 0;
     position: relative;
 }
 
@@ -8798,10 +9239,10 @@ select:focus {
 
 .datatable-title-span {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1.25em;
     line-height: 2.3em;
     overflow: hidden;
-    padding-right: 16px;
+    padding-right: 1em;
     position: relative;
     word-break: break-word;
     -ms-word-break: break-word;
@@ -8852,27 +9293,27 @@ th {
 
 .table-header {
     color: #0579be;
-    font-size: 12px;
+    font-size: 0.75em;
     font-weight: normal;
     text-align: left;
     vertical-align: middle;
     white-space: nowrap;
-    width: 24px;
+    width: 1.5em;
     text-overflow: ellipsis;
-    /*padding-left: 24px;*/
-    padding-right: 24px;
+    /*padding-left: 1.5em;*/
+    padding-right: 1.5em;
     position: relative;
 }
 
 .datatable-content table caption {
     visibility: hidden;
-    height: 0px;
+    height: 0em;
     margin: 0;
     padding: 0;
 }
 
 .table-header tr {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 0.0625em solid #e0e0e0;
 }
 
 tr:hover td,
@@ -8882,13 +9323,14 @@ tr.datatable-line-selected td {
 
 table>thead>tr>th,
 table>tbody>tr>td {
-    height: 56px;
+    height: 3.5em;
     overflow: hidden;
-    font-size: 13px;
+    font-size: 0.8125em;
     vertical-align: middle;
     text-overflow: ellipsis;
-    margin-top: 0px;
+    margin-top: 0em;
     line-height: 2.2;
+    font-family: "Roboto";
 }
 
 table>tbody>tr>td {
@@ -8907,23 +9349,23 @@ table>tbody.datatable-data>tr>td {
 
 table>tbody>tr>td.datatable-cell-in-edition {
     background: #e2eff7;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.125em 0 rgba(0, 0, 0, 0.2);
     opacity: 1;
     filter: none;
 }
 
 table>thead.datatable-columns-fixed>tr>th,
-table>tbody.datatable-data-fixed>tr>td {
+table>tbody.datatable-data-pxfixed>tr>td {
     display: inline-block;
 }
 
 table>tbody>tr {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 0.0625em solid #e0e0e0;
     color: #1c1c1c;
 }
 
 table-footer {
-    height: 48px;
+    height: 3em;
 }
 
 
@@ -8942,8 +9384,8 @@ table-footer {
 
 .datatable-pagination-content {
     display: inline-block;
-    margin: 18px 0;
-    padding: 2px;
+    margin: 1.125em 0;
+    padding: 0.125em;
     position: relative;
     vertical-align: middle;
 }
@@ -8953,23 +9395,23 @@ table-footer {
     align-items: center;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 0 none;
-    border-radius: 3px;
+    border-radius: 0.1875em;
     box-sizing: border-box;
     color: currentcolor;
     cursor: pointer;
     display: inline-block;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 0.875em;
     font-style: inherit;
     font-variant: inherit;
     font-weight: 500;
-    line-height: 36px;
-    margin: 6px 8px;
-    min-height: 36px;
-    min-width: 88px;
+    line-height: 2.25em;
+    margin: 0.375em 0.5em;
+    min-height: 2.25em;
+    min-width: 5.5em;
     outline: 0 none;
     overflow: hidden;
-    padding: 0 6px;
+    padding: 0 0.375em;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -8979,7 +9421,7 @@ table-footer {
 }
 
 .datatable-pagination-button:focus {
-    outline: #4D90FE solid 1px;
+    outline: #4D90FE solid 0.0625em;
 }
 
 .datatable-pagination-button-prev,
@@ -8989,44 +9431,44 @@ table-footer {
 .datatable-pagination-button-firstpage,
 .datatable-pagination-button-lastpage {
     border-radius: 50%;
-    height: 40px;
-    line-height: 24px;
-    margin: 0 6px;
+    height: 2.5em;
+    line-height: 1.5em;
+    margin: 0 0.375em;
     min-width: 0;
     padding: 0 1em;
 }
 
 .datatable-pagination-button-prev,
 .datatable-pagination-button-prevpage {
-    background-position: 2px;
+    background-position: 0.125em;
     background: transparent url("../img/tableau/ic_keyboard_arrow_left_black_24px.svg") center no-repeat;
 }
 
 .datatable-pagination-button-firstpage {
-    background-position: 2px;
+    background-position: 0.125em;
     background: transparent url("../img/tableau/ic_first_page_black_24px.svg") center no-repeat;
 }
 
 .datatable-pagination-button-next,
 .datatable-pagination-button-nextpage {
-    background-position: 2px;
+    background-position: 0.125em;
     background: transparent url("../img/tableau/ic_keyboard_arrow_right_black_24px.svg") center no-repeat;
 }
 
 .datatable-pagination-button-lastpage {
-    background-position: 2px;
+    background-position: 0.125em;
     background: transparent url("../img/tableau/ic_last_page_black_24px.svg") center no-repeat;
 }
 
 .datatable-pagination-input {
     width: 3em;
     height: 1.5em;
-    border: 1px solid transparent;
+    border: 0.0625em solid transparent;
     text-align: center;
 }
 
 .datatable-pagination-input:hover {
-    border: 1px solid #EEEEEE;
+    border: 0.0625em solid #EEEEEE;
 }
 
 .datatable-pagination-input:invalid {
@@ -9047,11 +9489,6 @@ td {
     padding: .3em .1em .3em .8em;
 }
 
-td:focus,
-th div:focus {
-    outline: #4D90FE solid 1px;
-}
-
 .datatable-header-no-text-overflow {
     text-overflow: inherit;
 }
@@ -9064,7 +9501,7 @@ th div:focus {
 .datatable-header .arrow-sort {
     padding-bottom: 0.18em;
     transition: all 0.3s linear 0s;
-    width: 18px;
+    width: 1.125em;
     margin-left: 0.2em;
 }
 
@@ -9080,6 +9517,18 @@ th div:focus {
     hyphens: auto;
     margin: .1em;
     text-decoration: underline;
+    color: #0579be;
+}
+
+td:focus,
+th > div:focus, th > div:hover {
+    outline: #4D90FE solid 0.0625em;
+ 
+}
+.datatable-header-sort-liner:focus .arrow-sort-container, .datatable-header-sort-liner:hover .arrow-sort-container,
+td:focus,
+th > div:focus div {
+    color: #000; 
 }
 
 .datatable-header-sortable-column img {
@@ -9095,7 +9544,7 @@ th div:focus {
 }
 
 td.datatable-cell.default-body-cell {
-    min-width: 18px;
+    min-width: 1.125em;
     padding: .2em 0em .2em .8em;
 }
 
@@ -9123,7 +9572,7 @@ td.datatable-cell.default-body-cell {
 }
 
 .dropdown-container.menu-contextuel .dropdown-content .dropdown-list {
-    padding-left: 0px;
+    padding-left: 0em;
 }
 
 .dropdown-container.menu-contextuel .dropdown-content .dropdown-list li {
@@ -9156,8 +9605,8 @@ td.datatable-cell.default-body-cell {
 }
 
 .datatable-line-loader {
-    margin-bottom: 0px;
-    line-height: 0px;
+    margin-bottom: 0em;
+    line-height: 0em;
 }
 
 .datatable-line-loader th {
@@ -9166,7 +9615,7 @@ td.datatable-cell.default-body-cell {
 }
 
 .datatable-line-loader th div {
-    height: 4px;
+    height: 0.25em;
     padding: 0;
 }
 
@@ -9181,26 +9630,26 @@ td.datatable-cell.default-body-cell {
     display: block;
     position: absolute;
     content: "";
-    left: -200px;
-    width: 200px;
-    height: 4px;
+    left: -12.5em;
+    width: 12.5em;
+    height: 0.25em;
     background-color: #0579be;
     animation: loading 2s linear infinite;
 }
 
 .datatable-cell .button-action img,
 .datatable-cell .edition-button-action img {
-    width: 24px;
+    width: 1.5em;
+    font-size: 1.4em;
 }
 
 .datatable-cell a.button-action {
     display: inline-block;
-    width: 90%;
     height: 100%;
 }
 
 .datatable-cell a.button-action:hover .datatable-cell a.button-action:focus {
-    outline: #4D90FE solid 1px;
+    outline: #4D90FE solid 0.0625em;
 }
 
 .edition-button-action {
@@ -9210,34 +9659,29 @@ td.datatable-cell.default-body-cell {
     cursor: pointer;
 }
 
-.edition-button-action-before {
+.edition-button-action-before img {
     cursor: pointer;
     display: inline-block;
-    width: 90%;
-    height: 100%;
+    font-size: 1.5em;
+    height: 1.5em;
 }
 
 .hidden-label {
     display: none;
 }
 
-a.edition-button-action-before:hover {
-    outline: #4D90FE solid 1px;
+a.edition-button-action-before img:hover {
+    outline: #4D90FE solid 0.0625em;
 }
 
 .edition-button-action:hover,
 .edition-button-action:focus {
-    outline: #4D90FE solid 1px;
-}
-
-button:hover,
-button:focus {
-    outline: #4D90FE solid 1px;
+    outline: #4D90FE solid 0.0625em;
 }
 
 @keyframes loading {
     from {
-        left: -200px;
+        left: -12.5em;
         width: 30%;
     }
     50% {
@@ -9303,7 +9747,7 @@ button:focus {
     }
     .datatable-cell .button-action img,
     .datatable-cell .edition-button-action img {
-        width: 24px;
+        width: 1.5em;
     }
 }
 
@@ -9338,11 +9782,11 @@ is_disabled {
 }
 
 .table-spinner-cell {
-    border: 10px solid white;
+    border: 0.625em solid white;
     height: 100%;
     width: 100%;
     line-height: 1.2;
-    font-color: transparent;
+    color: transparent;
 }
 
 .td-no-padding {
@@ -9384,30 +9828,30 @@ is_disabled {
     display: flex;
     flex-flow: row wrap;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size: 12px;
+    font-size: 0.75em;
     font-weight: 600;
-    height: 22px;
+    height: 1.8em;
     justify-content: center;
     position: absolute;
-    left: -10px;
-    top: -9px;
-    width: 22px;
+    left: -0.625em;
+    top: -0.5625em;
+    width: 1.8em;
 }
 
 .card-content-title {
     color: rgba(0, 0, 0, 0.87);
     cursor: default;
     font-family: NotoSansUI-Regular;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
     letter-spacing: 0.04em;
 }
 
 .card-content-list-item {
-    font-size: 14px;
+    font-size: 0.875em;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 1.5em;
     padding: 0;
     font-family: NotoSansUI-Regular;
     color: #232425;
@@ -9418,7 +9862,7 @@ tr.datatable-line-selected td[disabled] {
     filter: none;
     -webkit-filter: none;
     background: #e2eff7;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.125em 0 rgba(0, 0, 0, 0.2);
 }
 
 tr.datatable-line-selected td.datatable-cell-in-edition a img {
@@ -9426,8 +9870,17 @@ tr.datatable-line-selected td.datatable-cell-in-edition a img {
     filter: grayscale(1);
 }
 
-a.arrow-sort-container:hover {
-    outline: #4D90FE solid 1px;
+.arrow-sort-container:hover, .arrow-sort-container:focus {
+    color: #000;
+}
+
+.datatable-pagination-input-label {
+    position: fixed;
+    left: -5000px
+}
+
+.datatable-cell-custom-idMore {
+    white-space:inherit;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -9500,11 +9953,12 @@ a.arrow-sort-container:hover {
  *
  */
 
+
 /**
- * hornet-themes - Thème Hornet.js
+ * -intranet - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -9521,8 +9975,7 @@ a.arrow-sort-container:hover {
     display: inline;
 }
 
-.tabViewBody {
-}
+.tabViewBody {}
 
 .tabviewContentList {
     overflow: hidden;
@@ -9536,7 +9989,7 @@ a.arrow-sort-container:hover {
     width: 100%;
 }
 
-.tabview-list{
+.tabview-list {
     font: bold 11px verdana, arial, sans-serif;
     display: inline-flex;
     list-style-type: none;
@@ -9547,12 +10000,12 @@ a.arrow-sort-container:hover {
 
 .tab-label.tab-selected {
     background: #03476e;
-    color :#fff;
+    color: #fff;
 }
 
 .tab-label {
-    display:inline-block;
-    height: 2.5em;
+    display: inline-block;
+    height: 100%;
     min-width: 12.5em;
     color: #03476e;
     border-radius: 0.4em 0.4em 0 0;
@@ -9560,7 +10013,10 @@ a.arrow-sort-container:hover {
     margin: 0 0.05em;
 }
 
-.tab-label:hover, .tab-label:focus, .tabs-add-button:hover, .tabs-add-button:focus {
+.tab-label:hover,
+.tab-label:focus,
+.tabs-add-button:hover,
+.tabs-add-button:focus {
     outline-color: -webkit-focus-ring-color;
     outline-style: auto;
     outline-width: 1px;
@@ -9568,12 +10024,12 @@ a.arrow-sort-container:hover {
 
 
 /*Empeche la selection de l'element qui porte la classe tab-selected */
-.tab-label:hover:not(.tab-selected){
+
+.tab-label:hover:not(.tab-selected) {
     background: #f8f8ff;
     boder: 1px solid #0579be;
     color: #03476e;
     border-radius: 0.4em 0.4em 0 0;
-
 }
 
 .tab-panel:not(.tab-panel-selected) {
@@ -9637,9 +10093,9 @@ a.arrow-sort-container:hover {
     clear: both;
 }
 
-.tabs-arrow-hidden-label{
-    display:none
- }
+.tabs-arrow-hidden-label {
+    display: none
+}
 
 .tabs-button-label {
     display: none
@@ -9647,7 +10103,6 @@ a.arrow-sort-container:hover {
 
 .tabs-add-button {
     display: inline-block;
-    height: 2.5em;
     min-width: 3em;
     color: #03476e;
     border-radius: 0.4em 0.4em 0 0;
@@ -9658,7 +10113,6 @@ a.arrow-sort-container:hover {
     background-position: center;
     background-color: #f4f4f4;
     cursor: pointer;
-
 }
 
 .delete-tab-button {
@@ -9668,9 +10122,9 @@ a.arrow-sort-container:hover {
     border: none;
     position: absolute;
     right: 1.5em;
-    height: 1em;
-    width: 1em;
-    top: 1rem;
+    height: 1.5em;
+    width: 1.5em;
+    top: 0.5em;
     cursor: pointer;
     margin-right: -1em;
 }
@@ -9681,6 +10135,12 @@ a.arrow-sort-container:hover {
 
 li.tab {
     position: relative;
+}
+
+.tabview-list li.tab {
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
@@ -9758,7 +10218,7 @@ li.tab {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -9776,7 +10236,7 @@ textarea {
     width: 100%;
     padding-left: 1em;
     padding-top: 0.5em;
-    padding-right: 1em;
+    padding-right: 1.5em;
     padding-bottom: 0.5em;
 }
 
@@ -9785,7 +10245,11 @@ textarea:focus {
 }
 
 .textarea-reset {
-    margin: 12px -25px;
+    margin: 0.75em -2.5625em;
+}
+
+.textarea-reset-scrollbar {
+    margin: 0.75em -2.5625em;
 }
 
 .textarea-character-value {
@@ -9801,6 +10265,17 @@ textarea:focus {
     color: #d60000;
 }
 
+.label-container-textarea {
+    margin-bottom:0em;
+}
+
+.textarea-resizable {
+    
+}
+
+.textarea-unresizable {
+    resize: none;
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -9877,7 +10352,7 @@ textarea:focus {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -9899,8 +10374,8 @@ tooltip {
 
 .tooltip-image {
     padding-bottom: 0.3em;
-    width: 15px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 
@@ -10032,20 +10507,21 @@ a:focus .tooltip-image {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
 .top-button {
-/*    background-image: url('../img/button/ic_keyboard_arrow_up_black_24px.svg');*/
+    /*    background-image: url('../img/button/ic_keyboard_arrow_up_black_24px.svg');*/
     background-color: #87cffa;
     border-radius: 50%;
-    position:fixed;
+    position: fixed;
     height: 3.25em;
     width: 3.25em;
     bottom: 1.25em;
@@ -10071,19 +10547,18 @@ a:focus .tooltip-image {
     color: white;
 }
 
-@media screen and (max-width: 1400px){
+@media screen and (max-width: 1400px) {
     .top-button {
         background-color: #87cffa;
         border-radius: 50%;
-        position:fixed;
+        position: fixed;
         height: 3.25em;
         width: 3.25em;
         bottom: 1.25em;
-        right:0.313em;
+        right: 0.313em;
         opacity: 0.4;
     }
 }
-
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -10155,19 +10630,20 @@ a:focus .tooltip-image {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
-.uploadfile{
+.uploadfile {
     min-width: 15.469em;
     width: 100%;
-    display:none;
+    display: none;
 }
 
 .upload-content {
@@ -10207,30 +10683,30 @@ label.upload-content:not([readonly]):hover {
     background-color: rgba(3, 71, 110, 0.92);
 }
 
-.upload-text{
+.upload-text {
     word-break: break-all;
     color: white;
 }
 
-.upload-content[readonly]{
-    background-color:darkgrey;
+.upload-content[readonly] {
+    background-color: darkgrey;
     cursor: default;
 }
 
-.upload-delete-button{
+.upload-delete-button {
     margin-top: 0.76em;
     height: 2.15em;
-    float:right;
+    float: right;
 }
 
-.upload-container{
-    display:inline-block;
+.upload-container {
+    display: inline-block;
 }
 
 @media (max-width: 543px) {
-
-    .upload-container, .upload-content  {
-        width:100%;
+    .upload-container,
+    .upload-content {
+        width: 100%;
     }
 }
 /**
@@ -10309,7 +10785,7 @@ label.upload-content:not([readonly]):hover {
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
@@ -10331,7 +10807,7 @@ label.upload-content:not([readonly]):hover {
 }
 
 .profil-content .dropdown-button {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .profil-content:focus {
@@ -10341,13 +10817,13 @@ label.upload-content:not([readonly]):hover {
 .picto-user {
     background: transparent url("../img/header/account_circle_white.svg") no-repeat scroll left top;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 1.5em;
+    width: 1.5em;
     vertical-align: middle;
 }
 
 .profil-content .dropdown-button .label {
-    margin-right: 5px;
+    margin-right: 0.3125em;
 }
 
 .profil-content .user-panel {
@@ -10388,16 +10864,17 @@ label.upload-content:not([readonly]):hover {
     background: #03476e;
     text-align: center;
     font-weight: bold;
-    font-size: 0.7em;
+    font-size: 0.8em;
     transition: 0.2s;
     line-height: 3em;
+    padding: 0em 1em 0em 1em;
 }
 
 .profil-content .link:hover {
     background: rgba(3, 71, 110, 0.92);
     border-width: 0;
     color: white;
-    padding: 0px 26px 0px 16px;
+    padding: 0em 1em 0em 1em;
 }
 
 @media (max-width: 405px) {
@@ -10477,16 +10954,19 @@ label.upload-content:not([readonly]):hover {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
 
+
 /* Déclaration Fonts */
+
 @font-face {
     font-family: "NotoSansUI-Regular";
     font-stretch: normal;
@@ -10495,7 +10975,9 @@ label.upload-content:not([readonly]):hover {
     src: local("DINNext-LT-Custom-Regular"), url("../fonts/NotoSansUI-Regular.ttf") format("truetype");
 }
 
+
 /* Déclaration Fonts */
+
 @font-face {
     font-family: "NotoSansUI-Bold";
     font-stretch: normal;
@@ -10504,6 +10986,14 @@ label.upload-content:not([readonly]):hover {
     src: local("DINNext-LT-Custom-Regular"), url("../fonts/NotoSansUI-Bold.ttf") format("truetype");
 }
 
+/* Déclaration Fonts */
+
+@font-face {
+    font-family: "Roboto";
+    font-stretch: normal;
+    font-style: normal;
+    src: local("DINNext-LT-Custom-Regular"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
 /**
  * Copyright ou © ou Copr. Ministère de l'Europe et des Affaires étrangères (2017)
  * <p/>
@@ -10575,14 +11065,16 @@ label.upload-content:not([readonly]):hover {
  *
  */
 
+
 /**
  * hornet-themes - Thème Hornet.js
  *
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
- * @version v5.1.0
+ * @version v5.2.0
  * @link git+https://github.com/diplomatiegouvfr/hornet-themes.git
  * @license CECILL-2.1
  */
+
 
 /* Zoning global */
 
@@ -10594,6 +11086,7 @@ label.upload-content:not([readonly]):hover {
 body {
     display: flex;
     flex-direction: column;
+    font-family:"NotoSansUI-Regular";
 }
 
 #global {
@@ -10661,7 +11154,7 @@ img {
 
 h1 {
     font-family: NotoSansUI-Bold;
-    font-size: 25px;
+    font-size: 1.5625em;
     color: #fff;
     margin: 0;
     text-transform: uppercase;
@@ -10669,14 +11162,14 @@ h1 {
 
 h2 {
     font-family: NotoSansUI-Bold;
-    font-size: 30px;
+    font-size: 1.875em;
     color: #024056;
     padding: 0.438em 0 0 0;
 }
 
 h3 {
     font-family: NotoSansUI-Regular;
-    font-size: 20px;
+    font-size: 1.25em;
     color: #0579be;
     text-transform: uppercase;
     padding: 0.6em 0 0 0em;
@@ -10684,7 +11177,7 @@ h3 {
 
 h4 {
     font-family: NotoSansUI-Regular;
-    font-size: 17px;
+    font-size: 1.0625em;
     color: #0579be;
     text-transform: uppercase;
     padding: 0.6em 0 0 0em;

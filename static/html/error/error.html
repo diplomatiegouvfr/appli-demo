@@ -3,13 +3,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Erreur 404</title>
+    <title>Erreur <%=error%></title>
     <script lang="javascript">
         let url = window.location.protocol + "//" +  window.location.host + window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1));
 
-        creatLink("/static-5.1.0/hornet-themes/css/theme.css", url, "text/css", "stylesheet");
-        creatLink("/static-5.1.0/css/theme.css", url, "text/css", "stylesheet");
-        creatLink("/static-5.1.0/img/logoHornet.png", url, "image/png", "icon");
+        creatLink("/<%=project.static%>hornet-themes/css/theme.css", url, "text/css", "stylesheet");
+        creatLink("/<%=project.static%>css/theme.css", url, "text/css", "stylesheet");
+        creatLink("/<%=project.static%>img/logoHornet.png", url, "image/png", "icon");
 
         function creatLink(styleUrl, url, type, rel) {
             var link = document.createElement( "link" );
@@ -56,11 +56,11 @@
                                                    href="/accueil"
                                                    title="Hornet - Retour vers la page d&#x27;accueil "
                                                    id="img-logo"><img
-                                src="/static-5.1.0/img/logoHornet.png"
+                                src="/<%=project.static%>img/logoHornet.png"
                                 alt="Application TUTORIEL"/></a></div>
                         <div class="fl mls"><a class="sub-header-link" href="/accueil"
                                                title="Hornet - Retour vers la page d&#x27;accueil ">
-                            <h1 id="app-title">Application TUTORIEL</h1></a></div>
+                            <h1 id="app-title"><%=messages.applicationTitle%></h1></a></div>
                     </div>
                 </div>
             </header>
@@ -70,10 +70,10 @@
             <div id="nfe-page">
                 <div >
                     <div id="nf-img" class="center w50 txtcenter" style="height: 100%; width:100%; vertical-align: middle; padding:4em;">
-                        <span style="font-size: 9vw; color: white; font-family: NotoSansUI-Bold; font-weight: bold;">404</span>
+                        <span style="font-size: 9vw; color: white; font-family: NotoSansUI-Bold; font-weight: bold;"><%=error%></span>
                     </div>
                 </div>
-                <h2 class="nfe-title">Oops! Nous ne trouvons pas ce que vous cherchez!</h2><a
+                <h2 class="nfe-title"><%=message%></h2><a
                     href="/accueil" class="hornet-button nfe-button">Retour à la page d&#x27;accueil</a>
             </div>
         </main>
@@ -82,17 +82,17 @@
                 <div class="fl mll">
                     <ul class="footer-links">
                         <li><a href="/planAppli"
-                               title="Plan de l&#x27;application l&#x27; Application TUTORIEL">Plan de l&#x27;application</a>
+                               title="Plan de l&#x27;application l&#x27; <%=messages.applicationTitle%>">Plan de l&#x27;application</a>
                         </li>
                         <li><a href="/politiqueAccessibilite"
-                               title="Politique d&#x27;accessibilité de l&#x27; Application TUTORIEL">Accessibilité</a>
+                               title="Politique d&#x27;accessibilité de l&#x27; <%=messages.applicationTitle%>">Accessibilité</a>
                         </li>
                         <li><a href="/contact"
-                               title="Contact de l&#x27; Application TUTORIEL">Contact</a>
+                               title="Contact de l&#x27; <%=messages.applicationTitle%>">Contact</a>
                         </li>
                     </ul>
                 </div>
-                <div class="fr mrl"><p>Application TUTORIEL - 5.1.0</p></div>
+                <div class="fr mrl"><p><%=messages.applicationTitle%> - <%= project.version %></p></div>
             </div>
         </footer>
     </div>

@@ -4,23 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="icon" type="image/png" href="img/logoHornet.png"/>
-    <title><%=message%></title>
-    <script lang="javascript">
-        let url = window.location.protocol + "//" +  window.location.host + window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1));
-
-        creatLinkStyle("/<%=project.static%>hornet-themes/css/theme.css", url);
-        creatLinkStyle("/<%=project.static%>css/theme.css", url);
-
-
-        function creatLinkStyle(styleUrl, url) {
-            var link = document.createElement( "link" );
-            link.href = url + styleUrl;
-            link.type = "text/css";
-            link.rel = "stylesheet";
-
-            document.getElementsByTagName( "head" )[0].appendChild( link );
-        };
-    </script>
+    <title>Erreur 404</title>
+    <link rel="stylesheet" type="text/css"
+          href="<%=project.static%>hornet-themes/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=project.static%>css/theme.css"/>
 </head>
 <body>
 <div id="app">
@@ -56,10 +43,8 @@
         <main id="page" role="main">
             <span></span>
             <div id="nfe-page">
-                <div >
-                    <span><%=message%></span>
-                </div>
-                <h2 class="nfe-title"><%=message%></h2><a
+                <div id="nf-img"></div>
+                <h2 class="nfe-title">Oops! Nous ne trouvons pas ce que vous cherchez!</h2><a
                     href="/applitutoriel/accueil" class="hornet-button nfe-button">Retour à la page d&#x27;accueil</a>
             </div>
         </main>
@@ -83,24 +68,6 @@
         </footer>
     </div>
 </div>
-<script lang="javascript">
-    let links = document.getElementsByTagName("a");
-    
-    for(let i = 0; i < links.length; i++) {
-        let link = links.item(i);
-        if (link.pathname && link.pathname.indexOf("/") == 0) {
-            link.href = url + link.pathname;
-        }
-    }
 
-    let imgs = document.getElementsByTagName("img");
-    
-    for(let i = 0; i < imgs.length; i++) {
-        let img = imgs.item(i);
-        if (img.attributes && img.attributes.src && img.attributes.src.nodeValue.indexOf("/") == 0) {
-            img.src = url + img.attributes.src.nodeValue;
-        }
-    }
-</script>
 </body>
 </html>
