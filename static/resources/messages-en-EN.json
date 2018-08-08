@@ -62,7 +62,7 @@
   "textarea": {
     "alertMessage": "The number of characters is too high ({count}/{maxChar}).",
     "alertTitle": "Too high number of characters",
-    "charLabel": "{count, plural, =0 {0 character} =1 {1 character} other {# characters}}",
+    "charLabel": "{count, plural, =0 {0 character} =1 {1 character} other {# characters}}"
   },
   "charsCounter": {
     "limitLabel": "(limit {maxChar} characters)"
@@ -70,7 +70,7 @@
   "inputField": {
     "alertMessage": "The number of characters is too high ({count}/{maxChar}).",
     "alertTitle": "Too high number of characters",
-    "charLabel": "{count, plural, =0 {0 character} =1 {1 character} other {# characters}}",
+    "charLabel": "{count, plural, =0 {0 character} =1 {1 character} other {# characters}}"
   },
   "uploadFile": {
     "selectedFile": "{count, plural, =0 {no file selected } =1 {1 file selected} other {# items files selected}}",
