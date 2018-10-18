@@ -728,8 +728,8 @@
       "IN-GE-CNT-01": "Le message a bien été envoyé.",
       "IN-PA-FPA-01": "Le partenaire « {prenom} {nom} » a bien été sauvegardé."
     }
-  },
-  "administration": {
+},
+"administration": {
     "secteurs": {
       "titreSecteur": "Liste des secteurs",
       "table": {
