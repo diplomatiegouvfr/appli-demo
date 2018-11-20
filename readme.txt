@@ -1,7 +1,7 @@
 Instructions pour mettre à jour l'applitutoriel-online fullspa
 * partir de l'applitutorieljs et lancer prepare-package (s'assurer que les mocks ne sont pas exclus des fichiers à packager : cf builder.js )
 * copier les static/js de lapplituto avec les .map et les coller dans ./application-online/static/js
-* prendre les derniers themes intranet et copier le contenu dans ./application-online/static/hornet-themes/
+* prendre les derniers themes intranet et copier le contenu dans ./application-online/static/hornet-themes-intranet/
 * supprimer dans le fichier client.js les lignes de création des eléments de changement de langue et d'agrandissement/réduction de l'écran
 *- copier messages.json, message-en-EN.json et message-fr-FR.json (nettoyer des commentaires) dans ./appicaturiel-online/static/resources
 
