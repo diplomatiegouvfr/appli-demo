@@ -5843,7 +5843,7 @@ input.center {
 #menu-main button.toggler {
     height: 4rem;
     width: 4.5rem;
-    background-color: #0579be;
+    background-color: transparent;
     cursor: pointer;
     display: block;
     overflow: hidden;
