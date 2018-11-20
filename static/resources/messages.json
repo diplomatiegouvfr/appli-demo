@@ -7,6 +7,13 @@
     "title": "Cette page n'existe pas",
     "backToHome": "Retour à la page d'accueil"
   },
+  "tabs": {
+    "arrow-right" : "Onglet suivant",
+    "arrow-left": "Onglet précédent",
+    "add-button": "Ajouter un onglet",
+    "delete-button": "Supprimer l'onglet",
+    "tab": "Onglet {tabTitle}"
+  },
   "form": {
     "requiredLabel": "Saisie obligatoire",
     "valid": "Valider",

@@ -8,6 +8,13 @@
     "title": "Not found",
     "backToHome": "Back to home page"
   },
+  "tabs": {
+    "arrow-right" : "Onglet suivant",
+    "arrow-left": "Onglet précédent",
+    "add-button": "Ajouter un onglet",
+    "delete-button": "Supprimer l'onglet",
+    "tab": "Onglet {tabTitle}"
+  },
   "form": {
     "booleanOui": "Yes",
     "booleanNon": "No",
