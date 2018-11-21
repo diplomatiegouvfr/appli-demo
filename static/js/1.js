@@ -25757,7 +25757,7 @@ var SecteursPage = /** @class */ (function (_super) {
             React.createElement("h2", null, this.i18n("administration.secteurs.titreSecteur")),
             React.createElement(notification_1.Notification, { id: "notif2" }),
             React.createElement(table_1.Table, { id: "liste-secteurs" },
-                React.createElement(header_1.Header, { title: this.i18n("administration.secteurs").table.tableTitle, ref: this.refHeaderTable },
+                React.createElement(header_1.Header, { title: this.i18n("administration.secteurs.table.tableTitle"), ref: this.refHeaderTable },
                     React.createElement(toggle_columns_button_1.ToggleColumnsButton, { hiddenColumns: { desc: true, nom: false }, onChange: this.onChangeToggleColumns, selectAllItem: false }),
                     React.createElement(menu_actions_1.MenuActions, null,
                         React.createElement(action_button_1.ActionButton, { title: this.i18n("administration.secteurs.table.addTitle"), srcImg: picto_1.Picto.white.add, displayedWithoutResult: true, action: this.ajouterSecteur, priority: true }),
