@@ -25761,7 +25761,7 @@ var SecteursPage = /** @class */ (function (_super) {
                     React.createElement(toggle_columns_button_1.ToggleColumnsButton, { hiddenColumns: { desc: true, nom: false }, onChange: this.onChangeToggleColumns, selectAllItem: false }),
                     React.createElement(menu_actions_1.MenuActions, null,
                         React.createElement(action_button_1.ActionButton, { title: this.i18n("administration.secteurs.table.addTitle"), srcImg: picto_1.Picto.white.add, displayedWithoutResult: true, action: this.ajouterSecteur, priority: true }),
-                        React.createElement(action_button_1.ActionButton, { title: this.i18n("administration.secteurs.table.sortMultiTitle"), srcImg: picto_1.Picto.white.consulter, action: this.sortMulti, priority: true }))),
+                        React.createElement(action_button_1.ActionButton, { title: this.i18n("administration.secteurs.table.sortMultiTitle"), srcImg: this.genUrlStatic("/img/sort-down.svg"), action: this.sortMulti, priority: true }))),
                 React.createElement(content_1.Content, { dataSource: this.dataSource, onSubmit: this.submitLineForm, schema: schemaEditionTable, idForm: "secteurPageForm", notifId: "notif2" },
                     React.createElement(columns_1.Columns, null,
                         React.createElement(column_1.Column, { keyColumn: "nom", title: intlMessages.nom, editable: true, sortable: true }),
