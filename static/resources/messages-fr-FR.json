@@ -215,6 +215,9 @@
   "booleanOui": "oui",
   "booleanNon": "non"
  },
+ "dropdown" : {
+   "selectAll": "Sélectionner tout"
+ },
  "textarea": {
   "resetTitle": "Effacer le champ {label, select, undefined {} others {{label}}}",
   "alertMessage": "Le nombre de caractères renseignés est trop élevé par rapport au nombre maximum ({count}/{maxChar}).",
