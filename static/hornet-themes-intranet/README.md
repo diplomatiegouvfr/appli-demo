@@ -1,6 +1,6 @@
-# Hornet-themes-intranet
+# Hornet-themes
 
-Hornet-themes-intranet est le projet qui permet de construire les thèmes du framework Hornet. 
+Hornet-themes est le projet qui permet de construire les thèmes du framework Hornet. 
 
 ## Pré-requis
 
@@ -9,7 +9,7 @@ Hornet-themes-intranet est le projet qui permet de construire les thèmes du fra
 
 ## Installation
 
-- Récupérer le projet hornet-themes-intranet
+- Récupérer le projet hornet-themes
 
 ```shell
 $ hb install
@@ -23,14 +23,14 @@ $ hb package
 
 Le livrable est disponible dans le répertoire :
 
-`target\hornet-themes-intranet-5.2.X.zip`
+`target\hornet-themes-5.X.X.zip`
 
 ## Intégration dans une application Hornet.js
 
 Définir la propriété themeName dans le fichier `default.json` :
 
 ```json
-  "themeName": "hornet-themes-intranet"
+  "themeName": "hornet-themes"
 ```
 
 ## Utilisation en mode CDN
@@ -78,12 +78,12 @@ L'arborescence obtenue doit ressembler à ceci :
 ```
 [DocumentRoot ou Alias]
 	/hornet
-		/5.1.X
+		/5.X.X
 			/theme_name
 ```
 
 ## Licence
 
-`hornet-themes-intranet` est sous [licence cecill 2.1](./LICENSE.md).
+`hornet-themes` est sous [licence cecill 2.1](./LICENSE.md).
 
 Site web : [http://www.cecill.info](http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html)
