@@ -1,15 +1,13 @@
 Instructions pour mettre à jour l'applitutoriel-online fullspa
-* partir de l'applitutorieljs et lancer prepare-package (s'assurer que les mocks ne sont pas exclus des fichiers à packager : cf builder.js )
-* copier les static/js de lapplituto avec les .map et les coller dans ./application-online/static/js
-* prendre les derniers themes intranet et copier le contenu dans ./application-online/static/hornet-themes-intranet/
-* supprimer dans le fichier client.js les lignes de création des eléments de changement de langue et d'agrandissement/réduction de l'écran
+* partir de l'applitutorieljs, activer les mocks et le fullspa
+* Dans hornet-app supprimer les instanciations des composants LayoutSwitcher et le dropdown de langues
+* s'assurer que les mocks ne sont pas exclus des fichiers à packager : cf builder.js
+* Lancer prepare-package
+* copier les static de lapplituto pour les mettres dans le online
+* Remplacer static-5.4.X par static pour tous les fichiers du répertoir static
+* Remplacer applitutorieljs par applitutoriel-online pour tous les fichiers du répertoir static
+* Ajouter /static/ au création d'arbo pour les statics img, css et js
 *- copier messages.json, message-en-EN.json et message-fr-FR.json (nettoyer des commentaires) dans ./appicaturiel-online/static/resources
-
--manip occassionnelles:
-* prendre les css de l'appliturieljs et copier les fichier auth.css et theme.css dans ./application-online/static/css/
-* mettre à jour les pages d'erreur si elles ont changé 404.html ./html/error/error_404.html et error_500.html
-* mettre à jour les images si elle ont evolué.
-
 
 -demarrer un apache avec la config suivante:
 Alias /applitutoriel-online "/var/www/applitutoriel-online"
