@@ -53,17 +53,17 @@
             loadJsonAsynchronously(function (response) {
                 messages = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-online/resources/messages-fr-FR.json');
+            }, '/applitutoriel-online/static/resources/messages-fr-FR.json');
 
             loadJsonAsynchronously(function (response) {
                 menuItems = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-online/resources/navigation.json');
+            }, '/applitutoriel-online/static/resources/navigation.json');
 
             loadJsonAsynchronously(function (response) {
                 config = JSON.parse(response);
                 buildConfigurationAndLoadScript();
-            }, '/applitutoriel-online/config-spa.json');
+            }, '/applitutoriel-online/static/config-spa.json');
 
             function buildConfigurationAndLoadScript() {
                 if (!messages || !menuItems || !config) {
@@ -95,8 +95,10 @@
                 };
 
 
-                loadFileInDom("/applitutoriel-online/static/img/logo.png", "icon");
-                loadFileInDom("/applitutoriel-online/static/css/theme.css", "css");
+                root.AppSharedProps = {"appName":"applitutoriel-online","appVersion":"5.4.1","appDescription":"Application tutoriel utilisant le Framework hornet","appAuthor":"MEAE - Ministère de l'Europe et des Affaires étrangères", "welcomePageUrl":"\u002Faccueil"};
+                var themeUrl = config.themeUrl;
+                loadFileInDom("/applitutoriel-online/static/img/logoHornet.png", "icon");
+                loadFileInDom("/applitutoriel-online/static/css/appli.min.css");
                 loadFileInDom("/applitutoriel-online/static/js/client.js", "js", "body");
             }
 
